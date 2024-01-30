@@ -8,5 +8,5 @@ const textColor = Color(0xff616161);
 const greenAccent = Color(0xffE8F8EF);
 const starcolor = Color(0xffFED201);
 const boxcolor = Color.fromARGB(255, 243, 242, 242);
-const textfieldcolor = Color(0xfF2F2F2);
-const borderfield = Color(0xffC4C4C4);
+const borderfield = Colors.grey;
+const textfieldcolor = Color(0xffC4C4C4);
