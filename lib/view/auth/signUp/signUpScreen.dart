@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:hotel/view/auth/signIn/login.dart';
 import 'package:intl/intl.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-
 import '../../../constant.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -28,9 +27,10 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: false,
         title: const Text(
           'Fill your Profile',
-          style: TextStyle(fontWeight: FontWeight.w500),
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
@@ -52,7 +52,9 @@ class _SignupScreenState extends State<SignupScreen> {
               TextField(
                 controller: _date,
                 decoration: buildInputDecoration(
-                    "Date of Birth", Icons.calendar_month_outlined),
+                  "Date of Birth",
+                  Icons.calendar_month_outlined,
+                ),
                 onTap: () async {
                   DateTime? pickeddate = await showDatePicker(
                     context: context,
@@ -91,6 +93,7 @@ class _SignupScreenState extends State<SignupScreen> {
         filled: true,
         fillColor: textfieldcolor,
         labelText: 'Full Name',
+        labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
@@ -100,7 +103,10 @@ class _SignupScreenState extends State<SignupScreen> {
         keyboardType: TextInputType.text,
         textInputAction: TextInputAction.next,
         cursorColor: Colors.grey,
-        decoration: buildInputDecoration("Nickname", Icons.person),
+        decoration: buildInputDecoration(
+          "Nickname",
+          Icons.person,
+        ),
       );
 
   Widget _TextFieldsEmail() => TextFormField(
@@ -109,6 +115,8 @@ class _SignupScreenState extends State<SignupScreen> {
         cursorColor: Colors.grey,
         onSaved: (email) {},
         decoration: const InputDecoration(
+          filled: true,
+          fillColor: textfieldcolor,
           hintText: "Email",
           prefixIcon: Icon(Icons.email_outlined),
           border: OutlineInputBorder(
@@ -120,6 +128,8 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget _PhoneNumber() => IntlPhoneField(
         focusNode: _phoneNumberFocusNode,
         decoration: InputDecoration(
+          filled: true,
+          fillColor: textfieldcolor,
           labelText: 'Phone Number',
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -150,6 +160,8 @@ class _SignupScreenState extends State<SignupScreen> {
             )
             .toList(),
         decoration: InputDecoration(
+          filled: true,
+          fillColor: textfieldcolor,
           labelText: 'Gender',
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -178,7 +190,10 @@ class _SignupScreenState extends State<SignupScreen> {
         ],
       );
 
-  InputDecoration buildInputDecoration(String hintText, IconData icon) {
+  InputDecoration buildInputDecoration(
+    String hintText,
+    IconData icon,
+  ) {
     return InputDecoration(
       hintText: hintText,
       prefixIcon: Icon(icon),
