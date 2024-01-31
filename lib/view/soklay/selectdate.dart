@@ -226,7 +226,7 @@ class _SelectDateState extends State<SelectDate> {
 
   Widget _buildBottonContinue() => InkWell(
         onTap: () {
-          Get.to(const NameOfReserver());
+          Get.to(NameOfReserver());
         },
         child: Container(
           height: Get.height / 15,
