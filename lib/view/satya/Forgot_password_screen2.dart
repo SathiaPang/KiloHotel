@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
+import 'package:hotel/view/satya/Create_new_password.dart';
 
 class ForgotPasswordScreen2 extends StatelessWidget {
   const ForgotPasswordScreen2({super.key});
@@ -118,7 +120,7 @@ class ForgotPasswordScreen2 extends StatelessWidget {
               height: size.height * 0.06,
               child: ElevatedButton(
                 onPressed: () {
-                  // Handle button press
+                  Get.to(() => CreateNewPassword());
                 },
                 style: ElevatedButton.styleFrom(
                   elevation: 5,
