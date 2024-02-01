@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/view/soklay/payment1.dart';
 import 'package:intl/intl.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import '../../constant.dart';
@@ -13,10 +14,10 @@ class NameOfReserver extends StatefulWidget {
 
 class _NameOfReserverState extends State<NameOfReserver> {
   TextEditingController _date = TextEditingController();
-
   FocusNode _phoneNumberFocusNode = FocusNode();
-
-  String? selectedGender;
+  // String? selectedGender;
+  final selectColor = ''.obs;
+  final selectedGender = ''.obs;
 
   @override
   void dispose() {
@@ -57,7 +58,7 @@ class _NameOfReserverState extends State<NameOfReserver> {
 
   Widget _buildBottonContinue() => InkWell(
         onTap: () {
-          // ===
+          Get.to(const PayMent1());
         },
         child: Container(
           height: Get.height / 15,
@@ -84,56 +85,74 @@ class _NameOfReserverState extends State<NameOfReserver> {
         ),
       );
 
-  Widget _buildGender() => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          // Mr
-          ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                elevation: 0,
-                backgroundColor: green,
-                minimumSize: Size(120, 35),
-              ),
-              onPressed: () {},
-              child: Text(
-                "Mr.",
-                style: TextStyle(
-                    fontSize: 20, color: white, fontWeight: FontWeight.bold),
-              )),
-
-          // Mrs
-          ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  backgroundColor: white,
-                  minimumSize: Size(120, 35),
-                  side: BorderSide(width: 1.3, color: green)),
-              onPressed: () {},
-              child: Text(
-                "Mrs.",
-                style: TextStyle(
-                  fontSize: 20,
-                  color: green,
-                ),
-              )),
-
-          // Ms
-          ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  backgroundColor: white,
-                  minimumSize: Size(120, 35),
-                  side: BorderSide(width: 1.3, color: green)),
-              onPressed: () {},
-              child: Text(
-                "Ms.",
-                style: TextStyle(
-                  fontSize: 20,
-                  color: green,
-                ),
-              )),
-        ],
-      );
+  Widget _buildGender() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            elevation: 0,
+            backgroundColor: selectedGender == "Mr." ? green : white,
+            minimumSize: Size(120, 35),
+            side: BorderSide(width: 1.3, color: green),
+          ),
+          onPressed: () {
+            setState(() {
+              selectedGender.value = "Mr.";
+            });
+          },
+          child: Text(
+            "Mr.",
+            style: TextStyle(
+              fontSize: 20,
+              color: selectedGender == "Mr." ? white : green,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            elevation: 0,
+            backgroundColor: selectedGender == "Mrs." ? green : white,
+            minimumSize: Size(120, 35),
+            side: BorderSide(width: 1.3, color: green),
+          ),
+          onPressed: () {
+            setState(() {
+              selectedGender.value = "Mrs.";
+            });
+          },
+          child: Text(
+            "Mrs.",
+            style: TextStyle(
+              fontSize: 20,
+              color: selectedGender == "Mrs." ? white : green,
+            ),
+          ),
+        ),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            elevation: 0,
+            backgroundColor: selectedGender == "Ms." ? green : white,
+            minimumSize: Size(120, 35),
+            side: BorderSide(width: 1.3, color: green),
+          ),
+          onPressed: () {
+            setState(() {
+              selectedGender.value = "Ms.";
+            });
+          },
+          child: Text(
+            "Ms.",
+            style: TextStyle(
+              fontSize: 20,
+              color: selectedGender == "Ms." ? white : green,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 
   Widget _buildFullName() => Padding(
         padding: const EdgeInsets.all(12),
