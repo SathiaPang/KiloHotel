@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
 
 class CreateNewPassword extends StatefulWidget {
@@ -9,6 +10,7 @@ class CreateNewPassword extends StatefulWidget {
 }
 
 class _CreateNewPasswordState extends State<CreateNewPassword> {
+  bool isChecked = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -34,8 +36,8 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: size.height * 0.45,
-              color: green.withOpacity(0.1),
+              height: size.height * 0.43,
+              color: green.withOpacity(0),
             ),
             Text(
               "Create Your New Password",
@@ -90,36 +92,47 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CheckMeBox(),
-                Text("Remember Me"),
+                Checkbox(
+                  value: isChecked ?? false,
+                  onChanged: (value) {
+                    setState(
+                      () {
+                        isChecked = value ?? false;
+                      },
+                    );
+                  },
+                ),
+                Text('Remember me'),
               ],
+            ),
+            SizedBox(
+              height: size.height * 0.02,
+            ),
+            Container(
+              width: size.width * 0.9,
+              height: size.height * 0.06,
+              child: ElevatedButton(
+                onPressed: () {
+                  //Get.to(() => CreateNewPassword());
+                },
+                style: ElevatedButton.styleFrom(
+                  elevation: 5,
+                  backgroundColor: green,
+                  foregroundColor: white,
+                  shadowColor: black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                ),
+                child: Text(
+                  'Continue',
+                  style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),
+                ),
+              ),
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class CheckMeBox extends StatefulWidget {
-  const CheckMeBox({super.key});
-
-  @override
-  State<CheckMeBox> createState() => _CheckMeBoxState();
-}
-
-class _CheckMeBoxState extends State<CheckMeBox> {
-  bool isChecked = false;
-  @override
-  Widget build(BuildContext context) {
-    return Checkbox(
-      value: isChecked,
-      activeColor: green,
-      onChanged: (newBool) {
-        setState(() {
-          //isChecked = newBool;
-        });
-      },
     );
   }
 }
