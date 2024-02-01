@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
+import 'package:hotel/view/soklay/payment2.dart';
 
 class NewCard extends StatelessWidget {
   const NewCard({super.key});
@@ -122,7 +123,9 @@ class NewCard extends StatelessWidget {
       );
 
   Widget _buildBottonAddNewCard() => InkWell(
-        onTap: () {},
+        onTap: () {
+          Get.to(const Payment2());
+        },
         child: Container(
           height: Get.height / 15,
           width: Get.width / 1.1,
