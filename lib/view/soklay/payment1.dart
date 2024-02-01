@@ -152,7 +152,9 @@ class _PayMent1State extends State<PayMent1> {
       );
 
   Widget _buildBottonContinue() => InkWell(
-        onTap: () {},
+        onTap: () {
+          Get.to(const NewCard());
+        },
         child: Container(
           height: Get.height / 15,
           width: Get.width / 1.1,
