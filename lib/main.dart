@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
 
         // home: const SplashScreen());
-        home: SearchScreen());
+        // home: SearchScreen());
         home: const SplashScreen());
     // home: ForgotPasswordScreen());
   }
