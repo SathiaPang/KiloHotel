@@ -51,9 +51,13 @@ class _SignupScreenState extends State<SignupScreen> {
               SizedBox(height: 10),
               TextField(
                 controller: _date,
-                decoration: buildInputDecoration(
-                  "Date of Birth",
-                  Icons.calendar_month_outlined,
+                decoration: InputDecoration(
+                  labelText: 'Date of Birth',
+                  labelStyle:
+                      TextStyle(color: black, fontWeight: FontWeight.w500),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  ),
                 ),
                 onTap: () async {
                   DateTime? pickeddate = await showDatePicker(
@@ -90,8 +94,6 @@ class _SignupScreenState extends State<SignupScreen> {
       textInputAction: TextInputAction.next,
       cursorColor: Colors.black,
       decoration: InputDecoration(
-        filled: true,
-        fillColor: textfieldcolor,
         labelText: 'Full Name',
         labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
         border: OutlineInputBorder(
@@ -100,37 +102,35 @@ class _SignupScreenState extends State<SignupScreen> {
       ));
 
   Widget _Username() => TextField(
-        keyboardType: TextInputType.text,
-        textInputAction: TextInputAction.next,
-        cursorColor: Colors.grey,
-        decoration: buildInputDecoration(
-          "Nickname",
-          Icons.person,
+      keyboardType: TextInputType.text,
+      textInputAction: TextInputAction.next,
+      cursorColor: Colors.grey,
+      decoration: InputDecoration(
+        labelText: 'Nickname',
+        labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
-      );
+      ));
 
   Widget _TextFieldsEmail() => TextFormField(
-        keyboardType: TextInputType.emailAddress,
-        textInputAction: TextInputAction.next,
-        cursorColor: Colors.grey,
-        onSaved: (email) {},
-        decoration: const InputDecoration(
-          filled: true,
-          fillColor: textfieldcolor,
-          hintText: "Email",
-          prefixIcon: Icon(Icons.email_outlined),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-          ),
+      keyboardType: TextInputType.emailAddress,
+      textInputAction: TextInputAction.next,
+      cursorColor: Colors.grey,
+      onSaved: (email) {},
+      decoration: InputDecoration(
+        labelText: 'Email',
+        labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
-      );
+      ));
 
   Widget _PhoneNumber() => IntlPhoneField(
         focusNode: _phoneNumberFocusNode,
         decoration: InputDecoration(
-          filled: true,
-          fillColor: textfieldcolor,
-          labelText: 'Phone Number',
+          labelText: 'Phone number',
+          labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
@@ -145,29 +145,27 @@ class _SignupScreenState extends State<SignupScreen> {
       );
 
   Widget _Gender() => DropdownButtonFormField<String>(
-        value: selectedGender,
-        onChanged: (String? newValue) {
-          setState(() {
-            selectedGender = newValue;
-          });
-        },
-        items: <String>['Male', 'Female']
-            .map<DropdownMenuItem<String>>(
-              (String value) => DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              ),
-            )
-            .toList(),
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: textfieldcolor,
-          labelText: 'Gender',
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-          ),
+      value: selectedGender,
+      onChanged: (String? newValue) {
+        setState(() {
+          selectedGender = newValue;
+        });
+      },
+      items: <String>['Male', 'Female']
+          .map<DropdownMenuItem<String>>(
+            (String value) => DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            ),
+          )
+          .toList(),
+      decoration: InputDecoration(
+        labelText: 'Gender',
+        labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
-      );
+      ));
 
   Widget _signButton() => Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -189,17 +187,4 @@ class _SignupScreenState extends State<SignupScreen> {
           ),
         ],
       );
-
-  InputDecoration buildInputDecoration(
-    String hintText,
-    IconData icon,
-  ) {
-    return InputDecoration(
-      hintText: hintText,
-      prefixIcon: Icon(icon),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-      ),
-    );
-  }
 }
