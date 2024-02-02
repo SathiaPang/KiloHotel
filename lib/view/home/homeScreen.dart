@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
 import 'package:hotel/controller/home_controller.dart';
+import 'package:hotel/view/home/room.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final HomeController _controller = Get.put(HomeController());
   final menu = ["Recommended", "Popular", "Trending"];
   late TabController _tabController;
@@ -27,14 +29,11 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   List<Widget> _buildTabUI() {
-    List<Widget> list = [];
-    for (int i = 0; i < menu.length; i++) {
-      list.add(buildTab(menu[i], i));
-    }
-    return list;
+    return menu.map((label) => buildTab(label)).toList();
   }
 
-  Widget buildTab(String label, int index) {
+  Widget buildTab(String label) {
+    int index = menu.indexOf(label);
     bool isActive = _controller.activateTab.value == index;
 
     return GestureDetector(
@@ -69,6 +68,7 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Colors.white,
       appBar: _buildAppBar(),
       body: buildBody(),
@@ -78,34 +78,52 @@ class _HomeScreenState extends State<HomeScreen>
   Widget buildBody() {
     return Padding(
       padding: EdgeInsets.all(20),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Hello,Kenzia',
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
+      child: ListView(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Hello,Kenzia',
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            _buildSearch(),
-            SizedBox(
-              height: 10,
-            ),
-            Obx(
-              () => TabBar(
-                isScrollable: true,
-                controller: _tabController,
-                dividerColor: Colors.transparent,
-                indicatorColor: Colors.transparent,
-                labelColor: Colors.white,
-                tabAlignment: TabAlignment.start,
-                tabs: _buildTabUI(),
+              _buildSearch(),
+              SizedBox(
+                height: 10,
               ),
-            ),
-          ],
-        ),
+              Obx(
+                () => TabBar(
+                  isScrollable: true,
+                  controller: _tabController,
+                  dividerColor: Colors.transparent,
+                  indicatorColor: Colors.transparent,
+                  labelColor: Colors.white,
+                  tabAlignment: TabAlignment.start,
+                  tabs: _buildTabUI(),
+                ),
+              ),
+              // Spacer(),
+              SizedBox(
+                height: Get.height / 1.8,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: RoomView(),
+                    );
+                  },
+                ),
+              ),
+              _buildSeeMore()
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -177,4 +195,26 @@ Widget _buildSearch() => Row(
           ),
         ),
       ],
+    );
+
+Widget _buildSeeMore() => Container(
+      // height: 50,
+      width: double.infinity,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            'Recently Booked',
+            style: TextStyle(
+                color: black, fontWeight: FontWeight.w700, fontSize: 16),
+          ),
+          TextButton(
+              onPressed: () {},
+              child: Text(
+                'See All',
+                style: TextStyle(
+                    fontWeight: FontWeight.w700, fontSize: 16, color: green),
+              ))
+        ],
+      ),
     );
