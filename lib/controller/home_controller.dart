@@ -7,7 +7,7 @@ class HomeController extends GetxController {
   var selectedIndex = 0.obs;
 
   List<Hotel> allList = [];
-  final List<Hotel> listHotel = <Hotel>[].obs;
+  final listHotel = <Hotel>[].obs;
   final activateTab = 0.obs;
 
   void setTabActivate(int tab) {
@@ -17,7 +17,6 @@ class HomeController extends GetxController {
 
   void filterByTab(String tab) {
     final filterList = allList.where((hotel) => hotel.tab == tab).toList();
-    
   }
 
   @override

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
 import 'package:hotel/view/soklay/newCard.dart';
+import 'package:hotel/view/soklay/profile.dart';
 
 class CancelHotel extends StatefulWidget {
   const CancelHotel({super.key});
@@ -140,7 +141,9 @@ class CancelHotelState extends State<CancelHotel> {
       );
 
   Widget _buildBottonContinue() => InkWell(
-        onTap: () {},
+        onTap: () {
+          Get.offAll(ProFile());
+        },
         child: Container(
           height: Get.height / 15,
           width: Get.width / 1.1,
