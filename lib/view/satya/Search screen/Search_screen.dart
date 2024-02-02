@@ -10,8 +10,18 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      
+      body: Column(
+        children: [
+          Container(
+            width: size.width,
+            height: size.height,
+            
+          ),
+          Container(),
+        ],
+      ),
     );
   }
 }
