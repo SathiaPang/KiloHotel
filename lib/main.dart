@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
 
         // home: const SplashScreen());
         home: SearchScreen());
-        home: const SplashScreen());
+        home: const SplashScreen();
     // home: ForgotPasswordScreen());
   }
 }
