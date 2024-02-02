@@ -27,14 +27,13 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   List<Widget> _buildTabUI() {
-    List<Widget> list = [];
-    for (int i = 0; i < menu.length; i++) {
-      list.add(buildTab(menu[i], i));
-    }
-    return list;
+    return menu.map((label) => buildTab(label)).toList();
   }
 
-  Widget buildTab(String label, int index) {
+  Widget buildTab(
+    String label, 
+  ) {
+    int index = menu.indexOf(label);
     bool isActive = _controller.activateTab.value == index;
 
     return GestureDetector(
