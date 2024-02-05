@@ -5,8 +5,6 @@ import 'package:hotel/view/soklay/selectdate.dart';
 import 'package:hotel/view/auth/signUp/createAccount.dart';
 import 'package:hotel/view/auth/signUp/signUpScreen.dart';
 
-import '../../home/homeScreen.dart';
-
 class SigninScreen extends StatelessWidget {
   const SigninScreen({super.key});
 
@@ -116,7 +114,7 @@ Widget _buildButton() => Padding(
         ),
         onPressed: () {
           // Get.to(CreateAcc());
-          Get.to(HomeScreen());
+          // Get.to(HomeScreen());
         },
         child: Center(
           child: Text(
