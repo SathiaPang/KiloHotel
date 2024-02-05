@@ -150,7 +150,7 @@ AppBar _buildAppBar() {
             ],
           ),
         ),
-        Spacer(),
+        
         Row(
           children: [
             IconButton(
