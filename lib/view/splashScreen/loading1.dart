@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
         decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/images/ht.jpg"), fit: BoxFit.fill)),
-        // ignore: prefer_const_constructors
+        
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 70),
           child: const Column(
