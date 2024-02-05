@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
 
-import '../../home/homeScreen.dart';
 import '../signUp/signUpScreen.dart';
 
 class Login extends StatefulWidget {
@@ -155,7 +154,7 @@ Widget _signupButton() => Row(
             backgroundColor: green,
           ),
           onPressed: () {
-            Get.offAll(HomeScreen());
+            // Get.offAll(HomeScreen());
           },
           child: Center(
             child: Text(
