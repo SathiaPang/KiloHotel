@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
+import 'package:hotel/view/home/homepage.dart';
 
 import '../signUp/signUpScreen.dart';
 
@@ -154,7 +155,7 @@ Widget _signupButton() => Row(
             backgroundColor: green,
           ),
           onPressed: () {
-            // Get.offAll(HomeScreen());
+            // Get.offAll(HomePage());
           },
           child: Center(
             child: Text(

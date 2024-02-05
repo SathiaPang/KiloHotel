@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
+import 'package:hotel/view/home/homepage.dart';
+import 'package:hotel/view/home/navigator.dart';
 import 'package:hotel/view/soklay/selectdate.dart';
 import 'package:hotel/view/auth/signUp/createAccount.dart';
 import 'package:hotel/view/auth/signUp/signUpScreen.dart';
@@ -114,7 +116,7 @@ Widget _buildButton() => Padding(
         ),
         onPressed: () {
           // Get.to(CreateAcc());
-          // Get.to(HomeScreen());
+          Get.to(MyNavigation());
         },
         child: Center(
           child: Text(

@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
@@ -355,8 +354,6 @@ class _ProFileState extends State<ProFile> {
                         fontWeight: FontWeight.w500,
                         color: Colors.redAccent),
                   ),
-
-                  Text("data")
                 ],
               ),
             ),
