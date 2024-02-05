@@ -354,7 +354,9 @@ class _ProFileState extends State<ProFile> {
                         fontSize: 19,
                         fontWeight: FontWeight.w500,
                         color: Colors.redAccent),
-                  )
+                  ),
+
+                  Text("data")
                 ],
               ),
             ),
