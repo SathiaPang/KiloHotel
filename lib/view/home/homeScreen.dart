@@ -134,12 +134,48 @@ class _HomeScreenState extends State<HomeScreen>
 
 AppBar _buildAppBar() {
   return AppBar(
+
     centerTitle: false,
     title: Text("Bolu", style: TextStyle(fontWeight: FontWeight.bold)),
     actions: [
       IconButton(onPressed: () {}, icon: Icon(Icons.notifications)),
       IconButton(onPressed: () {}, icon: Icon(Icons.home)),
     ],
+    title: Row(
+      children: [
+        Container(
+          child: Row(
+            children: [
+              Image.asset(
+                'assets/images/logo.png',
+                height: Get.height / 17,
+              ),
+              const SizedBox(width: 8),
+              Text(
+                'Bolu',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
+        
+        Row(
+          children: [
+            IconButton(
+              icon: Icon(Icons.notifications_outlined),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: Icon(Icons.bookmark_border_outlined),
+              onPressed: () {},
+            ),
+          ],
+        )
+      ],
+    ),
+
   );
 }
 
