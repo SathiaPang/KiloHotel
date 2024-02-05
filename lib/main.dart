@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/view/home/navigator.dart';
 
+import 'package:hotel/view/home/homeScreen.dart';
+
 import 'package:hotel/view/satya/Forgot_password_screen.dart';
 import 'package:hotel/view/satya/Forgot_password_screen2.dart';
 import 'package:hotel/view/satya/Search%20screen/Search_screen.dart';
@@ -25,5 +27,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         // home: NavigatorScreen());
         home: const SplashScreen());
+
+        // home: const SplashScreen());
   }
 }
