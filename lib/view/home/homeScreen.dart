@@ -32,10 +32,9 @@ class _HomeScreenState extends State<HomeScreen>
     return menu.map((label) => buildTab(label)).toList();
   }
 
-Widget buildTab(
-    String label, 
-  ) {
-
+  // Widget buildTab(
+  //   String label,
+  // ) {
   Widget buildTab(String label) {
     int index = menu.indexOf(label);
     bool isActive = _controller.activateTab.value == index;
@@ -135,6 +134,13 @@ Widget buildTab(
 
 AppBar _buildAppBar() {
   return AppBar(
+
+    centerTitle: false,
+    title: Text("Bolu", style: TextStyle(fontWeight: FontWeight.bold)),
+    actions: [
+      IconButton(onPressed: () {}, icon: Icon(Icons.notifications)),
+      IconButton(onPressed: () {}, icon: Icon(Icons.home)),
+    ],
     title: Row(
       children: [
         Container(
@@ -169,6 +175,7 @@ AppBar _buildAppBar() {
         )
       ],
     ),
+
   );
 }
 
