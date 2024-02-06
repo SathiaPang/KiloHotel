@@ -70,6 +70,7 @@ class _SearchScreenState extends State<SearchScreen>
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: white,
       body: SafeArea(
         child: Column(
           children: [
@@ -96,10 +97,12 @@ class _SearchScreenState extends State<SearchScreen>
                 ],
               ),
             ),
-            Container(
-              width: size.width * 1,
-              height: size.height * 0.55,
-              color: green,
+            Expanded(
+              child: Container(
+                width: size.width * 1,
+                height: size.height * 0.55,
+                color: green,
+              ),
             ),
           ],
         ),
