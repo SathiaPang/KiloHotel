@@ -15,7 +15,7 @@ class ProFile extends StatefulWidget {
 }
 
 class _ProFileState extends State<ProFile> {
-  bool _switchValue = true;
+  bool _switchValue = false;
 
   @override
   Widget build(BuildContext context) {
@@ -383,8 +383,6 @@ class _ProFileState extends State<ProFile> {
                         fontWeight: FontWeight.w500,
                         color: Colors.redAccent),
                   ),
-
-                  Text("data")
                 ],
               ),
             ),
