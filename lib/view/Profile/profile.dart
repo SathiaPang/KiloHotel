@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
 import 'package:hotel/view/Profile/editprofile.dart';
 import 'package:hotel/view/Profile/notificationScreen.dart';
+import 'package:hotel/view/Profile/security.dart';
 import 'package:hotel/view/soklay/payment1.dart';
 
 class ProFile extends StatefulWidget {
@@ -232,7 +233,7 @@ class _ProFileState extends State<ProFile> {
             //
             InkWell(
               onTap: () {
-                Get.to(EditPF());
+                Get.to(SecurityScreen());
               },
               child: Container(
                 height: Get.height / 25,
