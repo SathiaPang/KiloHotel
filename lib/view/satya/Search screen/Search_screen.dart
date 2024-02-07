@@ -14,6 +14,7 @@ class _SearchScreenState extends State<SearchScreen>
     with SingleTickerProviderStateMixin {
   //FindController is the name of Search Controller
   final FindController _controller = Get.put(FindController());
+  // final FindController _controller = Get.find();
   final menu = ["All Hotel", "Recommended", "Popular", "Trending"];
   late TabController _tabController;
 
