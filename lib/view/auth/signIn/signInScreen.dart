@@ -114,7 +114,7 @@ Widget _buildButton() => Padding(
         ),
         onPressed: () {
           // Get.to(CreateAcc());
-          Get.to(MyNavigationBar());
+          Get.off(MyNavigationBar());
         },
         child: Center(
           child: Text(
