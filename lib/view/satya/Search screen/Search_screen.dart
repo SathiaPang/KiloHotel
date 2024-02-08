@@ -1,11 +1,11 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
 import 'package:hotel/controller/search_controller.dart';
 
 class SearchScreen extends StatefulWidget {
-  const SearchScreen({super.key});
-
+  SearchScreen({super.key});
   @override
   State<SearchScreen> createState() => _SearchScreenState();
 }
