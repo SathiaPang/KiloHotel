@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 import 'package:hotel/data/data.dart';
-import 'package:hotel/repo/homerepo.dart';
+import 'package:hotel/repo/homeRepositary.dart';
 
 class BookingController extends GetxController {
-  final repo = HomeRepo();
+  final repo = HomeRepository();
   var selectedIndex = 0.obs;
 
   List<Hotel> allList = [];
@@ -19,10 +19,9 @@ class BookingController extends GetxController {
     final filterList = allList.where((hotel) => hotel.tab == tab).toList();
   }
 
-  @override
-  void onReady() {
-    allList = repo.getRoomList();
-    filterByTab("Ongoing");
-    super.onReady();
-  }
+  // void onReady() {
+  //   allList = repo.getList();
+  //   filterByTab("Ongoing");
+  //   super.onReady();
+  // }
 }
