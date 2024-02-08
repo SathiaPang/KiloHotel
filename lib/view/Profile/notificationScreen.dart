@@ -13,23 +13,21 @@ class NotificationController extends GetxController {
   var newTipAvailable = false.obs;
 }
 
-class NotiScreen extends StatefulWidget {
+class NotiScreen extends StatelessWidget {
   NotiScreen({super.key});
 
-  @override
-  State<NotiScreen> createState() => _NotiScreenState();
-}
-
-class _NotiScreenState extends State<NotiScreen> {
   final NotificationController _notificationController =
       Get.put(NotificationController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('My Profile'),
-        centerTitle: true,
+       appBar: AppBar(
+        centerTitle: false,
+        title: const Text(
+          'Notification',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {

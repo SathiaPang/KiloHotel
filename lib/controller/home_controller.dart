@@ -1,28 +1,36 @@
 import 'package:get/get.dart';
 import 'package:hotel/data/data.dart';
-import 'package:hotel/repo/homerepo.dart';
+import 'package:hotel/repo/homeRepositary.dart';
 
 class HomeController extends GetxController {
-  final repo = HomeRepo();
-  var selectedIndex = 0.obs;
+  HomeController({required this.homeRepository});
+  final repo = <Hotel>[].obs;
+  final roomcategorys = <RoomCategory>[].obs;
+  final HomeRepository homeRepository;
 
-  List<Hotel> allList = [];
-  final listHotel = <Hotel>[].obs;
-  final activateTab = 0.obs;
+  List<Hotel> _allList = [];
 
-  void setTabActivate(int tab) {
-    activateTab(tab);
-    filterByTab(tab == 0 ? "Recommended" : "Other Tab");
+  @override
+  void onInit() async {
+    // Get Category
+    final tabcate = homeRepository.getRoomCategory();
+    roomcategorys(tabcate);
+
+    // Get list Hotel
+    _allList = await homeRepository.getList();
+    filTerByIndex(0);
+    super.onInit();
   }
 
-  void filterByTab(String tab) {
-    final filterList = allList.where((hotel) => hotel.tab == tab).toList();
+  void filTerByIndex(int index) {
+    final categoryroom = roomcategorys[index];
+    final tmplist =
+        _allList.where((e) => e.category == categoryroom.tab).toList();
+    repo(tmplist);
   }
 
   @override
   void onReady() {
-    allList = repo.getRoomList();
-    filterByTab("Recommended");
     super.onReady();
   }
 }

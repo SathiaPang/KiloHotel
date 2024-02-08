@@ -1,11 +1,11 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
 import 'package:hotel/controller/search_controller.dart';
 
 class SearchScreen extends StatefulWidget {
-  const SearchScreen({super.key});
-
+  SearchScreen({super.key});
   @override
   State<SearchScreen> createState() => _SearchScreenState();
 }
@@ -14,6 +14,7 @@ class _SearchScreenState extends State<SearchScreen>
     with SingleTickerProviderStateMixin {
   //FindController is the name of Search Controller
   final FindController _controller = Get.put(FindController());
+  // final FindController _controller = Get.find();
   final menu = ["All Hotel", "Recommended", "Popular", "Trending"];
   late TabController _tabController;
 
@@ -70,6 +71,7 @@ class _SearchScreenState extends State<SearchScreen>
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: white,
       body: SafeArea(
         child: Column(
           children: [
@@ -96,10 +98,12 @@ class _SearchScreenState extends State<SearchScreen>
                 ],
               ),
             ),
-            Container(
-              width: size.width * 1,
-              height: size.height * 0.55,
-              color: green,
+            Expanded(
+              child: Container(
+                width: size.width * 1,
+                height: size.height * 0.55,
+                color: green,
+              ),
             ),
           ],
         ),

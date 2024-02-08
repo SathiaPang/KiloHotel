@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
+import 'package:hotel/view/navigationbar/naviga.dart';
 import 'package:hotel/view/soklay/selectdate.dart';
-import 'package:hotel/view/auth/signUp/createAccount.dart';
 import 'package:hotel/view/auth/signUp/signUpScreen.dart';
 
 class SigninScreen extends StatelessWidget {
@@ -114,7 +114,7 @@ Widget _buildButton() => Padding(
         ),
         onPressed: () {
           // Get.to(CreateAcc());
-          // Get.to(HomeScreen());
+          Get.off(MyNavigationBar());
         },
         child: Center(
           child: Text(
