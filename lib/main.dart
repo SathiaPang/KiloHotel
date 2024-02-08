@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/binding/controlbinding.dart';
+import 'package:hotel/constant.dart';
 import 'package:hotel/view/splashScreen/loading1.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: black),
           useMaterial3: true,
         ),
         initialBinding: ControllerBinding(),

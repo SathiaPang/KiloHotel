@@ -1,9 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
+import 'package:hotel/controller/home_controller.dart';
+import 'package:hotel/data/data.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen>
+    with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
+  late TabController _tabController;
+  final HomeController _homeController = Get.find();
+
+  @override
+  void initState() {
+    _tabController = TabController(
+        length: _homeController.roomcategorys.length, vsync: this);
+
+    _tabController.addListener(() {
+      _homeController.filTerByIndex(_tabController.index);
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +74,17 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         children: [
           //
-          _builNickName()
+          _builNickName(),
+          _buildSearch(),
+
+          Container(
+            child: TabBar(
+                controller: _tabController,
+                tabs: _homeController.roomcategorys
+                    .map((RoomCategory roomCategory) {
+                  return Text(roomCategory.tab);
+                }).toList()),
+          )
         ],
       ),
     );
@@ -69,4 +101,40 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       );
+
+  Widget _buildSearch() => Padding(
+        padding: const EdgeInsets.only(top: 10),
+        child: Container(
+          height: Get.height / 15,
+          width: Get.width / 1.1,
+          decoration: BoxDecoration(
+              color: textfieldcolor, borderRadius: BorderRadius.circular(15)),
+          child: Row(
+            children: [
+              SizedBox(
+                width: 10,
+              ),
+              Icon(
+                Icons.search_outlined,
+                size: 35,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                "Search",
+                style: TextStyle(fontSize: 17),
+              ),
+              Spacer(),
+              Icon(
+                Icons.tune,
+                color: green,
+                size: 30,
+              )
+            ],
+          ),
+        ),
+      );
+  @override
+  bool get wantKeepAlive => true;
 }
