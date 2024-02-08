@@ -355,39 +355,157 @@ class _ProFileState extends State<ProFile> {
 
   Widget _buildLogout() => Padding(
         padding: const EdgeInsets.only(top: 15),
-        child: Row(
-          children: [
-            //
-            Container(
-              height: Get.height / 25,
-              width: Get.width / 2,
-              // color: green,
-              child: Row(
-                children: [
-                  //
-                  SizedBox(
-                    width: 13,
+        child: InkWell(
+          onTap: () {
+            showModalBottomSheet<void>(
+              context: context,
+              builder: (BuildContext context) {
+                return Container(
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(15)),
+                  height: Get.height / 3,
+                  width: double.infinity,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Logout',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 22),
+                      ),
+                      Container(
+                        height: 1,
+                        width: Get.width / 1.2,
+                        color: black,
+                      ),
+                      Text(
+                        'Are you sure you want to logout from \n your account?',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      _buildyes(),
+                      _buildcancel()
+                    ],
                   ),
-                  Icon(
-                    Icons.login_outlined,
-                    size: 30,
-                    color: Colors.redAccent,
-                  ),
+                );
+              },
+            );
+          },
+          child: Row(
+            children: [
+              //
+              Container(
+                height: Get.height / 25,
+                width: Get.width / 2,
+                // color: green,
+                child: Row(
+                  children: [
+                    //
+                    SizedBox(
+                      width: 13,
+                    ),
+                    Icon(
+                      Icons.login_outlined,
+                      size: 30,
+                      color: Colors.redAccent,
+                    ),
 
-                  SizedBox(
-                    width: 13,
-                  ),
-                  Text(
-                    "Logout",
-                    style: TextStyle(
-                        fontSize: 19,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.redAccent),
-                  ),
-                ],
+                    SizedBox(
+                      width: 13,
+                    ),
+                    Text(
+                      "Logout",
+                      style: TextStyle(
+                          fontSize: 19,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.redAccent),
+                    ),
+                  ],
+                ),
               ),
+            ],
+          ),
+        ),
+      );
+  // Widget _buildBottomSheetApp(BuildContext context) {
+  //   return ElevatedButton(
+  //     child: const Text('showModalBottomSheet'),
+  //     onPressed: () {
+  //       showModalBottomSheet<void>(
+  //         context: context,
+  //         builder: (BuildContext context) {
+  //           return Container(
+  //             decoration:
+  //                 BoxDecoration(borderRadius: BorderRadius.circular(15)),
+  //             height: Get.height / 3,
+  //             width: double.infinity,
+  //             child: Column(
+  //               mainAxisAlignment: MainAxisAlignment.center,
+  //               children: [
+  //                 Text(
+  //                   'Cancel Booking',
+  //                   style: TextStyle(
+  //                       color: Colors.red,
+  //                       fontWeight: FontWeight.w500,
+  //                       fontSize: 22),
+  //                 ),
+  //                 Container(
+  //                   height: 1,
+  //                   width: Get.width / 1.2,
+  //                   color: black,
+  //                 ),
+  //                 Text(
+  //                   'Are you sure you want to cancel your \n hotel bookings?',
+  //                   textAlign: TextAlign.center,
+  //                   style: TextStyle(fontSize: 18),
+  //                 ),
+  //                 _buildyes(),
+  //                 _buildcancel()
+  //               ],
+  //             ),
+  //           );
+  //         },
+  //       );
+  //     },
+  //   );
+  // }
+
+  Widget _buildcancel() => Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            fixedSize: Size(275, 60),
+            backgroundColor: Colors.green.shade100,
+          ),
+          onPressed: () {
+            // Get.to(Login());
+          },
+          child: Center(
+            child: Text(
+              'Cancel',
+              style: TextStyle(color: green, fontSize: 17),
             ),
-          ],
+          ),
+        ),
+      );
+  Widget _buildyes() => Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            fixedSize: Size(275, 60),
+            backgroundColor: Colors.green,
+          ),
+          onPressed: () {
+            // Get.to(Login());
+          },
+          child: Center(
+            child: Text(
+              'Yes, Logout',
+              style: TextStyle(color: white, fontSize: 17),
+            ),
+          ),
         ),
       );
 }

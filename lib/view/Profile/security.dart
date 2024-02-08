@@ -41,8 +41,6 @@ class SecurityScreen extends StatelessWidget {
             _buildGoogleAuth(),
             SizedBox(height: 30),
             _buildChangePwBtn(),
-            SizedBox(height: 30),
-            _buildBottomSheetApp(context),
           ],
         ),
       ),
@@ -117,86 +115,6 @@ class SecurityScreen extends StatelessWidget {
           child: Text(
             'Change Password',
             style: TextStyle(color: green, fontSize: 17),
-          ),
-        ),
-      );
-
-  Widget _buildBottomSheetApp(BuildContext context) {
-    return ElevatedButton(
-      child: const Text('showModalBottomSheet'),
-      onPressed: () {
-        showModalBottomSheet<void>(
-          context: context,
-          builder: (BuildContext context) {
-            return Container(
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(15)),
-              height: Get.height / 3,
-              width: double.infinity,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Cancel Booking',
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 22),
-                  ),
-                  Container(
-                    height: 1,
-                    width: Get.width / 1.2,
-                    color: black,
-                  ),
-                  Text(
-                    'Are you sure you want to cancel your \n hotel bookings?',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  _buildyes(),
-                  _buildcancel()
-                ],
-              ),
-            );
-          },
-        );
-      },
-    );
-  }
-
-  Widget _buildcancel() => Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            fixedSize: Size(275, 60),
-            backgroundColor: Colors.green.shade100,
-          ),
-          onPressed: () {
-            // Get.to(Login());
-          },
-          child: Center(
-            child: Text(
-              'Cancel',
-              style: TextStyle(color: green, fontSize: 17),
-            ),
-          ),
-        ),
-      );
-  Widget _buildyes() => Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            fixedSize: Size(275, 60),
-            backgroundColor: Colors.green,
-          ),
-          onPressed: () {
-            // Get.to(Login());
-          },
-          child: Center(
-            child: Text(
-              'Yes, Logout',
-              style: TextStyle(color: white, fontSize: 17),
-            ),
           ),
         ),
       );

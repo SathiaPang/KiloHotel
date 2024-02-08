@@ -1,18 +1,18 @@
 import 'package:get/get.dart';
 import 'package:hotel/data/data.dart';
-import 'package:hotel/repo/homeRepositary.dart';
+import 'package:hotel/repo/homerepo.dart';
 
-class FindController extends GetxController {
-  final repo = HomeRepository();
+class BookingController extends GetxController {
+  final repo = HomeRepo();
   var selectedIndex = 0.obs;
 
   List<Hotel> allList = [];
-  final List<Hotel> listHotel = <Hotel>[].obs;
+  final listHotel = <Hotel>[].obs;
   final activateTab = 0.obs;
 
   void setTabActivate(int tab) {
     activateTab(tab);
-    filterByTab(tab == 0 ? "All Hotel" : "Other Tab");
+    filterByTab(tab == 0 ? "Ongoing" : "Other Tab");
   }
 
   void filterByTab(String tab) {
@@ -21,8 +21,8 @@ class FindController extends GetxController {
 
   @override
   void onReady() {
-    // allList = repo.getList();
-    // filterByTab("All Hotel");
-    // super.onReady();
+    allList = repo.getRoomList();
+    filterByTab("Ongoing");
+    super.onReady();
   }
 }

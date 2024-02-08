@@ -77,6 +77,8 @@ class _SignupScreenState extends State<SignupScreen> {
               SizedBox(height: 10),
               _TextFieldsEmail(),
               SizedBox(height: 10),
+              _TextFieldPassword(),
+              SizedBox(height: 10),
               _PhoneNumber(),
               SizedBox(height: 10),
               _Gender(),
@@ -125,6 +127,21 @@ class _SignupScreenState extends State<SignupScreen> {
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
       ));
+  Widget _TextFieldPassword() => TextFormField(
+        // controller: _controller.Rpassword,
+        keyboardType: TextInputType.visiblePassword,
+        textInputAction: TextInputAction.done,
+        obscureText: true,
+        cursorColor: Colors.grey,
+        onSaved: (password) {},
+        decoration: InputDecoration(
+          labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
+          labelText: 'Password',
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+          ),
+        ),
+      );
 
   Widget _PhoneNumber() => IntlPhoneField(
         focusNode: _phoneNumberFocusNode,
