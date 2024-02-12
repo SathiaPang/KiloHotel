@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:hotel/constant.dart';
+import 'package:hotel/view/Profile/payment.dart';
 
 class BookingScreen extends StatelessWidget {
   const BookingScreen({super.key});
@@ -214,7 +215,7 @@ class BookingScreen extends StatelessWidget {
                       context,
                       text: 'View Ticket',
                       onPressed: () {
-                        // Your onPressed logic here
+                        Get.to(PaymentBooking());
                       },
                       txtcolor: white,
                       color: green,
