@@ -15,6 +15,7 @@ class _HomeScreenState extends State<HomeScreen>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   late TabController _tabController;
   final HomeController _homeController = Get.find();
+  bool selected = false;
 
   @override
   void initState() {
@@ -29,66 +30,102 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: white,
-      appBar: AppBar(
-        centerTitle: false,
-        backgroundColor: white,
-        title: Row(
-          children: [
-            Container(
-              height: Get.height / 20,
-              width: Get.width / 12,
-              decoration: BoxDecoration(
-                  // color: green,
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/logo.png"),
-                      fit: BoxFit.contain)),
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            Text(
-              "Bolu",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-            )
-          ],
-        ),
+    return Obx(() => DefaultTabController(
+          length: _homeController.roomcategorys.length,
+          child: Scaffold(
+            backgroundColor: white,
+            appBar: AppBar(
+              centerTitle: false,
+              backgroundColor: white,
+              title: Row(
+                children: [
+                  Container(
+                    height: Get.height / 20,
+                    width: Get.width / 12,
+                    decoration: BoxDecoration(
+                        // color: green,
+                        image: DecorationImage(
+                            image: AssetImage("assets/images/logo.png"),
+                            fit: BoxFit.contain)),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    "Bolu",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  )
+                ],
+              ),
 
-        // Action
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.notifications_outlined,
-                size: 30,
-              )),
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.bookmark_outline,
-                size: 30,
-              )),
-        ],
-      ),
-      body: Column(
-        children: [
-          //
-          _builNickName(),
-          _buildSearch(),
+              // Action
+              actions: [
+                IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.notifications_outlined,
+                      size: 30,
+                    )),
+                IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.bookmark_outline,
+                      size: 30,
+                    )),
+              ],
+            ),
+            body: Column(
+              children: [
+                //
+                _builNickName(),
+                _buildSearch(),
 
-          Container(
-            child: TabBar(
-                controller: _tabController,
-                tabs: _homeController.roomcategorys
-                    .map((RoomCategory roomCategory) {
-                  return Text(roomCategory.tab);
-                }).toList()),
-          )
-        ],
-      ),
-    );
+                SizedBox(
+                  height: 20,
+                ),
+
+                _builTabar()
+              ],
+            ),
+          ),
+        ));
   }
+
+  Widget _builTabar() => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 2),
+        child: Obx(() => TabBar(
+              dividerColor: Colors.transparent,
+              indicator: BoxDecoration(
+                color: green,
+                borderRadius: BorderRadius.circular(13),
+              ),
+              indicatorSize: TabBarIndicatorSize.tab,
+              controller: _tabController,
+              tabs: _homeController.roomcategorys
+                  .map((RoomCategory roomCategory) {
+                final bool isSelected = _tabController.index ==
+                    _homeController.roomcategorys.indexOf(roomCategory);
+                return Tab(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(13),
+                      border: Border.all(width: 2, color: green),
+                    ),
+                    child: Center(
+                      child: Text(
+                        roomCategory.tab,
+                        style: TextStyle(
+                          color: isSelected ? white : green,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              }).toList(),
+            )),
+      );
 
   Widget _builNickName() => Padding(
         padding: const EdgeInsets.only(top: 5, left: 15),
