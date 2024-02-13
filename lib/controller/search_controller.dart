@@ -16,7 +16,7 @@ class FindController extends GetxController {
   }
 
   void filterByTab(String tab) {
-    final filterList = allList.where((hotel) => hotel.tab == tab).toList();
+    final filterList = allList.where((hotel) => hotel.category == tab).toList();
   }
 
   @override

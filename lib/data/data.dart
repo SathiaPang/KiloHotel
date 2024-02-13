@@ -8,17 +8,18 @@ class RoomCategory {
   static List<RoomCategory> getList() => [
         RoomCategory(tab: 'Recommended'),
         RoomCategory(tab: 'Popular'),
-        RoomCategory(tab: 'Trending')
+        RoomCategory(tab: 'Trending'),
+        RoomCategory(tab: 'Hello Brother'),
+        RoomCategory(tab: 'Hello Brother'),
       ];
 }
 
 class Hotel {
-  String img, name, location, tab, category;
+  String img, name, location, category;
   double price;
 
   Hotel(
       {required this.img,
-      required this.tab,
       required this.location,
       required this.name,
       required this.price,
@@ -36,7 +37,6 @@ class Hotel {
   factory Hotel.fromMap(Map<String, dynamic> map) {
     return Hotel(
         img: map['img'],
-        tab: map['tab'],
         location: map['location'],
         name: map['name'],
         price: map['price'],
@@ -45,7 +45,6 @@ class Hotel {
 
   static List<Hotel> hotel = [
     Hotel(
-        tab: "Recommended",
         img: "assets/images/hotel.jpg", // Provide the actual image URL
         location: "Hotel Location",
         name: "Hotel 1",
@@ -53,7 +52,13 @@ class Hotel {
         category: "Recommended" // Replace with the actual price
         ),
     Hotel(
-        tab: "Recommended",
+        img: "assets/images/hotel.jpg", // Provide the actual image URL
+        location: "Hotel Location",
+        name: "Hotel 1",
+        price: 150.0,
+        category: "Recommended" // Replace with the actual price
+        ),
+    Hotel(
         img: "assets/images/hotel.jpg", // Provide the actual image URL
         location: "Hotel Location",
         name: "Hotel 2",
@@ -62,7 +67,6 @@ class Hotel {
         // Replace with the actual price
         ),
     Hotel(
-        tab: "Recommended",
         img: "assets/images/hotel.jpg", // Provide the actual image URL
         location: "Hotel Location",
         name: "Hotel 3",
@@ -71,14 +75,12 @@ class Hotel {
         // Replace with the actual price
         ),
     Hotel(
-        tab: "Recommended",
         img: "assets/images/hotel.jpg", // Provide the actual image URL
         location: "Hotel Location",
         name: "Hotel 4",
         price: 150.0, // Replace with the actual price
         category: "Trending"),
     Hotel(
-        tab: "Recommended",
         img: "assets/images/hotel.jpg", // Provide the actual image URL
         location: "Hotel Location",
         name: "Hotel 5",

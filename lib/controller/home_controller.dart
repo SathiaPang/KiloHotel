@@ -7,6 +7,7 @@ class HomeController extends GetxController {
   final repo = <Hotel>[].obs;
   final roomcategorys = <RoomCategory>[].obs;
   final HomeRepository homeRepository;
+  final selectedIndex = 0.obs;
 
   List<Hotel> _allList = [];
 
@@ -23,14 +24,12 @@ class HomeController extends GetxController {
   }
 
   void filTerByIndex(int index) {
+    selectedIndex(index);
     final categoryroom = roomcategorys[index];
     final tmplist =
         _allList.where((e) => e.category == categoryroom.tab).toList();
     repo(tmplist);
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
+    print(selectedIndex);
+    update();
   }
 }
