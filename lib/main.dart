@@ -21,6 +21,6 @@ class MyApp extends StatelessWidget {
         ),
         initialBinding: ControllerBinding(),
         debugShowCheckedModeBanner: false,
-        home: BookDetailScreenOne());
+        home: SplashScreen());
   }
 }

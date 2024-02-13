@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
 
 class BookDetailScreenOne extends StatefulWidget {
@@ -20,177 +21,353 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          Size size = constraints.biggest;
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  width: size.width,
-                  height: size.height * 0.45,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        top: 50,
-                        left: 10,
-                        child: IconButton(
-                          onPressed: () {
-                            print("ohh you touch me tal la la");
-                          },
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: Colors.black,
-                          ),
-                        ),
+      body: SingleChildScrollView(
+        // child: Column(
+        //   children: [Text("data")],
+        // ),
+        child: Column(
+          children: [
+            Container(
+              width: Get.width,
+              height: Get.height * 0.45,
+              child: Stack(
+                children: [
+                  Positioned(
+                    top: 50,
+                    left: 10,
+                    child: IconButton(
+                      onPressed: () {
+                        print("ohh you touch me tal la la");
+                      },
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: Colors.black,
                       ),
-                    ],
-                  ),
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage("assets/images/hotel.jpg"),
                     ),
                   ),
+                ],
+              ),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage("assets/images/hotel.jpg"),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0, top: 10.0),
-                        child: Text(
-                          "Presidential Hotel",
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0, top: 10.0),
+                    child: Text(
+                      "Presidential Hotel",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w600,
                       ),
-                      SizedBox(height: 10),
-                      Center(
-                        child: RichText(
-                          text: TextSpan(
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                            ),
-                            children: <InlineSpan>[
-                              WidgetSpan(
-                                child: Icon(
-                                  Icons.location_on_rounded,
-                                  color: green,
-                                  size: 19,
-                                ),
-                              ),
-                              TextSpan(
-                                text:
-                                    '12 Eze Adele Road Rumuomasi Lagos Nigeria',
-                                style: TextStyle(fontWeight: FontWeight.w300),
-                              ),
-                            ],
-                          ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Center(
+                    child: RichText(
+                      text: TextSpan(
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
                         ),
-                      ),
-                      SizedBox(height: 20),
-                      line(),
-                      SizedBox(height: 30),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Gallery Photos",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          Text(
-                            "See All",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
+                        children: <InlineSpan>[
+                          WidgetSpan(
+                            child: Icon(
+                              Icons.location_on_rounded,
                               color: green,
+                              size: 19,
                             ),
                           ),
+                          TextSpan(
+                            text: '12 Eze Adele Road Rumuomasi Lagos Nigeria',
+                            style: TextStyle(fontWeight: FontWeight.w300),
+                          ),
                         ],
                       ),
-                      SizedBox(height: 10),
-                      //Carousal Image
-                      Container(
-                        height: 120, // Set a fixed height for the ListView
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: imageUrls.length,
-                          itemBuilder: (context, index) {
-                            return Container(
-                              margin: EdgeInsets.symmetric(horizontal: 5.0),
-                              width: 180,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(15),
-                                child: Image.network(
-                                  imageUrls[index],
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      SizedBox(height: 20),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  line(),
+                  SizedBox(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
                       Text(
-                        "Details",
+                        "Gallery Photos",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          DetailIcon(
-                            text: 'Hotel',
-                            icon: CupertinoIcons.building_2_fill,
-                          ),
-                          DetailIcon(
-                            text: '4 Bedrooms',
-                            icon: CupertinoIcons.bed_double,
-                          ),
-                          DetailIcon(
-                            text: '2 Bathrooms',
-                            icon: Icons.shower_outlined,
-                          ),
-                          DetailIcon(
-                            text: '3000sqft',
-                            icon: Icons.square_foot,
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 20),
                       Text(
-                        "Description",
+                        "See All",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
+                          color: green,
                         ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        "Before we dive into the specifics of the Text widget, let’s first understand why it’s important to be able to display and style text in a Flutter app. \tText is a crucial part of any user interface, as it allows us to convey information to the user. ",
-                        textAlign: TextAlign.justify,
-                        style: TextStyle(fontWeight: FontWeight.w300),
                       ),
                     ],
                   ),
-                ),
-              ],
+                  SizedBox(height: 10),
+                  //Carousal Image
+                  Container(
+                    height: 120, // Set a fixed height for the ListView
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: imageUrls.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          margin: EdgeInsets.symmetric(horizontal: 5.0),
+                          width: 180,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: Image.network(
+                              imageUrls[index],
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    "Details",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      DetailIcon(
+                        text: 'Hotel',
+                        icon: CupertinoIcons.building_2_fill,
+                      ),
+                      DetailIcon(
+                        text: '4 Bedrooms',
+                        icon: CupertinoIcons.bed_double,
+                      ),
+                      DetailIcon(
+                        text: '2 Bathrooms',
+                        icon: Icons.shower_outlined,
+                      ),
+                      DetailIcon(
+                        text: '3000sqft',
+                        icon: Icons.square_foot,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    "Description",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.black,
+                      ),
+                      children: <InlineSpan>[
+                        TextSpan(
+                          text:
+                              'Before we dive into the specifics of the Text widget, let’s first understand why it’s important to be able to display and style text in a Flutter app. \tText is a crucial part of any user interface, as it allows us to convey information to the user.',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w300,
+                              letterSpacing: 0.4,
+                              height: 1.4),
+                        ),
+                        TextSpan(
+                          text: '',
+                          style: TextStyle(fontWeight: FontWeight.w300),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    "Facilities",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      FacilitiesIcon(
+                        text: 'Swimming Pool',
+                        icon: Icons.pool,
+                      ),
+                      FacilitiesIcon(
+                        text: 'WiFi',
+                        icon: Icons.wifi,
+                      ),
+                      FacilitiesIcon(
+                        text: 'Restaurant',
+                        icon: Icons.local_dining,
+                      ),
+                      FacilitiesIcon(
+                        text: 'Parking',
+                        icon: Icons.local_parking,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        FacilitiesIcon(
+                          text: 'Meeting Room',
+                          icon: Icons.meeting_room,
+                        ),
+                        FacilitiesIcon(
+                          text: 'Fitness Center',
+                          icon: Icons.fitness_center,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 35),
+                          child: FacilitiesIcon(
+                            text: 'Elevator',
+                            icon: Icons.elevator,
+                          ),
+                        ),
+                        FacilitiesIcon(
+                          text: '24-hours Open',
+                          icon: Icons.schedule,
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    "Location",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 20.0,
+                      horizontal: 10.0,
+                    ),
+                    child: Container(
+                      height: Get.height * 0.25,
+                      width: Get.width * 1,
+                      child: ClipRRect(
+                        child: Image.asset(
+                          'assets/images/map.png',
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                          ),
+                          children: <InlineSpan>[
+                            TextSpan(
+                              text: 'Review ',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            WidgetSpan(
+                              child: Icon(
+                                Icons.star,
+                                color: Colors.yellow,
+                                size: 20,
+                              ),
+                            ),
+                            TextSpan(
+                              text: '5.0 ',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: green,
+                                fontSize: 14,
+                              ),
+                            ),
+                            TextSpan(
+                              text: '(4,345 Reviews)',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w300,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Text(
+                        "See All",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          color: green,
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  //Review Container
+                  // ListView.builder(
+                  //   itemCount: 5,
+                  //   itemBuilder: (BuildContext context, int index) {
+                  //     return Container(
+                  //       width: Get.width * 0.9,
+                  //       height: Get.height * 0.1,
+                  //       child: Column(),
+                  //       decoration: BoxDecoration(
+                  //         color: white,
+                  //         boxShadow: [
+                  //           BoxShadow(
+                  //             color:
+                  //                 Colors.black.withOpacity(0.5), // shadow color
+                  //             spreadRadius: 5, // spread radius
+                  //             blurRadius: 7, // blur radius
+                  //             offset:
+                  //                 Offset(0, 3), // changes position of shadow
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
+
+                  //
+                ],
+              ),
             ),
-          );
-        },
+          ],
+        ),
       ),
     );
   }
@@ -217,9 +394,28 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
     );
   }
 
+  Widget FacilitiesIcon({
+    required String text,
+    required IconData icon,
+  }) {
+    return Column(
+      children: [
+        Icon(
+          icon,
+          color: green,
+          size: 35,
+        ),
+        Text(
+          text,
+          style: TextStyle(fontWeight: FontWeight.w300, fontSize: 13),
+        ),
+      ],
+    );
+  }
+
   Container line() {
     return Container(
-      height: 0.1,
+      height: 0.5,
       width: double.infinity,
       color: Colors.black,
     );
