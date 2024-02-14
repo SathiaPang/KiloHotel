@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
 import 'package:hotel/controller/home_controller.dart';
+import 'package:hotel/view/booking/recently.dart';
 import 'package:hotel/view/home/demoCategory.dart';
 import '../../tabbar/tabbar.dart';
 
@@ -107,7 +108,9 @@ class _HomeScreenState extends State<HomeScreen>
               ),
             ),
             TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(RecentlyScreen());
+                },
                 child: Text(
                   "See All",
                   style: TextStyle(

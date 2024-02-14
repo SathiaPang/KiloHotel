@@ -9,7 +9,7 @@ import 'package:hotel/repo/homeRepositary.dart';
 class ControllerBinding extends Bindings {
   @override
   void dependencies() {
-    // Get.put hear
+    // Get.put here
     Get.put(HomeRepository());
     Get.put(NavigationController());
     Get.put(HomeController(homeRepository: Get.find()));
