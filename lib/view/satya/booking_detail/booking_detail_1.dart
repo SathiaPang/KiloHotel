@@ -22,9 +22,6 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        // child: Column(
-        //   children: [Text("data")],
-        // ),
         child: Column(
           children: [
             Container(
@@ -336,33 +333,40 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                       ),
                     ],
                   ),
-
-                  //Review Container
-                  // ListView.builder(
-                  //   itemCount: 5,
-                  //   itemBuilder: (BuildContext context, int index) {
-                  //     return Container(
-                  //       width: Get.width * 0.9,
-                  //       height: Get.height * 0.1,
-                  //       child: Column(),
-                  //       decoration: BoxDecoration(
-                  //         color: white,
-                  //         boxShadow: [
-                  //           BoxShadow(
-                  //             color:
-                  //                 Colors.black.withOpacity(0.5), // shadow color
-                  //             spreadRadius: 5, // spread radius
-                  //             blurRadius: 7, // blur radius
-                  //             offset:
-                  //                 Offset(0, 3), // changes position of shadow
-                  //           ),
-                  //         ],
-                  //       ),
-                  //     );
-                  //   },
-                  // ),
-
-                  //
+                  SizedBox(height: 10),
+                  Container(
+                    height: Get.height * 0.7,
+                    color: greenAccent,
+                    child: ListView.builder(
+                        itemCount: 5,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: Get.width * 0.4,
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [],
+                                  )
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                color: white,
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.2),
+                                    spreadRadius: 2,
+                                    blurRadius: 5,
+                                    offset: Offset(0, 3),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }),
+                  ),
                 ],
               ),
             ),

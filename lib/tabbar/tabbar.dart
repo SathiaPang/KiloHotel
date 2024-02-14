@@ -26,8 +26,8 @@ class TabbarEdit extends StatelessWidget {
         labelPadding: EdgeInsets.symmetric(horizontal: 12),
         indicatorPadding: EdgeInsets.zero,
         onTap: onTap,
-        indicator: BoxDecoration(
-            color: green, borderRadius: BorderRadius.circular(15)),
+        // indicator: BoxDecoration(
+        //     color: green, borderRadius: BorderRadius.circular(15)),
         tabs: categoryList.map((RoomCategory roomCategory) {
           final isSelected = categoryList[selectedIndex] == roomCategory;
           return Tab(

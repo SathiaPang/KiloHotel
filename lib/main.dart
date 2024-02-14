@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hotel/binding/controlbinding.dart';
 import 'package:hotel/constant.dart';
 import 'package:hotel/view/Profile/profile.dart';
+import 'package:hotel/view/satya/booking_detail/booking_detail_1.dart';
 import 'package:hotel/view/splashScreen/loading1.dart';
 
 void main() {
@@ -21,6 +22,8 @@ class MyApp extends StatelessWidget {
         ),
         initialBinding: ControllerBinding(),
         debugShowCheckedModeBanner: false,
-        home: SplashScreen());
+        home: BookDetailScreenOne()
+        //home: SplashScreen(),
+        );
   }
 }
