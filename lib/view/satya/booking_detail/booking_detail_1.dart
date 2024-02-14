@@ -338,7 +338,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                     height: Get.height * 0.7,
                     color: greenAccent,
                     child: ListView.builder(
-                        itemCount: 5,
+                        itemCount: 4,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -347,8 +347,86 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                               child: Column(
                                 children: [
                                   Row(
-                                    children: [],
-                                  )
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 20.0, top: 15.0),
+                                        child: CircleAvatar(
+                                          radius: 30,
+                                          backgroundImage: AssetImage(
+                                              'assets/images/Panha.jpg'),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 10.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Keat Panha",
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                            Text(
+                                              "Jan 20, 2025",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w300),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(width: 100),
+                                      Container(
+                                        width: Get.width * 0.18,
+                                        height: Get.height * 0.042,
+                                        child: Center(
+                                          child: RichText(
+                                            text: TextSpan(
+                                              style: TextStyle(
+                                                fontSize: 20.0,
+                                                color: Colors.black,
+                                              ),
+                                              children: <InlineSpan>[
+                                                WidgetSpan(
+                                                  child: Icon(
+                                                    Icons.star,
+                                                    color: white,
+                                                    size: 21,
+                                                  ),
+                                                ),
+                                                TextSpan(
+                                                  text: '5.0',
+                                                  style: TextStyle(
+                                                      color: white,
+                                                      fontSize: 18),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: green,
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    width: Get.width * 0.8,
+                                    height: Get.height * 0.08,
+                                    child: Text(
+                                      "Very nice and comfortable hotel, thank you for accompanying my vacation!",
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.w300),
+                                    ),
+                                  ),
                                 ],
                               ),
                               decoration: BoxDecoration(
