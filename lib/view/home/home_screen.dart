@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
 import 'package:hotel/controller/home_controller.dart';
-import 'package:hotel/data/data.dart';
+import 'package:hotel/view/home/demoCategory.dart';
+import '../../tabbar/tabbar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,116 +16,105 @@ class _HomeScreenState extends State<HomeScreen>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   late TabController _tabController;
   final HomeController _homeController = Get.find();
-  bool selected = false;
 
   @override
   void initState() {
     _tabController = TabController(
         length: _homeController.roomcategorys.length, vsync: this);
-
-    _tabController.addListener(() {
-      _homeController.filTerByIndex(_tabController.index);
-    });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => DefaultTabController(
-          length: _homeController.roomcategorys.length,
-          child: Scaffold(
+    super.build(context);
+    return Obx(() => Scaffold(
+          backgroundColor: white,
+          appBar: AppBar(
+            centerTitle: false,
             backgroundColor: white,
-            appBar: AppBar(
-              centerTitle: false,
-              backgroundColor: white,
-              title: Row(
-                children: [
-                  Container(
-                    height: Get.height / 20,
-                    width: Get.width / 12,
-                    decoration: BoxDecoration(
-                        // color: green,
-                        image: DecorationImage(
-                            image: AssetImage("assets/images/logo.png"),
-                            fit: BoxFit.contain)),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    "Bolu",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                  )
-                ],
-              ),
-
-              // Action
-              actions: [
-                IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.notifications_outlined,
-                      size: 30,
-                    )),
-                IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.bookmark_outline,
-                      size: 30,
-                    )),
-              ],
-            ),
-            body: Column(
+            title: Row(
               children: [
-                //
-                _builNickName(),
-                _buildSearch(),
-
-                SizedBox(
-                  height: 20,
+                Container(
+                  height: Get.height / 20,
+                  width: Get.width / 12,
+                  decoration: BoxDecoration(
+                      // color: green,
+                      image: DecorationImage(
+                          image: AssetImage("assets/images/logo.png"),
+                          fit: BoxFit.contain)),
                 ),
-
-                _builTabar()
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "Bolu",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                )
               ],
             ),
+
+            // Action
+            actions: [
+              IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.notifications_outlined,
+                    size: 30,
+                  )),
+              IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.bookmark_outline,
+                    size: 30,
+                  )),
+              SizedBox(
+                width: 4,
+              )
+            ],
+          ),
+          body: Column(
+            children: [
+              //
+              _builNickName(),
+              _buildSearch(),
+              TabbarEdit(
+                  _tabController,
+                  _homeController.roomcategorys,
+                  _homeController.selectedIndex.value,
+                  (index) => _homeController.filTerByIndex(index)),
+              _builSeeAll(),
+              _buildTabbarView(),
+            ],
           ),
         ));
   }
 
-  Widget _builTabar() => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 2),
-        child: Obx(() => TabBar(
-              dividerColor: Colors.transparent,
-              indicator: BoxDecoration(
-                color: green,
-                borderRadius: BorderRadius.circular(13),
+  Widget _buildTabbarView() => Expanded(
+          child: DemoCategory(
+        hotelList: _homeController.repo,
+      ));
+
+  Widget _builSeeAll() => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Text(
+                "RecentlyBooked",
+                style: TextStyle(fontSize: 20),
               ),
-              indicatorSize: TabBarIndicatorSize.tab,
-              controller: _tabController,
-              tabs: _homeController.roomcategorys
-                  .map((RoomCategory roomCategory) {
-                final bool isSelected = _tabController.index ==
-                    _homeController.roomcategorys.indexOf(roomCategory);
-                return Tab(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(13),
-                      border: Border.all(width: 2, color: green),
-                    ),
-                    child: Center(
-                      child: Text(
-                        roomCategory.tab,
-                        style: TextStyle(
-                          color: isSelected ? white : green,
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              }).toList(),
-            )),
+            ),
+            TextButton(
+                onPressed: () {},
+                child: Text(
+                  "See All",
+                  style: TextStyle(
+                      color: green, fontSize: 20, fontWeight: FontWeight.w500),
+                ))
+          ],
+        ),
       );
 
   Widget _builNickName() => Padding(
@@ -140,10 +130,10 @@ class _HomeScreenState extends State<HomeScreen>
       );
 
   Widget _buildSearch() => Padding(
-        padding: const EdgeInsets.only(top: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: Container(
           height: Get.height / 15,
-          width: Get.width / 1.1,
+          width: double.infinity,
           decoration: BoxDecoration(
               color: textfieldcolor, borderRadius: BorderRadius.circular(15)),
           child: Row(
@@ -167,6 +157,9 @@ class _HomeScreenState extends State<HomeScreen>
                 Icons.tune,
                 color: green,
                 size: 30,
+              ),
+              SizedBox(
+                width: 10,
               )
             ],
           ),
