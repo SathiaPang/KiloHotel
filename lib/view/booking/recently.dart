@@ -4,9 +4,17 @@ import 'package:hotel/controller/recentlycontroller.dart';
 
 import '../../constant.dart';
 
-class RecentlyScreen extends StatelessWidget {
+class RecentlyScreen extends StatefulWidget {
   RecentlyScreen({super.key});
+
+  @override
+  State<RecentlyScreen> createState() => _RecentlyScreenState();
+}
+
+class _RecentlyScreenState extends State<RecentlyScreen> {
   final Rx<Color> iconColor = Colors.black.obs;
+
+  bool click = true;
 
   final RecentlyController controller = Get.find();
 
@@ -22,14 +30,26 @@ class RecentlyScreen extends StatelessWidget {
           ),
           actions: [
             IconButton(
-              icon: Icon(Icons.menu),
+              icon: Icon(
+                Icons.menu,
+                color: click ? green : black,
+              ),
               onPressed: () {
+                setState(() {
+                  click = !click;
+                });
                 controller.toggleView();
               },
             ),
             IconButton(
-              icon: Icon(Icons.grid_view_outlined),
+              icon: Icon(
+                Icons.grid_view_outlined,
+                color: click ? black : green,
+              ),
               onPressed: () {
+                setState(() {
+                  click = !click;
+                });
                 controller.showGridView();
               },
             ),
