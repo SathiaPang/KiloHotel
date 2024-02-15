@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/data/data.dart';
+import 'package:hotel/view/satya/booking_detail/booking_detail_1.dart';
 
 class DemoCategory extends StatelessWidget {
   const DemoCategory({super.key, required this.hotelList});
@@ -15,12 +16,18 @@ class DemoCategory extends StatelessWidget {
           final data = hotelList[index];
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-            child: Container(
-              width: Get.width / 1.4,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  image: DecorationImage(
-                      image: AssetImage("${data.img}"), fit: BoxFit.fitHeight)),
+            child: GestureDetector(
+              onTap: () {
+                Get.to(BookDetailScreenOne());
+              },
+              child: Container(
+                width: Get.width / 1.4,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    image: DecorationImage(
+                        image: AssetImage("${data.img}"),
+                        fit: BoxFit.fitHeight)),
+              ),
             ),
           );
         }));

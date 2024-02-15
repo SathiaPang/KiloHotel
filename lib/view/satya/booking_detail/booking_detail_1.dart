@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
+import 'package:hotel/view/soklay/selectdate.dart';
 
 class BookDetailScreenOne extends StatefulWidget {
   const BookDetailScreenOne({Key? key}) : super(key: key);
@@ -21,6 +22,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: _buildBuyNow(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -35,6 +37,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                     child: IconButton(
                       onPressed: () {
                         print("ohh you touch me tal la la");
+                        Get.back();
                       },
                       icon: Icon(
                         Icons.arrow_back,
@@ -502,4 +505,16 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
       color: Colors.black,
     );
   }
+
+  Widget _buildBuyNow() => ElevatedButton(
+      style: ElevatedButton.styleFrom(
+          backgroundColor: green, minimumSize: Size(200, 60)),
+      onPressed: () {
+        Get.to(SelectDate());
+      },
+      child: Text(
+        "Buy Now!",
+        style:
+            TextStyle(color: white, fontWeight: FontWeight.w700, fontSize: 18),
+      ));
 }

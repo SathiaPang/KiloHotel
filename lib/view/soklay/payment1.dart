@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
+import 'package:hotel/view/Profile/ticket.dart';
+import 'package:hotel/view/dialogPayment/dialogPayment.dart';
 import 'package:hotel/view/soklay/newCard.dart';
 
 class PayMent1 extends StatefulWidget {
@@ -153,7 +155,8 @@ class _PayMent1State extends State<PayMent1> {
 
   Widget _buildBottonContinue() => InkWell(
         onTap: () {
-          Get.to(const NewCard());
+          // Get.to(const TicketScreen());
+          Get.dialog(DialogPayMent());
         },
         child: Container(
           height: Get.height / 15,
