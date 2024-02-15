@@ -15,22 +15,22 @@ class RoomCategory {
 }
 
 class SearchCategory {
-  String tab;
+  String Searchtab;
 
   SearchCategory({
-    required this.tab,
+    required this.Searchtab,
   });
 
-  static List<SearchCategory> getList() => [
-        SearchCategory(tab: 'All Hotel'),
-        SearchCategory(tab: 'Recommended'),
-        SearchCategory(tab: 'Popular'),
-        SearchCategory(tab: 'Trending'),
+  static List<RoomCategory> getSearchList() => [
+        RoomCategory(tab: 'All Hotel'),
+        RoomCategory(tab: 'Recommended'),
+        RoomCategory(tab: 'Popular'),
+        RoomCategory(tab: 'Trending'),
       ];
 }
 
 class Hotel {
-  String img, name, location, category;
+  String img, name, location, category, searchcategory;
   double price;
 
   Hotel(
@@ -38,7 +38,8 @@ class Hotel {
       required this.location,
       required this.name,
       required this.price,
-      required this.category});
+      required this.category,
+      required this.searchcategory});
 
   Map<String, dynamic> toMap() {
     return {
@@ -46,6 +47,7 @@ class Hotel {
       'location': location,
       'name': name,
       'price': price,
+      'searchcategory': searchcategory,
     };
   }
 
@@ -55,7 +57,8 @@ class Hotel {
         location: map['location'],
         name: map['name'],
         price: map['price'],
-        category: map['category']);
+        category: map['category'],
+        searchcategory: map['searchcategory']);
   }
 
   static List<Hotel> hotel = [
@@ -64,42 +67,44 @@ class Hotel {
         location: "Hotel Location",
         name: "Hotel 1",
         price: 150.0,
-        category: "Recommended" // Replace with the actual price
+        category: "Recommended",
+        searchcategory: "All Hotel" // Replace with the actual price
         ),
     Hotel(
         img: "assets/images/hotel.jpg", // Provide the actual image URL
         location: "Hotel Location",
         name: "Hotel 1",
         price: 150.0,
-        category: "Recommended" // Replace with the actual price
-        ),
+        category: "Recommended", // Replace with the actual price
+        searchcategory: "All Hotel"),
     Hotel(
         img: "assets/images/hotel.jpg", // Provide the actual image URL
         location: "Hotel Location",
         name: "Hotel 2",
         price: 150.0,
-        category: "Recommended" // Replace with the actual price
-        // Replace with the actual price
-        ),
+        category: "Recommended", // Replace with the actual price
+        searchcategory: "All Hotel"),
     Hotel(
-        img: "assets/images/hotel.jpg", // Provide the actual image URL
-        location: "Hotel Location",
-        name: "Hotel 3",
-        price: 150.0,
-        category: "Popular" // Replace with the actual price
-        // Replace with the actual price
-        ),
+      img: "assets/images/hotel.jpg", // Provide the actual image URL
+      location: "Hotel Location",
+      name: "Hotel 3",
+      price: 150.0,
+      category: "Popular", // Replace with the actual price
+      searchcategory: "All Hotel",
+    ),
     Hotel(
         img: "assets/images/hotel.jpg", // Provide the actual image URL
         location: "Hotel Location",
         name: "Hotel 4",
         price: 150.0, // Replace with the actual price
-        category: "Trending"),
+        category: "Trending",
+        searchcategory: "All Hotel"),
     Hotel(
         img: "assets/images/hotel.jpg", // Provide the actual image URL
         location: "Hotel Location",
         name: "Hotel 5",
         price: 150.0, // Replace with the actual price
-        category: "Trending"),
+        category: "Trending",
+        searchcategory: "All Hotel"),
   ];
 }

@@ -15,15 +15,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: black),
-          useMaterial3: true,
-        ),
-        initialBinding: ControllerBinding(),
-        debugShowCheckedModeBanner: false,
-        home: BookDetailScreenOne()
-        //home: SplashScreen(),
-        );
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: black),
+        useMaterial3: true,
+      ),
+      initialBinding: ControllerBinding(),
+      debugShowCheckedModeBanner: false,
+      //home: BookDetailScreenOne(),
+      home: SplashScreen(),
+    );
   }
 }
