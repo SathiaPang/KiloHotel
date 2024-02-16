@@ -61,15 +61,7 @@ class SigninScreen extends StatelessWidget {
             _buildButton(),
 
             // Test Botton soklay
-            SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  Get.to(const SelectDate());
-                },
-                child: Text("Select Date Screen")),
-            // ======================
+
             Spacer(),
             _buildDontHaveAccount(context)
           ]),

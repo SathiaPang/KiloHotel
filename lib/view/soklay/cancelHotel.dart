@@ -142,7 +142,7 @@ class CancelHotelState extends State<CancelHotel> {
 
   Widget _buildBottonContinue() => InkWell(
         onTap: () {
-          Get.offAll(ProFile());
+          // Get.offAll(ProFile());
         },
         child: Container(
           height: Get.height / 15,

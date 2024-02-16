@@ -39,10 +39,11 @@ class _HomeScreenState extends State<HomeScreen>
                   height: Get.height / 20,
                   width: Get.width / 12,
                   decoration: BoxDecoration(
-                      // color: green,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/logo.png"),
-                          fit: BoxFit.contain)),
+                    // color: green,
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/logo.png"),
+                        fit: BoxFit.contain),
+                  ),
                 ),
                 SizedBox(
                   width: 10,
