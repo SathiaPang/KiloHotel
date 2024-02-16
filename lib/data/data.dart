@@ -9,8 +9,6 @@ class RoomCategory {
         RoomCategory(tab: 'Recommended'),
         RoomCategory(tab: 'Popular'),
         RoomCategory(tab: 'Trending'),
-        RoomCategory(tab: 'Hello Brother'),
-        RoomCategory(tab: 'Hello Brother'),
       ];
 }
 

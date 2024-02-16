@@ -2,30 +2,61 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:hotel/constant.dart';
+import 'package:hotel/controller/home_controller.dart';
+import 'package:hotel/tabbar/tabbar.dart';
 import 'package:hotel/view/Profile/payment.dart';
 
-class BookingScreen extends StatelessWidget {
-  const BookingScreen({super.key});
+class BookingScreen extends StatefulWidget {
+  const BookingScreen({Key? key}) : super(key: key); // Fix constructor
+
+  @override
+  State<BookingScreen> createState() => _BookingScreenState();
+}
+
+class _BookingScreenState extends State<BookingScreen>
+    with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
+  late TabController _tabController;
+  late HomeController _homeController; // Declare HomeController variable
+
+  @override
+  void initState() {
+    super.initState();
+    _homeController = Get.find<HomeController>(); // Initialize HomeController
+    _tabController = TabController(
+      length: _homeController.roomcategorys.length,
+      vsync: this,
+    );
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose(); // Dispose TabController
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
-      backgroundColor: greenAccent,
+      backgroundColor: greenAccent, // Correct color variable name
       appBar: AppBar(
-        backgroundColor: white,
+        backgroundColor: white, // Correct color variable name
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               children: [
                 Container(
-                  height: Get.height / 20,
-                  width: Get.width / 12,
+                  height: MediaQuery.of(context).size.height /
+                      20, // Use MediaQuery to get device size
+                  width: MediaQuery.of(context).size.width /
+                      12, // Use MediaQuery to get device size
                   decoration: BoxDecoration(
-                      // color: green,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/logo.png"),
-                          fit: BoxFit.contain)),
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/logo.png"),
+                      fit: BoxFit.contain,
+                    ),
+                  ),
                 ),
                 SizedBox(
                   width: 10,
@@ -33,10 +64,13 @@ class BookingScreen extends StatelessWidget {
                 Text(
                   "My Booking",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                )
+                ),
               ],
             ),
-            IconButton(onPressed: () {}, icon: Icon(Icons.search))
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.search),
+            ),
           ],
         ),
       ),
@@ -45,49 +79,35 @@ class BookingScreen extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          _buildTabbar(),
+          TabbarEdit(
+            _tabController,
+            _homeController.roomcategorys,
+            _homeController.selectedIndex.value,
+            (index) => _homeController.filTerByIndex(index),
+          ),
           SizedBox(
             height: 20,
           ),
           Expanded(
-              child: ListView.builder(
-            itemCount: 5,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: _buildListOnGoing(context),
-              );
-            },
-          ))
+            child: ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: _buildListOnGoing(context),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildTabbar() => DefaultTabController(
-      length: 3,
-      child: Container(
-        height: 75,
-        color: white,
-        child: TabBar(
-          labelColor: Colors.blue,
-          unselectedLabelColor: Colors.black,
-          indicatorColor: Colors.blue,
-          indicatorWeight: 2.0,
-          tabs: [
-            Tab(
-              text: "On Going",
-            ),
-            Tab(
-              text: "Complete",
-            ),
-            Tab(
-              text: "Canceled",
-            )
-          ],
-        ),
-      ));
+  @override
+  bool get wantKeepAlive => true;
 
+  // Widget _buildTabbar() => DefaultTabController(
   Widget _buildListOnGoing(BuildContext context) => Padding(
         padding: EdgeInsets.symmetric(horizontal: 10),
         child: Container(
@@ -170,7 +190,6 @@ class BookingScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15)),
                             height: Get.height / 3,
-                            width: double.infinity,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -248,7 +267,7 @@ class BookingScreen extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(10.0),
         child: Text(
           text,
           style: TextStyle(
