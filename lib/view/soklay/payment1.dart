@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
+import 'package:hotel/controller/booking_controller.dart';
+import 'package:hotel/data/data.dart';
 import 'package:hotel/view/Profile/ticket.dart';
 import 'package:hotel/view/dialogPayment/dialogPayment.dart';
 import 'package:hotel/view/soklay/newCard.dart';
 
 class PayMent1 extends StatefulWidget {
-  const PayMent1({super.key});
+  PayMent1({super.key});
 
+  final BookingController _bookingController = Get.put(BookingController());
   @override
   State<PayMent1> createState() => _PayMent1State();
 }
@@ -154,8 +157,21 @@ class _PayMent1State extends State<PayMent1> {
       );
 
   Widget _buildBottonContinue() => InkWell(
+        onTap: () async {
+          Hotel hotel = Hotel(
+              img: "img",
+              location: "location",
+              name: "name",
+              price: 100,
+              category: "category",
+              searchcategory: "searchcategory");
+
+          String storeKey = 'hotel_bookings';
+
+          widget._bookingController.saveBooking(hotel, storeKey);
         onTap: () {
           // Get.to(const TicketScreen());
+
           Get.dialog(DialogPayMent());
         },
         child: Container(
