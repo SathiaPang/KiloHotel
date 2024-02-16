@@ -169,6 +169,9 @@ class _PayMent1State extends State<PayMent1> {
           String storeKey = 'hotel_bookings';
 
           widget._bookingController.saveBooking(hotel, storeKey);
+        onTap: () {
+          // Get.to(const TicketScreen());
+
           Get.dialog(DialogPayMent());
         },
         child: Container(

@@ -27,6 +27,21 @@ class SearchCategory {
       ];
 }
 
+class SearchCategory {
+  String Searchtab;
+
+  SearchCategory({
+    required this.Searchtab,
+  });
+
+  static List<RoomCategory> getSearchList() => [
+        RoomCategory(tab: 'All Hotel'),
+        RoomCategory(tab: 'Recommended'),
+        RoomCategory(tab: 'Popular'),
+        RoomCategory(tab: 'Trending'),
+      ];
+}
+
 class Hotel {
   String img, name, location, category, searchcategory;
   double price;
