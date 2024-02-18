@@ -5,28 +5,60 @@ import 'package:hotel/constant.dart';
 import 'package:hotel/view/Profile/payment.dart';
 import 'package:hotel/view/dialogPayment/dialogPayment.dart';
 
-class BookingScreen extends StatelessWidget {
-  const BookingScreen({super.key});
+class BookingScreen extends StatefulWidget {
+  const BookingScreen({Key? key}) : super(key: key); // Fix constructor
+
+  @override
+  State<BookingScreen> createState() => _BookingScreenState();
+}
+
+class _BookingScreenState extends State<BookingScreen>
+    with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+    _tabController.addListener(() {
+      _handleTabChange();
+    });
+  }
+
+  @override
+  void dispose() {
+    _tabController.removeListener(_handleTabChange);
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  void _handleTabChange() {
+    setState(() {}); // Update the UI when the tab changes
+  }
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
-      backgroundColor: greenAccent,
+      backgroundColor: greenAccent, // Correct color variable name
       appBar: AppBar(
-        backgroundColor: white,
+        backgroundColor: white, // Correct color variable name
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               children: [
                 Container(
-                  height: Get.height / 20,
-                  width: Get.width / 12,
+                  height: MediaQuery.of(context).size.height /
+                      20, // Use MediaQuery to get device size
+                  width: MediaQuery.of(context).size.width /
+                      12, // Use MediaQuery to get device size
                   decoration: BoxDecoration(
-                      // color: green,
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/logo.png"),
-                          fit: BoxFit.contain)),
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/logo.png"),
+                      fit: BoxFit.contain,
+                    ),
+                  ),
                 ),
                 SizedBox(
                   width: 10,
@@ -34,10 +66,13 @@ class BookingScreen extends StatelessWidget {
                 Text(
                   "My Booking",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                )
+                ),
               ],
             ),
-            IconButton(onPressed: () {}, icon: Icon(Icons.search))
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.search),
+            ),
           ],
         ),
       ),
@@ -49,119 +84,100 @@ class BookingScreen extends StatelessWidget {
           _buildTabbar(),
           SizedBox(
             height: 10,
+          Container(
+            color: white,
+            height: Get.height / 13,
+            child: TabBar(
+              controller: _tabController,
+              tabs: [
+                _buildCustomTab(
+                  text: 'Ongoing',
+                  isSelected: _tabController.index == 0,
+                ),
+                _buildCustomTab(
+                  text: 'Cancelled',
+                  isSelected: _tabController.index == 1,
+                ),
+                _buildCustomTab(
+                  text: 'Completed',
+                  isSelected: _tabController.index == 2,
+                ),
+              ],
+              dividerColor: Colors.transparent,
+              indicatorSize: TabBarIndicatorSize.label,
+              indicatorColor: Colors.transparent,
+              isScrollable: true,
+              tabAlignment: TabAlignment.start,
+              labelPadding: EdgeInsets.symmetric(horizontal: 12),
+              indicatorPadding: EdgeInsets.zero,
+            ),
           ),
+          SizedBox(height: 20),
           Expanded(
-              child: ListView.builder(
-            itemCount: 5,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: _buildListOnGoing(context),
-              );
-            },
-          ))
+            child: _buildTabContent(index: _tabController.index),
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildTabbar() => DefaultTabController(
-      length: 3,
-      child: Container(
-        height: 75,
-        color: white,
-        child: TabBar(
-          labelColor: Colors.blue,
-          unselectedLabelColor: Colors.black,
-          indicatorColor: Colors.blue,
-          indicatorWeight: 2.0,
-          tabs: [
-            Tab(
-              text: "On Going",
-            ),
-            Tab(
-              text: "Complete",
-            ),
-            Tab(
-              text: "Canceled",
-            )
-          ],
-        ),
-      ));
-
-  Widget _buildListOnGoing(BuildContext context) => Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+  Widget _buildCustomTab({
+    required String text,
+    required bool isSelected,
+  }) {
+    return Tab(
+      child: Padding(
+        padding: const EdgeInsets.all(5.0),
         child: Container(
-          height: Get.height / 4,
+          width: Get.width / 3,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15), color: white),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      height: 100,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                          image: AssetImage(
-                              'assets/images/hotel.jpg'), // Corrected path
-                          fit: BoxFit.cover, // Specify the fit
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Internation Hotela',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 17),
-                          ),
-                          Text(
-                            'New  York, USA',
-                            style: TextStyle(fontSize: 14),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            width: 60,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: greenAccent),
-                            child: Text(
-                              'Paid',
-                              style: TextStyle(color: green),
-                              textAlign: TextAlign.center,
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  height: 2,
-                  width: double.infinity,
-                  color: Colors.grey.shade400,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                // Spacer(),
-                Row(
+            color: isSelected ? green : white,
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(width: 2, color: green),
+          ),
+          child: Center(
+            child: Text(
+              text,
+              style: TextStyle(color: isSelected ? white : green),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTabContent({required int index}) {
+    switch (index) {
+      case 0:
+        return _buildListOnGoing(context);
+      case 1:
+        return _buildListCanceled();
+      case 2:
+        return _buildListComplete();
+      default:
+        throw Exception('Unexpected tab index: $index');
+    }
+  }
+
+  @override
+  bool get wantKeepAlive => true;
+
+  // Widget _buildTabbar() => DefaultTabController(
+  Widget _buildListOnGoing(BuildContext context) => ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            child: Container(
+              height: Get.height / 4,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15), color: white),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+
                     _buildButton(context, text: 'Cancel Booking',
                         onPressed: () {
                       showModalBottomSheet<void>(
@@ -208,19 +224,60 @@ class BookingScreen extends StatelessWidget {
                                         fontSize: 12,
                                         fontWeight: FontWeight.w300),
                                   ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [_buildcancel(), _buildyes()],
-                                )
-                              ],
+                    Row(
+                      children: [
+                        Container(
+                          height: 100,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            image: DecorationImage(
+                              image: AssetImage(
+                                  'assets/images/hotel.jpg'), // Corrected path
+                              fit: BoxFit.cover, // Specify the fit
                             ),
-                          );
-                        },
-                      );
-                    }, color: white, colorside: green, txtcolor: green),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Internation Hotela',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 17),
+                              ),
+                              Text(
+                                'New  York, USA',
+                                style: TextStyle(fontSize: 14),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                width: 60,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: greenAccent),
+                                child: Text(
+                                  'Paid',
+                                  style: TextStyle(color: green),
+                                  textAlign: TextAlign.center,
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                     SizedBox(
-                      width: 10,
+                      height: 10,
+                    ),
+                    Container(
+                      height: 2,
+                      width: double.infinity,
+                      color: Colors.grey.shade400,
                     ),
                     _buildButton(
                       context,
@@ -232,13 +289,81 @@ class BookingScreen extends StatelessWidget {
                       txtcolor: white,
                       color: green,
                       colorside: green,
+                    SizedBox(
+                      height: 10,
                     ),
+                    // Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        _buildButton(context, text: 'Cancel Booking',
+                            onPressed: () {
+                          showModalBottomSheet<void>(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15)),
+                                height: Get.height / 3,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Cancel Booking',
+                                      style: TextStyle(
+                                          color: Colors.red,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 22),
+                                    ),
+                                    Container(
+                                      height: 1,
+                                      width: Get.width / 1.2,
+                                      color: black,
+                                    ),
+                                    Text(
+                                      'Are you sure you want to cancel your \n hotel booking?',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                    Text(
+                                      'Only 80% of the money you can refund from your payment according to our policy',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w300),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [_buildcancel(), _buildyes()],
+                                    )
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        }, color: white, colorside: green, txtcolor: green),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        _buildButton(
+                          context,
+                          text: 'View Ticket',
+                          onPressed: () {
+                            Get.to(PaymentBooking());
+                          },
+                          txtcolor: white,
+                          color: green,
+                          colorside: green,
+                        ),
+                      ],
+                    )
                   ],
-                )
-              ],
+                ),
+              ),
             ),
-          ),
-        ),
+          );
+        },
       );
 
   Widget _buildButton(
@@ -260,7 +385,7 @@ class BookingScreen extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(10.0),
         child: Text(
           text,
           style: TextStyle(
@@ -272,216 +397,225 @@ class BookingScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildListComplete() => Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10),
-        child: Container(
-          height: Get.height / 4,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15), color: white),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
+  Widget _buildListComplete() => ListView.builder(
+        itemCount: 5,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            child: Container(
+              height: Get.height / 4,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15), color: white),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      height: 100,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                          image: AssetImage(
-                              'assets/images/hotel.jpg'), // Corrected path
-                          fit: BoxFit.cover, // Specify the fit
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Internation Hotela',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 17),
+                    Row(
+                      children: [
+                        Container(
+                          height: 100,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            image: DecorationImage(
+                              image: AssetImage(
+                                  'assets/images/hotel.jpg'), // Corrected path
+                              fit: BoxFit.cover, // Specify the fit
+                            ),
                           ),
-                          Text(
-                            'New  York, USA',
-                            style: TextStyle(fontSize: 14),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Internation Hotela',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 17),
+                              ),
+                              Text(
+                                'New  York, USA',
+                                style: TextStyle(fontSize: 14),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                width: 75,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: greenAccent),
+                                child: Text(
+                                  'Completed',
+                                  style: TextStyle(color: green),
+                                  textAlign: TextAlign.center,
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: 2,
+                      width: double.infinity,
+                      color: Colors.grey.shade400,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      height: 30,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.green.shade50,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: green,
+                            ),
+                            child: Icon(
+                              Icons.done,
+                              color: white,
+                            ),
                           ),
                           SizedBox(
-                            height: 10,
+                            width: 10,
                           ),
-                          Container(
-                            width: 75,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: greenAccent),
-                            child: Text(
-                              'Completed',
-                              style: TextStyle(color: green),
-                              textAlign: TextAlign.center,
-                            ),
-                          )
+                          Text(
+                            "yay.you have completeit!",
+                            style: TextStyle(color: green),
+                          ) // Using a different icon for priority
                         ],
                       ),
                     )
+
+                    // Spacer(),
                   ],
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  height: 2,
-                  width: double.infinity,
-                  color: Colors.grey.shade400,
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Container(
-                  height: 30,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.green.shade50,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: green,
-                        ),
-                        child: Icon(
-                          Icons.done,
-                          color: white,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "yay.you have completeit!",
-                        style: TextStyle(color: green),
-                      ) // Using a different icon for priority
-                    ],
-                  ),
-                )
-
-                // Spacer(),
-              ],
+              ),
             ),
-          ),
-        ),
+          );
+        },
       );
 
-  Widget _buildListCanceled() => Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10),
-        child: Container(
-          height: Get.height / 4,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15), color: white),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      height: 100,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                          image: AssetImage(
-                              'assets/images/hotel.jpg'), // Corrected path
-                          fit: BoxFit.cover, // Specify the fit
+  Widget _buildListCanceled() => ListView.builder(
+      itemCount: 5,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          child: Container(
+            height: Get.height / 4,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15), color: white),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                            image: AssetImage(
+                                'assets/images/hotel.jpg'), // Corrected path
+                            fit: BoxFit.cover, // Specify the fit
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Internation Hotela',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 17),
-                          ),
-                          Text(
-                            'New  York, USA',
-                            style: TextStyle(fontSize: 14),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: Color.fromARGB(127, 255, 161, 161)),
-                            child: Text(
-                              'Canceled & Refunded',
-                              style: TextStyle(color: Colors.red),
-                              textAlign: TextAlign.center,
+                      Padding(
+                        padding: EdgeInsets.only(left: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Internation Hotela',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 17),
                             ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  height: 2,
-                  width: double.infinity,
-                  color: Colors.grey.shade400,
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Container(
-                  height: 30,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color.fromARGB(127, 255, 161, 161),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          color: Colors.red,
+                            Text(
+                              'New  York, USA',
+                              style: TextStyle(fontSize: 14),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Color.fromARGB(127, 255, 161, 161)),
+                              child: Text(
+                                'Canceled & Refunded',
+                                style: TextStyle(color: Colors.red),
+                                textAlign: TextAlign.center,
+                              ),
+                            )
+                          ],
                         ),
-                        child: Icon(
-                          Icons.priority_high,
-                          color: white,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "yay.you have completeit!",
-                        style: TextStyle(color: Colors.red),
-                      ) // Using a different icon for priority
+                      )
                     ],
                   ),
-                )
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    height: 2,
+                    width: double.infinity,
+                    color: Colors.grey.shade400,
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    height: 30,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color.fromARGB(127, 255, 161, 161),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            color: Colors.red,
+                          ),
+                          child: Icon(
+                            Icons.priority_high,
+                            color: white,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "yay.you have completeit!",
+                          style: TextStyle(color: Colors.red),
+                        ) // Using a different icon for priority
+                      ],
+                    ),
+                  )
 
-                // Spacer(),
-              ],
+                  // Spacer(),
+                ],
+              ),
             ),
           ),
-        ),
-      );
+        );
+      });
 }
 
 Widget _buildcancel() => Padding(
