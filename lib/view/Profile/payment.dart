@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
 import 'package:hotel/view/Profile/ticket.dart';
+import 'package:hotel/view/dialogPayment/dialogPayment.dart';
 
 class PaymentBooking extends StatelessWidget {
   const PaymentBooking({super.key});
@@ -260,11 +261,7 @@ Widget _buildTextButton() => TextButton(
 Widget _buildBottonContinue(BuildContext context) {
   return InkWell(
     onTap: () {
-      Get.to(TicketScreen());
-      // showDialog(
-      //   context: context,
-      //   builder: (context) => _buildAlertDialog(context),
-      // );
+      Get.dialog(DialogPayMent());
     },
     child: Container(
       height: MediaQuery.of(context).size.height / 15,

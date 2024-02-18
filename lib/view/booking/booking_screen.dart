@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+
 import 'package:hotel/constant.dart';
 import 'package:hotel/view/Profile/payment.dart';
+import 'package:hotel/view/dialogPayment/dialogPayment.dart';
 
 class BookingScreen extends StatelessWidget {
   const BookingScreen({super.key});
@@ -43,11 +44,11 @@ class BookingScreen extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(
-            height: 20,
+            height: 10,
           ),
           _buildTabbar(),
           SizedBox(
-            height: 20,
+            height: 10,
           ),
           Expanded(
               child: ListView.builder(
@@ -181,22 +182,32 @@ class BookingScreen extends StatelessWidget {
                                       fontWeight: FontWeight.w500,
                                       fontSize: 22),
                                 ),
+                                SizedBox(
+                                  height: 10,
+                                ),
                                 Container(
                                   height: 1,
-                                  width: Get.width / 1.2,
+                                  width: Get.width / 1.1,
                                   color: black,
                                 ),
+                                SizedBox(
+                                  height: 10,
+                                ),
                                 Text(
-                                  'Are you sure you want to cancel your \n hotel booking?',
+                                  'Are you sure you want to cancel your \n hotel bookings?',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(fontSize: 18),
                                 ),
-                                Text(
-                                  'Only 80% of the money you can refund from your payment according to our policy',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w300),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 10),
+                                  child: Text(
+                                    'Only 80% of the money you can refund from your payment according to our policy',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w300),
+                                  ),
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -216,6 +227,7 @@ class BookingScreen extends StatelessWidget {
                       text: 'View Ticket',
                       onPressed: () {
                         Get.to(PaymentBooking());
+                        // Get.dialog(DialogPayMent());
                       },
                       txtcolor: white,
                       color: green,
@@ -494,7 +506,7 @@ Widget _buildyes() => Padding(
       padding: const EdgeInsets.all(10.0),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          fixedSize: Size(160, 40),
+          fixedSize: Size(170, 40),
           backgroundColor: Colors.green,
         ),
         onPressed: () {

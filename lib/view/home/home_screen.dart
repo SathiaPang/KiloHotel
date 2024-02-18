@@ -4,6 +4,7 @@ import 'package:hotel/constant.dart';
 import 'package:hotel/controller/home_controller.dart';
 import 'package:hotel/view/booking/recently.dart';
 import 'package:hotel/view/home/demoCategory.dart';
+import 'package:hotel/view/satya/Search%20screen/Search_screen.dart';
 import '../../tabbar/tabbar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -64,7 +65,9 @@ class _HomeScreenState extends State<HomeScreen>
                     size: 30,
                   )),
               IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(RecentlyScreen());
+                  },
                   icon: Icon(
                     Icons.bookmark_outline,
                     size: 30,
@@ -135,37 +138,42 @@ class _HomeScreenState extends State<HomeScreen>
 
   Widget _buildSearch() => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        child: Container(
-          height: Get.height / 15,
-          width: double.infinity,
-          decoration: BoxDecoration(
-              color: textfieldcolor, borderRadius: BorderRadius.circular(15)),
-          child: Row(
-            children: [
-              SizedBox(
-                width: 10,
-              ),
-              Icon(
-                Icons.search_outlined,
-                size: 35,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                "Search",
-                style: TextStyle(fontSize: 17),
-              ),
-              Spacer(),
-              Icon(
-                Icons.tune,
-                color: green,
-                size: 30,
-              ),
-              SizedBox(
-                width: 10,
-              )
-            ],
+        child: InkWell(
+          onTap: () {
+            // Get.to(SearchScreen());
+          },
+          child: Container(
+            height: Get.height / 15,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                color: textfieldcolor, borderRadius: BorderRadius.circular(15)),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                Icon(
+                  Icons.search_outlined,
+                  size: 35,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "Search",
+                  style: TextStyle(fontSize: 17),
+                ),
+                Spacer(),
+                Icon(
+                  Icons.tune,
+                  color: green,
+                  size: 30,
+                ),
+                SizedBox(
+                  width: 10,
+                )
+              ],
+            ),
           ),
         ),
       );

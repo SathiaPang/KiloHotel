@@ -28,6 +28,7 @@ class _SearchScreenState extends State<SearchScreen>
     Size size = MediaQuery.of(context).size;
     return Obx(
       () => Scaffold(
+        // appBar: AppBar(),
         backgroundColor: white,
         body: SafeArea(
           child: Column(
@@ -72,6 +73,7 @@ class SearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      autofocus: true,
       decoration: InputDecoration(
         filled: true,
         fillColor: borderfield.withOpacity(0.3),
