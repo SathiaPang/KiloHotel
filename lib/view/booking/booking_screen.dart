@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+
 import 'package:hotel/constant.dart';
 import 'package:hotel/view/Profile/payment.dart';
+import 'package:hotel/view/dialogPayment/dialogPayment.dart';
 
 class BookingScreen extends StatefulWidget {
   const BookingScreen({Key? key}) : super(key: key); // Fix constructor
@@ -78,8 +79,11 @@ class _BookingScreenState extends State<BookingScreen>
       body: Column(
         children: [
           SizedBox(
-            height: 20,
+            height: 10,
           ),
+          _buildTabbar(),
+          SizedBox(
+            height: 10,
           Container(
             color: white,
             height: Get.height / 13,
@@ -173,6 +177,53 @@ class _BookingScreenState extends State<BookingScreen>
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+
+                    _buildButton(context, text: 'Cancel Booking',
+                        onPressed: () {
+                      showModalBottomSheet<void>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15)),
+                            height: Get.height / 3,
+                            width: double.infinity,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Cancel Booking',
+                                  style: TextStyle(
+                                      color: Colors.red,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 22),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  height: 1,
+                                  width: Get.width / 1.1,
+                                  color: black,
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  'Are you sure you want to cancel your \n hotel bookings?',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 18),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 10),
+                                  child: Text(
+                                    'Only 80% of the money you can refund from your payment according to our policy',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w300),
+                                  ),
                     Row(
                       children: [
                         Container(
@@ -228,6 +279,16 @@ class _BookingScreenState extends State<BookingScreen>
                       width: double.infinity,
                       color: Colors.grey.shade400,
                     ),
+                    _buildButton(
+                      context,
+                      text: 'View Ticket',
+                      onPressed: () {
+                        Get.to(PaymentBooking());
+                        // Get.dialog(DialogPayMent());
+                      },
+                      txtcolor: white,
+                      color: green,
+                      colorside: green,
                     SizedBox(
                       height: 10,
                     ),
@@ -579,7 +640,7 @@ Widget _buildyes() => Padding(
       padding: const EdgeInsets.all(10.0),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          fixedSize: Size(160, 40),
+          fixedSize: Size(170, 40),
           backgroundColor: Colors.green,
         ),
         onPressed: () {

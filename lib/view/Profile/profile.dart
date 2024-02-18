@@ -72,9 +72,14 @@ class _ProFileState extends State<ProFile> {
                       topRight: Radius.circular(10),
                       bottomRight: Radius.circular(10))),
               child: Center(
-                child: Icon(
-                  Icons.edit,
-                  color: white,
+                child: InkWell(
+                  onTap: () {
+                    print("Edit Profile");
+                  },
+                  child: Icon(
+                    Icons.edit,
+                    color: white,
+                  ),
                 ),
               ),
             ),
@@ -273,9 +278,7 @@ class _ProFileState extends State<ProFile> {
           children: [
             //
             InkWell(
-              onTap: () {
-                Get.to(RecentlyScreen());
-              },
+              onTap: () {},
               child: Container(
                 height: Get.height / 25,
                 width: Get.width / 2,
@@ -376,10 +379,16 @@ class _ProFileState extends State<ProFile> {
                             fontWeight: FontWeight.w500,
                             fontSize: 22),
                       ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Container(
                         height: 1,
                         width: Get.width / 1.2,
                         color: black,
+                      ),
+                      SizedBox(
+                        height: 10,
                       ),
                       Text(
                         'Are you sure you want to logout from \n your account?',

@@ -72,7 +72,9 @@ class DialogPayMent extends StatelessWidget {
   Widget _buildCancel() => ElevatedButton(
       style: ElevatedButton.styleFrom(
           backgroundColor: greenAccent, minimumSize: Size(280, 50)),
-      onPressed: () {},
+      onPressed: () {
+        Get.back();
+      },
       child: Text(
         "Cancel",
         style: TextStyle(color: green),
