@@ -58,7 +58,7 @@ class _NameOfReserverState extends State<NameOfReserver> {
 
   Widget _buildBottonContinue() => InkWell(
         onTap: () {
-          Get.to(const PayMent1());
+          Get.to( PayMent1());
         },
         child: Container(
           height: Get.height / 15,

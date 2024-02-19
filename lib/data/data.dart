@@ -9,8 +9,21 @@ class RoomCategory {
         RoomCategory(tab: 'Recommended'),
         RoomCategory(tab: 'Popular'),
         RoomCategory(tab: 'Trending'),
-        RoomCategory(tab: 'Hello Brother'),
-        RoomCategory(tab: 'Hello Brother'),
+      ];
+}
+
+class SearchCategory {
+  String Searchtab;
+
+  SearchCategory({
+    required this.Searchtab,
+  });
+
+  static List<RoomCategory> getSearchList() => [
+        RoomCategory(tab: 'All Hotel'),
+        RoomCategory(tab: 'Recommended'),
+        RoomCategory(tab: 'Popular'),
+        RoomCategory(tab: 'Trending'),
       ];
 }
 
