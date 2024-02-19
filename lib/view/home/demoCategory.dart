@@ -28,7 +28,14 @@ class DemoCategory extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                     image: DecorationImage(
                         image: AssetImage("${data.img}"),
-                        fit: BoxFit.fitHeight)),
+                        fit: BoxFit.fitHeight),
+                    boxShadow: [
+                      BoxShadow(
+                          offset: Offset(8, 8),
+                          color: black.withOpacity(0.1),
+                          spreadRadius: 2,
+                          blurRadius: 5)
+                    ]),
                 child: Column(
                   children: [
                     // Rating star
