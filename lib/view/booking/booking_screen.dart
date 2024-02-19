@@ -48,14 +48,14 @@ class BookingScreen extends StatelessWidget {
           ),
           _buildTabbar(),
           SizedBox(
-            height: 10,
+            height: 5,
           ),
           Expanded(
               child: ListView.builder(
             itemCount: 5,
             itemBuilder: (context, index) {
               return Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(7.0),
                 child: _buildListOnGoing(context),
               );
             },
@@ -92,11 +92,11 @@ class BookingScreen extends StatelessWidget {
   Widget _buildListOnGoing(BuildContext context) => Padding(
         padding: EdgeInsets.symmetric(horizontal: 10),
         child: Container(
-          height: Get.height / 4,
+          height: Get.height / 5,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15), color: white),
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -115,7 +115,7 @@ class BookingScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 10),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
