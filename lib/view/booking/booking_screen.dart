@@ -83,6 +83,7 @@ class _BookingScreenState extends State<BookingScreen>
           ),
           _buildTabbar(),
           SizedBox(
+            height: 5,
             height: 10,
           Container(
             color: white,
@@ -114,6 +115,15 @@ class _BookingScreenState extends State<BookingScreen>
           ),
           SizedBox(height: 20),
           Expanded(
+              child: ListView.builder(
+            itemCount: 5,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.all(7.0),
+                child: _buildListOnGoing(context),
+              );
+            },
+          ))
             child: _buildTabContent(index: _tabController.index),
           ),
         ],
@@ -146,6 +156,78 @@ class _BookingScreenState extends State<BookingScreen>
     );
   }
 
+
+  Widget _buildListOnGoing(BuildContext context) => Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        child: Container(
+          height: Get.height / 5,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15), color: white),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        image: DecorationImage(
+                          image: AssetImage(
+                              'assets/images/hotel.jpg'), // Corrected path
+                          fit: BoxFit.cover, // Specify the fit
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Internation Hotela',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 17),
+                          ),
+                          Text(
+                            'New  York, USA',
+                            style: TextStyle(fontSize: 14),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            width: 60,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: greenAccent),
+                            child: Text(
+                              'Paid',
+                              style: TextStyle(color: green),
+                              textAlign: TextAlign.center,
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 2,
+                  width: double.infinity,
+                  color: Colors.grey.shade400,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                // Spacer(),
+                Row(
   Widget _buildTabContent({required int index}) {
     switch (index) {
       case 0:

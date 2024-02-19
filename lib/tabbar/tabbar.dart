@@ -23,7 +23,7 @@ class TabbarEdit extends StatelessWidget {
         controller: tabController,
         isScrollable: true,
         tabAlignment: TabAlignment.start,
-        labelPadding: EdgeInsets.symmetric(horizontal: 12),
+        labelPadding: EdgeInsets.symmetric(horizontal: 10),
         indicatorPadding: EdgeInsets.zero,
         onTap: onTap,
         // indicator: BoxDecoration(

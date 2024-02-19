@@ -93,9 +93,9 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 10),
                   line(),
-                  SizedBox(height: 30),
+                  SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -116,7 +116,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 5),
                   //Carousal Image
                   Container(
                     height: 120, // Set a fixed height for the ListView
@@ -138,7 +138,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                       },
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 10),
                   Text(
                     "Details",
                     style: TextStyle(
@@ -146,7 +146,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 5),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -168,7 +168,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 10),
                   Text(
                     "Description",
                     style: TextStyle(
@@ -177,7 +177,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 5,
                   ),
                   RichText(
                     text: TextSpan(
@@ -209,9 +209,9 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 5),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       FacilitiesIcon(
                         text: 'Swimming Pool',
@@ -231,35 +231,29 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        FacilitiesIcon(
-                          text: 'Meeting Room',
-                          icon: Icons.meeting_room,
-                        ),
-                        FacilitiesIcon(
-                          text: 'Fitness Center',
-                          icon: Icons.fitness_center,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 35),
-                          child: FacilitiesIcon(
-                            text: 'Elevator',
-                            icon: Icons.elevator,
-                          ),
-                        ),
-                        FacilitiesIcon(
-                          text: '24-hours Open',
-                          icon: Icons.schedule,
-                        )
-                      ],
-                    ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      FacilitiesIcon(
+                        text: 'Meeting Room',
+                        icon: Icons.meeting_room,
+                      ),
+                      FacilitiesIcon(
+                        text: 'Fitness Center',
+                        icon: Icons.fitness_center,
+                      ),
+                      FacilitiesIcon(
+                        text: 'Elevator',
+                        icon: Icons.elevator,
+                      ),
+                      FacilitiesIcon(
+                        text: '24-hours Open',
+                        icon: Icons.schedule,
+                      )
+                    ],
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 10),
                   Text(
                     "Location",
                     style: TextStyle(
@@ -267,21 +261,17 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 20.0,
-                      horizontal: 10.0,
-                    ),
-                    child: Container(
-                      height: Get.height * 0.25,
-                      width: Get.width * 1,
-                      child: ClipRRect(
-                        child: Image.asset(
-                          'assets/images/map.png',
-                          fit: BoxFit.cover,
-                        ),
-                        borderRadius: BorderRadius.circular(20),
+                  SizedBox(height: 5),
+
+                  Container(
+                    height: Get.height * 0.25,
+                    width: Get.width * 1,
+                    child: ClipRRect(
+                      child: Image.asset(
+                        'assets/images/map.png',
+                        fit: BoxFit.cover,
                       ),
+                      borderRadius: BorderRadius.circular(20),
                     ),
                   ),
                   Row(
@@ -336,117 +326,124 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10),
+
                   Container(
-                    height: Get.height * 0.7,
-                    color: greenAccent,
-                    child: ListView.builder(
-                        itemCount: 4,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              height: Get.width * 0.4,
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                    height: Get.height * 0.9,
+                    child: Scrollbar(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 100),
+                        child: ListView.builder(
+                            padding: EdgeInsets.zero,
+                            itemCount: 10,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 5, horizontal: 10),
+                                child: Container(
+                                  height: Get.width * 0.4,
+                                  child: Column(
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 20.0, top: 15.0),
-                                        child: CircleAvatar(
-                                          radius: 30,
-                                          backgroundImage: AssetImage(
-                                              'assets/images/Panha.jpg'),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 10.0, top: 10.0),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Keat Panha",
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.w600),
+                                      Row(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 20.0, top: 15.0),
+                                            child: CircleAvatar(
+                                              radius: 30,
+                                              backgroundImage: AssetImage(
+                                                  'assets/images/Panha.jpg'),
                                             ),
-                                            Text(
-                                              "Jan 20, 2025",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w300),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                      SizedBox(width: 100),
-                                      Container(
-                                        width: Get.width * 0.18,
-                                        height: Get.height * 0.042,
-                                        child: Center(
-                                          child: RichText(
-                                            text: TextSpan(
-                                              style: TextStyle(
-                                                fontSize: 20.0,
-                                                color: Colors.black,
-                                              ),
-                                              children: <InlineSpan>[
-                                                WidgetSpan(
-                                                  child: Icon(
-                                                    Icons.star,
-                                                    color: white,
-                                                    size: 21,
-                                                  ),
-                                                ),
-                                                TextSpan(
-                                                  text: '5.0',
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 10.0, top: 10.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "Keat Panha",
                                                   style: TextStyle(
-                                                      color: white,
-                                                      fontSize: 18),
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.w600),
                                                 ),
+                                                Text(
+                                                  "Jan 20, 2025",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w300),
+                                                )
                                               ],
                                             ),
                                           ),
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: green,
-                                          borderRadius:
-                                              BorderRadius.circular(15),
+                                          SizedBox(width: 100),
+                                          Container(
+                                            width: Get.width * 0.18,
+                                            height: Get.height * 0.042,
+                                            child: Center(
+                                              child: RichText(
+                                                text: TextSpan(
+                                                  style: TextStyle(
+                                                    fontSize: 20.0,
+                                                    color: Colors.black,
+                                                  ),
+                                                  children: <InlineSpan>[
+                                                    WidgetSpan(
+                                                      child: Icon(
+                                                        Icons.star,
+                                                        color: white,
+                                                        size: 21,
+                                                      ),
+                                                    ),
+                                                    TextSpan(
+                                                      text: '5.0',
+                                                      style: TextStyle(
+                                                          color: white,
+                                                          fontSize: 18),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color: green,
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 10),
+                                      Container(
+                                        width: Get.width * 0.8,
+                                        height: Get.height * 0.08,
+                                        child: Text(
+                                          "Very nice and comfortable hotel, thank you for accompanying my vacation!",
+                                          style: TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.w300),
                                         ),
                                       ),
                                     ],
                                   ),
-                                  SizedBox(height: 10),
-                                  Container(
-                                    width: Get.width * 0.8,
-                                    height: Get.height * 0.08,
-                                    child: Text(
-                                      "Very nice and comfortable hotel, thank you for accompanying my vacation!",
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.w300),
-                                    ),
+                                  decoration: BoxDecoration(
+                                    color: white,
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.2),
+                                        spreadRadius: 2,
+                                        blurRadius: 5,
+                                        offset: Offset(0, 3),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                              decoration: BoxDecoration(
-                                color: white,
-                                borderRadius: BorderRadius.circular(20),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.2),
-                                    spreadRadius: 2,
-                                    blurRadius: 5,
-                                    offset: Offset(0, 3),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        }),
+                                ),
+                              );
+                            }),
+                      ),
+                    ),
                   ),
                 ],
               ),

@@ -150,7 +150,7 @@ Widget _buildStackList(Rx<Color> iconColor) => ListView.builder(
                                 ? Colors.green
                                 : Colors.black;
                           },
-                          icon: Icon(Icons.bookmark_border),
+                          icon: Icon(Icons.bookmark),
                           color: iconColor.value,
                         ),
                       ),
@@ -249,7 +249,7 @@ Widget _buildGridList(Rx<Color> iconColor) => GridView.builder(
                               ? Colors.green
                               : Colors.black;
                         },
-                        icon: Icon(Icons.bookmark_border),
+                        icon: Icon(Icons.bookmark),
                         color: iconColor.value,
                       ),
                     ),
