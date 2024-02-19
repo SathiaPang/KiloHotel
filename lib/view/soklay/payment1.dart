@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:hotel/constant.dart';
 import 'package:hotel/controller/booking_controller.dart';
 import 'package:hotel/data/data.dart';
-import 'package:hotel/view/Profile/ticket.dart';
 import 'package:hotel/view/dialogPayment/dialogPayment.dart';
 import 'package:hotel/view/soklay/newCard.dart';
 
@@ -169,34 +168,35 @@ class _PayMent1State extends State<PayMent1> {
           String storeKey = 'hotel_bookings';
 
           widget._bookingController.saveBooking(hotel, storeKey);
-        onTap: () {
-          // Get.to(const TicketScreen());
-
-          Get.dialog(DialogPayMent());
-        },
-        child: Container(
-          height: Get.height / 15,
-          width: Get.width / 1.1,
-          decoration: BoxDecoration(
-              color: green,
-              borderRadius: BorderRadius.circular(30),
-              boxShadow: [
-                BoxShadow(
-                  color: textColor,
-                  offset: Offset(1, 6),
-                  blurRadius: 7,
+          onTap:
+          () {
+            Get.dialog(DialogPayMent());
+          };
+          child:
+          Container(
+            height: Get.height / 15,
+            width: Get.width / 1.1,
+            decoration: BoxDecoration(
+                color: green,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [
+                  BoxShadow(
+                    color: textColor,
+                    offset: Offset(1, 6),
+                    blurRadius: 7,
+                  ),
+                ]),
+            child: Center(
+              child: Text(
+                "Continue",
+                style: TextStyle(
+                  color: white,
+                  fontSize: 20,
                 ),
-              ]),
-          child: Center(
-            child: Text(
-              "Continue",
-              style: TextStyle(
-                color: white,
-                fontSize: 20,
               ),
             ),
-          ),
-        ),
+          );
+        },
       );
 
   Widget _buildRadioBT(int value) => Radio(
