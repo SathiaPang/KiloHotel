@@ -274,6 +274,9 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
