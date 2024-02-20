@@ -17,7 +17,7 @@ class DemoCategory extends StatelessWidget {
         itemBuilder: (context, index) {
           final data = hotelList[index];
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
             child: GestureDetector(
               onTap: () {
                 Get.to(BookDetailScreenOne());
@@ -95,9 +95,6 @@ class DemoCategory extends StatelessWidget {
                                           color: white,
                                           fontSize: 17,
                                         )),
-                                    SizedBox(
-                                      width: 95,
-                                    ),
                                     IconButton(
                                         onPressed: () {},
                                         icon: Icon(

@@ -26,7 +26,6 @@ class SearchCategory {
         RoomCategory(tab: 'Trending'),
       ];
 }
-
 class Hotel {
   String img, name, location, category, searchcategory;
   double price;

@@ -138,7 +138,6 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                       },
                     ),
                   ),
-                  SizedBox(height: 10),
                   Text(
                     "Details",
                     style: TextStyle(
@@ -354,7 +353,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                                             child: CircleAvatar(
                                               radius: 30,
                                               backgroundImage: AssetImage(
-                                                  'assets/images/Panha.jpg'),
+                                                  'assets/images/pf.png'),
                                             ),
                                           ),
                                           Padding(
