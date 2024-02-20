@@ -4,7 +4,6 @@ import 'package:hotel/constant.dart';
 import 'package:hotel/controller/home_controller.dart';
 import 'package:hotel/view/booking/recently.dart';
 import 'package:hotel/view/home/demoCategory.dart';
-import 'package:hotel/view/satya/Search%20screen/Search_screen.dart';
 import '../../tabbar/tabbar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -55,7 +54,6 @@ class _HomeScreenState extends State<HomeScreen>
                 )
               ],
             ),
-
             // Action
             actions: [
               IconButton(
