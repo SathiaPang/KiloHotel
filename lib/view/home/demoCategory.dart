@@ -70,7 +70,6 @@ class DemoCategory extends StatelessWidget {
                         )
                       ],
                     ),
-
                     // Information
                     Spacer(),
                     Padding(
@@ -109,20 +108,22 @@ class DemoCategory extends StatelessWidget {
                                   ],
                                 ),
                                 RichText(
-                                    text: TextSpan(
-                                        text: "\$ ${data.price}",
-                                        style: TextStyle(
-                                            fontSize: 25,
-                                            color: white,
-                                            fontWeight: FontWeight.w500),
-                                        children: [
+                                  text: TextSpan(
+                                    text: "\$ ${data.price}",
+                                    style: TextStyle(
+                                        fontSize: 25,
+                                        color: white,
+                                        fontWeight: FontWeight.w500),
+                                    children: [
                                       TextSpan(
                                           text: "\t/night",
                                           style: TextStyle(
                                               fontSize: 15,
                                               color: textfieldcolor,
                                               fontWeight: FontWeight.w500))
-                                    ]))
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
                           ),

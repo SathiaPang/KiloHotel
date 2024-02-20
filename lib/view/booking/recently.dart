@@ -14,58 +14,55 @@ class RecentlyScreen extends StatefulWidget {
 class _RecentlyScreenState extends State<RecentlyScreen> {
   final Rx<Color> iconColor = Colors.black.obs;
 
-  bool click = true;
-
   final RecentlyController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: greenAccent,
-        appBar: AppBar(
-          centerTitle: false,
-          title: Text(
-            "Recently Booked",
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          actions: [
-            IconButton(
-              icon: Icon(
-                Icons.menu,
-                color: click ? green : black,
-              ),
-              onPressed: () {
-                setState(() {
-                  click = !click;
-                });
-                controller.toggleView();
-              },
-            ),
-            IconButton(
-              icon: Icon(
-                Icons.grid_view_outlined,
-                color: click ? black : green,
-              ),
-              onPressed: () {
-                setState(() {
-                  click = !click;
-                });
-                controller.showGridView();
-              },
-            ),
-          ],
+      backgroundColor: greenAccent,
+      appBar: AppBar(
+        centerTitle: false,
+        title: Text(
+          "Recently Booked",
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GetBuilder<RecentlyController>(
-            init: RecentlyController(), // Initialize the controller
-            builder: (controller) {
-              return controller.isGridVisible.value
-                  ? _buildGridList(iconColor)
-                  : _buildStackList(iconColor);
+        actions: [
+          IconButton(
+            icon: Obx(
+              () => Icon(
+                Icons.menu,
+                color: controller.click.value ? green : black,
+              ),
+            ),
+            onPressed: () {
+              controller.toggleView();
             },
           ),
-        ));
+          IconButton(
+            icon: Obx(
+              () => Icon(
+                Icons.grid_view_outlined,
+                color: controller.click.value ? black : green,
+              ),
+            ),
+            onPressed: () {
+              controller.showGridView();
+            },
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: GetBuilder<RecentlyController>(
+          init: RecentlyController(), // Initialize the controller
+          builder: (controller) {
+            return controller.isGridVisible.value
+                ? _buildGridList(iconColor)
+                : _buildStackList(iconColor);
+          },
+        ),
+      ),
+    );
   }
 }
 

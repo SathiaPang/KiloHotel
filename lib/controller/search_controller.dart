@@ -8,8 +8,11 @@ class FindController extends GetxController {
   final searchcategory = <RoomCategory>[].obs;
   final HomeRepository homeRepository;
   final selectedIndex = 0.obs;
+  final click = true.obs;
 
   List<Hotel> _allList = [];
+
+  final RxBool isGridVisible = false.obs;
 
   @override
   void onInit() async {
@@ -30,6 +33,26 @@ class FindController extends GetxController {
         _allList.where((e) => e.category == catergorysearch.tab).toList();
     repo(tmplist);
     print(selectedIndex);
+    update();
+  }
+
+  void changeToList() {
+    click(!click.value);
+    toggleView();
+  }
+
+  void changeToGrid() {
+    click(!click.value);
+    showGridView();
+  }
+
+  void toggleView() {
+    isGridVisible.value = false;
+    update();
+  }
+
+  void showGridView() {
+    isGridVisible.value = true;
     update();
   }
 }
