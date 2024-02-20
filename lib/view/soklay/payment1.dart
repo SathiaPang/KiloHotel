@@ -156,25 +156,26 @@ class _PayMent1State extends State<PayMent1> {
         ),
       );
 
-  Widget _buildBottonContinue() => InkWell(
-        onTap: () async {
-          Hotel hotel = Hotel(
-              img: "img",
-              location: "location",
-              name: "name",
-              price: 100,
-              category: "category",
-              searchcategory: "searchcategory");
+  Widget _buildBottonContinue() => InkWell(onTap: () async {
+        Hotel hotel = Hotel(
+            img: "img",
+            location: "location",
+            name: "name",
+            price: 100,
+            category: "category",
+            searchcategory: "searchcategory");
 
-          String storeKey = 'hotel_bookings';
+        String storeKey = 'hotel_bookings';
 
-          widget._bookingController.saveBooking(hotel, storeKey);
-        onTap: () {
+        widget._bookingController.saveBooking(hotel, storeKey);
+        onTap:
+        () {
           // Get.to(const TicketScreen());
 
           Get.dialog(DialogPayMent());
-        },
-        child: Container(
+        };
+        child:
+        Container(
           height: Get.height / 15,
           width: Get.width / 1.1,
           decoration: BoxDecoration(
@@ -196,8 +197,8 @@ class _PayMent1State extends State<PayMent1> {
               ),
             ),
           ),
-        ),
-      );
+        );
+      });
 
   Widget _buildRadioBT(int value) => Radio(
         value: value,
