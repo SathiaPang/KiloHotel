@@ -154,71 +154,48 @@ class _PayMent1State extends State<PayMent1> {
           ),
         ),
       );
-
-  Widget _buildBottonContinue() => InkWell(onTap: () async {
-        Hotel hotel = Hotel(
+  Widget _buildBottonContinue() => InkWell(
+        onTap: () async {
+          Hotel hotel = Hotel(
             img: "img",
             location: "location",
             name: "name",
             price: 100,
             category: "category",
-            searchcategory: "searchcategory");
+            searchcategory: "searchcategory",
+          );
 
-        String storeKey = 'hotel_bookings';
-        widget._bookingController.saveBooking(hotel, storeKey);
-        onTap:
-        () {
-          // Get.to(const TicketScreen());
+          String storeKey = 'hotel_bookings';
+          widget._bookingController.saveBooking(hotel, storeKey);
 
           Get.dialog(DialogPayMent());
-        };
-        child:
-        Container(
+        },
+        child: Container(
           height: Get.height / 15,
           width: Get.width / 1.1,
           decoration: BoxDecoration(
-              color: green,
-              borderRadius: BorderRadius.circular(30),
-              boxShadow: [
-                BoxShadow(
-                  color: textColor,
-                  offset: Offset(1, 6),
-                  blurRadius: 7,
-          widget._bookingController.saveBooking(hotel, storeKey);
-          onTap:
-          () {
-            Get.dialog(DialogPayMent());
-          };
-          child:
-          Container(
-            height: Get.height / 15,
-            width: Get.width / 1.1,
-            decoration: BoxDecoration(
-                color: green,
-                borderRadius: BorderRadius.circular(30),
-                boxShadow: [
-                  BoxShadow(
-                    color: textColor,
-                    offset: Offset(1, 6),
-                    blurRadius: 7,
-                  ),
-                ]),
-            child: Center(
-              child: Text(
-                "Continue",
-                style: TextStyle(
-                  color: white,
-                  fontSize: 20,
-
-                ),
+            color: green,
+            borderRadius: BorderRadius.circular(30),
+            boxShadow: [
+              BoxShadow(
+                color: textColor,
+                offset: Offset(1, 6),
+                blurRadius: 7,
+              ),
+            ],
+          ),
+          child: Center(
+            child: Text(
+              "Continue",
+              style: TextStyle(
+                color: white,
+                fontSize: 20,
               ),
             ),
           ),
-        );
-      });
-          );
-        },
+        ),
       );
+
   Widget _buildRadioBT(int value) => Radio(
         value: value,
         groupValue: _selectOption,
