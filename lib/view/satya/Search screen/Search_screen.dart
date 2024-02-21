@@ -33,69 +33,65 @@ class _SearchScreenState extends State<SearchScreen>
             children: [
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 10),
-                width: Get.width * 1,
-                height: Get.height * 0.19,
                 color: white,
                 child: Column(
                   children: [
                     SearchBar(),
-                    SizedBox(height: 15),
+                    SizedBox(
+                      height: 10,
+                    ),
                     TabbarEdit(
                       _tabController,
                       _findController.searchcategory,
                       _findController.selectedIndex.value,
                       (index) => _findController.filTerByIndex(index),
                     ),
-                    () {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          RichText(
-                            text: TextSpan(
-                              style: TextStyle(color: Colors.black),
-                              children: <InlineSpan>[
-                                TextSpan(
-                                  text: 'Recommended ',
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                TextSpan(
-                                  text: '(484,579)',
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ],
-                            ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        RichText(
+                          text: TextSpan(
+                            style: TextStyle(color: Colors.black),
+                            children: <InlineSpan>[
+                              TextSpan(
+                                text: 'Recommended ',
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.w600),
+                              ),
+                              TextSpan(
+                                text: '(484,579)',
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.w600),
+                              ),
+                            ],
                           ),
-                          Container(
-                            child: Row(
-                              children: [
-                                IconButton(
-                                  icon: Icon(
-                                    Icons.menu,
-                                    color: _findController.click.value
-                                        ? green
-                                        : black,
-                                  ),
-                                  onPressed: _findController.changeToList,
+                        ),
+                        Container(
+                          child: Row(
+                            children: [
+                              IconButton(
+                                icon: Icon(
+                                  Icons.menu,
+                                  color: _findController.click.value
+                                      ? green
+                                      : black,
                                 ),
-                                IconButton(
-                                  onPressed: _findController.changeToGrid,
-                                  icon: Icon(
-                                    Icons.grid_view_outlined,
-                                    color: _findController.click.value
-                                        ? black
-                                        : green,
-                                  ),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      );
-                    }(),
+                                onPressed: _findController.changeToList,
+                              ),
+                              IconButton(
+                                onPressed: _findController.changeToGrid,
+                                icon: Icon(
+                                  Icons.grid_view_outlined,
+                                  color: _findController.click.value
+                                      ? black
+                                      : green,
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    )
                   ],
                 ),
               ),
