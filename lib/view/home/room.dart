@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/constant.dart';
+import 'package:hotel/constant/constant.dart';
 
 class RoomView extends StatelessWidget {
   RoomView({Key? key}) : super(key: key);

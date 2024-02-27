@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/constant.dart';
+import 'package:hotel/constant/constant.dart';
 import 'package:hotel/view/soklay/selectdate.dart';
 
 class BookDetailScreenOne extends StatefulWidget {
@@ -379,39 +379,43 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                                               ],
                                             ),
                                           ),
-                                          SizedBox(width: 100),
-                                          Container(
-                                            width: Get.width * 0.18,
-                                            height: Get.height * 0.042,
-                                            child: Center(
-                                              child: RichText(
-                                                text: TextSpan(
-                                                  style: TextStyle(
-                                                    fontSize: 20.0,
-                                                    color: Colors.black,
-                                                  ),
-                                                  children: <InlineSpan>[
-                                                    WidgetSpan(
-                                                      child: Icon(
-                                                        Icons.star,
-                                                        color: white,
-                                                        size: 21,
-                                                      ),
+                                          Spacer(),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                right: 15),
+                                            child: Container(
+                                              width: Get.width * 0.18,
+                                              height: Get.height * 0.042,
+                                              child: Center(
+                                                child: RichText(
+                                                  text: TextSpan(
+                                                    style: TextStyle(
+                                                      fontSize: 20.0,
+                                                      color: Colors.black,
                                                     ),
-                                                    TextSpan(
-                                                      text: '5.0',
-                                                      style: TextStyle(
+                                                    children: <InlineSpan>[
+                                                      WidgetSpan(
+                                                        child: Icon(
+                                                          Icons.star,
                                                           color: white,
-                                                          fontSize: 18),
-                                                    ),
-                                                  ],
+                                                          size: 21,
+                                                        ),
+                                                      ),
+                                                      TextSpan(
+                                                        text: '5.0',
+                                                        style: TextStyle(
+                                                            color: white,
+                                                            fontSize: 18),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                            decoration: BoxDecoration(
-                                              color: green,
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
+                                              decoration: BoxDecoration(
+                                                color: green,
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                              ),
                                             ),
                                           ),
                                         ],

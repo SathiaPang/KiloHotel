@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/constant.dart';
+import 'package:hotel/constant/constant.dart';
+
 import 'package:hotel/view/soklay/nameOfReserver.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';

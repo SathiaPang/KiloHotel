@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/constant.dart';
+
+import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/home_controller.dart';
 import 'package:hotel/view/booking/recently.dart';
 import 'package:hotel/view/home/demoCategory.dart';

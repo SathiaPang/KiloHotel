@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:hotel/constant.dart';
+import 'package:hotel/constant/constant.dart';
 
 class NotificationController extends GetxController {
   var generalNotification = false.obs;
@@ -22,7 +21,7 @@ class NotiScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
+      appBar: AppBar(
         centerTitle: false,
         title: const Text(
           'Notification',

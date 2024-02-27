@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:hotel/view/auth/signIn/login.dart';
 import 'package:intl/intl.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import '../../../constant.dart';
+import 'package:hotel/constant/constant.dart';
 
 class SignupScreen extends StatefulWidget {
   SignupScreen({super.key});

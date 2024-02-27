@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/constant.dart';
+import 'package:hotel/constant/appRoute.dart';
+import 'package:hotel/constant/constant.dart';
+
 import 'package:hotel/view/splashScreen/loading2.dart';
 import 'package:hotel/view/splashScreen/splashScreen2.dart';
 
@@ -106,7 +108,8 @@ class _SplashScreen1State extends State<SplashScreen1> {
             style: ElevatedButton.styleFrom(
                 fixedSize: const Size(350, 65), backgroundColor: green),
             onPressed: () {
-              Get.off(const SplashScreen2());
+              // Get.off(const SplashScreen2());
+              Get.offAndToNamed(AppRoute.splash2);
             },
             child: const Center(
                 child: Text(
@@ -121,7 +124,7 @@ class _SplashScreen1State extends State<SplashScreen1> {
             style: ElevatedButton.styleFrom(
                 fixedSize: const Size(350, 65), backgroundColor: greenAccent),
             onPressed: () {
-              Get.off(const Loading2());
+              Get.offAndToNamed(AppRoute.load2);
             },
             child: const Center(
                 child: Text(

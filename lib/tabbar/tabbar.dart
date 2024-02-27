@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel/data/data.dart';
-import '../constant.dart';
+import 'package:hotel/constant/constant.dart';
 
 class TabbarEdit extends StatelessWidget {
   TabbarEdit(
