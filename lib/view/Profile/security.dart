@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/constant.dart';
+import 'package:hotel/constant/constant.dart';
 
 class SecurityController extends GetxController {
   var faceID = false.obs;

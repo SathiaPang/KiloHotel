@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:hotel/view/soklay/payment1.dart';
 import 'package:intl/intl.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import '../../constant.dart';
+import 'package:hotel/constant/constant.dart';
 
 class NameOfReserver extends StatefulWidget {
   NameOfReserver({super.key});
@@ -58,7 +58,7 @@ class _NameOfReserverState extends State<NameOfReserver> {
 
   Widget _buildBottonContinue() => InkWell(
         onTap: () {
-          Get.to( PayMent1());
+          Get.to(PayMent1());
         },
         child: Container(
           height: Get.height / 15,

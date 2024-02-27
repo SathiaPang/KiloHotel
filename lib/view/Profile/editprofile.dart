@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:hotel/view/auth/signIn/login.dart';
 import 'package:intl/intl.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import '../../../constant.dart';
+import 'package:hotel/constant/constant.dart';
 
 class EditPF extends StatefulWidget {
   EditPF({super.key});
@@ -81,8 +81,6 @@ class _EditPFState extends State<EditPF> {
               _PhoneNumber(),
               SizedBox(height: 10),
               _Gender(),
-            
-              
             ],
           ),
         ),
@@ -169,18 +167,18 @@ class _EditPFState extends State<EditPF> {
       ));
 
   Widget _signButton() => ElevatedButton(
-    style: ElevatedButton.styleFrom(
-      fixedSize: Size(370, 60),
-      backgroundColor: green,
-    ),
-    onPressed: () {
-      Get.to(Login());
-    },
-    child: Center(
-      child: Text(
-        'Update',
-        style: TextStyle(color: white, fontSize: 17),
-      ),
-    ),
-  );
+        style: ElevatedButton.styleFrom(
+          fixedSize: Size(370, 60),
+          backgroundColor: green,
+        ),
+        onPressed: () {
+          Get.to(Login());
+        },
+        child: Center(
+          child: Text(
+            'Update',
+            style: TextStyle(color: white, fontSize: 17),
+          ),
+        ),
+      );
 }

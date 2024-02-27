@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/constant.dart';
+import 'package:hotel/constant/constant.dart';
+
 import 'package:hotel/data/data.dart';
 
 class DemoSearch extends StatelessWidget {
@@ -20,7 +21,6 @@ class DemoSearch extends StatelessWidget {
               height: Get.height * 0.1,
               width: Get.width * 0.5,
               color: green,
-              
             ),
           );
         },

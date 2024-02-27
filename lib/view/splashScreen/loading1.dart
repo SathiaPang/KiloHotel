@@ -1,16 +1,17 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:hotel/constant.dart';
+import 'package:hotel/constant/constant.dart';
+
 import 'package:hotel/view/splashScreen/splashScreen1.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class Loading1 extends StatefulWidget {
+  const Loading1({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<Loading1> createState() => _Loading1State();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _Loading1State extends State<Loading1> {
   @override
   void initState() {
     Future.microtask(() => initloading());
@@ -32,7 +33,6 @@ class _SplashScreenState extends State<SplashScreen> {
         decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/images/ht.jpg"), fit: BoxFit.fill)),
-        
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 70),
           child: const Column(

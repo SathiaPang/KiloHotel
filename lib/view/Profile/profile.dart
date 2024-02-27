@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/constant.dart';
+import 'package:hotel/component/profileScreen/optionSelect.dart';
+import 'package:hotel/constant/constant.dart';
 import 'package:hotel/view/Profile/editprofile.dart';
 import 'package:hotel/view/Profile/notificationScreen.dart';
 import 'package:hotel/view/Profile/security.dart';
-import 'package:hotel/view/booking/recently.dart';
 import 'package:hotel/view/soklay/payment1.dart';
 
 class ProFile extends StatefulWidget {
@@ -43,11 +42,14 @@ class _ProFileState extends State<ProFile> {
           //
           _buildPicture(),
           _builNameAndGmail(),
-          _buildEditPF(),
-          _buildPayment(),
-          _buildNotification(),
-          _buildSecurity(),
-          _buildHelp(),
+          SizedBox(
+            height: 20,
+          ),
+          _editPF(),
+          _payment(),
+          _notification(),
+          _security(),
+          _help(),
           _builDarkTheme(),
           _buildLogout()
         ],
@@ -113,201 +115,59 @@ class _ProFileState extends State<ProFile> {
         ],
       );
 
-  Widget _buildEditPF() => Padding(
-        padding: const EdgeInsets.only(top: 25),
-        child: Row(
-          children: [
-            InkWell(
-              onTap: () {
-                Get.to(EditPF());
-              },
-              child: Container(
-                height: Get.height / 25,
-                width: Get.width / 2,
-                // color: green,
-                child: Row(
-                  children: [
-                    //
-                    SizedBox(
-                      width: 13,
-                    ),
-                    Icon(Icons.person_2_outlined,
-                        size: 30, color: _switchValue ? white : black),
-
-                    SizedBox(
-                      width: 13,
-                    ),
-                    Text(
-                      "Edit Profile",
-                      style: TextStyle(
-                          fontSize: 19,
-                          fontWeight: FontWeight.w500,
-                          color: _switchValue ? white : black),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+  Widget _editPF() => Row(
+        children: [
+          OptionSelect(
+              ontap: () => Get.to(EditPF()),
+              icon: Icons.person_2_outlined,
+              text: "Edit Profile",
+              size: 30,
+              color: _switchValue ? white : black),
+        ],
       );
 
-  Widget _buildPayment() => Padding(
-        padding: const EdgeInsets.only(top: 15),
-        child: Row(
-          children: [
-            //
-            InkWell(
-              onTap: () {
-                Get.to(PayMent1());
-              },
-              child: Container(
-                height: Get.height / 25,
-                width: Get.width / 2,
-                // color: green,
-                child: Row(
-                  children: [
-                    //
-                    SizedBox(
-                      width: 13,
-                    ),
-                    Icon(Icons.payment_outlined,
-                        size: 30, color: _switchValue ? white : black),
-
-                    SizedBox(
-                      width: 13,
-                    ),
-                    Text(
-                      "Payment",
-                      style: TextStyle(
-                          fontSize: 19,
-                          fontWeight: FontWeight.w500,
-                          color: _switchValue ? white : black),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+  Widget _payment() => Row(
+        children: [
+          OptionSelect(
+              ontap: () => Get.to(PayMent1()),
+              icon: Icons.payment_outlined,
+              text: "Payment",
+              color: _switchValue ? white : black,
+              size: 30)
+        ],
       );
 
-  Widget _buildNotification() => Padding(
-        padding: const EdgeInsets.only(top: 15),
-        child: Row(
-          children: [
-            //
-            InkWell(
-              onTap: () {
-                Get.to(NotiScreen());
-              },
-              child: Container(
-                height: Get.height / 25,
-                width: Get.width / 2,
-                // color: green,
-                child: Row(
-                  children: [
-                    //
-                    SizedBox(
-                      width: 13,
-                    ),
-                    Icon(Icons.notifications_none,
-                        size: 30, color: _switchValue ? white : black),
-
-                    SizedBox(
-                      width: 13,
-                    ),
-                    Text(
-                      "Notifications",
-                      style: TextStyle(
-                          fontSize: 19,
-                          fontWeight: FontWeight.w500,
-                          color: _switchValue ? white : black),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+  Widget _notification() => Row(
+        children: [
+          OptionSelect(
+              ontap: () => Get.to(NotiScreen()),
+              icon: Icons.notifications_none_rounded,
+              text: "Notification",
+              color: _switchValue ? white : black,
+              size: 30)
+        ],
       );
 
-  Widget _buildSecurity() => Padding(
-        padding: const EdgeInsets.only(top: 15),
-        child: Row(
-          children: [
-            //
-            InkWell(
-              onTap: () {
-                Get.to(SecurityScreen());
-              },
-              child: Container(
-                height: Get.height / 25,
-                width: Get.width / 2,
-                // color: green,
-                child: Row(
-                  children: [
-                    //
-                    SizedBox(
-                      width: 13,
-                    ),
-                    Icon(Icons.verified_user_outlined,
-                        size: 30, color: _switchValue ? white : black),
-
-                    SizedBox(
-                      width: 13,
-                    ),
-                    Text(
-                      "Security",
-                      style: TextStyle(
-                          fontSize: 19,
-                          fontWeight: FontWeight.w500,
-                          color: _switchValue ? white : black),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+  Widget _security() => Row(
+        children: [
+          OptionSelect(
+              ontap: () => Get.to(SecurityScreen()),
+              icon: Icons.verified_user_outlined,
+              text: "Security",
+              color: _switchValue ? white : black,
+              size: 30)
+        ],
       );
 
-  Widget _buildHelp() => Padding(
-        padding: const EdgeInsets.only(top: 15),
-        child: Row(
-          children: [
-            //
-            InkWell(
-              onTap: () {},
-              child: Container(
-                height: Get.height / 25,
-                width: Get.width / 2,
-                // color: green,
-                child: Row(
-                  children: [
-                    //
-                    SizedBox(
-                      width: 13,
-                    ),
-                    Icon(Icons.help_outline,
-                        size: 30, color: _switchValue ? white : black),
-
-                    SizedBox(
-                      width: 13,
-                    ),
-                    Text(
-                      "Help",
-                      style: TextStyle(
-                          fontSize: 19,
-                          fontWeight: FontWeight.w500,
-                          color: _switchValue ? white : black),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+  Widget _help() => Row(
+        children: [
+          OptionSelect(
+              ontap: () => Get.to(NotiScreen()),
+              icon: Icons.help_outline,
+              text: "Help",
+              color: _switchValue ? white : black,
+              size: 30)
+        ],
       );
 
   Widget _builDarkTheme() => Padding(
@@ -358,7 +218,7 @@ class _ProFileState extends State<ProFile> {
       );
 
   Widget _buildLogout() => Padding(
-        padding: const EdgeInsets.only(top: 15),
+        padding: const EdgeInsets.only(top: 17),
         child: InkWell(
           onTap: () {
             showModalBottomSheet<void>(
@@ -439,48 +299,6 @@ class _ProFileState extends State<ProFile> {
           ),
         ),
       );
-  // Widget _buildBottomSheetApp(BuildContext context) {
-  //   return ElevatedButton(
-  //     child: const Text('showModalBottomSheet'),
-  //     onPressed: () {
-  //       showModalBottomSheet<void>(
-  //         context: context,
-  //         builder: (BuildContext context) {
-  //           return Container(
-  //             decoration:
-  //                 BoxDecoration(borderRadius: BorderRadius.circular(15)),
-  //             height: Get.height / 3,
-  //             width: double.infinity,
-  //             child: Column(
-  //               mainAxisAlignment: MainAxisAlignment.center,
-  //               children: [
-  //                 Text(
-  //                   'Cancel Booking',
-  //                   style: TextStyle(
-  //                       color: Colors.red,
-  //                       fontWeight: FontWeight.w500,
-  //                       fontSize: 22),
-  //                 ),
-  //                 Container(
-  //                   height: 1,
-  //                   width: Get.width / 1.2,
-  //                   color: black,
-  //                 ),
-  //                 Text(
-  //                   'Are you sure you want to cancel your \n hotel bookings?',
-  //                   textAlign: TextAlign.center,
-  //                   style: TextStyle(fontSize: 18),
-  //                 ),
-  //                 _buildyes(),
-  //                 _buildcancel()
-  //               ],
-  //             ),
-  //           );
-  //         },
-  //       );
-  //     },
-  //   );
-  // }
 
   Widget _buildcancel() => Padding(
         padding: const EdgeInsets.all(10.0),
@@ -490,7 +308,7 @@ class _ProFileState extends State<ProFile> {
             backgroundColor: Colors.green.shade100,
           ),
           onPressed: () {
-            // Get.to(Login());
+            Get.back();
           },
           child: Center(
             child: Text(

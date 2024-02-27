@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:hotel/constant.dart';
+import 'package:hotel/constant/constant.dart';
 
 class CreateNewPassword extends StatefulWidget {
   const CreateNewPassword({super.key});
