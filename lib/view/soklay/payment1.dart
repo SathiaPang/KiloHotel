@@ -27,7 +27,7 @@ class _PayMent1State extends State<PayMent1> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      floatingActionButton: _buildBottonContinue(),
+      floatingActionButton: _buildButtonContinue(),
       body: Column(
         children: [
           //
@@ -154,7 +154,7 @@ class _PayMent1State extends State<PayMent1> {
           ),
         ),
       );
-  Widget _buildBottonContinue() => InkWell(
+  Widget _buildButtonContinue() => InkWell(
         onTap: () async {
           Hotel hotel = Hotel(
             img: "img",
@@ -168,6 +168,8 @@ class _PayMent1State extends State<PayMent1> {
           String storeKey = 'hotel_bookings';
           widget._bookingController.saveBooking(hotel, storeKey);
 
+          // Navigate to TicketScreen or show DialogPayMent
+          // Get.to(const TicketScreen());
           Get.dialog(DialogPayMent());
         },
         child: Container(

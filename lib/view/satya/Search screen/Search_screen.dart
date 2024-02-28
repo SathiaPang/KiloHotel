@@ -27,7 +27,7 @@ class _SearchScreenState extends State<SearchScreen>
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
-        backgroundColor: white,
+        backgroundColor: greenAccent,
         body: SafeArea(
           child: Column(
             children: [
@@ -114,10 +114,6 @@ class _SearchScreenState extends State<SearchScreen>
       ),
     );
   }
-
-  // Widget _ListItemView() => Expanded(
-  //       child: DemoSearch(hotelList: _findController.repo),
-  //     );
 }
 
 Widget _buildStackList(Rx<Color> iconColor) => ListView.builder(
