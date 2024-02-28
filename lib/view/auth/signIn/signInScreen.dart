@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/constant.dart';
+
 import 'package:hotel/view/navigationbar/naviga.dart';
-import 'package:hotel/view/soklay/selectdate.dart';
+import 'package:hotel/constant/constant.dart';
+
 import 'package:hotel/view/auth/signUp/signUpScreen.dart';
 
 class SigninScreen extends StatelessWidget {

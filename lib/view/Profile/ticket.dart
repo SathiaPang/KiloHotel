@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_dashed_line/dotted_dashed_line.dart';
 import 'package:get/get.dart';
-import '../../constant.dart';
+import 'package:hotel/constant/constant.dart';
 
 class TicketScreen extends StatelessWidget {
   const TicketScreen({super.key});

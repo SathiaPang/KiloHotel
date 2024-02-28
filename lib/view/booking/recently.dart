@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/controller/recentlycontroller.dart';
 
-import '../../constant.dart';
+import 'package:hotel/constant/constant.dart';
 
 class RecentlyScreen extends StatefulWidget {
   RecentlyScreen({super.key});

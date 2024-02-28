@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/constant.dart';
+import 'package:hotel/constant/constant.dart';
 import 'package:hotel/data/data.dart';
 
 import 'package:hotel/view/satya/booking_detail/booking_detail_1.dart';
@@ -40,10 +40,10 @@ class DemoCategory extends StatelessWidget {
                   children: [
                     // Rating star
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 30, top: 20),
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Container(
                             height: Get.height / 23,
                             width: Get.width / 5,
@@ -67,7 +67,14 @@ class DemoCategory extends StatelessWidget {
                               ],
                             ),
                           ),
-                        )
+                        ),
+                        IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.bookmark_outline,
+                              color: white,
+                              size: 40,
+                            ))
                       ],
                     ),
                     // Information
@@ -88,22 +95,11 @@ class DemoCategory extends StatelessWidget {
                                       fontSize: 35,
                                       fontWeight: FontWeight.w500),
                                 ),
-                                Row(
-                                  children: [
-                                    Text(data.location,
-                                        style: TextStyle(
-                                          color: white,
-                                          fontSize: 17,
-                                        )),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(
-                                          Icons.bookmark_outline,
-                                          color: white,
-                                          size: 30,
-                                        ))
-                                  ],
-                                ),
+                                Text(data.location,
+                                    style: TextStyle(
+                                      color: white,
+                                      fontSize: 17,
+                                    )),
                                 RichText(
                                   text: TextSpan(
                                     text: "\$ ${data.price}",

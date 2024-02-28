@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/constant.dart';
+import 'package:hotel/constant/constant.dart';
+
 import 'package:hotel/view/satya/Forgot_password_screen2.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {

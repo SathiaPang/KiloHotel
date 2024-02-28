@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/constant.dart';
-import 'package:hotel/view/soklay/newCard.dart';
-import 'package:hotel/view/Profile/profile.dart';
+import 'package:hotel/constant/constant.dart';
 
 class CancelHotel extends StatefulWidget {
   const CancelHotel({super.key});

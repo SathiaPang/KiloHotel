@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:hotel/binding/controlbinding.dart';
-import 'package:hotel/constant.dart';
-import 'package:hotel/view/splashScreen/loading1.dart';
+import 'package:hotel/constant/appRoute.dart';
+import 'package:hotel/constant/constant.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
       ),
       initialBinding: ControllerBinding(),
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      initialRoute: AppRoute.load1,
+      getPages: AppRoute.appPage,
     );
   }
 }
