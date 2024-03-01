@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/component/splashScreen/botton.dart';
 import 'package:hotel/constant/constant.dart';
-
-import 'package:hotel/view/splashScreen/loading2.dart';
-import 'package:hotel/view/splashScreen/splashScreen3.dart';
-
 import '../../constant/appRoute.dart';
 
 class SplashScreen2 extends StatefulWidget {
@@ -103,32 +100,25 @@ class _SplashScreen2State extends State<SplashScreen2> {
       );
 
   Widget _buildNextBotton() => Padding(
-        padding: const EdgeInsets.only(top: 40),
-        child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                fixedSize: const Size(350, 65), backgroundColor: green),
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        child: SplashScreenBotton(
+            text: "Next",
+            textcolor: white,
+            fontSize: 25,
+            backgroundColor: green,
+            bottonsize: Size(350, 65),
             onPressed: () {
-              Get.off(const SplashScreen3());
-            },
-            child: const Center(
-                child: Text(
-              "Next",
-              style: TextStyle(fontSize: 25, color: white),
-            ))),
+              Get.offAndToNamed(AppRoute.splash3);
+            }),
       );
 
-  Widget _buildSkipBotton() => Padding(
-        padding: const EdgeInsets.only(top: 30),
-        child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                fixedSize: const Size(350, 65), backgroundColor: greenAccent),
-            onPressed: () {
-              Get.offAndToNamed(AppRoute.load2);
-            },
-            child: const Center(
-                child: Text(
-              "Skip",
-              style: TextStyle(fontSize: 25, color: green),
-            ))),
-      );
+  Widget _buildSkipBotton() => SplashScreenBotton(
+      text: "Skip",
+      textcolor: green,
+      fontSize: 25,
+      backgroundColor: greenAccent,
+      bottonsize: Size(350, 65),
+      onPressed: () {
+        Get.offAndToNamed(AppRoute.load2);
+      });
 }

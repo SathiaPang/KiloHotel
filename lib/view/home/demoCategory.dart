@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/data/data.dart';
-
 import 'package:hotel/view/satya/booking_detail/booking_detail_1.dart';
 
 class DemoCategory extends StatelessWidget {
@@ -17,7 +16,7 @@ class DemoCategory extends StatelessWidget {
         itemBuilder: (context, index) {
           final data = hotelList[index];
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
             child: GestureDetector(
               onTap: () {
                 Get.to(BookDetailScreenOne());

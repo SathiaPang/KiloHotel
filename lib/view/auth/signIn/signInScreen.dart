@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'package:hotel/view/navigationbar/naviga.dart';
 import 'package:hotel/constant/constant.dart';
 
+import 'package:hotel/view/auth/signIn/login.dart';
 import 'package:hotel/view/auth/signUp/signUpScreen.dart';
 
-class SigninScreen extends StatelessWidget {
-  const SigninScreen({super.key});
+class SigninScreen extends StatefulWidget {
+  SigninScreen({super.key});
 
+  @override
+  State<SigninScreen> createState() => _SigninScreenState();
+}
+
+class _SigninScreenState extends State<SigninScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,9 +64,6 @@ class SigninScreen extends StatelessWidget {
               ],
             ),
             _buildButton(),
-
-            // Test Botton soklay
-
             Spacer(),
             _buildDontHaveAccount(context)
           ]),
@@ -101,14 +102,13 @@ Widget _Custombox({required String imagepath, required String text}) => Padding(
 Widget _buildButton() => Padding(
       padding: EdgeInsets.only(top: 30),
       child: ElevatedButton(
+        onPressed: () {
+          Get.to(Login());
+        },
         style: ElevatedButton.styleFrom(
           fixedSize: Size(350, 65),
           backgroundColor: green,
         ),
-        onPressed: () {
-          // Get.to(CreateAcc());
-          Get.off(MyNavigationBar());
-        },
         child: Center(
           child: Text(
             'Sign in with Password',
