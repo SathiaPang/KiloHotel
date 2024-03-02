@@ -6,6 +6,7 @@ import 'package:hotel/constant/constant.dart';
 import 'package:hotel/view/Profile/editprofile.dart';
 import 'package:hotel/view/Profile/notificationScreen.dart';
 import 'package:hotel/view/Profile/security.dart';
+import 'package:hotel/view/auth/signIn/login.dart';
 import 'package:hotel/view/soklay/payment1.dart';
 
 class ProFile extends StatefulWidget {
@@ -326,7 +327,7 @@ class _ProFileState extends State<ProFile> {
             backgroundColor: Colors.green,
           ),
           onPressed: () {
-            // Get.to(Login());
+            Get.offAll(Login());
           },
           child: Center(
             child: Text(

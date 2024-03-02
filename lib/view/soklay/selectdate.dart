@@ -85,11 +85,11 @@ class _SelectDateState extends State<SelectDate> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text(
-              "Chcek in",
+              "Check in",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
             ),
             Text(
-              "Chcek out",
+              "Check out",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
             ),
           ],

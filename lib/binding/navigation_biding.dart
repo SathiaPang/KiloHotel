@@ -5,14 +5,13 @@ import 'package:hotel/controller/recentlycontroller.dart';
 import 'package:hotel/controller/search_controller.dart';
 import 'package:hotel/repo/homeRepositary.dart';
 
-class ControllerBinding extends Bindings {
+class NavigationBiding extends Bindings {
   @override
   void dependencies() {
-    // Get.put here
-    Get.put(HomeRepository());
     Get.put(NavigationController());
+    Get.put(HomeRepository());
     Get.put(HomeController(homeRepository: Get.find()));
-    Get.put(RecentlyController());
     Get.put(FindController(homeRepository: Get.find()));
+    Get.put(RecentlyController());
   }
 }

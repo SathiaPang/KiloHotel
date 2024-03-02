@@ -12,3 +12,4 @@ const borderfield = Colors.grey;
 const textfieldcolor = Color.fromARGB(255, 233, 231, 231);
 const paymentcolor = Color.fromARGB(255, 226, 249, 235);
 const iconcolor = Color.fromARGB(255, 88, 86, 86);
+const red = Colors.red;

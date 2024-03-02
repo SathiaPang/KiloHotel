@@ -21,8 +21,8 @@ class _Loading2State extends State<Loading2> {
   void initLoading() {
     Timer(
         const Duration(seconds: 1),
-        () => Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const SigninScreen())));
+        () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => SigninScreen())));
   }
 
   @override
