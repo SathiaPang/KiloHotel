@@ -100,104 +100,104 @@ class _SignupScreenState extends State<CreateAcc> {
       ),
     );
   }
-}
 
-Widget _TextFieldsEmail() => Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      child: TextFormField(
-        keyboardType: TextInputType.emailAddress,
-        textInputAction: TextInputAction.next,
-        cursorColor: Colors.grey,
-        // controller:
-        onSaved: (email) {},
-        decoration: const InputDecoration(
-          hintText: "Email",
-          prefixIcon: Icon(Icons.email_outlined),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
+  Widget _TextFieldsEmail() => Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        child: TextFormField(
+          keyboardType: TextInputType.emailAddress,
+          textInputAction: TextInputAction.next,
+          cursorColor: Colors.grey,
+          // controller:
+          onSaved: (email) {},
+          decoration: const InputDecoration(
+            hintText: "Email",
+            prefixIcon: Icon(Icons.email_outlined),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+            ),
           ),
         ),
-      ),
-    );
+      );
 
-Widget _TextFieldsPassword() => Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      child: TextFormField(
-        // controller: _controller.Lpassword,
-        textInputAction: TextInputAction.done,
-        obscureText: true,
-        cursorColor: Colors.grey,
-        decoration: const InputDecoration(
-          hintText: "Password",
-          prefixIcon: Padding(
-            padding: EdgeInsets.only(top: 5),
-            child: Icon(Icons.lock),
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
+  Widget _TextFieldsPassword() => Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        child: TextFormField(
+          // controller: _controller.Lpassword,
+          textInputAction: TextInputAction.done,
+          obscureText: true,
+          cursorColor: Colors.grey,
+          decoration: const InputDecoration(
+            hintText: "Password",
+            prefixIcon: Padding(
+              padding: EdgeInsets.only(top: 5),
+              child: Icon(Icons.lock),
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+            ),
           ),
         ),
-      ),
-    );
-Widget _signupButton() => Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            fixedSize: Size(350, 65),
-            backgroundColor: green,
+      );
+  Widget _signupButton() => Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              fixedSize: Size(350, 65),
+              backgroundColor: green,
+            ),
+            onPressed: () {
+              Get.to(SignupScreen());
+            },
+            child: Center(
+              child: Text(
+                'Sign up',
+                style: TextStyle(color: white, fontSize: 17),
+              ),
+            ),
           ),
-          onPressed: () {
-            Get.to(SignupScreen());
-          },
+        ],
+      );
+  Widget _Box({required String image}) => Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        child: Container(
+          width: 75,
+          height: 75,
+          decoration: BoxDecoration(
+            color: white,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: Colors.black38,
+              width: 2.0,
+            ),
+          ),
           child: Center(
+            child: Image.asset(
+              image,
+            ),
+          ),
+        ),
+      );
+  Widget _buildDontHaveAccount(BuildContext context) => Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("Don't have an account? "),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SignupScreen()),
+              );
+            },
             child: Text(
-              'Sign up',
-              style: TextStyle(color: white, fontSize: 17),
+              "Sign Up",
+              style: TextStyle(
+                color: green,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-        ),
-      ],
-    );
-Widget _Box({required String image}) => Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      child: Container(
-        width: 75,
-        height: 75,
-        decoration: BoxDecoration(
-          color: white,
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(
-            color: Colors.black38,
-            width: 2.0,
-          ),
-        ),
-        child: Center(
-          child: Image.asset(
-            image,
-          ),
-        ),
-      ),
-    );
-Widget _buildDontHaveAccount(BuildContext context) => Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("Don't have an account? "),
-        TextButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => SignupScreen()),
-            );
-          },
-          child: Text(
-            "Sign Up",
-            style: TextStyle(
-              color: green,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        )
-      ],
-    );
+          )
+        ],
+      );
+}
