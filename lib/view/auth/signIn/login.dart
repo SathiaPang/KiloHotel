@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
-
+import 'package:hotel/controller/login_controller.dart';
 import '../signUp/signUpScreen.dart';
 
 class Login extends StatefulWidget {
@@ -25,82 +26,74 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            Get.back();
-          },
-        ),
-      ),
-      body: Container(
-        padding: EdgeInsets.all(15.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: Text(
-                  "Login to your\nAccount ",
-                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.w500),
+      body: SafeArea(
+        child: Container(
+          padding: EdgeInsets.all(15.0),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: Get.height / 3.9,
+                  width: Get.width / 1,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("assets/images/logo.png"),
+                          fit: BoxFit.contain)),
                 ),
-              ),
-              _TextFieldsEmail(),
-              _TextFieldsPassword(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Checkbox(
-                    value: _isChecked ?? false,
-                    onChanged: (value) {
-                      setState(() {
-                        _isChecked = value ?? false;
-                        if (widget.onChanged != null) {
-                          widget.onChanged!(_isChecked);
-                        }
-                      });
-                    },
-                  ),
-                  Text('Remember me'),
-                ],
-              ),
-              SizedBox(height: 5),
-              _signupButton(),
-              _buitdforgotpass(),
-              SizedBox(height: 50),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 1,
-                    width: Get.width / 5,
-                    color: Colors.black,
-                  ),
-                  SizedBox(width: 5),
-                  Text(
-                    'or continue with',
-                    style: TextStyle(fontSize: 17),
-                  ),
-                  SizedBox(width: 5),
-                  Container(
-                    height: 1,
-                    width: Get.width / 5,
-                    color: Colors.black,
-                  ),
-                ],
-              ),
-              SizedBox(height: 25),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _Box(image: 'assets/images/facebook.png'),
-                  _Box(image: 'assets/images/google.png'),
-                  _Box(image: 'assets/images/apple.png'),
-                ],
-              ),
-              _buildDontHaveAccount(context),
-            ],
+                _TextFieldsEmail(),
+                _TextFieldsPassword(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Checkbox(
+                      value: _isChecked ?? false,
+                      onChanged: (value) {
+                        setState(() {
+                          _isChecked = value ?? false;
+                          if (widget.onChanged != null) {
+                            widget.onChanged!(_isChecked);
+                          }
+                        });
+                      },
+                    ),
+                    Text('Remember me'),
+                  ],
+                ),
+                SizedBox(height: 5),
+                _signupButton(LoginController()),
+                _buitdforgotpass(),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 1,
+                      width: Get.width / 5,
+                      color: Colors.black,
+                    ),
+                    Text(
+                      ' or continue with ',
+                      style: TextStyle(fontSize: 17),
+                    ),
+                    Container(
+                      height: 1,
+                      width: Get.width / 5,
+                      color: Colors.black,
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _Box(image: 'assets/images/facebook.png'),
+                    _Box(image: 'assets/images/google.png'),
+                    _Box(image: 'assets/images/apple.png'),
+                  ],
+                ),
+                _buildDontHaveAccount(context),
+              ],
+            ),
           ),
         ),
       ),
@@ -145,7 +138,7 @@ Widget _TextFieldsPassword() => Padding(
         ),
       ),
     );
-Widget _signupButton() => Row(
+Widget _signupButton(LoginController controller) => Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ElevatedButton(
@@ -154,7 +147,8 @@ Widget _signupButton() => Row(
             backgroundColor: green,
           ),
           onPressed: () {
-            // Get.offAll(HomeScreen());
+            controller.loginApp();
+            // Get.offAllNamed(AppRoute.bottomNavigation);
           },
           child: Center(
             child: Text(

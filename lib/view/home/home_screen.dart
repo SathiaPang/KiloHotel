@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen>
                   ),
                 ),
                 SizedBox(
-                  width: 10,
+                  width: 25,
                 ),
                 Text(
                   "Bolu",
@@ -99,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen>
       ));
 
   Widget _builSeeAll() => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -124,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen>
       );
 
   Widget _builNickName() => Padding(
-        padding: const EdgeInsets.only(top: 5, left: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Row(
           children: [
             Text(
