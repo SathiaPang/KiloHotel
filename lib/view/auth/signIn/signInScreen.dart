@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 
 import 'package:hotel/view/auth/signIn/login.dart';
@@ -103,7 +104,7 @@ Widget _buildButton() => Padding(
       padding: EdgeInsets.only(top: 30),
       child: ElevatedButton(
         onPressed: () {
-          Get.to(Login());
+          Get.toNamed(AppRoute.login);
         },
         style: ElevatedButton.styleFrom(
           fixedSize: Size(350, 65),
