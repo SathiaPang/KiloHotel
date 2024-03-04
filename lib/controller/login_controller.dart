@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
+import 'package:hotel/response/user_reponse.dart';
 
 class LoginController extends GetxController {
   final formkeySignIn = GlobalKey<FormState>();
@@ -16,6 +18,9 @@ class LoginController extends GetxController {
   final passwordSignUpController = TextEditingController();
   final fullNameController = TextEditingController();
   final nicknameController = TextEditingController();
+
+  final UserRespoitory userRespoitory;
+  LoginController({required this.userRespoitory});
 
   void loginApp() async {
     if (userSignInController.text.isEmpty ||
@@ -34,7 +39,13 @@ class LoginController extends GetxController {
       return;
     }
 
-    try {} on DioException catch (e) {
+    try {
+      final res = await userRespoitory.login(
+          userSignInController.text, passwordSignInController.text);
+      if (res.data != null) {
+        Get.offAndToNamed(AppRoute.bottomNavigation);
+      }
+    } on DioException catch (e) {
       Get.showSnackbar(GetSnackBar(
         message: e.message ?? "Somthing wrong",
         duration: Duration(seconds: 1),
