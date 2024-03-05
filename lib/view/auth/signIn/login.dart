@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/login_controller.dart';
 import '../signUp/signUpScreen.dart';
@@ -150,6 +151,7 @@ class _LoginState extends State<Login> {
             ),
             onPressed: () {
               _controller.loginApp();
+              // Get.offAllNamed(AppRoute.bottomNavigation);
             },
             child: Center(
               child: Text(
