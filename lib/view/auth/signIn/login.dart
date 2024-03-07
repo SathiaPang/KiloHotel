@@ -3,10 +3,12 @@ import 'package:get/get.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/login_controller.dart';
+import 'package:hotel/view/satya/Create_new_password.dart';
 import '../signUp/signUpScreen.dart';
 
 class Login extends StatefulWidget {
   Login({super.key, this.onChanged, this.initialValue = false});
+
   final ValueChanged<bool?>? onChanged;
   final bool initialValue;
 
@@ -22,6 +24,8 @@ class _LoginState extends State<Login> {
     super.initState();
     _isChecked = widget.initialValue;
   }
+
+  final LoginController _controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +65,7 @@ class _LoginState extends State<Login> {
                   ],
                 ),
                 SizedBox(height: 5),
-                _signupButton(LoginController()),
+                _signInButton(),
                 _buitdforgotpass(),
                 SizedBox(height: 20),
                 Row(
@@ -69,7 +73,7 @@ class _LoginState extends State<Login> {
                   children: [
                     Container(
                       height: 1,
-                      width: Get.width / 5,
+                      width: Get.width / 4,
                       color: Colors.black,
                     ),
                     Text(
@@ -78,7 +82,7 @@ class _LoginState extends State<Login> {
                     ),
                     Container(
                       height: 1,
-                      width: Get.width / 5,
+                      width: Get.width / 4,
                       color: Colors.black,
                     ),
                   ],
@@ -99,16 +103,15 @@ class _LoginState extends State<Login> {
       ),
     );
   }
-}
 
-Widget _TextFieldsEmail() => Padding(
+  Widget _TextFieldsEmail() {
+    return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: TextFormField(
         keyboardType: TextInputType.emailAddress,
         textInputAction: TextInputAction.next,
         cursorColor: Colors.grey,
-        // controller:
-        onSaved: (email) {},
+        controller: _controller.userSignInController,
         decoration: const InputDecoration(
           hintText: "Email",
           prefixIcon: Icon(Icons.email_outlined),
@@ -118,102 +121,101 @@ Widget _TextFieldsEmail() => Padding(
         ),
       ),
     );
+  }
 
-Widget _TextFieldsPassword() => Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      child: TextFormField(
-        // controller: _controller.Lpassword,
-        textInputAction: TextInputAction.done,
-        obscureText: true,
-        cursorColor: Colors.grey,
-        decoration: const InputDecoration(
-          hintText: "Password",
-          prefixIcon: Padding(
-            padding: EdgeInsets.only(top: 5),
-            child: Icon(Icons.lock),
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-          ),
-        ),
-      ),
-    );
-Widget _signupButton(LoginController controller) => Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            fixedSize: Size(350, 65),
-            backgroundColor: green,
-          ),
-          onPressed: () {
-            controller.loginApp();
-            // Get.offAllNamed(AppRoute.bottomNavigation);
-          },
-          child: Center(
-            child: Text(
-              'Sign in',
-              style: TextStyle(color: white, fontSize: 17),
+  Widget _TextFieldsPassword() => Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        child: TextFormField(
+          controller: _controller.passwordSignInController,
+          textInputAction: TextInputAction.done,
+          obscureText: true,
+          cursorColor: Colors.grey,
+          decoration: const InputDecoration(
+            hintText: "Password",
+            prefixIcon: Padding(
+              padding: EdgeInsets.only(top: 5),
+              child: Icon(Icons.lock),
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
           ),
         ),
-      ],
-    );
-Widget _Box({required String image}) => Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      child: Container(
-        width: 75,
-        height: 75,
-        decoration: BoxDecoration(
-          color: white,
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(
-            color: Colors.black38,
-            width: 2.0,
+      );
+  Widget _signInButton() => Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              fixedSize: Size(360, 65),
+              backgroundColor: green,
+            ),
+            onPressed: () {
+              _controller.loginApp();
+              // Get.offAllNamed(AppRoute.bottomNavigation);
+            },
+            child: Center(
+              child: Text(
+                'Sign in',
+                style: TextStyle(color: white, fontSize: 17),
+              ),
+            ),
+          ),
+        ],
+      );
+  Widget _Box({required String image}) => Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        child: Container(
+          width: 75,
+          height: 75,
+          decoration: BoxDecoration(
+            color: white,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: Colors.black38,
+              width: 2.0,
+            ),
+          ),
+          child: Center(
+            child: Image.asset(
+              image,
+            ),
           ),
         ),
+      );
+  Widget _buildDontHaveAccount(BuildContext context) => Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("Don't have an account? "),
+          TextButton(
+            onPressed: () {
+              Get.to(SignupScreen());
+            },
+            child: Text(
+              "Sign Up",
+              style: TextStyle(
+                color: green,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          )
+        ],
+      );
+
+  Widget _buitdforgotpass() => TextButton(
+        onPressed: () {
+          Get.to(CreateNewPassword());
+        },
         child: Center(
-          child: Image.asset(
-            image,
-          ),
-        ),
-      ),
-    );
-Widget _buildDontHaveAccount(BuildContext context) => Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("Don't have an account? "),
-        TextButton(
-          onPressed: () {
-            Get.to(SignupScreen());
-          },
           child: Text(
-            "Sign Up",
+            "Forgot the password?",
             style: TextStyle(
               color: green,
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
           ),
-        )
-      ],
-    );
-
-Widget _buitdforgotpass() => TextButton(
-      onPressed: () {
-        // Navigator.push(
-        //   context,
-        //   // MaterialPageRoute(builder: (context) => SignupScreen()),
-        // );
-      },
-      child: Center(
-        child: Text(
-          "Forgot the password?",
-          style: TextStyle(
-            color: green,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
         ),
-      ),
-    );
+      );
+}

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 
 import 'package:hotel/view/auth/signIn/login.dart';
@@ -71,71 +72,72 @@ class _SigninScreenState extends State<SigninScreen> {
       ),
     );
   }
-}
 
-Widget _Custombox({required String imagepath, required String text}) => Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: Container(
-        height: 50,
-        decoration: BoxDecoration(
-          border: Border.all(width: 0.5, color: Colors.grey),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              imagepath,
-              // height: 35,
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            Text(
-              text,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-            ),
-          ],
-        ),
-      ),
-    );
-Widget _buildButton() => Padding(
-      padding: EdgeInsets.only(top: 30),
-      child: ElevatedButton(
-        onPressed: () {
-          Get.to(Login());
-        },
-        style: ElevatedButton.styleFrom(
-          fixedSize: Size(350, 65),
-          backgroundColor: green,
-        ),
-        child: Center(
-          child: Text(
-            'Sign in with Password',
-            style: TextStyle(color: white, fontSize: 17),
+  Widget _Custombox({required String imagepath, required String text}) =>
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child: Container(
+          height: 50,
+          decoration: BoxDecoration(
+            border: Border.all(width: 0.5, color: Colors.grey),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                imagepath,
+                // height: 35,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                text,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+            ],
           ),
         ),
-      ),
-    );
-Widget _buildDontHaveAccount(BuildContext context) => Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("Don't have an account? "),
-        TextButton(
+      );
+  Widget _buildButton() => Padding(
+        padding: EdgeInsets.only(top: 30),
+        child: ElevatedButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => SignupScreen()),
-            );
+            Get.toNamed(AppRoute.login);
           },
-          child: Text(
-            "Sign Up",
-            style: TextStyle(
-              color: green,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+          style: ElevatedButton.styleFrom(
+            fixedSize: Size(350, 65),
+            backgroundColor: green,
+          ),
+          child: Center(
+            child: Text(
+              'Sign in with Password',
+              style: TextStyle(color: white, fontSize: 17),
             ),
           ),
-        )
-      ],
-    );
+        ),
+      );
+  Widget _buildDontHaveAccount(BuildContext context) => Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("Don't have an account? "),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SignupScreen()),
+              );
+            },
+            child: Text(
+              "Sign Up",
+              style: TextStyle(
+                color: green,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          )
+        ],
+      );
+}

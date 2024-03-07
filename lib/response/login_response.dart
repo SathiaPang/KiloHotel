@@ -51,12 +51,50 @@ class Data {
 }
 
 class User {
+  int id;
   String username;
-  String password;
+  String email;
+  dynamic avatar;
+  dynamic phone;
+  dynamic bio;
+  dynamic address;
+  String roleName;
+  int roleId;
+  bool status;
 
-  User({required this.username, required this.password});
+  User(
+      {required this.id,
+      required this.username,
+      required this.email,
+      required this.avatar,
+      required this.phone,
+      required this.bio,
+      required this.address,
+      required this.roleName,
+      required this.roleId,
+      required this.status});
 
-  factory User.fromJson(Map<String, dynamic> json) =>
-      User(username: json["username"], password: json["password"]);
-  Map<String, dynamic> toJson() => {"username": username, "password": password};
+  factory User.fromJson(Map<String, dynamic> json) => User(
+      id: json["id"],
+      username: json["username"],
+      email: json["email"],
+      avatar: json["avatar"],
+      phone: json["phone"],
+      bio: json["bio"],
+      address: json["address"],
+      roleName: json["roleName"],
+      roleId: json["roleId"],
+      status: json["status"]);
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "username": username,
+        "email": email,
+        "avatar": avatar,
+        "phone": phone,
+        "bio": bio,
+        "address": address,
+        "roleName": roleName,
+        "roleId": roleId,
+        "status": status,
+      };
 }

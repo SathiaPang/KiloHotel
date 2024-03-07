@@ -26,6 +26,7 @@ class SearchCategory {
         RoomCategory(tab: 'Trending'),
       ];
 }
+
 class Hotel {
   String img, name, location, category, searchcategory;
   double price;
@@ -60,47 +61,46 @@ class Hotel {
 
   static List<Hotel> hotel = [
     Hotel(
-        img: "assets/images/hotel.jpg", // Provide the actual image URL
-        location: "Hotel Location",
+        img: "assets/images/hotel.jpg",
+        location: "Cambodia, Battambong",
         name: "Hotel 1",
         price: 150.0,
         category: "Recommended",
-        searchcategory: "All Hotel" // Replace with the actual price
-        ),
+        searchcategory: "All Hotel"),
     Hotel(
-        img: "assets/images/hotel.jpg", // Provide the actual image URL
-        location: "Hotel Location",
+        img: "assets/images/hotel.jpg",
+        location: "Cambodia, kandal",
         name: "Hotel 1",
-        price: 150.0,
-        category: "Recommended", // Replace with the actual price
+        price: 160.0,
+        category: "Recommended",
         searchcategory: "All Hotel"),
     Hotel(
-        img: "assets/images/hotel.jpg", // Provide the actual image URL
-        location: "Hotel Location",
+        img: "assets/images/hotel.jpg",
+        location: "Cambodia, Kompot",
         name: "Hotel 2",
-        price: 150.0,
-        category: "Recommended", // Replace with the actual price
+        price: 140.0,
+        category: "Recommended",
         searchcategory: "All Hotel"),
     Hotel(
-      img: "assets/images/hotel.jpg", // Provide the actual image URL
-      location: "Hotel Location",
+      img: "assets/images/hotel.jpg",
+      location: "Cambodia, Kompong Cham",
       name: "Hotel 3",
-      price: 150.0,
-      category: "Popular", // Replace with the actual price
+      price: 100.0,
+      category: "Popular",
       searchcategory: "All Hotel",
     ),
     Hotel(
-        img: "assets/images/hotel.jpg", // Provide the actual image URL
-        location: "Hotel Location",
+        img: "assets/images/hotel.jpg",
+        location: "Cambodia, MundulKiri",
         name: "Hotel 4",
-        price: 150.0, // Replace with the actual price
+        price: 200.0,
         category: "Trending",
         searchcategory: "All Hotel"),
     Hotel(
-        img: "assets/images/hotel.jpg", // Provide the actual image URL
-        location: "Hotel Location",
+        img: "assets/images/hotel.jpg",
+        location: "Cambodia, Siem Reab",
         name: "Hotel 5",
-        price: 150.0, // Replace with the actual price
+        price: 180.0, //
         category: "Trending",
         searchcategory: "All Hotel"),
   ];
