@@ -43,7 +43,6 @@ class LoginController extends GetxController {
       final res = await userRespoitory.login(
           userSignInController.text, passwordSignInController.text);
       if (res.data != null) {
-        // Get.offAndToNamed(AppRoute.bottomNavigation);
         Get.offAllNamed(AppRoute.bottomNavigation);
       }
     } on DioException catch (e) {

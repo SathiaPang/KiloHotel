@@ -13,10 +13,10 @@ class RoomCategory {
 }
 
 class SearchCategory {
-  String Searchtab;
+  String searchtab;
 
   SearchCategory({
-    required this.Searchtab,
+    required this.searchtab,
   });
 
   static List<RoomCategory> getSearchList() => [
@@ -74,6 +74,14 @@ class Hotel {
         price: 160.0,
         category: "Recommended",
         searchcategory: "All Hotel"),
+
+      img: "assets/images/hotel.jpg",
+      location: "Cambodia, Battambong",
+      name: "Hotel 1",
+      price: 150.0,
+      category: "Recommended",
+      searchcategory: "All Hotel",
+    ),
     Hotel(
         img: "assets/images/hotel.jpg",
         location: "Cambodia, Kompot",
@@ -102,6 +110,13 @@ class Hotel {
         name: "Hotel 5",
         price: 180.0, //
         category: "Trending",
+        searchcategory: "All Hotel"),
+    Hotel(
+        img: "assets/images/hotel.jpg",
+        location: "Cambodia, kandal",
+        name: "Hotel 6",
+        price: 160.0,
+        category: "Recommended",
         searchcategory: "All Hotel"),
   ];
 }

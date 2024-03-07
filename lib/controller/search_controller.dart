@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
 import 'package:hotel/data/data.dart';
-import 'package:hotel/repo/homeRepositary.dart';
+import 'package:hotel/repo/searchRepository.dart';
 
 class FindController extends GetxController {
-  FindController({required this.homeRepository});
+  FindController({required this.searchRepository});
   final repo = <Hotel>[].obs;
   final searchcategory = <RoomCategory>[].obs;
-  final HomeRepository homeRepository;
+  final SearchRepository searchRepository;
   final selectedIndex = 0.obs;
   final click = true.obs;
 
@@ -17,11 +17,11 @@ class FindController extends GetxController {
   @override
   void onInit() async {
     // Get Category
-    final tabcate = homeRepository.getSearchCategory();
+    final tabcate = searchRepository.getSearchCategory();
     searchcategory(tabcate);
 
     // Get list Hotel
-    _allList = await homeRepository.getSearchList();
+    _allList = await searchRepository.getSearchList();
     filTerByIndex(0);
     super.onInit();
   }
@@ -30,9 +30,9 @@ class FindController extends GetxController {
     selectedIndex(index);
     final catergorysearch = searchcategory[index];
     final tmplist =
-        _allList.where((e) => e.category == catergorysearch.tab).toList();
+        _allList.where((e) => e.searchcategory == catergorysearch.tab).toList();
     repo(tmplist);
-    print(selectedIndex);
+    // print(selectedIndex);
     update();
   }
 
