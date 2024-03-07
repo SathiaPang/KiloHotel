@@ -10,8 +10,8 @@ class LoginController extends GetxController {
   final formkeySignUp = GlobalKey<FormState>();
 
   // SignIn
-  final userSignInController = TextEditingController();
-  final passwordSignInController = TextEditingController();
+  final userSignInController = TextEditingController(text: "super admin");
+  final passwordSignInController = TextEditingController(text: "321");
 
   // SignUp
   final emailSignUpController = TextEditingController();
@@ -43,7 +43,7 @@ class LoginController extends GetxController {
       final res = await userRespoitory.login(
           userSignInController.text, passwordSignInController.text);
       if (res.data != null) {
-        Get.offAndToNamed(AppRoute.bottomNavigation);
+        Get.offAllNamed(AppRoute.bottomNavigation);
       }
     } on DioException catch (e) {
       Get.showSnackbar(GetSnackBar(
