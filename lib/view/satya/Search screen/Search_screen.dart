@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
-
 import 'package:hotel/controller/search_controller.dart';
-import 'package:hotel/data/data.dart';
 import 'package:hotel/tabbar/tabbar.dart';
 import 'package:hotel/view/satya/Search%20screen/demoSearch.dart';
 

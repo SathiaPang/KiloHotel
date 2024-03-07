@@ -5,10 +5,10 @@ class HomeRepository {
     return Future.value(Hotel.hotel);
   }
 
-  Future<List<Hotel>> getSearchList() {
-    return Future.value(Hotel.hotel);
-  }
+  // Future<List<Hotel>> getSearchList() {
+  //   return Future.value(Hotel.hotel);
+  // }
 
   List<RoomCategory> getRoomCategory() => RoomCategory.getList();
-  List<RoomCategory> getSearchCategory() => SearchCategory.getSearchList();
+  // List<RoomCategory> getSearchCategory() => SearchCategory.getSearchList();
 }
