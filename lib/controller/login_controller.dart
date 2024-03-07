@@ -14,10 +14,13 @@ class LoginController extends GetxController {
   final passwordSignInController = TextEditingController();
 
   // SignUp
-  final emailSignUpController = TextEditingController();
-  final passwordSignUpController = TextEditingController();
-  final fullNameController = TextEditingController();
-  final nicknameController = TextEditingController();
+  final username = TextEditingController();
+  final name = TextEditingController();
+  final phone = TextEditingController();
+  final email = TextEditingController();
+  final password = TextEditingController();
+  final address = TextEditingController();
+
 
   final UserRespoitory userRespoitory;
   LoginController({required this.userRespoitory});
@@ -51,5 +54,8 @@ class LoginController extends GetxController {
         duration: Duration(seconds: 1),
       ));
     }
+  }
+  void signUpApp() async {
+
   }
 }
