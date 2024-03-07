@@ -41,9 +41,10 @@ class _LoginState extends State<Login> {
                   height: Get.height / 3.9,
                   width: Get.width / 1,
                   decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/logo.png"),
-                          fit: BoxFit.contain)),
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/logo.png"),
+                        fit: BoxFit.contain),
+                  ),
                 ),
                 _TextFieldsEmail(),
                 _TextFieldsPassword(),
@@ -154,7 +155,7 @@ class _LoginState extends State<Login> {
             ),
             onPressed: () {
               _controller.loginApp();
-              // Get.offAllNamed(AppRoute.bottomNavigation);
+              Get.offAllNamed(AppRoute.bottomNavigation);
             },
             child: Center(
               child: Text(
