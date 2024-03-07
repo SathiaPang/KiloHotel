@@ -61,6 +61,20 @@ class Hotel {
 
   static List<Hotel> hotel = [
     Hotel(
+        img: "assets/images/hotel.jpg",
+        location: "Cambodia, Battambong",
+        name: "Hotel 1",
+        price: 150.0,
+        category: "Recommended",
+        searchcategory: "All Hotel"),
+    Hotel(
+        img: "assets/images/hotel.jpg",
+        location: "Cambodia, kandal",
+        name: "Hotel 1",
+        price: 160.0,
+        category: "Recommended",
+        searchcategory: "All Hotel"),
+
       img: "assets/images/hotel.jpg",
       location: "Cambodia, Battambong",
       name: "Hotel 1",

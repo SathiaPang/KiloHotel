@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/login_controller.dart';
+import 'package:hotel/view/satya/Create_new_password.dart';
 import '../signUp/signUpScreen.dart';
 
 class Login extends StatefulWidget {
@@ -64,6 +65,7 @@ class _LoginState extends State<Login> {
                   ],
                 ),
                 SizedBox(height: 5),
+                _signInButton(),
                 _signupButton(),
                 _buitdforgotpass(),
                 SizedBox(height: 20),
@@ -141,11 +143,12 @@ class _LoginState extends State<Login> {
           ),
         ),
       );
-  Widget _signupButton() => Row(
+  Widget _signInButton() => Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ElevatedButton(
             style: ElevatedButton.styleFrom(
+              fixedSize: Size(360, 65),
               fixedSize: Size(378, 65),
               backgroundColor: green,
             ),
@@ -204,10 +207,7 @@ class _LoginState extends State<Login> {
 
   Widget _buitdforgotpass() => TextButton(
         onPressed: () {
-          // Navigator.push(
-          //   context,
-          //   // MaterialPageRoute(builder: (context) => SignupScreen()),
-          // );
+          Get.to(CreateNewPassword());
         },
         child: Center(
           child: Text(

@@ -317,7 +317,7 @@ class _BookingScreenState extends State<BookingScreen>
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        primary: color,
+        backgroundColor: color,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(25),
           side: BorderSide(color: colorside, width: 2),

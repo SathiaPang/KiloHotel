@@ -9,50 +9,54 @@ class DialogPayMent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 200),
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Container(
-            height: double.infinity,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                color: white, borderRadius: BorderRadius.circular(25)),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 20,
-                ),
-                Icon(
-                  Icons.check_circle,
-                  size: 190,
-                  color: green,
-                ),
-                Text(
-                  "Payment Successfull!",
-                  style: TextStyle(
-                      color: green, fontWeight: FontWeight.w700, fontSize: 20),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  "Successfull made payment and hotel booking",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: black, fontWeight: FontWeight.w400, fontSize: 15),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                _buildViewTicket(),
-                SizedBox(
-                  height: 10,
-                ),
-                _buildCancel()
-              ],
-            ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 150),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: BoxDecoration(
+              color: white, borderRadius: BorderRadius.circular(25)),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              Icon(
+                Icons.check_circle,
+                size: 190,
+                color: green,
+              ),
+              Text(
+                "Payment Successfull!",
+                style: TextStyle(
+                    color: green, fontWeight: FontWeight.w700, fontSize: 20),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                "Successfull made payment and hotel booking",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: black, fontWeight: FontWeight.w400, fontSize: 15),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: _buildViewTicket(),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: _buildCancel(),
+              )
+            ],
           ),
         ),
       ),

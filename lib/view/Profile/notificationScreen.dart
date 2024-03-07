@@ -160,7 +160,7 @@ class NotiScreen extends StatelessWidget {
 
   Widget _signButton() => ElevatedButton(
         style: ElevatedButton.styleFrom(
-          fixedSize: Size(370, 60),
+          fixedSize: Size(350, 65),
           backgroundColor: green,
         ),
         onPressed: () {

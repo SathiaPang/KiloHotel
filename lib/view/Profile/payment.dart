@@ -267,7 +267,7 @@ Widget _buildBottonContinue(BuildContext context) {
       height: MediaQuery.of(context).size.height / 15,
       width: MediaQuery.of(context).size.width / 1.1,
       decoration: BoxDecoration(
-        color: Colors.green,
+        color: green,
         borderRadius: BorderRadius.circular(30),
         boxShadow: [
           BoxShadow(
