@@ -14,13 +14,12 @@ class LoginController extends GetxController {
   final passwordSignInController = TextEditingController(text: "123");
 
   // SignUp
-  final username = TextEditingController();
-  final name = TextEditingController();
-  final phone = TextEditingController();
-  final email = TextEditingController();
-  final password = TextEditingController();
-  final address = TextEditingController();
-
+  final userNameController = TextEditingController();
+  final nameController = TextEditingController();
+  final phoneNumberControler = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final addressController = TextEditingController();
 
   final UserRespoitory userRespoitory;
   LoginController({required this.userRespoitory});
@@ -55,7 +54,31 @@ class LoginController extends GetxController {
       ));
     }
   }
-  void signUpApp() async {
 
+  void signUpApp() async {
+    if (userNameController.text.isEmpty ||
+        nameController.text.isEmpty ||
+        phoneNumberControler.text.isEmpty ||
+        emailController.text.isEmpty ||
+        passwordController.text.isEmpty ||
+        addressController.text.isEmpty) {
+      Get.showSnackbar(
+        GetSnackBar(
+          backgroundColor: red,
+          messageText: Text(
+            "Please fill in all of the field!!",
+            style: TextStyle(fontSize: 16, color: white),
+          ),
+          duration: Duration(seconds: 1),
+          borderRadius: 15,
+          maxWidth: 400,
+        ),
+      );
+      return;
+    }
+    // try {
+    //   final res = await userRespoitory.(
+    //   );
+    // } catch (e) {}
   }
 }
