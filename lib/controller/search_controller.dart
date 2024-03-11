@@ -9,9 +9,7 @@ class FindController extends GetxController {
   final SearchRepository searchRepository;
   final selectedIndex = 0.obs;
   final click = true.obs;
-
   List<Hotel> _allList = [];
-
   final RxBool isGridVisible = false.obs;
 
   @override
@@ -29,8 +27,15 @@ class FindController extends GetxController {
   void filTerByIndex(int index) {
     selectedIndex(index);
     final catergorysearch = searchcategory[index];
+
+    if (catergorysearch.tab == 'All Hotel') {
+      repo(_allList);
+      update();
+      return;
+    }
+
     final tmplist =
-        _allList.where((e) => e.searchcategory == catergorysearch.tab).toList();
+        _allList.where((e) => e.category == catergorysearch.tab).toList();
     repo(tmplist);
     // print(selectedIndex);
     update();

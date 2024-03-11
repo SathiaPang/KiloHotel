@@ -10,15 +10,6 @@ class RoomCategory {
         RoomCategory(tab: 'Popular'),
         RoomCategory(tab: 'Trending'),
       ];
-}
-
-class SearchCategory {
-  String searchtab;
-
-  SearchCategory({
-    required this.searchtab,
-  });
-
   static List<RoomCategory> getSearchList() => [
         RoomCategory(tab: 'All Hotel'),
         RoomCategory(tab: 'Recommended'),
@@ -45,6 +36,7 @@ class Hotel {
       'location': location,
       'name': name,
       'price': price,
+      'category': category,
       'searchcategory': searchcategory,
     };
   }
@@ -60,6 +52,9 @@ class Hotel {
   }
 
   static List<Hotel> hotel = [
+    // category = HomeRepository
+    // SearchCategory = SearchRepository
+
     Hotel(
       img: "assets/images/hotel.jpg",
       location: "Cambodia, Battambong",
