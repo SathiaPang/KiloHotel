@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/home_controller.dart';
+import 'package:hotel/controller/login_controller.dart';
 import 'package:hotel/view/booking/recently.dart';
 import 'package:hotel/view/home/demoCategory.dart';
 import '../../tabbar/tabbar.dart';
@@ -81,11 +82,14 @@ class _HomeScreenState extends State<HomeScreen>
               //
               _builNickName(),
               _buildSearch(),
-              TabbarEdit(
-                  _tabController,
-                  _homeController.roomcategorys,
-                  _homeController.selectedIndex.value,
-                  (index) => _homeController.filTerByIndex(index)),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                child: TabbarEdit(
+                    _tabController,
+                    _homeController.roomcategorys,
+                    _homeController.selectedIndex.value,
+                    (index) => _homeController.filTerByIndex(index)),
+              ),
               _builSeeAll(),
               _buildTabbarView(),
             ],
@@ -99,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen>
       ));
 
   Widget _builSeeAll() => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 0),
+        padding: const EdgeInsets.symmetric(horizontal: 7),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -136,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen>
       );
 
   Widget _buildSearch() => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
         child: InkWell(
           onTap: () {
             // Get.to(SearchScreen());
