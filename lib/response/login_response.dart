@@ -34,10 +34,6 @@ class LoginResponse {
       };
 }
 
-class SignUpResponse{
-  
-}
-
 class Data {
   User user;
   String token;
