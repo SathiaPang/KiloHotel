@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 import 'package:hotel/binding/login_binding.dart';
 import 'package:hotel/binding/navigation_biding.dart';
+import 'package:hotel/binding/selectDateBinding.dart';
 import 'package:hotel/view/auth/signIn/login.dart';
 import 'package:hotel/view/auth/signIn/signInScreen.dart';
 import 'package:hotel/view/navigationbar/naviga.dart';
+import 'package:hotel/view/satya/booking_detail/booking_detail_1.dart';
 import 'package:hotel/view/splashScreen/loading1.dart';
 import 'package:hotel/view/splashScreen/loading2.dart';
 import 'package:hotel/view/splashScreen/splashScreen1.dart';
@@ -19,6 +21,7 @@ class AppRoute {
   static String signin = "/signin";
   static String login = "/login";
   static String bottomNavigation = "/navigation";
+  static String selectDate = "/selectDate";
 
   static List<GetPage> appPage = [
     //
@@ -32,7 +35,11 @@ class AppRoute {
     GetPage(
         name: bottomNavigation,
         page: () => MyNavigationBar(),
-        binding: NavigationBiding())
+        binding: NavigationBiding()),
+    GetPage(
+        name: selectDate,
+        page: () => BookDetailScreenOne(),
+        binding: SelectDateBnding())
     //
   ];
 }
