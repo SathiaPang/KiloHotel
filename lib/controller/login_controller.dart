@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
+
 import 'package:hotel/response/user_reponse.dart';
 
 class LoginController extends GetxController {
@@ -10,16 +11,20 @@ class LoginController extends GetxController {
   final formkeySignUp = GlobalKey<FormState>();
 
   // SignIn
-  final userSignInController = TextEditingController(text: "super admin");
-  final passwordSignInController = TextEditingController(text: "321");
+  final userSignInController = TextEditingController(text: "test user5");
+  final passwordSignInController = TextEditingController(text: "123");
 
   // SignUp
-  final emailSignUpController = TextEditingController();
-  final passwordSignUpController = TextEditingController();
-  final fullNameController = TextEditingController();
-  final nicknameController = TextEditingController();
+  // final userNameController = TextEditingController();
+  // final nameController = TextEditingController();
+  // final phoneNumberControler = TextEditingController();
+  // final emailController = TextEditingController();
+  // final passwordController = TextEditingController();
+  // final addressController = TextEditingController();
 
   final UserRespoitory userRespoitory;
+
+  
   LoginController({required this.userRespoitory});
 
   void loginApp() async {

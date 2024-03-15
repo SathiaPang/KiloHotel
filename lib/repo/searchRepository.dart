@@ -5,5 +5,5 @@ class SearchRepository {
     return Future.value(Hotel.hotel);
   }
 
-  List<RoomCategory> getSearchCategory() => SearchCategory.getSearchList();
+  List<RoomCategory> getSearchCategory() => RoomCategory.getSearchList();
 }
