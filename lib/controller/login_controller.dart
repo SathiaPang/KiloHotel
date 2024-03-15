@@ -24,7 +24,6 @@ class LoginController extends GetxController {
 
   final UserRespoitory userRespoitory;
 
-  
   LoginController({required this.userRespoitory});
 
   void loginApp() async {

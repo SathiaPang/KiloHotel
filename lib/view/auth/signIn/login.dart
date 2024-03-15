@@ -190,7 +190,8 @@ class _LoginState extends State<Login> {
           Text("Don't have an account? "),
           TextButton(
             onPressed: () {
-              Get.to(SignupScreen());
+              Get.toNamed(AppRoute.register);
+              // Get.offAllNamed(AppRoute.register);
             },
             child: Text(
               "Sign Up",
