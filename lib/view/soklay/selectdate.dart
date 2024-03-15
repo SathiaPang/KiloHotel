@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
-
+import 'package:hotel/controller/selectDateController.dart';
 import 'package:hotel/view/soklay/nameOfReserver.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
@@ -14,27 +14,28 @@ class SelectDate extends StatefulWidget {
 }
 
 class _SelectDateState extends State<SelectDate> {
-  String _selectedDate = '';
-  String _dateCount = '';
-  String _range = '';
-  String _rangeCount = '';
+  // String _selectedDate = '';
+  // String _dateCount = '';
+  // String _range = '';
+  // String _rangeCount = '';
 
-  void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
-    setState(() {
-      if (args.value is PickerDateRange) {
-        _range = '${DateFormat('dd/MM/yyyy').format(args.value.startDate)} -'
-            // ignore: lines_longer_than_80_chars
-            ' ${DateFormat('dd/MM/yyyy').format(args.value.endDate ?? args.value.startDate)}';
-      } else if (args.value is DateTime) {
-        _selectedDate = args.value.toString();
-      } else if (args.value is List<DateTime>) {
-        _dateCount = args.value.length.toString();
-      } else {
-        _rangeCount = args.value.length.toString();
-      }
-    });
-  }
+  // void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
+  //   setState(() {
+  //     if (args.value is PickerDateRange) {
+  //       _range = '${DateFormat('dd/MM/yyyy').format(args.value.startDate)} -'
+  //           // ignore: lines_longer_than_80_chars
+  //           ' ${DateFormat('dd/MM/yyyy').format(args.value.endDate ?? args.value.startDate)}';
+  //     } else if (args.value is DateTime) {
+  //       _selectedDate = args.value.toString();
+  //     } else if (args.value is List<DateTime>) {
+  //       _dateCount = args.value.length.toString();
+  //     } else {
+  //       _rangeCount = args.value.length.toString();
+  //     }
+  //   });
+  // }
 
+  final SelectDateController _selectDateController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,18 +48,34 @@ class _SelectDateState extends State<SelectDate> {
         ),
       ),
       floatingActionButton: _buildBottonContinue(),
-      body: Column(
-        children: [
-          //
-          _buildSelectDate(),
-          _buildChek(),
-          _buildChekDetail(),
-          _buildGuest(),
-          _buildTotalDay(),
-          _buildTotalPayment(),
-        ],
+      body: Obx(
+        () => Column(
+          children: [
+            //
+            _buildSelectDate(),
+            _buildChek(),
+            _buildChekDetail(),
+            _buildGuest(),
+            _buildTotalDay(),
+            _buildTotalPayment(),
+          ],
+        ),
       ),
     );
+  }
+
+  void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
+    /// The argument value will return the changed date as [DateTime] when the
+    /// widget [SfDateRangeSelectionMode] set as single.
+    ///
+    /// The argument value will return the changed dates as [List<DateTime>]
+    /// when the widget [SfDateRangeSelectionMode] set as multiple.
+    ///
+    /// The argument value will return the changed range as [PickerDateRange]
+    /// when the widget [SfDateRangeSelectionMode] set as range.
+    if (args.value is PickerDateRange) {
+      _selectDateController.selectDate(args.value.startDate);
+    }
   }
 
   Widget _buildSelectDate() => Padding(
@@ -111,7 +128,7 @@ class _SelectDateState extends State<SelectDate> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    "Jan 29",
+                    "${_selectDateController.selectedDate}",
                     style: TextStyle(fontSize: 19),
                   ),
                   Icon(

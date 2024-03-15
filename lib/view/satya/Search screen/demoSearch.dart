@@ -15,7 +15,7 @@ class DemoSearch extends StatelessWidget {
         itemBuilder: (context, index) {
           final data = hotelList[index];
           return Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
             child: Container(
               height: 120,
               decoration: BoxDecoration(
@@ -23,7 +23,7 @@ class DemoSearch extends StatelessWidget {
                 color: greenAccent,
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
+                padding: const EdgeInsets.symmetric(horizontal: 7),
                 child: Row(
                   children: [
                     Container(

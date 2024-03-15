@@ -10,14 +10,16 @@ class LoginController extends GetxController {
   final formkeySignUp = GlobalKey<FormState>();
 
   // SignIn
-  final userSignInController = TextEditingController(text: "super admin");
-  final passwordSignInController = TextEditingController(text: "321");
+  final userSignInController = TextEditingController(text: "test user5");
+  final passwordSignInController = TextEditingController(text: "123");
 
   // SignUp
-  final emailSignUpController = TextEditingController();
-  final passwordSignUpController = TextEditingController();
-  final fullNameController = TextEditingController();
-  final nicknameController = TextEditingController();
+  final userNameController = TextEditingController();
+  final nameController = TextEditingController();
+  final phoneNumberControler = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final addressController = TextEditingController();
 
   final UserRespoitory userRespoitory;
   LoginController({required this.userRespoitory});
@@ -51,5 +53,32 @@ class LoginController extends GetxController {
         duration: Duration(seconds: 1),
       ));
     }
+  }
+
+  void signUpApp() async {
+    if (userNameController.text.isEmpty ||
+        nameController.text.isEmpty ||
+        phoneNumberControler.text.isEmpty ||
+        emailController.text.isEmpty ||
+        passwordController.text.isEmpty ||
+        addressController.text.isEmpty) {
+      Get.showSnackbar(
+        GetSnackBar(
+          backgroundColor: red,
+          messageText: Text(
+            "Please fill in all of the field!!",
+            style: TextStyle(fontSize: 16, color: white),
+          ),
+          duration: Duration(seconds: 1),
+          borderRadius: 15,
+          maxWidth: 400,
+        ),
+      );
+      return;
+    }
+    // try {
+    //   final res = await userRespoitory.(
+    //   );
+    // } catch (e) {}
   }
 }
