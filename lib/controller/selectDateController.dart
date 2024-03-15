@@ -9,7 +9,7 @@ class SelectDateController extends GetxController {
   Future<void> selectDate(DateTime date) async {
     // _selectedDate(date);
     // DateFormat('yyyy-MM-ddd').format(date);
-    _selectedDate(DateFormat('yyyy-MM-dd').format(date));
+    _selectedDate(DateFormat('dd-MM-yyyy').format(date));
   }
 
   // String formatDate() => DateFormat('yyyy-MM-ddd').format(selectedDate!);
