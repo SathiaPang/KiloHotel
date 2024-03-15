@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
+import 'package:hotel/controller/resetpassword_controller.dart';
+import 'package:hotel/response/reset_response.dart';
 
 class CreateNewPassword extends StatefulWidget {
   const CreateNewPassword({super.key});
@@ -10,6 +13,8 @@ class CreateNewPassword extends StatefulWidget {
 
 class _CreateNewPasswordState extends State<CreateNewPassword> {
   bool isChecked = false;
+  final ResetPasswordController resetPasswordController =
+      Get.put(ResetPasswordController(resetRepository: ResetRepository()));
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -32,20 +37,11 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              height: size.height * 0.43,
-              color: green.withOpacity(0),
-            ),
-            Text(
-              "Create Your New Password",
-              style: TextStyle(color: textColor, fontWeight: FontWeight.w400),
-            ),
-            SizedBox(
-              height: 20,
-            ),
             TextFormField(
+              controller: resetPasswordController.oldPasswordController,
               decoration: InputDecoration(
                 hintText: "Password",
                 prefixIcon: IconButton(
@@ -69,8 +65,30 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
               height: 30,
             ),
             TextFormField(
+              controller: resetPasswordController.passwordController,
               decoration: InputDecoration(
                 hintText: "New Password",
+                prefixIcon: IconButton(
+                  icon: const Icon(Icons.pin_sharp),
+                  onPressed: () {
+                    print('Search');
+                  },
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide(
+                    color: green,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            TextFormField(
+              controller: resetPasswordController.confirmPasswordController,
+              decoration: InputDecoration(
+                hintText: "Comfirm Password",
                 prefixIcon: IconButton(
                   icon: const Icon(Icons.pin_sharp),
                   onPressed: () {
@@ -112,7 +130,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
               height: size.height * 0.06,
               child: ElevatedButton(
                 onPressed: () {
-                  //Get.to(() => CreateNewPassword());
+                  resetPasswordController.resetPassword();
                 },
                 style: ElevatedButton.styleFrom(
                   elevation: 5,
