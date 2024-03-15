@@ -30,6 +30,7 @@ class DemoCategory extends StatelessWidget {
                         fit: BoxFit.fitHeight),
                     boxShadow: [
                       BoxShadow(
+                          blurStyle: BlurStyle.solid,
                           offset: Offset(8, 8),
                           color: black.withOpacity(0.1),
                           spreadRadius: 2,

@@ -41,7 +41,7 @@ class _SearchScreenState extends State<SearchScreen>
                   children: [
                     SearchBar(),
                     SizedBox(
-                      height: 10,
+                      height: 15,
                     ),
                     TabbarEdit(
                       _tabController,
