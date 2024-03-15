@@ -66,7 +66,6 @@ class _LoginState extends State<Login> {
                 ),
                 SizedBox(height: 5),
                 _signInButton(),
-                _signupButton(),
                 _buitdforgotpass(),
                 SizedBox(height: 20),
                 Row(
@@ -149,7 +148,6 @@ class _LoginState extends State<Login> {
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               fixedSize: Size(360, 65),
-              fixedSize: Size(378, 65),
               backgroundColor: green,
             ),
             onPressed: () {
