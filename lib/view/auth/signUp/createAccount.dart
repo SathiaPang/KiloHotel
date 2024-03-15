@@ -184,10 +184,7 @@ class _SignupScreenState extends State<CreateAcc> {
           Text("Don't have an account? "),
           TextButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SignupScreen()),
-              );
+              Get.to(SignupScreen());
             },
             child: Text(
               "Sign Up",
