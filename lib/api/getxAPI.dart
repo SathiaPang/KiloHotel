@@ -41,4 +41,6 @@ class GetXAPI {
       rethrow;
     }
   }
+
+  put({required String path, required Map<String, String> data}) {}
 }

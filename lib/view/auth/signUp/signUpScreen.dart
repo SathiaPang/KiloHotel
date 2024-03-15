@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/view/auth/signIn/login.dart';
+import 'package:hotel/constant/appRoute.dart';
+import 'package:hotel/controller/register_controller.dart';
 import 'package:intl/intl.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:hotel/constant/constant.dart';
@@ -22,6 +23,8 @@ class _SignupScreenState extends State<SignupScreen> {
     _phoneNumberFocusNode.dispose();
     super.dispose();
   }
+
+  final RegisterController _controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +48,9 @@ class _SignupScreenState extends State<SignupScreen> {
           child: Column(
             children: [
               SizedBox(height: 10),
-              _Fullname(),
-              SizedBox(height: 10),
               _Username(),
+              SizedBox(height: 10),
+              _Fullname(),
               SizedBox(height: 10),
               TextField(
                 controller: _date,
@@ -66,7 +69,6 @@ class _SignupScreenState extends State<SignupScreen> {
                     firstDate: DateTime(2000),
                     lastDate: DateTime(2101),
                   );
-
                   if (pickeddate != null) {
                     setState(() {
                       _date.text = DateFormat('yyyy-MM-dd').format(pickeddate);
@@ -91,24 +93,24 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
-  Widget _Fullname() => TextField(
+  Widget _Username() => TextField(
       keyboardType: TextInputType.text,
       textInputAction: TextInputAction.next,
       cursorColor: Colors.black,
       decoration: InputDecoration(
-        labelText: 'Full Name',
+        labelText: 'Username',
         labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
       ));
 
-  Widget _Username() => TextField(
+  Widget _Fullname() => TextField(
       keyboardType: TextInputType.text,
       textInputAction: TextInputAction.next,
       cursorColor: Colors.grey,
       decoration: InputDecoration(
-        labelText: 'Nickname',
+        labelText: 'Fullname',
         labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -193,11 +195,12 @@ class _SignupScreenState extends State<SignupScreen> {
               backgroundColor: green,
             ),
             onPressed: () {
-              Get.to(Login());
+              _controller.registerApp();
+              Get.offAllNamed(AppRoute.login);
             },
             child: Center(
               child: Text(
-                'Sign in with password',
+                'Create your new account here',
                 style: TextStyle(color: white, fontSize: 17),
               ),
             ),
