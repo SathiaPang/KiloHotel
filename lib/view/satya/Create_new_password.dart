@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/resetpassword_controller.dart';
-import 'package:hotel/response/reset_response.dart';
 
 class CreateNewPassword extends StatefulWidget {
   const CreateNewPassword({super.key});
@@ -13,8 +12,7 @@ class CreateNewPassword extends StatefulWidget {
 
 class _CreateNewPasswordState extends State<CreateNewPassword> {
   bool isChecked = false;
-  final ResetPasswordController resetPasswordController =
-      Get.put(ResetPasswordController(resetRepository: ResetRepository()));
+  final ResetPasswordController resetPasswordController = Get.find();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

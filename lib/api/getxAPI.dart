@@ -43,4 +43,25 @@ class GetXAPI {
   }
 
   put({required String path, required Map<String, String> data}) {}
+
+  Future<dynamic> resetPassword(
+      String oldPassword, String newPassword, String comfirmPassword) async {
+    try {
+      final res = await _dio.post(
+        '/reset_password',
+        data: {
+          "oldPassword": oldPassword,
+          "newPassword": newPassword,
+          "comfirmPassword": comfirmPassword,
+        },
+      );
+      if (res.statusCode == 200) {
+        print("reset Success");
+      } else {
+        throw ("fail");
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

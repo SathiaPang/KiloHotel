@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
-import 'package:hotel/response/reset_response.dart';
+import 'package:hotel/response/resetpassword_respone.dart';
+import 'package:hotel/response/user_reponse.dart';
 
 class ResetPasswordController extends GetxController {
   TextEditingController oldPasswordController = TextEditingController();
@@ -10,8 +11,10 @@ class ResetPasswordController extends GetxController {
 
   final RxBool isLoading = false.obs;
 
-  final ResetRepository resetRepository; // Add ResetRepository
-  ResetPasswordController({required this.resetRepository});
+  final ResetResponse resetResponse;
+  final UserRespoitory userRespoitory; // Add ResetRepository
+
+  ResetPasswordController(this.userRespoitory, {required this.resetResponse});
 
   void resetPassword() async {
     String oldPassword = oldPasswordController.text.trim();
@@ -44,7 +47,7 @@ class ResetPasswordController extends GetxController {
     }
 
     try {
-      final res = await resetRepository.resetpassword(
+      final reset = await userRespoitory.resetPassword(
           oldPassword, password, confirmPassword);
       // Handle the response here based on the ResetResponse structure
     } catch (e) {
