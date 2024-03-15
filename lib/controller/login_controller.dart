@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
+
 import 'package:hotel/response/user_reponse.dart';
 
 class LoginController extends GetxController {
@@ -14,14 +15,16 @@ class LoginController extends GetxController {
   final passwordSignInController = TextEditingController(text: "123");
 
   // SignUp
-  final userNameController = TextEditingController();
-  final nameController = TextEditingController();
-  final phoneNumberControler = TextEditingController();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  final addressController = TextEditingController();
+  // final userNameController = TextEditingController();
+  // final nameController = TextEditingController();
+  // final phoneNumberControler = TextEditingController();
+  // final emailController = TextEditingController();
+  // final passwordController = TextEditingController();
+  // final addressController = TextEditingController();
 
   final UserRespoitory userRespoitory;
+
+  
   LoginController({required this.userRespoitory});
 
   void loginApp() async {
@@ -53,32 +56,5 @@ class LoginController extends GetxController {
         duration: Duration(seconds: 1),
       ));
     }
-  }
-
-  void signUpApp() async {
-    if (userNameController.text.isEmpty ||
-        nameController.text.isEmpty ||
-        phoneNumberControler.text.isEmpty ||
-        emailController.text.isEmpty ||
-        passwordController.text.isEmpty ||
-        addressController.text.isEmpty) {
-      Get.showSnackbar(
-        GetSnackBar(
-          backgroundColor: red,
-          messageText: Text(
-            "Please fill in all of the field!!",
-            style: TextStyle(fontSize: 16, color: white),
-          ),
-          duration: Duration(seconds: 1),
-          borderRadius: 15,
-          maxWidth: 400,
-        ),
-      );
-      return;
-    }
-    // try {
-    //   final res = await userRespoitory.(
-    //   );
-    // } catch (e) {}
   }
 }
