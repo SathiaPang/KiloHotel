@@ -29,7 +29,7 @@ class ResetResponse {
       'message': message,
       'messageKey': messageKey,
       'data': data,
-      'paging': paging,
+      'paging': null,
     };
   }
 }
