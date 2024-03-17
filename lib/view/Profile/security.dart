@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
+import 'package:hotel/controller/resetPassword_controller.dart';
+import 'package:hotel/response/resetpassword_respone.dart';
 
 class SecurityController extends GetxController {
   var faceID = false.obs;
@@ -12,6 +15,15 @@ class SecurityController extends GetxController {
 class SecurityScreen extends StatelessWidget {
   SecurityScreen({super.key});
   final SecurityController _securityController = Get.put(SecurityController());
+  final ResetPasswordController _resetPasswordController =
+      Get.put(ResetPasswordController(
+          resetResponse: ResetResponse(
+    status: 0, // Example integer value for status
+    message: "", // Example message string
+    messageKey: "", // Example messageKey string
+    data: null, // Example null value for data
+    paging: null, // Example null value for paging
+  )));
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,7 +121,8 @@ class SecurityScreen extends StatelessWidget {
           backgroundColor: Colors.green.shade100,
         ),
         onPressed: () {
-          // Get.to(Login());
+          Get.toNamed(AppRoute.changePassword);
+          // Get.toNamed(AppRoute.login);
         },
         child: Center(
           child: Text(

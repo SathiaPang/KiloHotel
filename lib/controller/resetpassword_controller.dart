@@ -12,9 +12,7 @@ class ResetPasswordController extends GetxController {
   final RxBool isLoading = false.obs;
 
   final ResetResponse resetResponse;
-  final UserRespoitory userRespoitory; // Add ResetRepository
-
-  ResetPasswordController(this.userRespoitory, {required this.resetResponse});
+  ResetPasswordController({required this.resetResponse});
 
   void resetPassword() async {
     String oldPassword = oldPasswordController.text.trim();
@@ -47,9 +45,9 @@ class ResetPasswordController extends GetxController {
     }
 
     try {
-      final reset = await userRespoitory.resetPassword(
+      final res = await resetResponse.resetPassword(
           oldPassword, password, confirmPassword);
-      // Handle the response here based on the ResetResponse structure
+      
     } catch (e) {
       Get.showSnackbar(GetSnackBar(
         message: "An error occurred while resetting password",
