@@ -195,8 +195,8 @@ class _SignupScreenState extends State<SignupScreen> {
               backgroundColor: green,
             ),
             onPressed: () {
-              _controller.registerApp();
-              Get.offAllNamed(AppRoute.login);
+              // _controller.registerApp();
+              Get.toNamed(AppRoute.register);
             },
             child: Center(
               child: Text(

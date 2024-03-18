@@ -24,11 +24,12 @@ class AppRoute {
   static String load2 = "/l2";
   static String signin = "/signin";
   static String login = "/login";
-  static String bottomNavigation = "/navigation";
   static String register = "/register";
   static String selectDate = "/selectDate";
-  // static String forgotpassword = "/forgotPassword";
   static String changePassword = "/changePassword";
+  static String bottomNavigation = "/navigation";
+  static String selectDate = "/selectDate";
+
 
   static List<GetPage> appPage = [
     //
@@ -38,11 +39,10 @@ class AppRoute {
     GetPage(name: splash3, page: () => SplashScreen3()),
     GetPage(name: load2, page: () => Loading2()),
     GetPage(name: signin, page: () => SigninScreen()),
-    GetPage(
-      name: register, page: () => SignupScreen(),
-      //  binding: RegisterBinding()
-    ),
+
     GetPage(name: login, page: () => Login(), binding: LoginBiding()),
+    GetPage(
+        name: register, page: () => SignupScreen(), binding: RegisterBinding()),
     GetPage(
         name: bottomNavigation,
         page: () => MyNavigationBar(),
