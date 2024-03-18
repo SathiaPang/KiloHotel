@@ -11,8 +11,8 @@ class LoginController extends GetxController {
   final formkeySignUp = GlobalKey<FormState>();
 
   // SignIn
-  final userSignInController = TextEditingController(text: "test user5");
-  final passwordSignInController = TextEditingController(text: "123");
+  final userSignInController = TextEditingController(text: "test user");
+  final passwordSignInController = TextEditingController(text: "1234");
 
   // SignUp
   // final userNameController = TextEditingController();

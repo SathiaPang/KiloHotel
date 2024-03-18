@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/resetPassword_controller.dart';
 
-class CreateNewPassword extends StatefulWidget {
-  const CreateNewPassword({super.key});
+class ChangePassword extends StatefulWidget {
+  ChangePassword({super.key});
 
   @override
-  State<CreateNewPassword> createState() => _CreateNewPasswordState();
+  State<ChangePassword> createState() => _ChangePasswordState();
 }
 
-class _CreateNewPasswordState extends State<CreateNewPassword> {
-  bool isChecked = false;
-  final ResetPasswordController resetPasswordController = Get.find();
+final ResetPasswordController _resetPasswordController = Get.find();
+
+class _ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -26,20 +27,18 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                 Navigator.pop(context); // This is using navigate back
               },
             ),
-            Text("Create New Password",
+            Text("Change Password",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
           ],
         ),
         automaticallyImplyLeading: false, // Disable the default back button
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextFormField(
-              controller: resetPasswordController.oldPasswordController,
+              controller: _resetPasswordController.oldPasswordController,
               decoration: InputDecoration(
                 hintText: "Password",
                 prefixIcon: IconButton(
@@ -63,7 +62,8 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
               height: 30,
             ),
             TextFormField(
-              controller: resetPasswordController.passwordController,
+              // controller: resetPasswordController.passwordController,
+              controller: _resetPasswordController.passwordController,
               decoration: InputDecoration(
                 hintText: "New Password",
                 prefixIcon: IconButton(
@@ -84,7 +84,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
               height: 30,
             ),
             TextFormField(
-              controller: resetPasswordController.confirmPasswordController,
+              controller: _resetPasswordController.confirmPasswordController,
               decoration: InputDecoration(
                 hintText: "Comfirm Password",
                 prefixIcon: IconButton(
@@ -102,14 +102,15 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
               ),
             ),
             SizedBox(
-              height: size.height * 0.02,
+              height: 30,
             ),
             Container(
               width: size.width * 0.9,
               height: size.height * 0.06,
               child: ElevatedButton(
                 onPressed: () {
-                  resetPasswordController.resetPassword();
+                  _resetPasswordController.resetPassword();
+                  Get.offAllNamed(AppRoute.changePassword);
                 },
                 style: ElevatedButton.styleFrom(
                   elevation: 5,
