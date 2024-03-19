@@ -42,7 +42,17 @@ class GetXAPI {
     }
   }
 
-  put({required String path, required Map<String, String> data}) {}
+  Future<dynamic> put({required String path, dynamic data}) async {
+    try {
+      final res = await _dio.put(path, data: data);
+      if (res.statusCode == 200) {
+        return res.data;
+      }
+      throw ("Something wrong");
+    } catch (e) {
+      rethrow;
+    }
+  }
 
   Future<dynamic> resetPassword(
       String oldPassword, String newPassword, String comfirmPassword) async {

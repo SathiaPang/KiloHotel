@@ -1,11 +1,8 @@
-import 'package:hotel/api/getxAPI.dart';
-import 'package:hotel/constant/server_rout.dart';
-
 class ResetResponse {
   int status;
   String message;
   String messageKey;
-  String? data; // Adjusted to handle string data
+  String? data;
   dynamic paging;
 
   ResetResponse({
@@ -32,17 +29,7 @@ class ResetResponse {
       'message': message,
       'messageKey': messageKey,
       'data': data,
-      'paging': null,
+      'paging': paging,
     };
-  }
-
-  Future<ResetResponse> resetPassword(
-      String oldPassword, String newPassword, String comfirmPassword) async {
-    final reset = await GetXAPI.instance.post(path: ServerRout.reset, data: {
-      "oldPassword": oldPassword,
-      "newPassword": newPassword,
-      "comfirmPassword": comfirmPassword,
-    });
-    return ResetResponse.fromJson(reset);
   }
 }

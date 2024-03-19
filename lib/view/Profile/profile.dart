@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/component/profileScreen/optionSelect.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/view/Profile/editprofile.dart';
 import 'package:hotel/view/Profile/notificationScreen.dart';
@@ -152,7 +153,7 @@ class _ProFileState extends State<ProFile> {
   Widget _security() => Row(
         children: [
           OptionSelect(
-              ontap: () => Get.to(SecurityScreen()),
+              ontap: () => Get.toNamed(AppRoute.security),
               icon: Icons.verified_user_outlined,
               text: "Security",
               color: _switchValue ? white : black,

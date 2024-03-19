@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/resetPassword_controller.dart';
 
@@ -11,9 +10,9 @@ class ChangePassword extends StatefulWidget {
   State<ChangePassword> createState() => _ChangePasswordState();
 }
 
-final ResetPasswordController _resetPasswordController = Get.find();
-
 class _ChangePasswordState extends State<ChangePassword> {
+  final ResetPasswordController _resetPasswordController = Get.find();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -24,7 +23,7 @@ class _ChangePasswordState extends State<ChangePassword> {
             IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
-                Navigator.pop(context); // This is using navigate back
+                Get.back(); // This is using navigate back
               },
             ),
             Text("Change Password",
@@ -38,6 +37,8 @@ class _ChangePasswordState extends State<ChangePassword> {
         child: Column(
           children: [
             TextFormField(
+              keyboardType: TextInputType.visiblePassword,
+              textInputAction: TextInputAction.next,
               controller: _resetPasswordController.oldPasswordController,
               decoration: InputDecoration(
                 hintText: "Password",
@@ -62,7 +63,6 @@ class _ChangePasswordState extends State<ChangePassword> {
               height: 30,
             ),
             TextFormField(
-              // controller: resetPasswordController.passwordController,
               controller: _resetPasswordController.passwordController,
               decoration: InputDecoration(
                 hintText: "New Password",
@@ -110,7 +110,6 @@ class _ChangePasswordState extends State<ChangePassword> {
               child: ElevatedButton(
                 onPressed: () {
                   _resetPasswordController.resetPassword();
-                  Get.offAllNamed(AppRoute.changePassword);
                 },
                 style: ElevatedButton.styleFrom(
                   elevation: 5,
