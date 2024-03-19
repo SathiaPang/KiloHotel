@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
-
+import 'package:hotel/local/user_account/user_storage.dart';
 import 'package:hotel/response/user_reponse.dart';
 
 class LoginController extends GetxController {
@@ -11,18 +11,11 @@ class LoginController extends GetxController {
   final formkeySignUp = GlobalKey<FormState>();
 
   // SignIn
-  final userSignInController = TextEditingController(text: "test user");
-  final passwordSignInController = TextEditingController(text: "1234");
-
-  // SignUp
-  // final userNameController = TextEditingController();
-  // final nameController = TextEditingController();
-  // final phoneNumberControler = TextEditingController();
-  // final emailController = TextEditingController();
-  // final passwordController = TextEditingController();
-  // final addressController = TextEditingController();
+  final userSignInController = TextEditingController();
+  final passwordSignInController = TextEditingController();
 
   final UserRespoitory userRespoitory;
+  final UserStorageApp userStorageApp = UserStorageApp();
 
   LoginController({required this.userRespoitory});
 
@@ -39,7 +32,6 @@ class LoginController extends GetxController {
         borderRadius: 15,
         maxWidth: 400,
       ));
-
       return;
     }
 
@@ -47,6 +39,8 @@ class LoginController extends GetxController {
       final res = await userRespoitory.login(
           userSignInController.text, passwordSignInController.text);
       if (res.data != null) {
+        await userStorageApp.loginstorage(res.data?.token ?? "");
+        print(res.data?.token);
         Get.offAllNamed(AppRoute.bottomNavigation);
       }
     } on DioException catch (e) {

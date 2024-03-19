@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/selectDateController.dart';
 import 'package:hotel/view/soklay/nameOfReserver.dart';
-import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class SelectDate extends StatefulWidget {
@@ -14,27 +13,6 @@ class SelectDate extends StatefulWidget {
 }
 
 class _SelectDateState extends State<SelectDate> {
-  // String _selectedDate = '';
-  // String _dateCount = '';
-  // String _range = '';
-  // String _rangeCount = '';
-
-  // void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
-  //   setState(() {
-  //     if (args.value is PickerDateRange) {
-  //       _range = '${DateFormat('dd/MM/yyyy').format(args.value.startDate)} -'
-  //           // ignore: lines_longer_than_80_chars
-  //           ' ${DateFormat('dd/MM/yyyy').format(args.value.endDate ?? args.value.startDate)}';
-  //     } else if (args.value is DateTime) {
-  //       _selectedDate = args.value.toString();
-  //     } else if (args.value is List<DateTime>) {
-  //       _dateCount = args.value.length.toString();
-  //     } else {
-  //       _rangeCount = args.value.length.toString();
-  //     }
-  //   });
-  // }
-
   final SelectDateController _selectDateController = Get.find();
   @override
   Widget build(BuildContext context) {
@@ -65,16 +43,16 @@ class _SelectDateState extends State<SelectDate> {
   }
 
   void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
-    /// The argument value will return the changed date as [DateTime] when the
-    /// widget [SfDateRangeSelectionMode] set as single.
-    ///
-    /// The argument value will return the changed dates as [List<DateTime>]
-    /// when the widget [SfDateRangeSelectionMode] set as multiple.
-    ///
-    /// The argument value will return the changed range as [PickerDateRange]
-    /// when the widget [SfDateRangeSelectionMode] set as range.
     if (args.value is PickerDateRange) {
-      _selectDateController.selectDate(args.value.startDate);
+      PickerDateRange dateRange = args.value as PickerDateRange;
+
+      dateRange.startDate != null
+          ? _selectDateController.selectDate(dateRange.startDate!)
+          : _selectDateController.selectDate(DateTime.now());
+
+      if (dateRange.endDate != null) {
+        _selectDateController.endDate(dateRange.endDate!);
+      } else {}
     }
   }
 
@@ -84,8 +62,8 @@ class _SelectDateState extends State<SelectDate> {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20), color: greenAccent),
           child: SfDateRangePicker(
-            startRangeSelectionColor: green,
-            endRangeSelectionColor: green,
+            startRangeSelectionColor: black,
+            endRangeSelectionColor: black,
             rangeSelectionColor: Color.fromARGB(255, 166, 220, 168),
             onSelectionChanged: _onSelectionChanged,
             selectionMode: DateRangePickerSelectionMode.range,
@@ -154,7 +132,7 @@ class _SelectDateState extends State<SelectDate> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    "Jan 29",
+                    "${_selectDateController.nDate}",
                     style: TextStyle(fontSize: 19),
                   ),
                   Icon(
@@ -174,7 +152,11 @@ class _SelectDateState extends State<SelectDate> {
             Text(
               "Guest",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            )
+            ),
+            SizedBox(
+              width: 50,
+            ),
+            Text("${_selectDateController.dateCount()}")
           ],
         ),
       );

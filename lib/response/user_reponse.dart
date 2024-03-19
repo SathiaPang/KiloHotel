@@ -13,5 +13,4 @@ class UserRespoitory {
     });
     return LoginResponse.fromJson(res);
   }
- 
 }
