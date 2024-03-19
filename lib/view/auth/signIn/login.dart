@@ -4,7 +4,6 @@ import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/login_controller.dart';
 import 'package:hotel/view/satya/Create_new_password.dart';
-import '../signUp/signUpScreen.dart';
 
 class Login extends StatefulWidget {
   Login({super.key, this.onChanged, this.initialValue = false});
@@ -153,7 +152,6 @@ class _LoginState extends State<Login> {
             ),
             onPressed: () {
               _controller.loginApp();
-              Get.offAllNamed(AppRoute.bottomNavigation);
             },
             child: Center(
               child: Text(

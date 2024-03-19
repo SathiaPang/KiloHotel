@@ -123,10 +123,6 @@ class _SigninScreenState extends State<SigninScreen> {
           TextButton(
             onPressed: () {
               Get.toNamed(AppRoute.register);
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => SignupScreen()),
-              // );
             },
             child: Text(
               "Sign Up",

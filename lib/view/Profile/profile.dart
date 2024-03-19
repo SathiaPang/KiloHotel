@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/component/profileScreen/optionSelect.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/view/Profile/editprofile.dart';
 import 'package:hotel/view/Profile/notificationScreen.dart';
@@ -327,7 +328,7 @@ class _ProFileState extends State<ProFile> {
             backgroundColor: Colors.green,
           ),
           onPressed: () {
-            Get.offAll(Login());
+            Get.offAllNamed(AppRoute.login);
           },
           child: Center(
             child: Text(
