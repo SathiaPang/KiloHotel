@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:hotel/constant/server_rout.dart';
+import 'package:hotel/local/user_account/user_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class GetXAPI {
   late Dio _dio;
@@ -32,7 +34,17 @@ class GetXAPI {
 
   Future<dynamic> post({required String path, dynamic data}) async {
     try {
-      final res = await _dio.post(path, data: data);
+      final pref = await SharedPreferences.getInstance();
+      final token = await pref.getString(UserStorageApp.TOKEN);
+      final res = await _dio.post(path,
+          data: data,
+          options: Options(
+            headers: {
+              "Authorization": token?.isEmpty == true
+                  ? "Basic aG90ZWw6aG90ZWxAMTIz"
+                  : "Bearer $token"
+            },
+          ));
       if (res.statusCode == 200) {
         return res.data;
       }
