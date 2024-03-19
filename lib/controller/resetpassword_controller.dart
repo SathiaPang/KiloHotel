@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
-import 'package:hotel/response/resetpassword_respone.dart';
 import 'package:hotel/response/user_reponse.dart';
 
 class ResetPasswordController extends GetxController {
@@ -11,8 +10,8 @@ class ResetPasswordController extends GetxController {
 
   final RxBool isLoading = false.obs;
 
-  final ResetResponse resetResponse;
-  ResetPasswordController({required this.resetResponse});
+  final UserRespoitory userRespoitory;
+  ResetPasswordController({required this.userRespoitory});
 
   void resetPassword() async {
     String oldPassword = oldPasswordController.text.trim();
@@ -43,11 +42,13 @@ class ResetPasswordController extends GetxController {
       ));
       return;
     }
-
     try {
-      final res = await resetResponse.resetPassword(
+      final res = await userRespoitory.resetPassword(
           oldPassword, password, confirmPassword);
-      
+      Get.showSnackbar(GetSnackBar(
+        message: res.data,
+        duration: Duration(seconds: 2),
+      ));
     } catch (e) {
       Get.showSnackbar(GetSnackBar(
         message: "An error occurred while resetting password",

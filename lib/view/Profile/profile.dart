@@ -153,7 +153,7 @@ class _ProFileState extends State<ProFile> {
   Widget _security() => Row(
         children: [
           OptionSelect(
-              ontap: () => Get.to(SecurityScreen()),
+              ontap: () => Get.toNamed(AppRoute.security),
               icon: Icons.verified_user_outlined,
               text: "Security",
               color: _switchValue ? white : black,

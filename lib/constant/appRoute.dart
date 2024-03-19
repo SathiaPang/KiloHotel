@@ -5,6 +5,7 @@ import 'package:hotel/binding/register_binding.dart';
 import 'package:hotel/binding/reset_binding.dart';
 import 'package:hotel/binding/selectDateBinding.dart';
 import 'package:hotel/view/Profile/resetPassword.dart';
+import 'package:hotel/view/Profile/security.dart';
 import 'package:hotel/view/auth/signIn/login.dart';
 import 'package:hotel/view/auth/signIn/signInScreen.dart';
 import 'package:hotel/view/auth/signUp/signUpScreen.dart';
@@ -24,12 +25,16 @@ class AppRoute {
   static String load2 = "/l2";
   static String signin = "/signin";
   static String login = "/login";
+  static String bottomNavigation = "/navigation";
+  static String changePassword = "/changePassword";
+  static String register = "/register";
+  static String selectDate = "/selectDate";
+  static String security = "/security";
   static String register = "/register";
   static String selectDate = "/selectDate";
   static String changePassword = "/changePassword";
   static String bottomNavigation = "/navigation";
   // static String selectDate = "/selectDate";
-
   static List<GetPage> appPage = [
     //
     GetPage(name: load1, page: () => Loading1()),
@@ -47,14 +52,21 @@ class AppRoute {
         page: () => MyNavigationBar(),
         binding: NavigationBiding()),
     GetPage(
+        name: changePassword,
+        page: () => ChangePassword(),
+        binding: ResetBinding()),
+    // GetPage(
+    //     name: changePassword,
+    //     page: () => ChangePassword(),
+    //     binding: resetBinding()),
+    GetPage(
         name: selectDate,
         page: () => BookDetailScreenOne(),
         binding: SelectDateBnding()),
-    // GetPage(name: forgotpassword, page: () => CreateNewPassword()),
+
     GetPage(
-        name: changePassword,
-        page: () => ChangePassword(),
-        binding: resetBinding())
-    //
+      name: security,
+      page: () => SecurityScreen(),
+    ),
   ];
 }
