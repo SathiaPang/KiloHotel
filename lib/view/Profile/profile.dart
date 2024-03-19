@@ -328,7 +328,7 @@ class _ProFileState extends State<ProFile> {
             backgroundColor: Colors.green,
           ),
           onPressed: () {
-            Get.offAll(Login());
+            Get.offAllNamed(AppRoute.login);
           },
           child: Center(
             child: Text(

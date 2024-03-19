@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
-
-import 'package:hotel/view/auth/signIn/login.dart';
-import 'package:hotel/view/auth/signUp/signUpScreen.dart';
+import 'package:hotel/controller/register_controller.dart';
 
 class SigninScreen extends StatefulWidget {
   SigninScreen({super.key});
@@ -124,10 +122,7 @@ class _SigninScreenState extends State<SigninScreen> {
           Text("Don't have an account? "),
           TextButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SignupScreen()),
-              );
+              Get.toNamed(AppRoute.register);
             },
             child: Text(
               "Sign Up",

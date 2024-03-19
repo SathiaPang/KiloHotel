@@ -5,6 +5,5 @@ class LoginBiding extends Bindings {
   @override
   void dependencies() {
     Get.put(LoginController(userRespoitory: Get.find()));
-    // Get.lazyPut(() => LoginController());
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/appRoute.dart';
-import 'package:hotel/controller/register_controller.dart';
 import 'package:intl/intl.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:hotel/constant/constant.dart';
@@ -23,8 +22,6 @@ class _SignupScreenState extends State<SignupScreen> {
     _phoneNumberFocusNode.dispose();
     super.dispose();
   }
-
-  final RegisterController _controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -195,8 +192,8 @@ class _SignupScreenState extends State<SignupScreen> {
               backgroundColor: green,
             ),
             onPressed: () {
-              _controller.registerApp();
-              Get.offAllNamed(AppRoute.login);
+              // _controller.registerApp();
+              Get.toNamed(AppRoute.register);
             },
             child: Center(
               child: Text(

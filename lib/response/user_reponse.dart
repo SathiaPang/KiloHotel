@@ -15,7 +15,6 @@ class UserRespoitory {
     });
     return LoginResponse.fromJson(res);
   }
-
   Future<ResetResponse> resetPassword(
       String oldPassword, String password, String comfirmPassword) async {
     final res = await GetXAPI.instance.put(path: ServerRout.reset, data: {
