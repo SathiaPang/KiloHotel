@@ -217,7 +217,7 @@ class _SelectDateState extends State<SelectDate> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Total : \$ ${"500"}",
+              "Total : \$ ${"100"}",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             )
           ],
