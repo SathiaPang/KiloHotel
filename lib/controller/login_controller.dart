@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
+import 'package:hotel/constant/server_rout.dart';
+import 'package:hotel/local/local.dart';
 import 'package:hotel/local/user_account/user_storage.dart';
 import 'package:hotel/response/user_reponse.dart';
 
@@ -38,9 +40,13 @@ class LoginController extends GetxController {
     try {
       final res = await userRespoitory.login(
           userSignInController.text, passwordSignInController.text);
-      if (res.data != null) {
+      if (res.status == 200) {
         await userStorageApp.loginstorage(res.data?.token ?? "");
+        LocalStorageManager.instance
+            .saveToCache(key: ServerRout.keyToke, value: res.data!.token);
         print(res.data?.token);
+        LocalStorageManager.instance.clear(ServerRout.keyToke);
+
         Get.offAllNamed(AppRoute.bottomNavigation);
       }
     } on DioException catch (e) {
