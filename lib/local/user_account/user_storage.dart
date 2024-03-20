@@ -9,4 +9,9 @@ class UserStorageApp {
 
     return false;
   }
+
+  Future<String?> getLocalToken(String key) async {
+    final pref = await SharedPreferences.getInstance();
+    return pref.getString(key);
+  }
 }

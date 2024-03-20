@@ -30,10 +30,7 @@ class AppRoute {
   static String register = "/register";
   static String selectDate = "/selectDate";
   static String security = "/security";
-  static String register = "/register";
-  static String selectDate = "/selectDate";
-  static String changePassword = "/changePassword";
-  static String bottomNavigation = "/navigation";
+
   // static String selectDate = "/selectDate";
   static List<GetPage> appPage = [
     //
