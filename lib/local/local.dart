@@ -8,19 +8,18 @@ class LocalStorageManager {
   Future<SharedPreferences> _getSharePreference() async =>
       await SharedPreferences.getInstance();
 
-  Future<bool> saveToCache({required String key, required String value}) async {
+  Future<bool> saveToCache(String key, String value) async {
     final pref = await _getSharePreference();
     return pref.setString(key, value);
   }
 
-  Future<String?> getFromCache({required String key}) async {
+  Future<String?> getFromCache(String key) async {
     final pref = await _getSharePreference();
-    final list = pref.getString(key) ?? "";
-    return list;
+    return pref.getString(key ?? "Helloworlaasdasds");
   }
 
-  void clear(String key) async {
-    final pref = await _getSharePreference();
-    pref.remove(key);
-  }
+  // void clear(String key) async {
+  //   final pref = await _getSharePreference();
+  //   pref.remove(key);
+  // }
 }

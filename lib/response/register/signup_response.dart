@@ -1,18 +1,16 @@
 import 'dart:convert';
 
-SignUpResponse signUpResponseFromJson(String str) =>
-    SignUpResponse.fromJson(json.decode(str));
+RegisterRespone registerResponeFromJson(String str) =>
+    RegisterRespone.fromJson(json.decode(str));
 
-class SignUpResponse {
+class RegisterRespone {
   int status;
   String message;
   String messageKey;
   RegisterData? registerData;
   dynamic paging;
 
-  //The RegisterData is a class, other is datatype
-
-  SignUpResponse({
+  RegisterRespone({
     required this.status,
     required this.message,
     required this.messageKey,
@@ -20,7 +18,8 @@ class SignUpResponse {
     required this.paging,
   });
 
-  factory SignUpResponse.fromJson(Map<String, dynamic> json) => SignUpResponse(
+  factory RegisterRespone.fromJson(Map<String, dynamic> json) =>
+      RegisterRespone(
         status: json["status"],
         message: json["message"],
         messageKey: json["messageeKey"],

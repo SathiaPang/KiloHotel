@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
-import 'package:hotel/constant/server_rout.dart';
 import 'package:hotel/local/local.dart';
-import 'package:hotel/local/user_account/user_storage.dart';
 import 'package:hotel/response/user_reponse.dart';
 
 class LoginController extends GetxController {
@@ -17,7 +15,8 @@ class LoginController extends GetxController {
   final passwordSignInController = TextEditingController();
 
   final UserRespoitory userRespoitory;
-  final UserStorageApp userStorageApp = UserStorageApp();
+  final perfs = LocalStorageManager.instance;
+  // final UserStorageApp userStorageApp = UserStorageApp();
 
   LoginController({required this.userRespoitory});
 
@@ -39,21 +38,41 @@ class LoginController extends GetxController {
 
     try {
       final res = await userRespoitory.login(
-          userSignInController.text, passwordSignInController.text);
+        userSignInController.text,
+        passwordSignInController.text,
+      );
       if (res.status == 200) {
-        await userStorageApp.loginstorage(res.data?.token ?? "");
-        LocalStorageManager.instance
-            .saveToCache(key: ServerRout.keyToke, value: res.data!.token);
-        print(res.data?.token);
-        LocalStorageManager.instance.clear(ServerRout.keyToke);
-
+        LocalStorageManager.instance.saveToCache("Token", res.data!.token);
+        print("------------------${res.data?.token}-------------------------");
+        Get.showSnackbar(const GetSnackBar(
+          backgroundColor: green,
+          messageText: Text(
+            "Signin Success",
+            style: TextStyle(fontSize: 16, color: white),
+          ),
+          duration: Duration(seconds: 1),
+          borderRadius: 15,
+          maxWidth: 400,
+        ));
         Get.offAllNamed(AppRoute.bottomNavigation);
       }
     } on DioException catch (e) {
-      Get.showSnackbar(GetSnackBar(
-        message: e.message ?? "Somthing wrong",
+      print("-------------------------------------------> $e");
+      Get.showSnackbar(const GetSnackBar(
+        backgroundColor: red,
+        messageText: Text(
+          "Wrong Username or Password",
+          style: TextStyle(fontSize: 16, color: white),
+        ),
         duration: Duration(seconds: 1),
+        borderRadius: 15,
+        maxWidth: 400,
       ));
     }
+  }
+
+  void getToken() async {
+    final token = await LocalStorageManager.instance.getFromCache("Token");
+    print("---------------Then Login ${token}");
   }
 }
