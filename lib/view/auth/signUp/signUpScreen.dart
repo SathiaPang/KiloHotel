@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/constant/appRoute.dart';
-import 'package:intl/intl.dart';
+import 'package:hotel/controller/register_controller.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:hotel/constant/constant.dart';
 
@@ -13,9 +12,9 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  TextEditingController _date = TextEditingController();
   FocusNode _phoneNumberFocusNode = FocusNode();
   String? selectedGender;
+  final RegisterController _registerController = Get.find();
 
   @override
   void dispose() {
@@ -49,30 +48,7 @@ class _SignupScreenState extends State<SignupScreen> {
               SizedBox(height: 10),
               _Fullname(),
               SizedBox(height: 10),
-              TextField(
-                controller: _date,
-                decoration: InputDecoration(
-                  labelText: 'Date of Birth',
-                  labelStyle:
-                      TextStyle(color: black, fontWeight: FontWeight.w500),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                  ),
-                ),
-                onTap: () async {
-                  DateTime? pickeddate = await showDatePicker(
-                    context: context,
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime(2000),
-                    lastDate: DateTime(2101),
-                  );
-                  if (pickeddate != null) {
-                    setState(() {
-                      _date.text = DateFormat('yyyy-MM-dd').format(pickeddate);
-                    });
-                  }
-                },
-              ),
+              _address(),
               SizedBox(height: 10),
               _TextFieldsEmail(),
               SizedBox(height: 10),
@@ -80,7 +56,6 @@ class _SignupScreenState extends State<SignupScreen> {
               SizedBox(height: 10),
               _PhoneNumber(),
               SizedBox(height: 10),
-              _Gender(),
               SizedBox(height: 15),
               _signButton(),
             ],
@@ -92,6 +67,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
   Widget _Username() => TextField(
       keyboardType: TextInputType.text,
+      controller: _registerController.usernameController,
       textInputAction: TextInputAction.next,
       cursorColor: Colors.black,
       decoration: InputDecoration(
@@ -104,6 +80,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
   Widget _Fullname() => TextField(
       keyboardType: TextInputType.text,
+      controller: _registerController.nameController,
       textInputAction: TextInputAction.next,
       cursorColor: Colors.grey,
       decoration: InputDecoration(
@@ -114,8 +91,22 @@ class _SignupScreenState extends State<SignupScreen> {
         ),
       ));
 
+  Widget _address() => TextField(
+      keyboardType: TextInputType.text,
+      controller: _registerController.addressController,
+      textInputAction: TextInputAction.next,
+      cursorColor: Colors.grey,
+      decoration: InputDecoration(
+        labelText: 'Address',
+        labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+        ),
+      ));
+
   Widget _TextFieldsEmail() => TextFormField(
       keyboardType: TextInputType.emailAddress,
+      controller: _registerController.emailController,
       textInputAction: TextInputAction.next,
       cursorColor: Colors.grey,
       onSaved: (email) {},
@@ -127,7 +118,7 @@ class _SignupScreenState extends State<SignupScreen> {
         ),
       ));
   Widget _TextFieldPassword() => TextFormField(
-        // controller: _controller.Rpassword,
+        controller: _registerController.passwordController,
         keyboardType: TextInputType.visiblePassword,
         textInputAction: TextInputAction.done,
         obscureText: true,
@@ -144,6 +135,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
   Widget _PhoneNumber() => IntlPhoneField(
         focusNode: _phoneNumberFocusNode,
+        controller: _registerController.phoneController,
         decoration: InputDecoration(
           labelText: 'Phone number',
           labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
@@ -160,29 +152,6 @@ class _SignupScreenState extends State<SignupScreen> {
         },
       );
 
-  Widget _Gender() => DropdownButtonFormField<String>(
-      value: selectedGender,
-      onChanged: (String? newValue) {
-        setState(() {
-          selectedGender = newValue;
-        });
-      },
-      items: <String>['Male', 'Female']
-          .map<DropdownMenuItem<String>>(
-            (String value) => DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            ),
-          )
-          .toList(),
-      decoration: InputDecoration(
-        labelText: 'Gender',
-        labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-        ),
-      ));
-
   Widget _signButton() => Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -192,8 +161,7 @@ class _SignupScreenState extends State<SignupScreen> {
               backgroundColor: green,
             ),
             onPressed: () {
-              // _controller.registerApp();
-              Get.toNamed(AppRoute.register);
+              _registerController.register();
             },
             child: Center(
               child: Text(

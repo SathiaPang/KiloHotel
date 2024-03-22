@@ -190,7 +190,7 @@ class _LoginState extends State<Login> {
           Text("Don't have an account? "),
           TextButton(
             onPressed: () {
-              LocalStorageManager.instance.clear(ServerRout.keyToke);
+              // LocalStorageManager.instance.clear(ServerRout.keyToke);
               Get.toNamed(AppRoute.register);
               // Get.offAllNamed(AppRoute.register);
             },

@@ -37,25 +37,18 @@ class _ChangePasswordState extends State<ChangePassword> {
         child: Column(
           children: [
             TextFormField(
-              keyboardType: TextInputType.visiblePassword,
-              textInputAction: TextInputAction.next,
               controller: _resetPasswordController.oldPasswordController,
+              keyboardType: TextInputType.visiblePassword,
+              textInputAction: TextInputAction.done,
+              obscureText: true,
+              cursorColor: Colors.grey,
+              onSaved: (password) {},
               decoration: InputDecoration(
-                hintText: "Password",
-                prefixIcon: IconButton(
-                  icon: const Icon(
-                    Icons.password,
-                    color: textColor,
-                  ),
-                  onPressed: () {
-                    print('Search');
-                  },
-                ),
+                labelStyle:
+                    TextStyle(color: black, fontWeight: FontWeight.w500),
+                labelText: 'Old Password',
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide(
-                    color: green,
-                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
               ),
             ),
@@ -64,19 +57,17 @@ class _ChangePasswordState extends State<ChangePassword> {
             ),
             TextFormField(
               controller: _resetPasswordController.passwordController,
+              keyboardType: TextInputType.visiblePassword,
+              textInputAction: TextInputAction.done,
+              obscureText: true,
+              cursorColor: Colors.grey,
+              onSaved: (password) {},
               decoration: InputDecoration(
-                hintText: "New Password",
-                prefixIcon: IconButton(
-                  icon: const Icon(Icons.pin_sharp),
-                  onPressed: () {
-                    print('Search');
-                  },
-                ),
+                labelStyle:
+                    TextStyle(color: black, fontWeight: FontWeight.w500),
+                labelText: 'New Password',
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide(
-                    color: green,
-                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
               ),
             ),
@@ -85,19 +76,17 @@ class _ChangePasswordState extends State<ChangePassword> {
             ),
             TextFormField(
               controller: _resetPasswordController.confirmPasswordController,
+              keyboardType: TextInputType.visiblePassword,
+              textInputAction: TextInputAction.done,
+              obscureText: true,
+              cursorColor: Colors.grey,
+              onSaved: (password) {},
               decoration: InputDecoration(
-                hintText: "Comfirm Password",
-                prefixIcon: IconButton(
-                  icon: const Icon(Icons.pin_sharp),
-                  onPressed: () {
-                    print('Search');
-                  },
-                ),
+                labelStyle:
+                    TextStyle(color: black, fontWeight: FontWeight.w500),
+                labelText: 'Confirm Password',
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide(
-                    color: green,
-                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
               ),
             ),
