@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/view/auth/signIn/login.dart';
+import 'package:hotel/controller/updateProfile_controller.dart';
 import 'package:intl/intl.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:hotel/constant/constant.dart';
@@ -23,6 +23,8 @@ class _EditPFState extends State<EditPF> {
     super.dispose();
   }
 
+  final UpdateProfileController _updateProfileController = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +42,7 @@ class _EditPFState extends State<EditPF> {
         ),
       ),
       floatingActionButton: _signButton(),
-    //bottomNavigationBar: _signButton(),
+      //bottomNavigationBar: _signButton(),
       body: Padding(
         padding: EdgeInsets.all(15.0),
         child: SingleChildScrollView(
@@ -51,37 +53,13 @@ class _EditPFState extends State<EditPF> {
               SizedBox(height: 10),
               _Username(),
               SizedBox(height: 10),
-              TextField(
-                controller: _date,
-                decoration: InputDecoration(
-                  labelText: 'Date of Birth',
-                  labelStyle:
-                      TextStyle(color: black, fontWeight: FontWeight.w500),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                  ),
-                ),
-                onTap: () async {
-                  DateTime? pickeddate = await showDatePicker(
-                    context: context,
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime(2000),
-                    lastDate: DateTime(2101),
-                  );
-
-                  if (pickeddate != null) {
-                    setState(() {
-                      _date.text = DateFormat('yyyy-MM-dd').format(pickeddate);
-                    });
-                  }
-                },
-              ),
+              _Address(),
               SizedBox(height: 10),
               _TextFieldsEmail(),
               SizedBox(height: 10),
               _PhoneNumber(),
               SizedBox(height: 10),
-              _Gender(),
+              // _Gender(),
             ],
           ),
         ),
@@ -90,11 +68,12 @@ class _EditPFState extends State<EditPF> {
   }
 
   Widget _Fullname() => TextField(
+      controller: _updateProfileController.nameController,
       keyboardType: TextInputType.text,
       textInputAction: TextInputAction.next,
       cursorColor: Colors.black,
       decoration: InputDecoration(
-        labelText: 'Full Name',
+        labelText: 'Name',
         labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -102,11 +81,24 @@ class _EditPFState extends State<EditPF> {
       ));
 
   Widget _Username() => TextField(
+      controller: _updateProfileController.usernameController,
       keyboardType: TextInputType.text,
       textInputAction: TextInputAction.next,
       cursorColor: Colors.grey,
       decoration: InputDecoration(
-        labelText: 'Nickname',
+        labelText: 'Username',
+        labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+        ),
+      ));
+  Widget _Address() => TextField(
+      controller: _updateProfileController.addressController,
+      keyboardType: TextInputType.text,
+      textInputAction: TextInputAction.next,
+      cursorColor: Colors.grey,
+      decoration: InputDecoration(
+        labelText: 'Address',
         labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -114,6 +106,7 @@ class _EditPFState extends State<EditPF> {
       ));
 
   Widget _TextFieldsEmail() => TextFormField(
+      controller: _updateProfileController.emailController,
       keyboardType: TextInputType.emailAddress,
       textInputAction: TextInputAction.next,
       cursorColor: Colors.grey,
@@ -127,6 +120,7 @@ class _EditPFState extends State<EditPF> {
       ));
 
   Widget _PhoneNumber() => IntlPhoneField(
+        controller: _updateProfileController.phoneController,
         focusNode: _phoneNumberFocusNode,
         decoration: InputDecoration(
           labelText: 'Phone number',
@@ -144,38 +138,39 @@ class _EditPFState extends State<EditPF> {
         },
       );
 
-  Widget _Gender() => DropdownButtonFormField<String>(
-      value: selectedGender,
-      onChanged: (String? newValue) {
-        setState(() {
-          selectedGender = newValue;
-        });
-      },
-      items: <String>['Male', 'Female']
-          .map<DropdownMenuItem<String>>(
-            (String value) => DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            ),
-          )
-          .toList(),
-      decoration: InputDecoration(
-        labelText: 'Gender',
-        labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-        ),
-      ));
+  // Widget _Gender() => DropdownButtonFormField<String>(
+  //     value: selectedGender,
+  //     onChanged: (String? newValue) {
+  //       setState(() {
+  //         selectedGender = newValue;
+  //       });
+  //     },
+  //     items: <String>['Male', 'Female']
+  //         .map<DropdownMenuItem<String>>(
+  //           (String value) => DropdownMenuItem<String>(
+  //             value: value,
+  //             child: Text(value),
+  //           ),
+  //         )
+  //         .toList(),
+  //     decoration: InputDecoration(
+  //       labelText: 'Gender',
+  //       labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
+  //       border: OutlineInputBorder(
+  //         borderRadius: BorderRadius.all(Radius.circular(20)),
+  //       ),
+  //     ));
 
   Widget _signButton() => Padding(
-    padding: const EdgeInsets.only(bottom: 10),
-    child: ElevatedButton(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             fixedSize: Size(350, 65),
             backgroundColor: green,
           ),
           onPressed: () {
-            Get.to(Login());
+            _updateProfileController.updateProfile();
+            // Get.to(Login());
           },
           child: Center(
             child: Text(
@@ -184,5 +179,5 @@ class _EditPFState extends State<EditPF> {
             ),
           ),
         ),
-  );
+      );
 }

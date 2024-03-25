@@ -55,4 +55,25 @@ class UserRespoitory {
     );
     return ResetResponse.fromJson(res);
   }
+
+  Future<ResetResponse> updateProfile(
+    String username,
+    String name,
+    String phone,
+    String email,
+    String address,
+  ) async {
+    final res = await GetXAPI.instance.put(
+      path: ServerRout.updateProfile,
+      data: {
+        "username": username,
+        "name": name,
+        "phone": phone,
+        "email": email,
+        "address": email,
+        "bio": "jkhlkhkhlkhhlk",
+      },
+    );
+    return ResetResponse.fromJson(res);
+  }
 }

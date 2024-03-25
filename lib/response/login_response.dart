@@ -50,6 +50,13 @@ class Data {
       };
 }
 
+
+List<User> userModelsFromJson(String str) =>
+    List<User>.from(json.decode(str).map((x) => User.fromJson(x)));
+
+String userModelsToJson(List<User> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
 class User {
   int id;
   String username;
@@ -98,31 +105,3 @@ class User {
         "status": status,
       };
 }
-
-// class RegisterResponse {
-//   RegisterResponse({
-//     required this.status,
-//     required this.message,
-//     required this.messageKey,
-//     required this.data,
-//     required this.paging,
-//   });
-
-//   dynamic status;
-//   String message;
-//   String messageKey;
-//   String paging;
-//   Data? data;
-
-//   factory RegisterResponse.fromJson(Map<String, dynamic> json) {
-//     return RegisterResponse(
-//       status: json['status'] as String,
-//       message: json['message'] as String,
-//       messageKey: json['messageKey'] as String,
-//       data: json['data'] != null
-//           ? Data.fromJson(json['data'] as Map<String, dynamic>)
-//           : null,
-//       paging: json['paging'],
-//     );
-//   }
-// }
