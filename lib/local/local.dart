@@ -15,11 +15,6 @@ class LocalStorageManager {
 
   Future<String?> getFromCache(String key) async {
     final pref = await _getSharePreference();
-    return pref.getString(key ?? "Helloworlaasdasds");
+    return pref.getString(key);
   }
-
-  // void clear(String key) async {
-  //   final pref = await _getSharePreference();
-  //   pref.remove(key);
-  // }
 }

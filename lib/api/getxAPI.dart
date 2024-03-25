@@ -22,13 +22,22 @@ class GetXAPI {
     required String path,
     Map<String, dynamic>? queryParameters,
   }) async {
+    final token = await LocalStorageManager.instance.getFromCache("Token");
     try {
-      final res = await _dio.get(path, queryParameters: queryParameters);
+      final res = await _dio.get(
+        path,
+        queryParameters: queryParameters,
+        options: Options(
+          headers: {'Authorization': "Bearer $token"},
+        ),
+      );
       if (res.statusCode == 200) {
         return res.data;
+      } else {
+        throw Exception('Failed to fetch data: ${res.statusCode}');
       }
     } catch (e) {
-      rethrow;
+      throw Exception('Failed to fetch data: $e');
     }
   }
 

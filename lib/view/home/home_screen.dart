@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/home_controller.dart';
 import 'package:hotel/controller/login_controller.dart';
+import 'package:hotel/controller/pofile_screen_controller.dart';
 import 'package:hotel/view/booking/recently.dart';
 import 'package:hotel/view/home/demoCategory.dart';
 import '../../tabbar/tabbar.dart';
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen>
   late TabController _tabController;
   final HomeController _homeController = Get.find();
   final LoginController _loginController = Get.find();
-
+  final ProfileScreenController _profileScreenController = Get.find();
   @override
   void initState() {
     _loginController.getToken();
@@ -32,71 +33,71 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return Obx(() => Scaffold(
-          backgroundColor: white,
-          appBar: AppBar(
-            centerTitle: false,
-            backgroundColor: white,
-            title: Row(
-              children: [
-                Container(
-                  height: Get.height / 20,
-                  width: Get.width / 12,
-                  decoration: BoxDecoration(
-                    // color: green,
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/logo.png"),
-                        fit: BoxFit.contain),
-                  ),
-                ),
-                SizedBox(
-                  width: 25,
-                ),
-                Text(
-                  "Bolu",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                )
-              ],
-            ),
-            // Action
-            actions: [
-              IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.notifications_outlined,
-                    size: 30,
-                  )),
-              IconButton(
-                  onPressed: () {
-                    Get.to(RecentlyScreen());
-                  },
-                  icon: Icon(
-                    Icons.bookmark_outline,
-                    size: 30,
-                  )),
-              SizedBox(
-                width: 4,
-              )
-            ],
-          ),
-          body: Column(
-            children: [
-              //
-              _builNickName(),
-              _buildSearch(),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                child: TabbarEdit(
-                    _tabController,
-                    _homeController.roomcategorys,
-                    _homeController.selectedIndex.value,
-                    (index) => _homeController.filTerByIndex(index)),
+    return Scaffold(
+      backgroundColor: white,
+      appBar: AppBar(
+        centerTitle: false,
+        backgroundColor: white,
+        title: Row(
+          children: [
+            Container(
+              height: Get.height / 20,
+              width: Get.width / 12,
+              decoration: BoxDecoration(
+                // color: green,
+                image: DecorationImage(
+                    image: AssetImage("assets/images/logo.png"),
+                    fit: BoxFit.contain),
               ),
-              _builSeeAll(),
-              _buildTabbarView(),
-            ],
+            ),
+            SizedBox(
+              width: 25,
+            ),
+            Text(
+              "Bolu",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+            )
+          ],
+        ),
+        // Action
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.notifications_outlined,
+                size: 30,
+              )),
+          IconButton(
+              onPressed: () {
+                Get.to(RecentlyScreen());
+              },
+              icon: Icon(
+                Icons.bookmark_outline,
+                size: 30,
+              )),
+          SizedBox(
+            width: 4,
+          )
+        ],
+      ),
+      body: Column(
+        children: [
+          //
+          _builNickName(),
+          _buildSearch(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+            child: TabbarEdit(
+                _tabController,
+                _homeController.roomcategorys,
+                _homeController.selectedIndex.value,
+                (index) => _homeController.filTerByIndex(index)),
           ),
-        ));
+          _builSeeAll(),
+          _buildTabbarView(),
+        ],
+      ),
+    );
   }
 
   Widget _buildTabbarView() => Expanded(
@@ -129,17 +130,19 @@ class _HomeScreenState extends State<HomeScreen>
         ),
       );
 
-  Widget _builNickName() => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: Row(
-          children: [
-            Text(
-              "Hello, So LayZz",
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-            )
-          ],
-        ),
-      );
+  Widget _builNickName() => Obx(() => _profileScreenController.isLoading.value
+      ? Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Row(
+            children: [
+              Text(
+                "Hello, ${_profileScreenController.profileModel.value!.data!.name.toString()}",
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              )
+            ],
+          ),
+        )
+      : CircularProgressIndicator());
 
   Widget _buildSearch() => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),

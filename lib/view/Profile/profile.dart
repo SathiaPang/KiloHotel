@@ -4,10 +4,9 @@ import 'package:get/get.dart';
 import 'package:hotel/component/profileScreen/optionSelect.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
+import 'package:hotel/controller/pofile_screen_controller.dart';
 import 'package:hotel/view/Profile/editprofile.dart';
 import 'package:hotel/view/Profile/notificationScreen.dart';
-import 'package:hotel/view/Profile/security.dart';
-import 'package:hotel/view/auth/signIn/login.dart';
 import 'package:hotel/view/soklay/payment1.dart';
 
 class ProFile extends StatefulWidget {
@@ -20,7 +19,8 @@ class ProFile extends StatefulWidget {
 class _ProFileState extends State<ProFile> {
   bool _switchValue = false;
 
-  @override
+  final ProfileScreenController profileScreenController = Get.find();
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: _switchValue ? black : white,
@@ -39,22 +39,59 @@ class _ProFileState extends State<ProFile> {
                   size: 25, color: _switchValue ? white : black))
         ],
       ),
-      body: Column(
-        children: [
-          //
-          _buildPicture(),
-          _builNameAndGmail(),
-          SizedBox(
-            height: 20,
-          ),
-          _editPF(),
-          _payment(),
-          _notification(),
-          _security(),
-          _help(),
-          _builDarkTheme(),
-          _buildLogout()
-        ],
+      body: Obx(
+        () => profileScreenController.isLoading.value
+            ? Column(
+                children: [
+                  //
+                  _buildPicture(),
+                  _builNameAndGmail(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  // _editPF(),
+                  Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(AppRoute.editPF);
+                          // For debugging purposes
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 10),
+                          child: Container(
+                            height: Get.height / 25,
+                            width: Get.width / 2,
+                            child: Row(
+                              children: [
+                                Icon(Icons.person_2_outlined),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Text(
+                                  "Edit Profile",
+                                  style: TextStyle(
+                                      fontSize: 19,
+                                      fontWeight: FontWeight.w500,
+                                      color: black),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  _payment(),
+                  _notification(),
+                  _security(),
+                  _help(),
+                  _builDarkTheme(),
+                  _buildLogout()
+                ],
+              )
+            : CircularProgressIndicator(),
       ),
     );
   }
@@ -63,7 +100,9 @@ class _ProFileState extends State<ProFile> {
         child: CircleAvatar(
           radius: 70,
           // backgroundColor: green,
-          backgroundImage: AssetImage("assets/images/pf.png"),
+          backgroundImage: NetworkImage(profileScreenController
+              .profileModel.value!.data!.avatar
+              .toString()),
           child: Padding(
             padding: const EdgeInsets.only(top: 100, left: 110),
             child: Container(
@@ -94,13 +133,12 @@ class _ProFileState extends State<ProFile> {
   Widget _builNameAndGmail() => ListView(
         shrinkWrap: true,
         children: [
-          //
           SizedBox(
             height: 10,
           ),
           Center(
               child: Text(
-            "So LayZz",
+            profileScreenController.profileModel.value!.data!.name.toString(),
             style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -108,7 +146,7 @@ class _ProFileState extends State<ProFile> {
           )),
           Center(
               child: Text(
-            "Kremsoklay@gmail.com",
+            profileScreenController.profileModel.value!.data!.email.toString(),
             style: TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w400,
@@ -120,7 +158,7 @@ class _ProFileState extends State<ProFile> {
   Widget _editPF() => Row(
         children: [
           OptionSelect(
-              ontap: () => Get.to(EditPF()),
+              ontap: () => Get.toNamed(AppRoute.editPF),
               icon: Icons.person_2_outlined,
               text: "Edit Profile",
               size: 30,

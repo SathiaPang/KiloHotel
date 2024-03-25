@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
-import 'package:hotel/binding/login_binding.dart';
-import 'package:hotel/binding/navigation_biding.dart';
-import 'package:hotel/binding/register_binding.dart';
-import 'package:hotel/binding/reset_binding.dart';
-import 'package:hotel/binding/selectDateBinding.dart';
+import 'package:hotel/constant/binding/login_binding.dart';
+import 'package:hotel/constant/binding/navigation_biding.dart';
+import 'package:hotel/constant/binding/register_binding.dart';
+import 'package:hotel/constant/binding/reset_binding.dart';
+import 'package:hotel/constant/binding/selectDateBinding.dart';
+import 'package:hotel/constant/binding/update_binding.dart';
+import 'package:hotel/view/Profile/editprofile.dart';
 import 'package:hotel/view/Profile/resetPassword.dart';
 import 'package:hotel/view/Profile/security.dart';
 import 'package:hotel/view/auth/signIn/login.dart';
@@ -30,6 +32,7 @@ class AppRoute {
   static String register = "/register";
   static String selectDate = "/selectDate";
   static String security = "/security";
+  static String editPF = "/editPF";
 
   // static String selectDate = "/selectDate";
   static List<GetPage> appPage = [
@@ -65,5 +68,6 @@ class AppRoute {
       name: security,
       page: () => SecurityScreen(),
     ),
+    GetPage(name: editPF, page: () => EditPF(), binding: UpdateBinding())
   ];
 }

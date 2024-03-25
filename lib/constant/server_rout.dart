@@ -3,6 +3,8 @@ class ServerRout {
   static String login = "api/auth/login";
   static String reset = "api/users";
   static String register = "api/auth/register";
+  static String getProfile = "api/users/getProfile";
+  static String updateProfile = "api/users/updateProfile";
 
   static String keyToke = "token";
   static String basicToken = "Basic aG90ZWw6aG90ZWxAMTIz";
