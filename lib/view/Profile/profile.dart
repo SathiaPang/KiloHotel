@@ -4,8 +4,9 @@ import 'package:get/get.dart';
 import 'package:hotel/component/profileScreen/optionSelect.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
+
 import 'package:hotel/controller/pofile_screen_controller.dart';
-import 'package:hotel/view/Profile/editprofile.dart';
+import 'package:hotel/local/local.dart';
 import 'package:hotel/view/Profile/notificationScreen.dart';
 import 'package:hotel/view/soklay/payment1.dart';
 
@@ -49,40 +50,7 @@ class _ProFileState extends State<ProFile> {
                   SizedBox(
                     height: 20,
                   ),
-                  // _editPF(),
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Get.toNamed(AppRoute.editPF);
-                          // For debugging purposes
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 10),
-                          child: Container(
-                            height: Get.height / 25,
-                            width: Get.width / 2,
-                            child: Row(
-                              children: [
-                                Icon(Icons.person_2_outlined),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Text(
-                                  "Edit Profile",
-                                  style: TextStyle(
-                                      fontSize: 19,
-                                      fontWeight: FontWeight.w500,
-                                      color: black),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  _editPF(),
                   _payment(),
                   _notification(),
                   _security(),
@@ -157,12 +125,33 @@ class _ProFileState extends State<ProFile> {
 
   Widget _editPF() => Row(
         children: [
-          OptionSelect(
-              ontap: () => Get.toNamed(AppRoute.editPF),
-              icon: Icons.person_2_outlined,
-              text: "Edit Profile",
-              size: 30,
-              color: _switchValue ? white : black),
+          GestureDetector(
+            onTap: () {
+              Get.toNamed(AppRoute.editPF);
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: Container(
+                height: Get.height / 25,
+                width: Get.width / 2,
+                child: Row(
+                  children: [
+                    Icon(Icons.person_2_outlined),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      "Edit Profile",
+                      style: TextStyle(
+                          fontSize: 19,
+                          fontWeight: FontWeight.w500,
+                          color: black),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ],
       );
 
@@ -366,7 +355,7 @@ class _ProFileState extends State<ProFile> {
             backgroundColor: Colors.green,
           ),
           onPressed: () {
-            Get.offAllNamed(AppRoute.login);
+            profileScreenController.clearToken();
           },
           child: Center(
             child: Text(

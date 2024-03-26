@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
+import 'package:hotel/constant/server_rout.dart';
 import 'package:hotel/local/local.dart';
 import 'package:hotel/response/user_reponse.dart';
 
@@ -42,7 +43,8 @@ class LoginController extends GetxController {
         passwordSignInController.text,
       );
       if (res.status == 200) {
-        LocalStorageManager.instance.saveToCache("Token", res.data!.token);
+        LocalStorageManager.instance
+            .saveToCache(ServerRout.keyToke, res.data!.token);
         print("------------------${res.data?.token}-------------------------");
         Get.showSnackbar(const GetSnackBar(
           backgroundColor: green,
@@ -72,7 +74,19 @@ class LoginController extends GetxController {
   }
 
   void getToken() async {
-    final token = await LocalStorageManager.instance.getFromCache("Token");
+    final token =
+        await LocalStorageManager.instance.getFromCache(ServerRout.keyToke);
     print("---------------Then Login ${token}");
+  }
+
+  void isLogin() async {
+    final token =
+        await LocalStorageManager.instance.getFromCache(ServerRout.keyToke);
+    if (token != null && token.isNotEmpty) {
+      print("User is logged in.");
+      Get.offAllNamed(AppRoute.bottomNavigation);
+    } else {
+      print("User is not logged in.");
+    }
   }
 }

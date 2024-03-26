@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
-import 'package:hotel/controller/register_controller.dart';
 
 class SigninScreen extends StatefulWidget {
   SigninScreen({super.key});
