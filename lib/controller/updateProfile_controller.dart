@@ -30,6 +30,7 @@ class UpdateProfileController extends GetxController {
       );
       if (res.status == 200) {
         print("-------------------------------Cange Success");
+        update();
       }
     } on DioException catch (e) {
       print(e);

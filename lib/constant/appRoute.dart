@@ -55,10 +55,6 @@ class AppRoute {
         name: changePassword,
         page: () => ChangePassword(),
         binding: ResetBinding()),
-    // GetPage(
-    //     name: changePassword,
-    //     page: () => ChangePassword(),
-    //     binding: resetBinding()),
     GetPage(
         name: selectDate,
         page: () => BookDetailScreenOne(),

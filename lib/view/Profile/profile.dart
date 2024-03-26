@@ -5,7 +5,6 @@ import 'package:hotel/component/profileScreen/optionSelect.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/pofile_screen_controller.dart';
-import 'package:hotel/view/Profile/editprofile.dart';
 import 'package:hotel/view/Profile/notificationScreen.dart';
 import 'package:hotel/view/soklay/payment1.dart';
 

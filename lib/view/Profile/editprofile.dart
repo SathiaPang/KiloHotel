@@ -138,29 +138,6 @@ class _EditPFState extends State<EditPF> {
         },
       );
 
-  // Widget _Gender() => DropdownButtonFormField<String>(
-  //     value: selectedGender,
-  //     onChanged: (String? newValue) {
-  //       setState(() {
-  //         selectedGender = newValue;
-  //       });
-  //     },
-  //     items: <String>['Male', 'Female']
-  //         .map<DropdownMenuItem<String>>(
-  //           (String value) => DropdownMenuItem<String>(
-  //             value: value,
-  //             child: Text(value),
-  //           ),
-  //         )
-  //         .toList(),
-  //     decoration: InputDecoration(
-  //       labelText: 'Gender',
-  //       labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
-  //       border: OutlineInputBorder(
-  //         borderRadius: BorderRadius.all(Radius.circular(20)),
-  //       ),
-  //     ));
-
   Widget _signButton() => Padding(
         padding: const EdgeInsets.only(bottom: 10),
         child: ElevatedButton(
