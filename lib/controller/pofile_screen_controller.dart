@@ -13,7 +13,6 @@ class ProfileScreenController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-
     getPrfileData();
   }
 
@@ -25,6 +24,7 @@ class ProfileScreenController extends GetxController {
       if (res.status == 200) {
         profileModel.value = res;
         isLoading.value = true;
+        update();
       }
     } on DioException catch (e) {
       print(e.message);

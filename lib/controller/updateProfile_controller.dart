@@ -28,10 +28,14 @@ class UpdateProfileController extends GetxController {
         email,
         address,
       );
+      if (res.status == 200) {
+        print("-------------------------------Cange Success");
+        update();
+      }
       //if (res.status == 200) {
       print("Success ${res.message}");
       clearText();
-      //}
+     
     } on DioException catch (e) {
       print(e);
     }
