@@ -1,11 +1,14 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
-
-import 'package:hotel/view/auth/signIn/signInScreen.dart';
+import 'package:hotel/constant/server_rout.dart';
+import 'package:hotel/controller/login_controller.dart';
+import 'package:hotel/local/local.dart';
 
 class Loading2 extends StatefulWidget {
-  const Loading2({super.key});
+  Loading2({super.key});
 
   @override
   State<Loading2> createState() => _Loading2State();
@@ -18,12 +21,35 @@ class _Loading2State extends State<Loading2> {
     super.initState();
   }
 
-  void initLoading() {
+  void initLoading() async {
+    final LoginController loginController = Get.find();
+    loginController.isLogin();
+    final token =
+        await LocalStorageManager.instance.getFromCache(ServerRout.keyToke);
+
     Timer(
-        const Duration(seconds: 1),
-        () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => SigninScreen())));
+      const Duration(seconds: 1),
+      () {
+        if (token != null && token.isNotEmpty) {
+          print("===>> Login $token");
+
+          Get.offNamed(AppRoute.bottomNavigation);
+        } else {
+          Get.offNamed(AppRoute.signin);
+          print("===>> NotLogin $token");
+        }
+      },
+    );
   }
+
+  // void initLoading() {
+  //   Timer(
+  //       const Duration(seconds: 1),
+  //       () => Navigator.pushReplacement(
+  //           context, MaterialPageRoute(builder: (context) => SigninScreen()))
+  //       //
+  //       );
+  // }
 
   @override
   Widget build(BuildContext context) {

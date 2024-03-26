@@ -1,3 +1,4 @@
+import 'package:hotel/constant/server_rout.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStorageManager {
@@ -16,5 +17,10 @@ class LocalStorageManager {
   Future<String?> getFromCache(String key) async {
     final pref = await _getSharePreference();
     return pref.getString(key);
+  }
+
+  void clearToken(String key) async {
+    final pref = await _getSharePreference();
+    pref.remove(key);
   }
 }

@@ -22,12 +22,23 @@ class _HomeScreenState extends State<HomeScreen>
   final HomeController _homeController = Get.find();
   final LoginController _loginController = Get.find();
   final ProfileScreenController _profileScreenController = Get.find();
+
+  late AnimationController _animationController;
   @override
   void initState() {
     _loginController.getToken();
     _tabController = TabController(
         length: _homeController.roomcategorys.length, vsync: this);
+    _animationController =
+        AnimationController(vsync: this, duration: Duration(seconds: 4))
+          ..repeat();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -130,19 +141,25 @@ class _HomeScreenState extends State<HomeScreen>
         ),
       );
 
-  Widget _builNickName() => Obx(() => _profileScreenController.isLoading.value
-      ? Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Row(
-            children: [
-              Text(
-                "Hello, ${_profileScreenController.profileModel.value!.data!.name.toString()}",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+  Widget _builNickName() => Obx(
+        () => _profileScreenController.isLoading.value
+            ? Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Row(
+                  children: [
+                    Text(
+                      "Hello, ${_profileScreenController.profileModel.value!.data!.name.toString()}",
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
               )
-            ],
-          ),
-        )
-      : CircularProgressIndicator());
+            : CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                strokeWidth: 5.5,
+              ),
+      );
 
   Widget _buildSearch() => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),

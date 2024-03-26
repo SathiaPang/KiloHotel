@@ -28,11 +28,21 @@ class UpdateProfileController extends GetxController {
         email,
         address,
       );
-      if (res.status == 200) {
-        print("-------------------------------Cange Success");
-      }
+      //if (res.status == 200) {
+      print("Success ${res.message}");
+      clearText();
+      //}
     } on DioException catch (e) {
       print(e);
     }
+  }
+
+  void clearText() {
+    nameController.clear();
+    usernameController.clear();
+    emailController.clear();
+    phoneController.clear();
+    addressController.clear();
+    Get.back();
   }
 }
