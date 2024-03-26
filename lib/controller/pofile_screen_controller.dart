@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:hotel/constant/appRoute.dart';
+import 'package:hotel/constant/server_rout.dart';
+import 'package:hotel/local/local.dart';
 import 'package:hotel/model/getprofile_model.dart';
 import 'package:hotel/response/user_repo.dart';
 
@@ -26,5 +29,10 @@ class ProfileScreenController extends GetxController {
     } on DioException catch (e) {
       print(e.message);
     }
+  }
+
+  void clearToken() {
+    LocalStorageManager.instance.clearToken(ServerRout.keyToke);
+    Get.offNamed(AppRoute.login);
   }
 }

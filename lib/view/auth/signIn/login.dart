@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
-import 'package:hotel/constant/server_rout.dart';
 import 'package:hotel/controller/login_controller.dart';
-import 'package:hotel/local/local.dart';
 import 'package:hotel/view/satya/Create_new_password.dart';
 
 class Login extends StatefulWidget {

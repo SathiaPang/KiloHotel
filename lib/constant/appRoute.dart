@@ -41,7 +41,7 @@ class AppRoute {
     GetPage(name: splash1, page: () => SplashScreen1()),
     GetPage(name: splash2, page: () => SplashScreen2()),
     GetPage(name: splash3, page: () => SplashScreen3()),
-    GetPage(name: load2, page: () => Loading2()),
+    GetPage(name: load2, page: () => Loading2(), binding: LoginBiding()),
     GetPage(name: signin, page: () => SigninScreen()),
 
     GetPage(name: login, page: () => Login(), binding: LoginBiding()),
@@ -55,6 +55,7 @@ class AppRoute {
         name: changePassword,
         page: () => ChangePassword(),
         binding: ResetBinding()),
+
     GetPage(
         name: selectDate,
         page: () => BookDetailScreenOne(),
