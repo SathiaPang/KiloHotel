@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:hotel/component/profileScreen/optionSelect.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
-
-import 'package:hotel/controller/pofile_screen_controller.dart';
 import 'package:hotel/view/Profile/notificationScreen.dart';
-import 'package:hotel/view/soklay/payment1.dart';
+
+import '../../controller/homeScreenController.dart';
+import '../../payment/payment1.dart';
 
 class ProFile extends StatefulWidget {
   ProFile({super.key});
@@ -19,55 +19,53 @@ class ProFile extends StatefulWidget {
 class _ProFileState extends State<ProFile> {
   bool _switchValue = false;
 
-  final ProfileScreenController profileScreenController = Get.find();
+  final ProfileScreenController _profileScreenController = Get.find();
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _switchValue ? black : white,
-      appBar: AppBar(
         backgroundColor: _switchValue ? black : white,
-        centerTitle: false,
-        title: Text(
-          "Profile",
-          style: TextStyle(
-              fontWeight: FontWeight.bold, color: _switchValue ? white : black),
+        appBar: AppBar(
+          backgroundColor: _switchValue ? black : white,
+          centerTitle: false,
+          title: Text(
+            "Profile",
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: _switchValue ? white : black),
+          ),
+          actions: [
+            IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.pending_outlined,
+                    size: 25, color: _switchValue ? white : black))
+          ],
         ),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.pending_outlined,
-                  size: 25, color: _switchValue ? white : black))
-        ],
-      ),
-      body: Obx(
-        () => profileScreenController.isLoading.value
-            ? Column(
-                children: [
-                  //
-                  _buildPicture(),
-                  _builNameAndGmail(),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  _editPF(),
-                  _payment(),
-                  _notification(),
-                  _security(),
-                  _help(),
-                  _builDarkTheme(),
-                  _buildLogout()
-                ],
-              )
-            : CircularProgressIndicator(),
-      ),
-    );
+        body: _profileScreenController.isLoading.value
+            ? Obx(() => Column(
+                  children: [
+                    //
+                    _buildPicture(),
+                    _builNameAndGmail(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    _editPF(),
+                    _payment(),
+                    _notification(),
+                    _security(),
+                    _help(),
+                    _builDarkTheme(),
+                    _buildLogout()
+                  ],
+                ))
+            : CircleAvatar());
   }
 
   Widget _buildPicture() => Center(
         child: CircleAvatar(
           radius: 70,
-          // backgroundColor: green,
-          backgroundImage: NetworkImage(profileScreenController
+          backgroundColor: green,
+          backgroundImage: NetworkImage(_profileScreenController
               .profileModel.value!.data!.avatar
               .toString()),
           child: Padding(
@@ -105,7 +103,7 @@ class _ProFileState extends State<ProFile> {
           ),
           Center(
               child: Text(
-            profileScreenController.profileModel.value!.data!.name.toString(),
+            _profileScreenController.profileModel.value!.data!.name.toString(),
             style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -113,7 +111,7 @@ class _ProFileState extends State<ProFile> {
           )),
           Center(
               child: Text(
-            profileScreenController.profileModel.value!.data!.email.toString(),
+            _profileScreenController.profileModel.value!.data!.email.toString(),
             style: TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w400,
@@ -354,7 +352,7 @@ class _ProFileState extends State<ProFile> {
             backgroundColor: Colors.green,
           ),
           onPressed: () {
-            profileScreenController.clearToken();
+            _profileScreenController.clearToken();
           },
           child: Center(
             child: Text(

@@ -22,7 +22,8 @@ class GetXAPI {
     required String path,
     Map<String, dynamic>? queryParameters,
   }) async {
-    final token = await LocalStorageManager.instance.getFromCache("Token");
+    final token =
+        await LocalStorageManager.instance.getFromCache(ServerRout.keyToke);
     try {
       final res = await _dio.get(
         path,

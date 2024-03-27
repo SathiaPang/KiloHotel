@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
-import 'package:hotel/view/soklay/selectdate.dart';
+
+import '../view/selectdate/selectdate.dart';
 
 class BookDetailScreenOne extends StatefulWidget {
   const BookDetailScreenOne({Key? key}) : super(key: key);

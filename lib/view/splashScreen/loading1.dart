@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
 
 import 'package:hotel/view/splashScreen/splashScreen1.dart';
@@ -20,9 +21,9 @@ class _Loading1State extends State<Loading1> {
 
   void initloading() {
     Timer(
-        const Duration(seconds: 1),
-        () => Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const SplashScreen1())));
+      const Duration(seconds: 1),
+      () => Get.off(() => const SplashScreen1()),
+    );
   }
 
   @override

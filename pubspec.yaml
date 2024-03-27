@@ -43,6 +43,7 @@ dependencies:
   quickalert: ^1.0.2
   dotted_dashed_line: ^0.0.3
   dio: ^5.4.1
+  flutter_easyloading: ^3.0.5
 
 
 dev_dependencies:

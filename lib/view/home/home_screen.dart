@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/home_controller.dart';
 import 'package:hotel/controller/login_controller.dart';
-import 'package:hotel/controller/pofile_screen_controller.dart';
+import 'package:hotel/controller/homeScreenController.dart';
 import 'package:hotel/view/booking/recently.dart';
 import 'package:hotel/view/home/demoCategory.dart';
 import '../../tabbar/tabbar.dart';
@@ -23,21 +23,17 @@ class _HomeScreenState extends State<HomeScreen>
   final LoginController _loginController = Get.find();
   final ProfileScreenController _profileScreenController = Get.find();
 
-  late AnimationController _animationController;
   @override
   void initState() {
     _loginController.getToken();
     _tabController = TabController(
         length: _homeController.roomcategorys.length, vsync: this);
-    _animationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 4))
-          ..repeat();
+
     super.initState();
   }
 
   @override
   void dispose() {
-    _animationController.dispose();
     super.dispose();
   }
 
@@ -141,25 +137,17 @@ class _HomeScreenState extends State<HomeScreen>
         ),
       );
 
-  Widget _builNickName() => Obx(
-        () => _profileScreenController.isLoading.value
-            ? Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Row(
-                  children: [
-                    Text(
-                      "Hello, ${_profileScreenController.profileModel.value!.data!.name.toString()}",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
-              )
-            : CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
-                strokeWidth: 5.5,
-              ),
-      );
+  Widget _builNickName() => Obx(() => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Row(
+          children: [
+            Text(
+              "Hello, ${_profileScreenController.profileModel.value!.data!.name.toString()}",
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            )
+          ],
+        ),
+      ));
 
   Widget _buildSearch() => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
