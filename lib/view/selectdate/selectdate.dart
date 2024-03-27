@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/selectDateController.dart';
-import 'package:hotel/view/soklay/nameOfReserver.dart';
+
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+
+import '../../payment/nameOfReserver.dart';
 
 class SelectDate extends StatefulWidget {
   const SelectDate({super.key});

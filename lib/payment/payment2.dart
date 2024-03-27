@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
 
-import 'package:hotel/view/soklay/cancelHotel.dart';
-import 'package:hotel/view/soklay/newCard.dart';
+import 'cancelHotel.dart';
+import 'newCard.dart';
 
 class Payment2 extends StatefulWidget {
   const Payment2({super.key});
