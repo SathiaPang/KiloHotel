@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/login_controller.dart';
-import 'package:hotel/view/satya/Create_new_password.dart';
+import 'package:hotel/password/Create_new_password.dart';
 
 class Login extends StatefulWidget {
   Login({super.key, this.onChanged, this.initialValue = false});

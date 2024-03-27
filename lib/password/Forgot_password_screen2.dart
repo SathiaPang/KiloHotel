@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
 
-import 'package:hotel/view/satya/Create_new_password.dart';
+import 'package:hotel/password/Create_new_password.dart';
 
 class ForgotPasswordScreen2 extends StatelessWidget {
   const ForgotPasswordScreen2({super.key});

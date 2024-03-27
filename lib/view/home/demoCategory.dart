@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/data/data.dart';
-import 'package:hotel/view/satya/booking_detail/booking_detail_1.dart';
+import 'package:hotel/booking/booking_detail_1.dart';
 
 class DemoCategory extends StatelessWidget {
   const DemoCategory({super.key, required this.hotelList});

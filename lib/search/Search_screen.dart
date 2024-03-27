@@ -4,7 +4,7 @@ import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/search_controller.dart';
 import 'package:hotel/data/data.dart';
 import 'package:hotel/tabbar/tabbar.dart';
-import 'package:hotel/view/satya/Search%20screen/demoSearch.dart';
+import 'package:hotel/search/demoSearch.dart';
 
 class SearchScreen extends StatefulWidget {
   SearchScreen({super.key});

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
 
-import 'package:hotel/view/soklay/payment2.dart';
+import 'package:hotel/payment/payment2.dart';
 
 class NewCard extends StatelessWidget {
   const NewCard({super.key});

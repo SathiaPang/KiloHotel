@@ -6,7 +6,7 @@ import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/homeScreenController.dart';
 import 'package:hotel/view/Profile/notificationScreen.dart';
-import 'package:hotel/view/soklay/payment1.dart';
+import 'package:hotel/payment/payment1.dart';
 
 class ProFile extends StatefulWidget {
   ProFile({super.key});

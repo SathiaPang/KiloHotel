@@ -12,7 +12,7 @@ import 'package:hotel/view/auth/signIn/login.dart';
 import 'package:hotel/view/auth/signIn/signInScreen.dart';
 import 'package:hotel/view/auth/signUp/signUpScreen.dart';
 import 'package:hotel/view/navigationbar/naviga.dart';
-import 'package:hotel/view/satya/booking_detail/booking_detail_1.dart';
+import 'package:hotel/booking/booking_detail_1.dart';
 import 'package:hotel/view/splashScreen/loading1.dart';
 import 'package:hotel/view/splashScreen/loading2.dart';
 import 'package:hotel/view/splashScreen/splashScreen1.dart';

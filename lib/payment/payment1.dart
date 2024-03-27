@@ -5,7 +5,7 @@ import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/booking_controller.dart';
 import 'package:hotel/data/data.dart';
 import 'package:hotel/view/dialogPayment/dialogPayment.dart';
-import 'package:hotel/view/soklay/newCard.dart';
+import 'package:hotel/payment/newCard.dart';
 
 class PayMent1 extends StatefulWidget {
   PayMent1({super.key});
