@@ -13,7 +13,6 @@ class ProfileScreenController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-
     getPrfileData();
   }
 
@@ -22,6 +21,8 @@ class ProfileScreenController extends GetxController {
   void getPrfileData() async {
     try {
       final res = await userRepo.getProfileData();
+      // print("==>>>>>>>>> ${res.status.toString()}");
+      print("===========>>>>>>> ${res.status}");
       if (res.status == 200) {
         profileModel.value = res;
         isLoading.value = true;
