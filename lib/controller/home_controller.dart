@@ -1,15 +1,21 @@
+import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:hotel/data/data.dart';
+import 'package:hotel/data/roomRepo.dart';
 import 'package:hotel/repo/homeRepositary.dart';
 
+import '../model/RoomModel.dart';
+
 class HomeController extends GetxController {
-  HomeController({required this.homeRepository});
+  RoomRepo roomrepo;
+  HomeController({required this.homeRepository, required this.roomrepo});
   final repo = <Hotel>[].obs;
   final roomcategorys = <RoomCategory>[].obs;
   final HomeRepository homeRepository;
   final selectedIndex = 0.obs;
-
+  Rx<RoomModel?> roomModel = Rx<RoomModel?>(null);
   List<Hotel> _allList = [];
+  RxList<Datum> listDatum = RxList.empty(growable: true);
 
   @override
   void onInit() async {
@@ -20,6 +26,7 @@ class HomeController extends GetxController {
     // Get list Hotel
     _allList = await homeRepository.getList();
     filTerByIndex(0);
+    getData();
     super.onInit();
   }
 
@@ -31,5 +38,16 @@ class HomeController extends GetxController {
     repo(tmplist);
     print(selectedIndex);
     update();
+  }
+
+  getData() async {
+    try {
+      final resdata = await roomrepo.getRoomData();
+      // listDatum.value = resdata;
+      listDatum(resdata);
+    } on DioException catch (e) {
+      print(e);
+    }
+    ;
   }
 }

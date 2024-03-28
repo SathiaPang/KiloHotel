@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/component/text.dart';
 import 'package:hotel/constant/constant.dart';
+import 'package:hotel/controller/home_controller.dart';
 import 'package:hotel/data/data.dart';
-import 'package:hotel/view/satya/booking_detail/booking_detail_1.dart';
+
+import '../../booking/booking_detail_1.dart';
 
 class DemoCategory extends StatelessWidget {
-  const DemoCategory({super.key, required this.hotelList});
+  DemoCategory({super.key, required this.hotelList});
 
   final List<Hotel> hotelList;
+  final HomeController homeController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Obx(() => ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: hotelList.length,
+        itemCount: homeController.listDatum.length,
         itemBuilder: (context, index) {
-          final data = hotelList[index];
+          final data = homeController.listDatum[index];
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 5),
             child: GestureDetector(
               onTap: () {
                 Get.to(BookDetailScreenOne());
@@ -26,7 +30,7 @@ class DemoCategory extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     image: DecorationImage(
-                        image: AssetImage("${data.img}"),
+                        image: AssetImage("${data.image}"),
                         fit: BoxFit.fitHeight),
                     boxShadow: [
                       BoxShadow(
@@ -43,7 +47,8 @@ class DemoCategory extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 20),
                           child: Container(
                             height: Get.height / 23,
                             width: Get.width / 5,
@@ -88,21 +93,29 @@ class DemoCategory extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  data.name,
-                                  style: TextStyle(
-                                      color: white,
-                                      fontSize: 35,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                Text(data.location,
-                                    style: TextStyle(
-                                      color: white,
-                                      fontSize: 17,
-                                    )),
+                                TextEdit(
+                                    color: white, size: 25, text: data.title),
+                                TextEdit(
+                                    color: white,
+                                    size: 17,
+                                    text: data.subTitle.toString()),
+                                TextEdit(
+                                    color: white,
+                                    size: 17,
+                                    text: "Bed: ${data.bed}"),
+                                TextEdit(
+                                    color: white,
+                                    size: 17,
+                                    text: "Adult: ${data.adult}"),
+                                TextEdit(
+                                    color: white,
+                                    size: 17,
+                                    text: data.description),
+                                TextEdit(
+                                    color: white, size: 17, text: data.amenity),
                                 RichText(
                                   text: TextSpan(
-                                    text: "\$ ${data.price}",
+                                    text: "\$ ${data.price} /night",
                                     style: TextStyle(
                                         fontSize: 25,
                                         color: white,

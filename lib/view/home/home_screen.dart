@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/home_controller.dart';
 import 'package:hotel/controller/login_controller.dart';
@@ -25,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   void initState() {
-    _loginController.getToken();
+    // _loginController.getToken();
     _tabController = TabController(
         length: _homeController.roomcategorys.length, vsync: this);
 
@@ -90,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen>
       body: Column(
         children: [
           //
-          _builNickName(),
+          // _builNickName(),
           _buildSearch(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
@@ -137,17 +136,19 @@ class _HomeScreenState extends State<HomeScreen>
         ),
       );
 
-  Widget _builNickName() => Obx(() => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: Row(
-          children: [
-            Text(
-              "Hello, ${_profileScreenController.profileModel.value!.data!.name.toString()}",
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-            )
-          ],
-        ),
-      ));
+  Widget _builNickName() => _profileScreenController.isLoading.value
+      ? Obx(() => Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Row(
+              children: [
+                Text(
+                  "Hello, ${_profileScreenController.profileModel.value!.data!.name.toString()}",
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+          ))
+      : Text("data");
 
   Widget _buildSearch() => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
