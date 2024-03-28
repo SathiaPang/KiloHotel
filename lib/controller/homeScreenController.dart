@@ -13,7 +13,7 @@ class ProfileScreenController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getPrfileData();
+    // getPrfileData();
   }
 
   Rx<bool> isLoading = false.obs;

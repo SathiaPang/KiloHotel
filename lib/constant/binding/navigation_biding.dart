@@ -6,6 +6,7 @@ import 'package:hotel/controller/navigatiopn_Controller.dart';
 import 'package:hotel/controller/recentlycontroller.dart';
 import 'package:hotel/controller/search_controller.dart';
 import 'package:hotel/controller/selectDateController.dart';
+import 'package:hotel/data/roomRepo.dart';
 
 import 'package:hotel/repo/homeRepositary.dart';
 import 'package:hotel/repo/searchRepository.dart';
@@ -15,9 +16,10 @@ class NavigationBiding extends Bindings {
   @override
   void dependencies() {
     Get.put(UserRepo());
+    Get.put(RoomRepo());
     Get.put(NavigationController());
     Get.put(HomeRepository());
-    Get.put(HomeController(homeRepository: Get.find()));
+    Get.put(HomeController(homeRepository: Get.find(), roomrepo: Get.find()));
     Get.put(SearchRepository());
     Get.put(FindController(searchRepository: Get.find()));
     Get.put(RecentlyController());

@@ -35,10 +35,10 @@ class GetXAPI {
       if (res.statusCode == 200) {
         return res.data;
       } else {
-        throw Exception('Failed to fetch data: ${res.statusCode}');
+        throw "some thing wrong";
       }
     } catch (e) {
-      throw Exception('Failed to fetch data: $e');
+      rethrow;
     }
   }
 
@@ -61,7 +61,8 @@ class GetXAPI {
   }
 
   Future<dynamic> put({required String path, dynamic data}) async {
-    final token = await LocalStorageManager.instance.getFromCache("Token");
+    final token =
+        await LocalStorageManager.instance.getFromCache(ServerRout.keyToke);
     print("Get Token in put ---------------------${token}");
     try {
       final res = await _dio.put(
