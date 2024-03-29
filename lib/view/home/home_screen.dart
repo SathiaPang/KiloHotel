@@ -3,10 +3,9 @@ import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/home_controller.dart';
 import 'package:hotel/controller/login_controller.dart';
-import 'package:hotel/controller/homeScreenController.dart';
+import 'package:hotel/controller/profileScreenController.dart';
 import 'package:hotel/view/booking/recently.dart';
 import 'package:hotel/view/home/demoCategory.dart';
-import '../../tabbar/tabbar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,16 +16,16 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
-  late TabController _tabController;
+  // late TabController _tabController;
   final HomeController _homeController = Get.find();
   final LoginController _loginController = Get.find();
   final ProfileScreenController _profileScreenController = Get.find();
 
   @override
   void initState() {
-    // _loginController.getToken();
-    _tabController = TabController(
-        length: _homeController.roomcategorys.length, vsync: this);
+    _loginController.getToken();
+    // _tabController = TabController(
+    //     length: _homeController.roomcategorys.length, vsync: this);
 
     super.initState();
   }
@@ -89,16 +88,16 @@ class _HomeScreenState extends State<HomeScreen>
       body: Column(
         children: [
           //
-          // _builNickName(),
+          _builNickName(),
           _buildSearch(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-            child: TabbarEdit(
-                _tabController,
-                _homeController.roomcategorys,
-                _homeController.selectedIndex.value,
-                (index) => _homeController.filTerByIndex(index)),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+          //   child: TabbarEdit(
+          //       _tabController,
+          //       _homeController.roomcategorys,
+          //       _homeController.selectedIndex.value,
+          //       (index) => _homeController.filTerByIndex(index)),
+          // ),
           _builSeeAll(),
           _buildTabbarView(),
         ],

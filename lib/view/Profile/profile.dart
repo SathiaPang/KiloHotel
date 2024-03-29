@@ -6,7 +6,7 @@ import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/view/Profile/notificationScreen.dart';
 
-import '../../controller/homeScreenController.dart';
+import '../../controller/profileScreenController.dart';
 import '../../payment/payment1.dart';
 
 class ProFile extends StatefulWidget {

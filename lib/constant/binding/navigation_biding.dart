@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:hotel/controller/homeScreenController.dart';
+import 'package:hotel/controller/profileScreenController.dart';
 import 'package:hotel/controller/home_controller.dart';
 
 import 'package:hotel/controller/navigatiopn_Controller.dart';
