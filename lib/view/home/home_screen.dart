@@ -17,16 +17,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
-  late TabController _tabController;
   final HomeController _homeController = Get.find();
   final LoginController _loginController = Get.find();
   final ProfileScreenController _profileScreenController = Get.find();
 
   @override
   void initState() {
-    // _loginController.getToken();
-    _tabController = TabController(
-        length: _homeController.roomcategorys.length, vsync: this);
+    _loginController.getToken();
 
     super.initState();
   }
@@ -89,16 +86,8 @@ class _HomeScreenState extends State<HomeScreen>
       body: Column(
         children: [
           //
-          // _builNickName(),
+          _builNickName(),
           _buildSearch(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-            child: TabbarEdit(
-                _tabController,
-                _homeController.roomcategorys,
-                _homeController.selectedIndex.value,
-                (index) => _homeController.filTerByIndex(index)),
-          ),
           _builSeeAll(),
           _buildTabbarView(),
         ],
