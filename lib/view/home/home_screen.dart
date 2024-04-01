@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
-import 'package:hotel/controller/home_controller.dart';
 import 'package:hotel/controller/login_controller.dart';
 import 'package:hotel/controller/homeScreenController.dart';
 import 'package:hotel/view/booking/recently.dart';
 import 'package:hotel/view/home/demoCategory.dart';
-import '../../tabbar/tabbar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,14 +15,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
-  final HomeController _homeController = Get.find();
   final LoginController _loginController = Get.find();
   final ProfileScreenController _profileScreenController = Get.find();
 
   @override
   void initState() {
     _loginController.getToken();
-
     super.initState();
   }
 
@@ -96,9 +92,9 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Widget _buildTabbarView() => Expanded(
-          child: DemoCategory(
-        hotelList: _homeController.repo,
-      ));
+      child: DemoCategory(
+          // hotelList: _homeController.repo,
+          ));
 
   Widget _builSeeAll() => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 7),

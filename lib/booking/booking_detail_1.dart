@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
-
+import 'package:hotel/model/room_model.dart';
 import '../view/selectdate/selectdate.dart';
 
 class BookDetailScreenOne extends StatefulWidget {
-  const BookDetailScreenOne({Key? key}) : super(key: key);
+  BookDetailScreenOne({Key? key}) : super(key: key);
 
   @override
   State<BookDetailScreenOne> createState() => _BookDetailScreenOneState();
@@ -22,6 +22,9 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
 
   @override
   Widget build(BuildContext context) {
+    Datum datum = Get.arguments;
+    print(Get.arguments);
+
     return Scaffold(
       floatingActionButton: _buildBuyNow(),
       body: SingleChildScrollView(
@@ -63,7 +66,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                   Padding(
                     padding: const EdgeInsets.only(left: 10.0, top: 10.0),
                     child: Text(
-                      "Presidential Hotel",
+                      "${datum.title}",
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.w600,
@@ -129,12 +132,13 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                           margin: EdgeInsets.symmetric(horizontal: 5.0),
                           width: 180,
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(15),
-                            child: Image.network(
-                              imageUrls[index],
-                              fit: BoxFit.cover,
-                            ),
-                          ),
+                              borderRadius: BorderRadius.circular(15),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            "assets/images/hotel.jpg"))),
+                              )),
                         );
                       },
                     ),
@@ -176,9 +180,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  SizedBox(
-                    height: 5,
-                  ),
+
                   RichText(
                     text: TextSpan(
                       style: TextStyle(
@@ -187,8 +189,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                       ),
                       children: <InlineSpan>[
                         TextSpan(
-                          text:
-                              'Before we dive into the specifics of the Text widget, let’s first understand why it’s important to be able to display and style text in a Flutter app. \tText is a crucial part of any user interface, as it allows us to convey information to the user.',
+                          text: '${datum.description}',
                           style: TextStyle(
                               fontWeight: FontWeight.w300,
                               letterSpacing: 0.4,
@@ -267,9 +268,10 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                     height: Get.height * 0.25,
                     width: Get.width * 1,
                     child: ClipRRect(
-                      child: Image.asset(
-                        'assets/images/map.png',
-                        fit: BoxFit.cover,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage("assets/images/hotel.jpg"))),
                       ),
                       borderRadius: BorderRadius.circular(20),
                     ),

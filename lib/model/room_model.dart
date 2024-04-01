@@ -1,11 +1,6 @@
-// To parse this JSON data, do
-//
-//     final roomModel = roomModelFromJson(jsonString);
-
 import 'dart:convert';
 
 RoomModel roomModelFromJson(String str) => RoomModel.fromJson(json.decode(str));
-
 String roomModelToJson(RoomModel data) => json.encode(data.toJson());
 
 class RoomModel {
@@ -40,6 +35,17 @@ class RoomModel {
       };
 }
 
+class ImageClass {
+  int? id;
+  String? url;
+  ImageClass({required this.id, required this.url});
+
+  factory ImageClass.fromJson(Map<String, dynamic> json) =>
+      ImageClass(id: json["id"] as int, url: json["url"] as String);
+
+  Map<String, dynamic> toJson() => {"id": id, "url": url};
+}
+
 class Datum {
   int id;
   int children;
@@ -54,7 +60,7 @@ class Datum {
   AtedBy updatedBy;
   DateTime createdAt;
   DateTime? updatedAt;
-  List<dynamic> image;
+  List<ImageClass> image;
 
   Datum({
     required this.id,
@@ -89,7 +95,9 @@ class Datum {
         updatedAt: json["updatedAt"] == null
             ? null
             : DateTime.parse(json["updatedAt"]),
-        image: List<dynamic>.from(json["image"].map((x) => x)),
+        image: (json["image"] as List<dynamic>)
+            .map((imageJson) => ImageClass.fromJson(imageJson))
+            .toList(),
       );
 
   Map<String, dynamic> toJson() => {
@@ -106,7 +114,7 @@ class Datum {
         "updatedBy": updatedBy.toJson(),
         "createdAt": createdAt.toIso8601String(),
         "updatedAt": updatedAt?.toIso8601String(),
-        "image": List<dynamic>.from(image.map((x) => x)),
+        "image": List<ImageClass>.from(image.map((x) => x)),
       };
 }
 
