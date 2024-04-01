@@ -34,6 +34,7 @@ class AppRoute {
   static String selectDate = "/selectDate";
   static String security = "/security";
   static String editPF = "/editPF";
+  static String bookindeDetail = "/bookingDetail";
 
   // static String selectDate = "/selectDate";
   static List<GetPage> appPage = [
@@ -66,6 +67,7 @@ class AppRoute {
       name: security,
       page: () => SecurityScreen(),
     ),
-    GetPage(name: editPF, page: () => EditPF(), binding: UpdateBinding())
+    GetPage(name: editPF, page: () => EditPF(), binding: UpdateBinding()),
+    GetPage(name: bookindeDetail, page: (() => BookDetailScreenOne()))
   ];
 }

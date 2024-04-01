@@ -19,7 +19,7 @@ class NavigationBiding extends Bindings {
     Get.put(RoomRepo());
     Get.put(NavigationController());
     Get.put(HomeRepository());
-    Get.put(HomeController(homeRepository: Get.find(), roomrepo: Get.find()));
+    Get.put(HomeController(roomrepo: Get.find()));
     Get.put(SearchRepository());
     Get.put(FindController(searchRepository: Get.find()));
     Get.put(RecentlyController());
