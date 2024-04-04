@@ -1,16 +1,20 @@
 import 'package:get/get.dart';
+import 'package:hotel/controller/booking_controller.dart';
+import 'package:hotel/controller/home_controller.dart';
+import 'package:hotel/data/roomRepo.dart';
+import 'package:hotel/model/room_model.dart';
 import 'package:intl/intl.dart';
 
 class SelectDateController extends GetxController {
-  // Select
+  // Start Select
   Rx<String> _selectedDate = Rx<String>("");
   String get selectedDate => _selectedDate.value;
   // End Selecte
   Rx<String> _nDate = Rx<String>("");
   String get nDate => _nDate.value;
-  // Data Count
-  Rx<String> _dataCount = Rx<String>("");
-  String get dataCount => _dataCount.value;
+  RxInt personQty = 1.obs;
+  //  HomeController
+  late BookingController bookingController = Get.find();
 
   Future<void> selectDate(DateTime date) async {
     _selectedDate(DateFormat('dd-MM-yyyy').format(date));
@@ -22,11 +26,27 @@ class SelectDateController extends GetxController {
 
   int dateCount() {
     if (_selectedDate.value.isEmpty || _nDate.value.isEmpty) {
-      return 0;
+      return 1;
     }
     DateTime startDate = DateFormat('dd-MM-yyyy').parse(_selectedDate.value);
     DateTime endDate = DateFormat('dd-MM-yyyy').parse(_nDate.value);
     Duration difference = endDate.difference(startDate);
     return difference.inDays;
+  }
+
+  double totalPayment() {
+    int day = dateCount();
+    double total = day * bookingController.detail.value!.data!.price!;
+    return total;
+  }
+
+  increasment() {
+    personQty++;
+  }
+
+  decreasment() {
+    if (personQty > 1) {
+      personQty--;
+    }
   }
 }

@@ -47,19 +47,19 @@ class ImageClass {
 }
 
 class Datum {
-  int id;
-  int children;
-  String title;
-  String description;
+  int? id;
+  int? children;
+  String? title;
+  String? description;
   String? subTitle;
-  int adult;
-  int bed;
-  String amenity;
+  int? adult;
+  int? bed;
+  String? amenity;
   double price;
-  AtedBy createdBy;
-  AtedBy updatedBy;
-  DateTime createdAt;
-  DateTime? updatedAt;
+  CreatedBy? createdBy;
+  UpdateBy? updatedBy;
+  String createdAt;
+  dynamic updatedAt;
   List<ImageClass> image;
 
   Datum({
@@ -89,15 +89,14 @@ class Datum {
         bed: json["bed"],
         amenity: json["amenity"],
         price: json["price"],
-        createdBy: AtedBy.fromJson(json["createdBy"]),
-        updatedBy: AtedBy.fromJson(json["updatedBy"]),
-        createdAt: DateTime.parse(json["createdAt"]),
-        updatedAt: json["updatedAt"] == null
-            ? null
-            : DateTime.parse(json["updatedAt"]),
-        image: (json["image"] as List<dynamic>)
-            .map((imageJson) => ImageClass.fromJson(imageJson))
-            .toList(),
+        createdBy: CreatedBy.fromJson(json["createdBy"]),
+        updatedBy: UpdateBy.fromJson(json["updatedBy"]),
+        createdAt: json["createdAt"],
+        updatedAt: json["updatedAt"],
+        image: (json["image"] as List<dynamic>?)
+                ?.map((imageJson) => ImageClass.fromJson(imageJson))
+                .toList() ??
+            [],
       );
 
   Map<String, dynamic> toJson() => {
@@ -110,30 +109,50 @@ class Datum {
         "bed": bed,
         "amenity": amenity,
         "price": price,
-        "createdBy": createdBy.toJson(),
-        "updatedBy": updatedBy.toJson(),
-        "createdAt": createdAt.toIso8601String(),
-        "updatedAt": updatedAt?.toIso8601String(),
+        "createdBy": createdBy,
+        "updatedBy": updatedBy,
+        "createdAt": createdAt,
+        "updatedAt": updatedAt,
         "image": List<ImageClass>.from(image.map((x) => x)),
       };
 }
 
-class AtedBy {
-  Name name;
+class CreatedBy {
+  String name;
   int id;
 
-  AtedBy({
+  CreatedBy({
     required this.name,
     required this.id,
   });
 
-  factory AtedBy.fromJson(Map<String, dynamic> json) => AtedBy(
-        name: nameValues.map[json["name"]]!,
+  factory CreatedBy.fromJson(Map<String, dynamic> json) => CreatedBy(
+        name: json["name"],
         id: json["id"],
       );
 
   Map<String, dynamic> toJson() => {
-        "name": nameValues.reverse[name],
+        "name": name,
+        "id": id,
+      };
+}
+
+class UpdateBy {
+  String? name;
+  int id;
+
+  UpdateBy({
+    required this.name,
+    required this.id,
+  });
+
+  factory UpdateBy.fromJson(Map<String, dynamic> json) => UpdateBy(
+        name: json["name"],
+        id: json["id"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "name": name,
         "id": id,
       };
 }

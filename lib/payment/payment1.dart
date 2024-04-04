@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
-
 import 'package:hotel/controller/booking_controller.dart';
-import 'package:hotel/data/data.dart';
-import 'package:hotel/view/dialogPayment/dialogPayment.dart';
-
-import 'newCard.dart';
 
 class PayMent1 extends StatefulWidget {
   PayMent1({super.key});
 
-  final BookingController _bookingController = Get.put(BookingController());
+  final BookingController _bookingController =
+      Get.put(BookingController(roomRepo: Get.find()));
   @override
   State<PayMent1> createState() => _PayMent1State();
 }
@@ -29,7 +26,7 @@ class _PayMent1State extends State<PayMent1> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      floatingActionButton: _buildButtonContinue(),
+      bottomNavigationBar: _buildButtonContinue(),
       body: Column(
         children: [
           //
@@ -53,7 +50,7 @@ class _PayMent1State extends State<PayMent1> {
             ),
             TextButton(
                 onPressed: () {
-                  Get.to(const NewCard());
+                  Get.toNamed(AppRoute.newCard);
                 },
                 child: Text(
                   "Add New Card",
@@ -157,43 +154,32 @@ class _PayMent1State extends State<PayMent1> {
         ),
       );
   Widget _buildButtonContinue() => InkWell(
-        onTap: () async {
-          Hotel hotel = Hotel(
-            img: "img",
-            location: "location",
-            name: "name",
-            price: 100,
-            category: "category",
-            searchcategory: "searchcategory",
-          );
-
-          String storeKey = 'hotel_bookings';
-          widget._bookingController.saveBooking(hotel, storeKey);
-
-          // Navigate to TicketScreen or show DialogPayMent
-          // Get.to(const TicketScreen());
-          Get.dialog(DialogPayMent());
+        onTap: () {
+          Get.toNamed(AppRoute.dialogPay);
         },
-        child: Container(
-          height: Get.height / 15,
-          width: Get.width / 1.1,
-          decoration: BoxDecoration(
-            color: green,
-            borderRadius: BorderRadius.circular(30),
-            boxShadow: [
-              BoxShadow(
-                color: textColor,
-                offset: Offset(1, 6),
-                blurRadius: 7,
-              ),
-            ],
-          ),
-          child: Center(
-            child: Text(
-              "Continue",
-              style: TextStyle(
-                color: white,
-                fontSize: 20,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+          child: Container(
+            height: Get.height / 15,
+            width: Get.width / 1.1,
+            decoration: BoxDecoration(
+              color: green,
+              borderRadius: BorderRadius.circular(30),
+              boxShadow: [
+                BoxShadow(
+                  color: textColor,
+                  offset: Offset(1, 6),
+                  blurRadius: 7,
+                ),
+              ],
+            ),
+            child: Center(
+              child: Text(
+                "Continue",
+                style: TextStyle(
+                  color: white,
+                  fontSize: 20,
+                ),
               ),
             ),
           ),

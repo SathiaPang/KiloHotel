@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/selectDateController.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-import '../../payment/nameOfReserver.dart';
 
 class SelectDate extends StatefulWidget {
   const SelectDate({super.key});
@@ -25,7 +25,7 @@ class _SelectDateState extends State<SelectDate> {
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
         ),
       ),
-      floatingActionButton: _buildBottonContinue(),
+      bottomNavigationBar: _buildBottonContinue(),
       body: Obx(
         () => Column(
           children: [
@@ -34,7 +34,7 @@ class _SelectDateState extends State<SelectDate> {
             _buildChek(),
             _buildChekDetail(),
             _buildGuest(),
-            _buildTotalDay(),
+            _buildTotalGuest(),
             _buildTotalPayment(),
           ],
         ),
@@ -68,8 +68,8 @@ class _SelectDateState extends State<SelectDate> {
             onSelectionChanged: _onSelectionChanged,
             selectionMode: DateRangePickerSelectionMode.range,
             initialSelectedRange: PickerDateRange(
-                DateTime.now().subtract(const Duration(days: 4)),
-                DateTime.now().add(const Duration(days: 3))),
+                DateTime.now().subtract(const Duration(days: 0)),
+                DateTime.now().add(const Duration(days: 0))),
           ),
         ),
       );
@@ -156,12 +156,11 @@ class _SelectDateState extends State<SelectDate> {
             SizedBox(
               width: 50,
             ),
-            Text("${_selectDateController.dateCount()}")
           ],
         ),
       );
 
-  Widget _buildTotalDay() => Padding(
+  Widget _buildTotalGuest() => Padding(
         padding: const EdgeInsets.only(top: 10),
         child: Container(
           height: Get.height / 13,
@@ -180,15 +179,17 @@ class _SelectDateState extends State<SelectDate> {
                     borderRadius: BorderRadius.circular(13)),
                 child: Center(
                   child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        _selectDateController.decreasment();
+                      },
                       icon: Icon(
-                        Icons.add,
+                        Icons.remove,
                         size: 20,
                       )),
                 ),
               ),
               Text(
-                "10",
+                _selectDateController.personQty.toString(),
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               Container(
@@ -199,9 +200,11 @@ class _SelectDateState extends State<SelectDate> {
                     borderRadius: BorderRadius.circular(13)),
                 child: Center(
                   child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        _selectDateController.increasment();
+                      },
                       icon: Icon(
-                        Icons.remove,
+                        Icons.add,
                         size: 20,
                       )),
                 ),
@@ -212,12 +215,13 @@ class _SelectDateState extends State<SelectDate> {
       );
 
   Widget _buildTotalPayment() => Padding(
-        padding: const EdgeInsets.symmetric(vertical: 50),
+        padding: const EdgeInsets.symmetric(vertical: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Total : \$ ${"100"}",
+              // "Total :",
+              "Total : \$ ${_selectDateController.totalPayment()}",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             )
           ],
@@ -226,26 +230,29 @@ class _SelectDateState extends State<SelectDate> {
 
   Widget _buildBottonContinue() => InkWell(
         onTap: () {
-          Get.to(NameOfReserver());
+          Get.toNamed(AppRoute.nameReseve);
         },
-        child: Container(
-          height: Get.height / 15,
-          width: Get.width / 1.1,
-          decoration: BoxDecoration(
-              color: green,
-              borderRadius: BorderRadius.circular(30),
-              boxShadow: [
-                BoxShadow(
-                  color: textColor,
-                  offset: Offset(1, 6),
-                  blurRadius: 7,
-                ),
-              ]),
-          child: Center(
-            child: Text(
-              "Continue",
-              style: TextStyle(
-                  color: white, fontSize: 20, fontWeight: FontWeight.bold),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+          child: Container(
+            height: Get.height / 15,
+            width: Get.width / 1.1,
+            decoration: BoxDecoration(
+                color: green,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [
+                  BoxShadow(
+                    color: textColor,
+                    offset: Offset(1, 6),
+                    blurRadius: 7,
+                  ),
+                ]),
+            child: Center(
+              child: Text(
+                "Continue",
+                style: TextStyle(
+                    color: white, fontSize: 20, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
         ),

@@ -31,7 +31,7 @@ class DemoCategory extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15),
                       image: DecorationImage(
                           image: AssetImage(
-                            "${data.image.isEmpty ? "" : data.image[0]}",
+                            "${data.image.isEmpty ? "" : data.image.firstOrNull}",
                           ),
                           fit: BoxFit.fitHeight),
                       boxShadow: [
@@ -97,7 +97,9 @@ class DemoCategory extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   TextEdit(
-                                      color: white, size: 25, text: data.title),
+                                      color: white,
+                                      size: 25,
+                                      text: data.title.toString()),
                                   TextEdit(
                                       color: white,
                                       size: 17,
@@ -110,14 +112,6 @@ class DemoCategory extends StatelessWidget {
                                       color: white,
                                       size: 17,
                                       text: "Adult: ${data.adult}"),
-                                  // TextEdit(
-                                  //     color: white,
-                                  //     size: 17,
-                                  //     text: data.description),
-                                  TextEdit(
-                                      color: white,
-                                      size: 17,
-                                      text: data.amenity),
                                   RichText(
                                     text: TextSpan(
                                       text: "\$ ${data.price} /night",
