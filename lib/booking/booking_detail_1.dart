@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
+import 'package:hotel/controller/booking_controller.dart';
+import 'package:hotel/controller/home_controller.dart';
 import 'package:hotel/model/room_model.dart';
-import '../view/selectdate/selectdate.dart';
 
 class BookDetailScreenOne extends StatefulWidget {
   BookDetailScreenOne({Key? key}) : super(key: key);
@@ -13,20 +15,21 @@ class BookDetailScreenOne extends StatefulWidget {
 }
 
 class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
-  final List<String> imageUrls = [
-    'https://images.rosewoodhotels.com/is/image/rwhg/RWPPN_grand-premier-room:WIDE-MEDIUM-4-3',
-    'https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill',
-    'https://www.usatoday.com/gcdn/-mm-/05b227ad5b8ad4e9dcb53af4f31d7fbdb7fa901b/c=0-64-2119-1259/local/-/media/USATODAY/USATODAY/2014/08/13/1407953244000-177513283.jpg',
-    'https://imageio.forbes.com/specials-images/imageserve/5cdb058a5218470008b0b00f/Nobu-Ryokan-Malibu/0x0.jpg?format=jpg&height=1009&width=2000',
-  ];
+  final HomeController _homeController = Get.find();
+  final BookingController bookingController = Get.find();
+  final Datum datum = Get.arguments;
+  @override
+  void initState() {
+    bookingController.getDetailData(datum.id!);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    Datum datum = Get.arguments;
     print(Get.arguments);
 
     return Scaffold(
-      floatingActionButton: _buildBuyNow(),
+      floatingActionButton: _buildBookingNow(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -40,7 +43,6 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                     left: 10,
                     child: IconButton(
                       onPressed: () {
-                        print("ohh you touch me tal la la");
                         Get.back();
                       },
                       icon: Icon(
@@ -54,7 +56,8 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage("assets/images/hotel.jpg"),
+                  image: AssetImage(
+                      "${datum.image.isEmpty ? "" : datum.image.firstOrNull}"),
                 ),
               ),
             ),
@@ -121,12 +124,11 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                     ],
                   ),
                   SizedBox(height: 5),
-                  //Carousal Image
                   Container(
-                    height: 120, // Set a fixed height for the ListView
+                    height: 120,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: imageUrls.length,
+                      itemCount: _homeController.listDatum.length,
                       itemBuilder: (context, index) {
                         return Container(
                           margin: EdgeInsets.symmetric(horizontal: 5.0),
@@ -136,8 +138,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                               child: Container(
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
-                                        image: AssetImage(
-                                            "assets/images/hotel.jpg"))),
+                                        image: AssetImage("${datum.image}"))),
                               )),
                         );
                       },
@@ -180,29 +181,16 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-
-                  RichText(
-                    text: TextSpan(
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                      ),
-                      children: <InlineSpan>[
-                        TextSpan(
-                          text: '${datum.description}',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w300,
-                              letterSpacing: 0.4,
-                              height: 1.4),
-                        ),
-                        TextSpan(
-                          text: '',
-                          style: TextStyle(fontWeight: FontWeight.w300),
-                        ),
-                      ],
+                  Text("${datum.description}"),
+                  SizedBox(height: 5),
+                  Text(
+                    "Amentity",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  SizedBox(height: 20),
+                  Text("${datum.amenity}"),
                   Text(
                     "Facilities",
                     style: TextStyle(
@@ -253,28 +241,6 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                         icon: Icons.schedule,
                       )
                     ],
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    "Location",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  SizedBox(height: 5),
-
-                  Container(
-                    height: Get.height * 0.25,
-                    width: Get.width * 1,
-                    child: ClipRRect(
-                      child: Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage("assets/images/hotel.jpg"))),
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
                   ),
                   SizedBox(
                     height: 10,
@@ -331,7 +297,6 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                       ),
                     ],
                   ),
-
                   Container(
                     height: Get.height * 0.9,
                     child: Scrollbar(
@@ -512,14 +477,14 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
     );
   }
 
-  Widget _buildBuyNow() => ElevatedButton(
+  Widget _buildBookingNow() => ElevatedButton(
       style: ElevatedButton.styleFrom(
           backgroundColor: green, minimumSize: Size(200, 60)),
       onPressed: () {
-        Get.to(SelectDate());
+        Get.toNamed(AppRoute.selectDate);
       },
       child: Text(
-        "Buy Now!",
+        "Booking Now!",
         style:
             TextStyle(color: white, fontWeight: FontWeight.w700, fontSize: 18),
       ));

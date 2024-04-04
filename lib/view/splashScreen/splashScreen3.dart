@@ -107,7 +107,7 @@ class _SplashScreen3State extends State<SplashScreen3> {
             textcolor: white,
             fontSize: 25,
             backgroundColor: green,
-            bottonsize: Size(350, 65),
+            // bottonsize: Size(350, 65),
             onPressed: () {
               Get.offAndToNamed(AppRoute.load2);
             }),
@@ -118,7 +118,7 @@ class _SplashScreen3State extends State<SplashScreen3> {
       textcolor: green,
       fontSize: 25,
       backgroundColor: greenAccent,
-      bottonsize: Size(350, 65),
+      // bottonsize: Size(350, 65),
       onPressed: () {
         Get.offAndToNamed(AppRoute.load2);
       });

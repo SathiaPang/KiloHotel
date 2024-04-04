@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/payment/payment2.dart';
 
@@ -124,7 +125,7 @@ class NewCard extends StatelessWidget {
 
   Widget _buildBottonAddNewCard() => InkWell(
         onTap: () {
-          Get.to(const Payment2());
+          Get.toNamed(AppRoute.payment2);
         },
         child: Container(
           height: Get.height / 15,

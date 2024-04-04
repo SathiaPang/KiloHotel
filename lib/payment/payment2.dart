@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
-
-import 'cancelHotel.dart';
-import 'newCard.dart';
 
 class Payment2 extends StatefulWidget {
   const Payment2({super.key});
@@ -41,23 +39,13 @@ class _Payment2State extends State<Payment2> {
   }
 
   Widget _buildSubTiTle() => Padding(
-        padding: const EdgeInsets.only(top: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 38),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text(
               "Payment Methods",
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
             ),
-            TextButton(
-                onPressed: () {
-                  Get.to(const NewCard());
-                },
-                child: Text(
-                  "Add New Card",
-                  style: TextStyle(
-                      color: green, fontWeight: FontWeight.bold, fontSize: 17),
-                ))
           ],
         ),
       );
@@ -157,7 +145,7 @@ class _Payment2State extends State<Payment2> {
 
   Widget _buildBottonContinue() => InkWell(
         onTap: () {
-          Get.to(const CancelHotel());
+          Get.toNamed(AppRoute.dialogPay);
         },
         child: Container(
           height: Get.height / 15,

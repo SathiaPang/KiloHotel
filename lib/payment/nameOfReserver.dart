@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:hotel/constant/appRoute.dart';
 import 'package:intl/intl.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:hotel/constant/constant.dart';
-
-import 'payment1.dart';
 
 class NameOfReserver extends StatefulWidget {
   NameOfReserver({super.key});
@@ -38,7 +36,8 @@ class _NameOfReserverState extends State<NameOfReserver> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      floatingActionButton: _buildBottonContinue(),
+      bottomNavigationBar: _buildBottonContinue(),
+      // floatingActionButton: _buildBottonContinue(),
       body: Column(
         children: [
           //
@@ -60,27 +59,28 @@ class _NameOfReserverState extends State<NameOfReserver> {
 
   Widget _buildBottonContinue() => InkWell(
         onTap: () {
-          Get.to(PayMent1());
+          Get.toNamed(AppRoute.payment1);
         },
-        child: Container(
-          height: Get.height / 15,
-          width: Get.width / 1.1,
-          decoration: BoxDecoration(
-              color: green,
-              borderRadius: BorderRadius.circular(30),
-              boxShadow: [
-                BoxShadow(
-                  color: textColor,
-                  offset: Offset(1, 6),
-                  blurRadius: 7,
-                ),
-              ]),
-          child: Center(
-            child: Text(
-              "Continue",
-              style: TextStyle(
-                color: white,
-                fontSize: 20,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+          child: Container(
+            height: Get.height / 15,
+            width: Get.width / 1.1,
+            decoration: BoxDecoration(
+                color: green,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [
+                  BoxShadow(
+                    color: textColor,
+                    offset: Offset(1, 6),
+                    blurRadius: 7,
+                  ),
+                ]),
+            child: Center(
+              child: Text(
+                "Continue",
+                style: TextStyle(
+                    color: white, fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
           ),

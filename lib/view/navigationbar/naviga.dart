@@ -13,6 +13,7 @@ class MyNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
+        physics: NeverScrollableScrollPhysics(),
         controller: _navigacontroller.pageController,
         children: _navigacontroller.listpage,
       ),

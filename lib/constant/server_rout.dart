@@ -9,4 +9,6 @@ class ServerRout {
 
   static String keyToke = "token";
   static String basicToken = "Basic aG90ZWw6aG90ZWxAMTIz";
+
+  static String detailPath = "api/v1.0.0/room-type/";
 }
