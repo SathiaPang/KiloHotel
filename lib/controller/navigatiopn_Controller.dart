@@ -4,7 +4,7 @@ import 'package:hotel/view/Profile/profile.dart';
 import 'package:hotel/view/booking/booking_screen.dart';
 import 'package:hotel/view/home/home_screen.dart';
 
-import '../search/Search_screen.dart';
+import '../view/search/Search_screen.dart';
 
 class NavigationController extends GetxController {
   final curentindex = 0.obs;

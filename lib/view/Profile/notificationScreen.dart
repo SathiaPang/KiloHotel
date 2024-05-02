@@ -2,21 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
-
-class NotificationController extends GetxController {
-  var generalNotification = false.obs;
-  var sound = false.obs;
-  var vibrate = false.obs;
-  var appUpdate = false.obs;
-  var newServiceAvailable = false.obs;
-  var newTipAvailable = false.obs;
-}
+import 'package:hotel/controller/notification_controller.dart';
 
 class NotiScreen extends StatelessWidget {
   NotiScreen({super.key});
 
-  final NotificationController _notificationController =
-      Get.put(NotificationController());
+  final NotificationController _notificationController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +16,8 @@ class NotiScreen extends StatelessWidget {
         centerTitle: false,
         title: const Text(
           'Notification',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 25, color: black),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),

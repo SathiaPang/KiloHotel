@@ -12,7 +12,6 @@ class EditPF extends StatefulWidget {
 }
 
 class _EditPFState extends State<EditPF> {
-  TextEditingController _date = TextEditingController();
   FocusNode _phoneNumberFocusNode = FocusNode();
   String? selectedGender;
 
@@ -31,7 +30,8 @@ class _EditPFState extends State<EditPF> {
         centerTitle: false,
         title: const Text(
           'Edit Profile',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontWeight: FontWeight.bold, color: black, fontSize: 25),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
@@ -41,7 +41,6 @@ class _EditPFState extends State<EditPF> {
         ),
       ),
       floatingActionButton: _signButton(),
-      //bottomNavigationBar: _signButton(),
       body: Padding(
         padding: EdgeInsets.all(15.0),
         child: SingleChildScrollView(
@@ -137,22 +136,18 @@ class _EditPFState extends State<EditPF> {
         },
       );
 
-  Widget _signButton() => Padding(
-        padding: const EdgeInsets.only(bottom: 10),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            fixedSize: Size(350, 65),
-            backgroundColor: green,
-          ),
-          onPressed: () {
-            _updateProfileController.updateProfile();
-            // Get.to(Login());
-          },
-          child: Center(
-            child: Text(
-              'Update',
-              style: TextStyle(color: white, fontSize: 17),
-            ),
+  Widget _signButton() => ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          fixedSize: Size(395, 65),
+          backgroundColor: green,
+        ),
+        onPressed: () {
+          _updateProfileController.updateProfile();
+        },
+        child: Center(
+          child: Text(
+            'Update',
+            style: TextStyle(color: white, fontSize: 17),
           ),
         ),
       );

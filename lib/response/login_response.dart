@@ -1,21 +1,28 @@
+// To parse this JSON data, do
+//
+//     final loginResponse = loginResponseFromJson(jsonString);
+
 import 'dart:convert';
 
 LoginResponse loginResponseFromJson(String str) =>
     LoginResponse.fromJson(json.decode(str));
 
+String loginResponseToJson(LoginResponse data) => json.encode(data.toJson());
+
 class LoginResponse {
   int status;
   String message;
   String messageKey;
-  Data? data;
+  Data data;
   dynamic paging;
 
-  LoginResponse(
-      {required this.status,
-      required this.message,
-      required this.messageKey,
-      required this.data,
-      required this.paging});
+  LoginResponse({
+    required this.status,
+    required this.message,
+    required this.messageKey,
+    required this.data,
+    required this.paging,
+  });
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) => LoginResponse(
         status: json["status"],
@@ -29,7 +36,7 @@ class LoginResponse {
         "status": status,
         "message": message,
         "messageKey": messageKey,
-        "data": data?.toJson(),
+        "data": data.toJson(),
         "paging": paging,
       };
 }
@@ -38,7 +45,11 @@ class Data {
   User user;
   String token;
 
-  Data({required this.user, required this.token});
+  Data({
+    required this.user,
+    required this.token,
+  });
+
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         user: User.fromJson(json["user"]),
         token: json["token"],
@@ -50,48 +61,44 @@ class Data {
       };
 }
 
-
-List<User> userModelsFromJson(String str) =>
-    List<User>.from(json.decode(str).map((x) => User.fromJson(x)));
-
-String userModelsToJson(List<User> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
 class User {
   int id;
   String username;
   String email;
   dynamic avatar;
-  dynamic phone;
-  dynamic bio;
-  dynamic address;
+  String phone;
+  String bio;
+  String address;
   String roleName;
   int roleId;
   bool status;
 
-  User(
-      {required this.id,
-      required this.username,
-      required this.email,
-      required this.avatar,
-      required this.phone,
-      required this.bio,
-      required this.address,
-      required this.roleName,
-      required this.roleId,
-      required this.status});
+  User({
+    required this.id,
+    required this.username,
+    required this.email,
+    required this.avatar,
+    required this.phone,
+    required this.bio,
+    required this.address,
+    required this.roleName,
+    required this.roleId,
+    required this.status,
+  });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-      id: json["id"],
-      username: json["username"],
-      email: json["email"],
-      avatar: json["avatar"],
-      phone: json["phone"],
-      bio: json["bio"],
-      address: json["address"],
-      roleName: json["roleName"],
-      roleId: json["roleId"],
-      status: json["status"]);
+        id: json["id"],
+        username: json["username"],
+        email: json["email"],
+        avatar: json["avatar"],
+        phone: json["phone"],
+        bio: json["bio"],
+        address: json["address"],
+        roleName: json["roleName"],
+        roleId: json["roleId"],
+        status: json["status"],
+      );
+
   Map<String, dynamic> toJson() => {
         "id": id,
         "username": username,

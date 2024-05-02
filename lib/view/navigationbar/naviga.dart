@@ -18,46 +18,56 @@ class MyNavigationBar extends StatelessWidget {
         children: _navigacontroller.listpage,
       ),
       bottomNavigationBar: Obx(
-        () => BottomNavigationBar(
-            currentIndex: _navigacontroller.curentindex.value,
-            elevation: 0,
-            selectedItemColor: green,
-            unselectedItemColor: black,
-            backgroundColor: white,
-            onTap: (value) {
-              _navigacontroller.page(value);
-            },
-            type: BottomNavigationBarType.fixed,
-            items: [
-              // Home
-              BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.home_outlined,
-                    size: 30,
-                  ),
-                  label: ""),
-              // Search
-              BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.search,
-                    size: 30,
-                  ),
-                  label: ""),
-              // Booking
-              BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.article_outlined,
-                    size: 30,
-                  ),
-                  label: ""),
-              // Profile
-              BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.person_2_outlined,
-                    size: 30,
-                  ),
-                  label: "")
-            ]),
+        () => Container(
+          decoration: BoxDecoration(
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                color: Colors.grey,
+                blurRadius: 2,
+              ),
+            ],
+          ),
+          child: BottomNavigationBar(
+              // selectedFontSize: 0,
+              currentIndex: _navigacontroller.curentindex.value,
+              selectedItemColor: green,
+              unselectedItemColor: black,
+              backgroundColor: white,
+              onTap: (value) {
+                _navigacontroller.page(value);
+              },
+              type: BottomNavigationBarType.fixed,
+              items: [
+                // Home
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.home_outlined,
+                      size: 30,
+                    ),
+                    label: "Home"),
+                // Search
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.search,
+                      size: 30,
+                    ),
+                    label: "Search"),
+                // Booking
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.article_outlined,
+                      size: 30,
+                    ),
+                    label: "Booking"),
+                // Profile
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.person_2_outlined,
+                      size: 30,
+                    ),
+                    label: "Profile")
+              ]),
+        ),
       ),
     );
   }

@@ -29,13 +29,11 @@ class UpdateProfileController extends GetxController {
         address,
       );
       if (res.status == 200) {
-        print("-------------------------------Cange Success");
+        print("-------------------------------Change Success");
         update();
       }
-      //if (res.status == 200) {
       print("Success ${res.message}");
       clearText();
-     
     } on DioException catch (e) {
       print(e);
     }

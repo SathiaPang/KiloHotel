@@ -51,14 +51,14 @@ class _LoginState extends State<Login> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Checkbox(
-                      value: _isChecked ?? false,
+                      value: _isChecked,
                       onChanged: (value) {
-                        setState(() {
-                          _isChecked = value ?? false;
-                          if (widget.onChanged != null) {
-                            widget.onChanged!(_isChecked);
-                          }
-                        });
+                        // setState(() {
+                        _isChecked = value ?? false;
+                        if (widget.onChanged != null) {
+                          widget.onChanged!(_isChecked);
+                        }
+                        // });
                       },
                     ),
                     Text('Remember me'),
@@ -113,8 +113,8 @@ class _LoginState extends State<Login> {
         cursorColor: Colors.grey,
         controller: _controller.userSignInController,
         decoration: const InputDecoration(
-          hintText: "Email",
-          prefixIcon: Icon(Icons.email_outlined),
+          hintText: "Username",
+          prefixIcon: Icon(Icons.person),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(20)),
           ),

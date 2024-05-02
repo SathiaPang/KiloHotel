@@ -23,7 +23,7 @@ class GetXAPI {
     Map<String, dynamic>? queryParameters,
   }) async {
     final token =
-        await LocalStorageManager.instance.getFromCache(ServerRout.keyToke);
+        await LocalStorageManager.instance.getFromCache(ServerRout.keyToken);
     try {
       final res = await _dio.get(
         path,
@@ -46,10 +46,20 @@ class GetXAPI {
     required String path,
     dynamic data,
   }) async {
+    String? token =
+        await LocalStorageManager.instance.getFromCache(ServerRout.keyToken);
+    print("=================" + token.toString());
     try {
       final res = await _dio.post(
         path,
         data: data,
+        options: Options(
+          headers: {
+            'Authorization': token?.isNotEmpty == true && token != null
+                ? "Bearer $token"
+                : "${ServerRout.basicToken}"
+          },
+        ),
       );
       if (res.statusCode == 200) {
         return res.data;
@@ -62,7 +72,7 @@ class GetXAPI {
 
   Future<dynamic> put({required String path, dynamic data}) async {
     final token =
-        await LocalStorageManager.instance.getFromCache(ServerRout.keyToke);
+        await LocalStorageManager.instance.getFromCache(ServerRout.keyToken);
     print("Get Token in put ---------------------${token}");
     try {
       final res = await _dio.put(

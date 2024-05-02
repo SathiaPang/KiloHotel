@@ -13,3 +13,6 @@ const textfieldcolor = Color.fromARGB(255, 233, 231, 231);
 const paymentcolor = Color.fromARGB(255, 226, 249, 235);
 const iconcolor = Color.fromARGB(255, 88, 86, 86);
 const red = Colors.red;
+const blue = Colors.blue;
+const blackaccent = Color.fromARGB(255, 233, 230, 230);
+const green50 = const Color(0XFFEAF8EC);

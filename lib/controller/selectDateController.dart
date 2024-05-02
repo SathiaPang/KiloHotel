@@ -1,8 +1,5 @@
 import 'package:get/get.dart';
-import 'package:hotel/controller/booking_controller.dart';
-import 'package:hotel/controller/home_controller.dart';
-import 'package:hotel/data/roomRepo.dart';
-import 'package:hotel/model/room_model.dart';
+import 'package:hotel/controller/bookingDetail_controller.dart';
 import 'package:intl/intl.dart';
 
 class SelectDateController extends GetxController {
@@ -14,7 +11,7 @@ class SelectDateController extends GetxController {
   String get nDate => _nDate.value;
   RxInt personQty = 1.obs;
   //  HomeController
-  late BookingController bookingController = Get.find();
+  late BookingDetailController bookingController = Get.find();
 
   Future<void> selectDate(DateTime date) async {
     _selectedDate(DateFormat('dd-MM-yyyy').format(date));

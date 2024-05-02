@@ -14,6 +14,7 @@ class SelectDate extends StatefulWidget {
 
 class _SelectDateState extends State<SelectDate> {
   final SelectDateController _selectDateController = Get.find();
+  final list = Get.arguments;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -230,7 +231,7 @@ class _SelectDateState extends State<SelectDate> {
 
   Widget _buildBottonContinue() => InkWell(
         onTap: () {
-          Get.toNamed(AppRoute.nameReseve);
+          Get.toNamed(AppRoute.nameReseve, arguments: list);
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),

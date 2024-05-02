@@ -1,41 +1,57 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import 'package:hotel/data/data.dart';
 import 'package:hotel/data/roomRepo.dart';
-import 'package:hotel/model/model_detail.dart';
-import 'package:hotel/model/room_model.dart';
-import 'package:hotel/repo/bookingRepositary.dart';
+import 'package:hotel/model/getCurrentUserBooking.dart';
 
 class BookingController extends GetxController {
-  RoomRepo roomRepo;
-  BookingController({required this.roomRepo});
-  final hotelBooking = <Hotel>[].obs;
-  final selectedIndex = 0.obs;
-  final bookingRepo = BookingRepositary.instance;
-  Rx<RoomDetailModel?> detail = Rx<RoomDetailModel?>(null);
+  RoomRepo roomrepo;
+  BookingController({required this.roomrepo});
+  final lstBookingStatus = [].obs;
 
-  void saveBooking(Hotel hotel, storeKey) async {
-    print(hotel.name);
-    final isSave = await bookingRepo.saveBooking(hotel, "Booking");
-    if (isSave) {
-      update();
-      print("_____________Put Success________________");
+  var lstBookingItems = <DataBooking>[];
+  final lstBookingShowUI = <DataBooking>[].obs;
+  List<String?> maptab = [
+    "CONFIRM",
+    "CANCELLED",
+    "CHECKED_IN",
+    // "CHECKED_OUT",
+  ];
+
+  get filterByTab => null;
+
+  @override
+  void onInit() {
+    getBookingData();
+    super.onInit();
+  }
+
+  getBookingData() async {
+    try {
+      final bookingData = await roomrepo.getCurrentUserBooking();
+      if (bookingData.status == 200) {
+        lstBookingItems = bookingData.data;
+        filterbyTab(0);
+      }
+    } on DioException catch (e) {
+      Get.snackbar("", "${e.message}");
     }
   }
 
-  void getDatahotel() async {
-    final imageDetail = await bookingRepo.getHotel("Booking");
-    hotelBooking.value = imageDetail;
-    update();
-    print("------------Get-Cart------------");
+  void filterbyTab(int index) {
+    print(index);
+    final status = maptab[index];
+    print(status);
+    final list = lstBookingItems.where((element) => element.status == status);
+    lstBookingShowUI.value = list.toList();
   }
 
-  getDetailData(int id) async {
+  void cancelBookink(String bookindId) async {
     try {
-      final res = await roomRepo.getDetialData(id);
-      detail(res);
+      final res = roomrepo.postCancelBooking(bookindId);
+      print("=====> cancel res ${res}");
+      getBookingData();
     } on DioException catch (e) {
-      print(e.response!.statusMessage!);
+      print(e.response?.data ?? "");
     }
   }
 }

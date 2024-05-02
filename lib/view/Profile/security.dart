@@ -1,18 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/constant/appRoute.dart';
-import 'package:hotel/constant/constant.dart';
 
-class SecurityController extends GetxController {
-  var faceID = false.obs;
-  var rememberMe = false.obs;
-  var touchID = false.obs;
-}
+import 'package:hotel/constant/constant.dart';
+import 'package:hotel/controller/security_controller.dart';
 
 class SecurityScreen extends StatelessWidget {
   SecurityScreen({super.key});
-  final SecurityController _securityController = Get.put(SecurityController());
+  final SecurityController _securityController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +16,8 @@ class SecurityScreen extends StatelessWidget {
         centerTitle: false,
         title: const Text(
           'Security',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 25, color: black),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
@@ -31,18 +27,13 @@ class SecurityScreen extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
         child: Column(
           children: [
             _buildFaceID(),
-            SizedBox(height: 10),
             _buildRememberme(),
-            SizedBox(height: 10),
             _buildTouchID(),
-            SizedBox(height: 10),
             _buildGoogleAuth(),
-            SizedBox(height: 30),
-            _buildChangePwBtn(),
           ],
         ),
       ),
@@ -104,21 +95,5 @@ class SecurityScreen extends StatelessWidget {
             color: green,
           )
         ],
-      );
-  Widget _buildChangePwBtn() => ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          fixedSize: Size(370, 60),
-          backgroundColor: Colors.green.shade100,
-        ),
-        onPressed: () {
-          // Get.to(ChangePassword());
-          Get.toNamed(AppRoute.changePassword);
-        },
-        child: Center(
-          child: Text(
-            'Change Password',
-            style: TextStyle(color: green, fontSize: 17),
-          ),
-        ),
       );
 }
