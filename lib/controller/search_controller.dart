@@ -1,63 +1,28 @@
 import 'package:get/get.dart';
-import 'package:hotel/data/data.dart';
-import 'package:hotel/repo/searchRepository.dart';
+import 'package:hotel/api/getxAPI.dart';
+import 'package:hotel/constant/server_rout.dart';
+import 'package:hotel/model/room_model.dart';
 
-class FindController extends GetxController {
-  FindController({required this.searchRepository});
-  final repo = <Hotel>[].obs;
-  final searchcategory = <RoomCategory>[].obs;
-  final SearchRepository searchRepository;
+class SearchDataController extends GetxController {
+  var data = [];
   final selectedIndex = 0.obs;
   final click = true.obs;
-  List<Hotel> _allList = [];
+  List<Datum> dataRoom = [];
   final RxBool isGridVisible = false.obs;
 
-  @override
-  void onInit() async {
-    // Get Category
-    final tabcate = searchRepository.getSearchCategory();
-    searchcategory(tabcate);
+  Future<List<Datum>> searchByTitle({String? query}) async {
+    final res = await GetXAPI.instance.get(path: ServerRout.showRoom);
+    List<Datum> fetchedDataRoom = RoomModel.fromJson(res).data;
 
-    // Get list Hotel
-    _allList = await searchRepository.getSearchList();
-    filTerByIndex(0);
-    super.onInit();
-  }
-
-  void filTerByIndex(int index) {
-    selectedIndex(index);
-    final catergorysearch = searchcategory[index];
-
-    if (catergorysearch.tab == 'All Hotel') {
-      repo(_allList);
-      update();
-      return;
+    if (query != null) {
+      fetchedDataRoom = fetchedDataRoom
+          .where((element) =>
+              element.title!.toLowerCase().contains(query.toLowerCase()))
+          .toList();
     }
 
-    final tmplist =
-        _allList.where((e) => e.category == catergorysearch.tab).toList();
-    repo(tmplist);
-    // print(selectedIndex);
-    update();
-  }
+    dataRoom = fetchedDataRoom;
 
-  void changeToList() {
-    click(!click.value);
-    toggleView();
-  }
-
-  void changeToGrid() {
-    click(!click.value);
-    showGridView();
-  }
-
-  void toggleView() {
-    isGridVisible.value = false;
-    update();
-  }
-
-  void showGridView() {
-    isGridVisible.value = true;
-    update();
+    return dataRoom;
   }
 }

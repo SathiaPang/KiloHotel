@@ -2,7 +2,7 @@ class ProfileModel {
   int? status;
   String? message;
   String? messageKey;
-  Data? data;
+  Dataaa? data;
   dynamic paging;
 
   ProfileModel(
@@ -12,7 +12,7 @@ class ProfileModel {
     status = json['status'];
     message = json['message'];
     messageKey = json['messageKey'];
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    data = json['data'] != null ? new Dataaa.fromJson(json['data']) : null;
     paging = json['paging'];
   }
 
@@ -29,7 +29,7 @@ class ProfileModel {
   }
 }
 
-class Data {
+class Dataaa {
   String? name;
   int? id;
   String? address;
@@ -43,7 +43,7 @@ class Data {
   String? createdAt;
   String? updatedAt;
 
-  Data(
+  Dataaa(
       {this.name,
       this.id,
       this.address,
@@ -57,7 +57,7 @@ class Data {
       this.createdAt,
       this.updatedAt});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  Dataaa.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     id = json['id'];
     address = json['address'];

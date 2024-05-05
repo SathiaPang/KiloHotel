@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class RoomDetailModel {
   int? status;
   String? message;
@@ -37,7 +35,7 @@ class Data {
   String? title;
   int? adult;
   String? description;
-  dynamic? subTitle;
+  dynamic subTitle;
   double? price;
   int? bed;
   String? amenity;

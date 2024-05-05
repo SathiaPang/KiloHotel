@@ -30,11 +30,11 @@ class UserRespoitory {
   }
 
   Future<LoginResponse> login(
-    String email,
+    String username,
     String password,
   ) async {
     final res = await GetXAPI.instance.post(path: ServerRout.login, data: {
-      "username": email,
+      "username": username,
       "password": password,
     });
     return LoginResponse.fromJson(res);

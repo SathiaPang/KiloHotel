@@ -1,11 +1,29 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 
-import 'package:hotel/view/Profile/ticket.dart';
-
-class DialogPayMent extends StatelessWidget {
+class DialogPayMent extends StatefulWidget {
   const DialogPayMent({super.key});
+
+  @override
+  State<DialogPayMent> createState() => _DialogPayMentState();
+}
+
+class _DialogPayMentState extends State<DialogPayMent> {
+  @override
+  void initState() {
+    Future.microtask(() => initLoading());
+    super.initState();
+  }
+
+  void initLoading() async {
+    Timer(const Duration(seconds: 1), () {
+      Get.offAllNamed(AppRoute.bottomNavigation);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +47,7 @@ class DialogPayMent extends StatelessWidget {
                 color: green,
               ),
               Text(
-                "Payment Successfull!",
+                "Booking Successfull!",
                 style: TextStyle(
                     color: green, fontWeight: FontWeight.w700, fontSize: 20),
               ),
@@ -37,7 +55,7 @@ class DialogPayMent extends StatelessWidget {
                 height: 5,
               ),
               Text(
-                "Successfull made payment and hotel booking",
+                "Successfull made hotel booking",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: black, fontWeight: FontWeight.w400, fontSize: 15),
@@ -45,43 +63,14 @@ class DialogPayMent extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: _buildViewTicket(),
+              CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                strokeWidth: 5.5,
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: _buildCancel(),
-              )
             ],
           ),
         ),
       ),
     );
   }
-
-  Widget _buildViewTicket() => ElevatedButton(
-      style: ElevatedButton.styleFrom(
-          backgroundColor: green, minimumSize: Size(280, 50)),
-      onPressed: () {
-        Get.to(TicketScreen());
-      },
-      child: Text(
-        "View Ticket",
-        style: TextStyle(color: white),
-      ));
-
-  Widget _buildCancel() => ElevatedButton(
-      style: ElevatedButton.styleFrom(
-          backgroundColor: greenAccent, minimumSize: Size(280, 50)),
-      onPressed: () {
-        Get.back();
-      },
-      child: Text(
-        "Cancel",
-        style: TextStyle(color: green),
-      ));
 }

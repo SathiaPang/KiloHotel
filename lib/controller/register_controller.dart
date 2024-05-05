@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/appRoute.dart';
@@ -55,7 +56,7 @@ class RegisterController extends GetxController {
           ));
           Get.toNamed(AppRoute.login);
         }
-      } catch (e) {
+      } on DioException catch (e) {
         print("=============================> Error:  $e");
         Get.showSnackbar(const GetSnackBar(
           backgroundColor: red,

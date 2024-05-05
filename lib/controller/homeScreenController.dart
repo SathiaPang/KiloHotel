@@ -33,7 +33,7 @@ class ProfileScreenController extends GetxController {
   }
 
   void clearToken() {
-    LocalStorageManager.instance.clearToken(ServerRout.keyToke);
+    LocalStorageManager.instance.clearToken(ServerRout.keyToken);
     Get.offNamed(AppRoute.login);
   }
 }

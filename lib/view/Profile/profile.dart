@@ -4,10 +4,7 @@ import 'package:get/get.dart';
 import 'package:hotel/component/profileScreen/optionSelect.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
-import 'package:hotel/view/Profile/notificationScreen.dart';
-
 import '../../controller/homeScreenController.dart';
-import '../../payment/payment1.dart';
 
 class ProFile extends StatefulWidget {
   ProFile({super.key});
@@ -33,12 +30,6 @@ class _ProFileState extends State<ProFile> {
                 fontWeight: FontWeight.bold,
                 color: _switchValue ? white : black),
           ),
-          actions: [
-            IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.pending_outlined,
-                    size: 25, color: _switchValue ? white : black))
-          ],
         ),
         body: _profileScreenController.isLoading.value
             ? Obx(() => Column(
@@ -49,16 +40,32 @@ class _ProFileState extends State<ProFile> {
                     SizedBox(
                       height: 20,
                     ),
-                    _editPF(),
-                    _payment(),
+                    _setting(),
+
                     _notification(),
                     _security(),
-                    _help(),
                     _builDarkTheme(),
                     _buildLogout()
                   ],
                 ))
-            : CircleAvatar());
+            : CircleAvatar()
+        // body: Column(
+        //   children: [
+        //     //
+        //     // _buildPicture(),
+        //     // _builNameAndGmail(),
+        //     SizedBox(
+        //       height: 20,
+        //     ),
+
+        //     _notification(),
+        //     _security(),
+
+        //     _builDarkTheme(),
+        //     _buildLogout()
+        //   ],
+        // )
+        );
   }
 
   Widget _buildPicture() => Center(
@@ -120,11 +127,11 @@ class _ProFileState extends State<ProFile> {
         ],
       );
 
-  Widget _editPF() => Row(
+  Widget _setting() => Row(
         children: [
           GestureDetector(
             onTap: () {
-              Get.toNamed(AppRoute.editPF);
+              Get.toNamed(AppRoute.setting);
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -133,12 +140,12 @@ class _ProFileState extends State<ProFile> {
                 width: Get.width / 2,
                 child: Row(
                   children: [
-                    Icon(Icons.person_2_outlined),
+                    Icon(Icons.settings_outlined),
                     SizedBox(
                       width: 20,
                     ),
                     Text(
-                      "Edit Profile",
+                      "Setting",
                       style: TextStyle(
                           fontSize: 19,
                           fontWeight: FontWeight.w500,
@@ -152,21 +159,10 @@ class _ProFileState extends State<ProFile> {
         ],
       );
 
-  Widget _payment() => Row(
-        children: [
-          OptionSelect(
-              ontap: () => Get.to(PayMent1()),
-              icon: Icons.payment_outlined,
-              text: "Payment",
-              color: _switchValue ? white : black,
-              size: 30)
-        ],
-      );
-
   Widget _notification() => Row(
         children: [
           OptionSelect(
-              ontap: () => Get.to(NotiScreen()),
+              ontap: () => Get.toNamed(AppRoute.notification),
               icon: Icons.notifications_none_rounded,
               text: "Notification",
               color: _switchValue ? white : black,
@@ -180,17 +176,6 @@ class _ProFileState extends State<ProFile> {
               ontap: () => Get.toNamed(AppRoute.security),
               icon: Icons.verified_user_outlined,
               text: "Security",
-              color: _switchValue ? white : black,
-              size: 30)
-        ],
-      );
-
-  Widget _help() => Row(
-        children: [
-          OptionSelect(
-              ontap: () => Get.to(NotiScreen()),
-              icon: Icons.help_outline,
-              text: "Help",
               color: _switchValue ? white : black,
               size: 30)
         ],

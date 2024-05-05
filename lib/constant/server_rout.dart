@@ -7,8 +7,11 @@ class ServerRout {
   static String updateProfile = "api/users/updateProfile";
   static String showRoom = "api/v1.0.0/room-type";
 
-  static String keyToke = "token";
+  static String keyToken = "token";
   static String basicToken = "Basic aG90ZWw6aG90ZWxAMTIz";
 
   static String detailPath = "api/v1.0.0/room-type/";
+  static String bookingAPI = "api/booking";
+  static String getCurrentUserBooking = "api/booking/my-booking";
+  static String cancelBooking = "api/booking";
 }

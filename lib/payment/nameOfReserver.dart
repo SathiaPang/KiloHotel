@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/constant/appRoute.dart';
+import 'package:hotel/controller/name_of_reservation_controller.dart';
 import 'package:intl/intl.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:hotel/constant/constant.dart';
@@ -13,11 +13,11 @@ class NameOfReserver extends StatefulWidget {
 }
 
 class _NameOfReserverState extends State<NameOfReserver> {
-  TextEditingController _date = TextEditingController();
   FocusNode _phoneNumberFocusNode = FocusNode();
-  // String? selectedGender;
   final selectColor = ''.obs;
   final selectedGender = ''.obs;
+  final NameOfReservationController _nameOfReservationController = Get.find();
+  final list = Get.arguments;
 
   @override
   void dispose() {
@@ -37,14 +37,9 @@ class _NameOfReserverState extends State<NameOfReserver> {
         ),
       ),
       bottomNavigationBar: _buildBottonContinue(),
-      // floatingActionButton: _buildBottonContinue(),
       body: Column(
         children: [
           //
-          _buildGender(),
-          SizedBox(
-            height: 20,
-          ),
           _buildFullName(),
           _buildNickName(),
           _buildDOB(),
@@ -59,7 +54,7 @@ class _NameOfReserverState extends State<NameOfReserver> {
 
   Widget _buildBottonContinue() => InkWell(
         onTap: () {
-          Get.toNamed(AppRoute.payment1);
+          _nameOfReservationController.saveNameReservation(list);
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -87,78 +82,10 @@ class _NameOfReserverState extends State<NameOfReserver> {
         ),
       );
 
-  Widget _buildGender() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            elevation: 0,
-            backgroundColor: selectedGender == "Mr." ? green : white,
-            minimumSize: Size(120, 35),
-            side: BorderSide(width: 1.3, color: green),
-          ),
-          onPressed: () {
-            setState(() {
-              selectedGender.value = "Mr.";
-            });
-          },
-          child: Text(
-            "Mr.",
-            style: TextStyle(
-              fontSize: 20,
-              color: selectedGender == "Mr." ? white : green,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            elevation: 0,
-            backgroundColor: selectedGender == "Mrs." ? green : white,
-            minimumSize: Size(120, 35),
-            side: BorderSide(width: 1.3, color: green),
-          ),
-          onPressed: () {
-            setState(() {
-              selectedGender.value = "Mrs.";
-            });
-          },
-          child: Text(
-            "Mrs.",
-            style: TextStyle(
-              fontSize: 20,
-              color: selectedGender == "Mrs." ? white : green,
-            ),
-          ),
-        ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            elevation: 0,
-            backgroundColor: selectedGender == "Ms." ? green : white,
-            minimumSize: Size(120, 35),
-            side: BorderSide(width: 1.3, color: green),
-          ),
-          onPressed: () {
-            setState(() {
-              selectedGender.value = "Ms.";
-            });
-          },
-          child: Text(
-            "Ms.",
-            style: TextStyle(
-              fontSize: 20,
-              color: selectedGender == "Ms." ? white : green,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
   Widget _buildFullName() => Padding(
         padding: const EdgeInsets.all(12),
         child: TextFormField(
+          controller: _nameOfReservationController.fullName,
           decoration: InputDecoration(
               filled: true,
               fillColor: textfieldcolor,
@@ -172,6 +99,7 @@ class _NameOfReserverState extends State<NameOfReserver> {
   Widget _buildNickName() => Padding(
         padding: const EdgeInsets.all(12),
         child: TextFormField(
+          controller: _nameOfReservationController.nickName,
           decoration: InputDecoration(
               filled: true,
               fillColor: textfieldcolor,
@@ -185,7 +113,7 @@ class _NameOfReserverState extends State<NameOfReserver> {
   Widget _buildDOB() => Padding(
         padding: const EdgeInsets.all(12),
         child: TextField(
-          controller: _date,
+          controller: _nameOfReservationController.dateOfBirth,
           onTap: () async {
             DateTime? pickeddate = await showDatePicker(
               context: context,
@@ -195,9 +123,8 @@ class _NameOfReserverState extends State<NameOfReserver> {
             );
 
             if (pickeddate != null) {
-              setState(() {
-                _date.text = DateFormat('yyyy-MM-dd').format(pickeddate);
-              });
+              _nameOfReservationController.dateOfBirth.text =
+                  DateFormat('yyyy-MM-dd').format(pickeddate);
             }
           },
           decoration: InputDecoration(
@@ -214,6 +141,7 @@ class _NameOfReserverState extends State<NameOfReserver> {
   Widget _buildGmail() => Padding(
         padding: const EdgeInsets.all(12),
         child: TextFormField(
+          controller: _nameOfReservationController.email,
           decoration: InputDecoration(
               filled: true,
               fillColor: textfieldcolor,
@@ -228,6 +156,7 @@ class _NameOfReserverState extends State<NameOfReserver> {
   Widget _PhoneNumber() => Padding(
         padding: const EdgeInsets.all(12),
         child: IntlPhoneField(
+          controller: _nameOfReservationController.phoneNumber,
           focusNode: _phoneNumberFocusNode,
           decoration: InputDecoration(
             filled: true,

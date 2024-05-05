@@ -25,7 +25,7 @@ class _Loading2State extends State<Loading2> {
     final LoginController loginController = Get.find();
     loginController.isLogin();
     final token =
-        await LocalStorageManager.instance.getFromCache(ServerRout.keyToke);
+        await LocalStorageManager.instance.getFromCache(ServerRout.keyToken);
 
     Timer(
       const Duration(seconds: 1),
@@ -41,15 +41,6 @@ class _Loading2State extends State<Loading2> {
       },
     );
   }
-
-  // void initLoading() {
-  //   Timer(
-  //       const Duration(seconds: 1),
-  //       () => Navigator.pushReplacement(
-  //           context, MaterialPageRoute(builder: (context) => SigninScreen()))
-  //       //
-  //       );
-  // }
 
   @override
   Widget build(BuildContext context) {

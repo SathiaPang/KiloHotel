@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 
 import 'package:hotel/view/splashScreen/splashScreen1.dart';
@@ -22,7 +23,7 @@ class _Loading1State extends State<Loading1> {
   void initloading() {
     Timer(
       const Duration(seconds: 1),
-      () => Get.off(() => const SplashScreen1()),
+      () => Get.toNamed(AppRoute.splash1),
     );
   }
 
@@ -33,7 +34,8 @@ class _Loading1State extends State<Loading1> {
         width: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/images/ht.jpg"), fit: BoxFit.fill)),
+                image: AssetImage("assets/images/hhotel.jpg"),
+                fit: BoxFit.cover)),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 70),
           child: const Column(

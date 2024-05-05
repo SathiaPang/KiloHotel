@@ -12,12 +12,11 @@ class LoginController extends GetxController {
   final formkeySignUp = GlobalKey<FormState>();
 
   // SignIn
-  final userSignInController = TextEditingController();
-  final passwordSignInController = TextEditingController();
+  final userSignInController = TextEditingController(text: "layZzz");
+  final passwordSignInController = TextEditingController(text: "1234");
 
   final UserRespoitory userRespoitory;
   final perfs = LocalStorageManager.instance;
-  // final UserStorageApp userStorageApp = UserStorageApp();
 
   LoginController({required this.userRespoitory});
 
@@ -44,7 +43,7 @@ class LoginController extends GetxController {
       );
       if (res.status == 200) {
         LocalStorageManager.instance
-            .saveToCache(ServerRout.keyToke, res.data!.token);
+            .saveToCache(ServerRout.keyToken, res!.data!.token!);
         print("------------------${res.data?.token}-------------------------");
         Get.showSnackbar(const GetSnackBar(
           backgroundColor: green,
@@ -75,13 +74,13 @@ class LoginController extends GetxController {
 
   void getToken() async {
     final token =
-        await LocalStorageManager.instance.getFromCache(ServerRout.keyToke);
+        await LocalStorageManager.instance.getFromCache(ServerRout.keyToken);
     print("---------------Then Login ${token}");
   }
 
   void isLogin() async {
     final token =
-        await LocalStorageManager.instance.getFromCache(ServerRout.keyToke);
+        await LocalStorageManager.instance.getFromCache(ServerRout.keyToken);
     if (token != null && token.isNotEmpty) {
       print("User is logged in.");
       Get.offAllNamed(AppRoute.bottomNavigation);

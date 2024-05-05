@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/login_controller.dart';
 import 'package:hotel/controller/homeScreenController.dart';
-import 'package:hotel/view/booking/recently.dart';
-import 'package:hotel/view/home/demoCategory.dart';
+import 'package:hotel/view/home/demoData.dart';
+import 'package:hotel/view/search/searchList.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -35,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen>
     return Scaffold(
       backgroundColor: white,
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         centerTitle: false,
         backgroundColor: white,
         title: Row(
@@ -43,7 +45,6 @@ class _HomeScreenState extends State<HomeScreen>
               height: Get.height / 20,
               width: Get.width / 12,
               decoration: BoxDecoration(
-                // color: green,
                 image: DecorationImage(
                     image: AssetImage("assets/images/logo.png"),
                     fit: BoxFit.contain),
@@ -54,24 +55,26 @@ class _HomeScreenState extends State<HomeScreen>
             ),
             Text(
               "Bolu",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, fontSize: 25, color: black),
             )
           ],
         ),
         // Action
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () =>
+                  showSearch(context: context, delegate: SearchItem()),
               icon: Icon(
-                Icons.notifications_outlined,
+                Icons.search_rounded,
                 size: 30,
               )),
           IconButton(
               onPressed: () {
-                Get.to(RecentlyScreen());
+                Get.toNamed(AppRoute.setting);
               },
               icon: Icon(
-                Icons.bookmark_outline,
+                Icons.settings_outlined,
                 size: 30,
               )),
           SizedBox(
@@ -83,18 +86,14 @@ class _HomeScreenState extends State<HomeScreen>
         children: [
           //
           _builNickName(),
-          _buildSearch(),
-          _builSeeAll(),
-          _buildTabbarView(),
+          _buildData(),
+          _builSeeAll()
         ],
       ),
     );
   }
 
-  Widget _buildTabbarView() => Expanded(
-      child: DemoCategory(
-          // hotelList: _homeController.repo,
-          ));
+  Widget _buildData() => Expanded(child: DemoData());
 
   Widget _builSeeAll() => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 7),
@@ -104,13 +103,13 @@ class _HomeScreenState extends State<HomeScreen>
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Text(
-                "RecentlyBooked",
+                "Recently Booked",
                 style: TextStyle(fontSize: 20),
               ),
             ),
             TextButton(
                 onPressed: () {
-                  Get.to(RecentlyScreen());
+                  Get.toNamed(AppRoute.recenly);
                 },
                 child: Text(
                   "See All",
@@ -133,49 +132,7 @@ class _HomeScreenState extends State<HomeScreen>
               ],
             ),
           ))
-      : Text("data");
-
-  Widget _buildSearch() => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-        child: InkWell(
-          onTap: () {
-            // Get.to(SearchScreen());
-          },
-          child: Container(
-            height: Get.height / 15,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                color: textfieldcolor, borderRadius: BorderRadius.circular(15)),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 10,
-                ),
-                Icon(
-                  Icons.search_outlined,
-                  size: 35,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  "Search",
-                  style: TextStyle(fontSize: 17),
-                ),
-                Spacer(),
-                Icon(
-                  Icons.tune,
-                  color: green,
-                  size: 30,
-                ),
-                SizedBox(
-                  width: 10,
-                )
-              ],
-            ),
-          ),
-        ),
-      );
+      : Text("Error data");
   @override
   bool get wantKeepAlive => true;
 }
