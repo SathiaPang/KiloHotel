@@ -6,6 +6,7 @@ class ServerRout {
   static String getProfile = "api/users/getProfile";
   static String updateProfile = "api/users/updateProfile";
   static String showRoom = "api/v1.0.0/room-type";
+  static String uploadProfile = "api/users/image";
 
   static String keyToken = "token";
   static String basicToken = "Basic aG90ZWw6aG90ZWxAMTIz";

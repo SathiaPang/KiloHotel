@@ -147,9 +147,8 @@ class _LoginState extends State<Login> {
         children: [
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              fixedSize: Size(360, 65),
-              backgroundColor: green,
-            ),
+                backgroundColor: green,
+                fixedSize: Size(Get.width * 0.8, Get.height / 20)),
             onPressed: () {
               _controller.loginApp();
             },

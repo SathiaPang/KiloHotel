@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/controller/homeScreenController.dart';
 import 'package:hotel/response/user_reponse.dart';
 
 class UpdateProfileController extends GetxController {
@@ -19,7 +20,6 @@ class UpdateProfileController extends GetxController {
     String email = emailController.text.trim();
     String phone = phoneController.text.trim();
     String address = addressController.text.trim();
-
     try {
       final res = await userRespoitory.updateProfile(
         username,
@@ -29,13 +29,12 @@ class UpdateProfileController extends GetxController {
         address,
       );
       if (res.status == 200) {
-        print("-------------------------------Change Success");
-        update();
+        final ProfileScreenController _pfController = Get.find();
+        _pfController.getPrfileData();
       }
-      print("Success ${res.message}");
       clearText();
     } on DioException catch (e) {
-      print(e);
+      print(e.response?.data);
     }
   }
 

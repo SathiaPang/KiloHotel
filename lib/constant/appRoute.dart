@@ -27,9 +27,6 @@ import 'package:hotel/view/navigationbar/naviga.dart';
 import 'package:hotel/view/selectdate/selectdate.dart';
 import 'package:hotel/view/splashScreen/loading1.dart';
 import 'package:hotel/view/splashScreen/loading2.dart';
-import 'package:hotel/view/splashScreen/splashScreen1.dart';
-import 'package:hotel/view/splashScreen/splashScreen2.dart';
-import 'package:hotel/view/splashScreen/splashScreen3.dart';
 
 import '../booking/booking_detail_1.dart';
 
@@ -61,9 +58,6 @@ class AppRoute {
   static List<GetPage> appPage = [
     //
     GetPage(name: load1, page: () => Loading1()),
-    GetPage(name: splash1, page: () => SplashScreen1()),
-    GetPage(name: splash2, page: () => SplashScreen2()),
-    GetPage(name: splash3, page: () => SplashScreen3()),
     GetPage(name: load2, page: () => Loading2(), binding: LoginBiding()),
     GetPage(name: signin, page: () => SigninScreen()),
     GetPage(name: homescreen, page: () => HomeScreen()),

@@ -55,11 +55,11 @@ class ResetPasswordController extends GetxController {
         confirmPassword,
       );
       if (res.status == 200) {
-        print("-------------------------------Cange Success");
+        print("-------------------------------Change Success");
         Get.showSnackbar(const GetSnackBar(
           backgroundColor: green,
           messageText: Text(
-            "Signin Success",
+            "Reset password success",
             style: TextStyle(fontSize: 16, color: white),
           ),
           duration: Duration(seconds: 1),

@@ -95,7 +95,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 ),
               ),
               child: Text(
-                'Continue',
+                'Update',
                 style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),
               ),
             ),

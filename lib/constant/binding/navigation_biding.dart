@@ -21,7 +21,7 @@ class NavigationBiding extends Bindings {
     Get.put(HomeRepository());
     Get.put(HomeController(roomrepo: Get.find()));
     Get.put(SearchRepository());
-    Get.put(SearchDataController());
+    Get.put(FindController());
     Get.put(RecentlyController());
     Get.put(SelectDateController());
     Get.put(ProfileScreenController(userRepo: Get.find()));

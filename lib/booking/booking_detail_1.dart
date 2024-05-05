@@ -260,122 +260,120 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                   ),
                   Container(
                     height: Get.height * 0.9,
-                    child: Scrollbar(
-                      child: ListView.builder(
-                          padding: EdgeInsets.zero,
-                          itemCount: 10,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 5, horizontal: 10),
-                              child: Container(
-                                height: Get.width * 0.4,
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 20.0, top: 15.0),
-                                          child: CircleAvatar(
-                                            radius: 30,
-                                            backgroundImage: AssetImage(
-                                                'assets/images/pf.png'),
-                                          ),
+                    child: ListView.builder(
+                        padding: EdgeInsets.zero,
+                        itemCount: 10,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 10),
+                            child: Container(
+                              height: Get.width * 0.4,
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 20.0, top: 15.0),
+                                        child: CircleAvatar(
+                                          radius: 30,
+                                          backgroundImage: AssetImage(
+                                              'assets/images/pf.png'),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 10.0, top: 10.0),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "Keat Panha",
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                              ),
-                                              Text(
-                                                "Jan 20, 2025",
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.w300),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        Spacer(),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 15),
-                                          child: Container(
-                                            width: Get.width * 0.18,
-                                            height: Get.height * 0.042,
-                                            child: Center(
-                                              child: RichText(
-                                                text: TextSpan(
-                                                  style: TextStyle(
-                                                    fontSize: 20.0,
-                                                    color: Colors.black,
-                                                  ),
-                                                  children: <InlineSpan>[
-                                                    WidgetSpan(
-                                                      child: Icon(
-                                                        Icons.star,
-                                                        color: white,
-                                                        size: 21,
-                                                      ),
-                                                    ),
-                                                    TextSpan(
-                                                      text: '5.0',
-                                                      style: TextStyle(
-                                                          color: white,
-                                                          fontSize: 18),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                            decoration: BoxDecoration(
-                                              color: green,
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 10),
-                                    Container(
-                                      width: Get.width * 0.8,
-                                      height: Get.height * 0.08,
-                                      child: Text(
-                                        "Very nice and comfortable hotel, thank you for accompanying my vacation!",
-                                        style: TextStyle(
-                                            fontSize: 17,
-                                            fontWeight: FontWeight.w300),
                                       ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 10.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Keat Panha",
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight:
+                                                      FontWeight.w600),
+                                            ),
+                                            Text(
+                                              "Jan 20, 2025",
+                                              style: TextStyle(
+                                                  fontWeight:
+                                                      FontWeight.w300),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      Spacer(),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 15),
+                                        child: Container(
+                                          width: Get.width * 0.18,
+                                          height: Get.height * 0.042,
+                                          child: Center(
+                                            child: RichText(
+                                              text: TextSpan(
+                                                style: TextStyle(
+                                                  fontSize: 20.0,
+                                                  color: Colors.black,
+                                                ),
+                                                children: <InlineSpan>[
+                                                  WidgetSpan(
+                                                    child: Icon(
+                                                      Icons.star,
+                                                      color: white,
+                                                      size: 21,
+                                                    ),
+                                                  ),
+                                                  TextSpan(
+                                                    text: '5.0',
+                                                    style: TextStyle(
+                                                        color: white,
+                                                        fontSize: 18),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: green,
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    width: Get.width * 0.8,
+                                    height: Get.height * 0.08,
+                                    child: Text(
+                                      "Very nice and comfortable hotel, thank you for accompanying my vacation!",
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.w300),
                                     ),
-                                  ],
-                                ),
-                                decoration: BoxDecoration(
-                                  color: white,
-                                  borderRadius: BorderRadius.circular(20),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.2),
-                                      spreadRadius: 2,
-                                      blurRadius: 5,
-                                      offset: Offset(0, 3),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
-                            );
-                          }),
-                    ),
+                              decoration: BoxDecoration(
+                                color: white,
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.2),
+                                    spreadRadius: 2,
+                                    blurRadius: 5,
+                                    offset: Offset(0, 3),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }),
                   ),
                 ],
               ),

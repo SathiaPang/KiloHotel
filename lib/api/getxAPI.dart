@@ -45,21 +45,20 @@ class GetXAPI {
   Future<dynamic> post({
     required String path,
     dynamic data,
+    String contentType = "application/json",
   }) async {
-    String? token =
-        await LocalStorageManager.instance.getFromCache(ServerRout.keyToken);
-    print("=================" + token.toString());
     try {
+      final token =
+          await LocalStorageManager.instance.getFromCache(ServerRout.keyToken);
       final res = await _dio.post(
         path,
         data: data,
-        options: Options(
-          headers: {
-            'Authorization': token?.isNotEmpty == true && token != null
-                ? "Bearer $token"
-                : "${ServerRout.basicToken}"
-          },
-        ),
+        options: Options(headers: {
+          'Authorization': token == null || token.isEmpty
+              ? ServerRout.basicToken
+              : "Bearer $token",
+          'Content-Type': contentType,
+        }),
       );
       if (res.statusCode == 200) {
         return res.data;
