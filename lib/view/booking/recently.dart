@@ -149,19 +149,6 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                                         fontSize: 17, color: Colors.green),
                                   ),
                                   Text("(4,345 reviews)"),
-                                  Spacer(),
-                                  Obx(
-                                    () => IconButton(
-                                      onPressed: () {
-                                        iconColor.value =
-                                            iconColor.value == Colors.black
-                                                ? Colors.green
-                                                : Colors.black;
-                                      },
-                                      icon: Icon(Icons.bookmark),
-                                      color: iconColor.value,
-                                    ),
-                                  ),
                                 ],
                               ),
                             ],
@@ -178,13 +165,13 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
       );
 
   Widget _buildGridList(Rx<Color> iconColor) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         child: GridView.builder(
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 230,
-              crossAxisSpacing: 2,
-              childAspectRatio: 1 / 1.3,
-              mainAxisSpacing: 10),
+              maxCrossAxisExtent: 220,
+              crossAxisSpacing: 5,
+              childAspectRatio: 1 / 1.2,
+              mainAxisSpacing: 13),
           itemCount: _homeController.listDatum.length,
           itemBuilder: (context, index) {
             final dataApi = _homeController.listDatum[index];
@@ -200,10 +187,13 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                     color: white,
                   ),
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    padding: EdgeInsets.symmetric(horizontal: 7, vertical: 5),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        SizedBox(
+                          height: 5,
+                        ),
                         Container(
                           height: Get.height / 7,
                           decoration: BoxDecoration(
@@ -224,19 +214,6 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
                                   color: green),
-                            ),
-                            Spacer(),
-                            Obx(
-                              () => IconButton(
-                                onPressed: () {
-                                  iconColor.value =
-                                      iconColor.value == Colors.black
-                                          ? Colors.green
-                                          : Colors.black;
-                                },
-                                icon: Icon(Icons.bookmark),
-                                color: iconColor.value,
-                              ),
                             ),
                           ],
                         ),

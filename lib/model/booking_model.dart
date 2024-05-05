@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:intl/intl.dart';
+
 class BookingModel {
   String? checkIn;
   String? checkOut;
@@ -8,8 +12,9 @@ class BookingModel {
       {this.checkIn, this.checkOut, this.specialRequest, this.bookingDetail});
 
   BookingModel.fromJson(Map<String, dynamic> json) {
-    checkIn = json['checkIn'];
-    checkOut = json['checkOut'];
+    checkIn = DateFormat('yyyy-MM-dd').format(DateTime.parse(json["checkIn"]));
+    checkOut =
+        DateFormat('yyyy-MM-dd').format(DateTime.parse(json["checkOut"]));
     specialRequest = json['specialRequest'];
     if (json['bookingDetail'] != null) {
       bookingDetail = <BookingDetail>[];
@@ -52,4 +57,43 @@ class BookingDetail {
     data['child'] = this.child;
     return data;
   }
+}
+
+// Response
+BookingResponse bookingResponseFromJson(String str) =>
+    BookingResponse.fromJson(json.decode(str));
+String bookingResponseToJson(BookingResponse data) =>
+    json.encode(data.toJson());
+
+class BookingResponse {
+  int status;
+  String message;
+  String messageKey;
+  dynamic data;
+  dynamic paging;
+
+  BookingResponse({
+    required this.status,
+    required this.message,
+    required this.messageKey,
+    required this.data,
+    required this.paging,
+  });
+
+  factory BookingResponse.fromJson(Map<String, dynamic> json) =>
+      BookingResponse(
+        status: json["status"],
+        message: json["message"],
+        messageKey: json["messageKey"],
+        data: json["data"],
+        paging: json["paging"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "status": status,
+        "message": message,
+        "messageKey": messageKey,
+        "data": data,
+        "paging": paging,
+      };
 }

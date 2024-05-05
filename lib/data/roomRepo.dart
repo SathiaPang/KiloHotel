@@ -19,11 +19,11 @@ class RoomRepo {
     return RoomDetailModel.fromJson(res);
   }
 
-  Future<dynamic> postBookingData(BookingModel bookingModel) async {
-    print(bookingModel.toJson());
+  Future<BookingModel> postBookingData(BookingModel bookingModel) async {
+    print(bookingModel);
     final res = await GetXAPI.instance
         .post(path: ServerRout.bookingAPI, data: bookingModel.toJson());
-    return res;
+    return BookingModel.fromJson(res);
   }
 
   Future<GetCurrentUserBookingModel> getCurrentUserBooking() async {

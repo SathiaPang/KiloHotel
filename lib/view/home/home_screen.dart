@@ -5,6 +5,7 @@ import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/login_controller.dart';
 import 'package:hotel/controller/homeScreenController.dart';
 import 'package:hotel/view/home/demoData.dart';
+import 'package:hotel/view/search/searchList.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -61,6 +62,13 @@ class _HomeScreenState extends State<HomeScreen>
         ),
         // Action
         actions: [
+          IconButton(
+              onPressed: () =>
+                  showSearch(context: context, delegate: SearchItem()),
+              icon: Icon(
+                Icons.search_rounded,
+                size: 30,
+              )),
           IconButton(
               onPressed: () {
                 Get.toNamed(AppRoute.setting);

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/selectDateController.dart';
+import 'package:hotel/view/selectdate/totalGuest.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class SelectDate extends StatefulWidget {
@@ -34,8 +35,22 @@ class _SelectDateState extends State<SelectDate> {
             _buildSelectDate(),
             _buildChek(),
             _buildChekDetail(),
-            _buildGuest(),
-            _buildTotalGuest(),
+            SizedBox(
+              height: 20,
+            ),
+            _buildGuest("Adult"),
+            TotalGuest(
+                text: _selectDateController.personQtyAdult.toString(),
+                onpressAdd: () => _selectDateController.increasment(),
+                onpressREmove: () => _selectDateController.decreasment()),
+            SizedBox(
+              height: 5,
+            ),
+            _buildGuest("Child"),
+            TotalGuest(
+                text: _selectDateController.personQtyChild.toString(),
+                onpressAdd: () => _selectDateController.increasmentChld(),
+                onpressREmove: () => _selectDateController.decreasmentChild()),
             _buildTotalPayment(),
           ],
         ),
@@ -146,12 +161,14 @@ class _SelectDateState extends State<SelectDate> {
         ),
       );
 
-  Widget _buildGuest() => Padding(
-        padding: const EdgeInsets.only(top: 60, left: 13),
+  Widget _buildGuest(String text) => Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 15,
+        ),
         child: Row(
           children: [
             Text(
-              "Guest",
+              "${text}",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(
@@ -161,67 +178,12 @@ class _SelectDateState extends State<SelectDate> {
         ),
       );
 
-  Widget _buildTotalGuest() => Padding(
-        padding: const EdgeInsets.only(top: 10),
-        child: Container(
-          height: Get.height / 13,
-          width: Get.width / 1.1,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              border: Border.all(width: 2, color: boxcolor)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                height: 50,
-                width: Get.width / 7.5,
-                decoration: BoxDecoration(
-                    color: greenAccent,
-                    borderRadius: BorderRadius.circular(13)),
-                child: Center(
-                  child: IconButton(
-                      onPressed: () {
-                        _selectDateController.decreasment();
-                      },
-                      icon: Icon(
-                        Icons.remove,
-                        size: 20,
-                      )),
-                ),
-              ),
-              Text(
-                _selectDateController.personQty.toString(),
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              Container(
-                height: 50,
-                width: Get.width / 7.5,
-                decoration: BoxDecoration(
-                    color: greenAccent,
-                    borderRadius: BorderRadius.circular(13)),
-                child: Center(
-                  child: IconButton(
-                      onPressed: () {
-                        _selectDateController.increasment();
-                      },
-                      icon: Icon(
-                        Icons.add,
-                        size: 20,
-                      )),
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
-
   Widget _buildTotalPayment() => Padding(
         padding: const EdgeInsets.symmetric(vertical: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              // "Total :",
               "Total : \$ ${_selectDateController.totalPayment()}",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             )

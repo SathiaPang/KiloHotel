@@ -20,24 +20,25 @@ class NameOfReservationController extends GetxController {
 
   void saveNameReservation(Datum datum) async {
     final list = covert(datum);
-    print("=========== aldut ${list.adult}");
-    print("===========  child ${list.child}");
+    print("=========== aldut ${_selectDateController.personQtyAdult}");
+    print("===========  child ${_selectDateController}");
     print("===========  room id ${list.roomTypeId}");
 
     BookingModel bookingModel = BookingModel(
-        // checkIn: _selectDateController.selectedDate,
-        // checkOut: _selectDateController.nDate,
-        checkIn: "2024-04-27",
-        checkOut: "2024-04-29",
+        checkIn: _selectDateController.selectedDate,
+        checkOut: _selectDateController.nDate,
         specialRequest: "special request!!!!",
         bookingDetail: [list]);
+    print("=======> Booking ===-> ${bookingModel.toJson()}");
     update();
-    Get.toNamed(AppRoute.dialogPay);
+
     try {
       final res = await repo.postBookingData(bookingModel);
+      Get.toNamed(AppRoute.dialogPay);
+      print("=== Datum ===${datum}");
       print("====> Save Booking --- ${res}");
     } on DioException catch (e) {
-      print(e.message.toString());
+      print(e.response?.data);
     }
   }
 

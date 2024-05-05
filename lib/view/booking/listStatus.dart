@@ -44,7 +44,10 @@ class ListStatus extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: white,
-                      border: Border.all(width: 2, color: green)),
+                      border: Border.all(
+                          width: 2,
+                          color:
+                              bookingDATA.status == "CONFIRMED" ? green : red)),
                   child: Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
@@ -115,10 +118,16 @@ class ListStatus extends StatelessWidget {
                                     width: 100,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
-                                        color: greenAccent),
+                                        color: bookingDATA.status == "CONFIRMED"
+                                            ? greenAccent
+                                            : redAccent),
                                     child: Text(
                                       '${bookingDATA.status}',
-                                      style: TextStyle(color: green),
+                                      style: TextStyle(
+                                          color:
+                                              bookingDATA.status == "CONFIRMED"
+                                                  ? green
+                                                  : red),
                                       textAlign: TextAlign.center,
                                     ),
                                   )
@@ -130,29 +139,36 @@ class ListStatus extends StatelessWidget {
                         SizedBox(
                           height: 10,
                         ),
-                        Container(
-                          height: 2,
-                          width: double.infinity,
-                          color: Colors.grey.shade400,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("If you want to cancel please tap"),
-                            TextButton(
-                                onPressed: () => onPressed(listData[index]),
-                                child: Text(
-                                  "Cancel",
-                                  style: TextStyle(
-                                      color: green,
-                                      fontSize: 18,
-                                      decoration: TextDecoration.underline,
-                                      decorationStyle:
-                                          TextDecorationStyle.double,
-                                      decorationColor: green),
-                                ))
-                          ],
-                        )
+                        bookingDATA.status == "CONFIRMED"
+                            ? Container(
+                                height: 2,
+                                width: double.infinity,
+                                color: green,
+                              )
+                            : SizedBox(),
+                        bookingDATA.status == "CONFIRMED"
+                            ? Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text("If you want to cancel please tap"),
+                                  TextButton(
+                                      onPressed: () =>
+                                          onPressed(listData[index]),
+                                      child: Text(
+                                        "Cancel",
+                                        style: TextStyle(
+                                            color: green,
+                                            fontSize: 18,
+                                            decoration:
+                                                TextDecoration.underline,
+                                            decorationStyle:
+                                                TextDecorationStyle.double,
+                                            decorationColor: green),
+                                      ))
+                                ],
+                              )
+                            : SizedBox()
                       ],
                     ),
                   ),

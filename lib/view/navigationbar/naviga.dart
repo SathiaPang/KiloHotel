@@ -45,14 +45,6 @@ class MyNavigationBar extends StatelessWidget {
                       size: 30,
                     ),
                     label: "Home"),
-                // Search
-                BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.search,
-                      size: 30,
-                    ),
-                    label: "Search"),
-                // Booking
                 BottomNavigationBarItem(
                     icon: Icon(
                       Icons.article_outlined,

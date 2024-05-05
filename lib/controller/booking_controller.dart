@@ -11,10 +11,9 @@ class BookingController extends GetxController {
   var lstBookingItems = <DataBooking>[];
   final lstBookingShowUI = <DataBooking>[].obs;
   List<String?> maptab = [
-    "CONFIRM",
+    "CONFIRMED",
     "CANCELLED",
     "CHECKED_IN",
-    // "CHECKED_OUT",
   ];
 
   get filterByTab => null;

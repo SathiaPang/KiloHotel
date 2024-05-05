@@ -19,8 +19,6 @@ class OptionSelect extends StatelessWidget {
   final int size;
   final VoidCallback ontap;
 
-  // final ValueChanged<int>? onTap;
-
   @override
   Widget build(BuildContext context) {
     return InkWell(

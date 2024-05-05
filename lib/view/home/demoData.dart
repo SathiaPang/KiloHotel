@@ -93,9 +93,8 @@ class DemoData extends StatelessWidget {
                                         begin: Alignment.topCenter,
                                         end: Alignment.bottomCenter,
                                         colors: [
-                                          green.withOpacity(0.25),
-                                          // green.withOpacity(0.9)
-                                          green
+                                          black.withOpacity(0.10),
+                                          black
                                         ]),
                                     borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(15),
