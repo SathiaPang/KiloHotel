@@ -30,6 +30,14 @@ class _ProFileState extends State<ProFile> {
                 fontWeight: FontWeight.bold,
                 color: _switchValue ? white : black),
           ),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  _profileScreenController.pickImageAndUploads();
+                },
+                icon: Icon(Icons.pending_outlined,
+                    size: 25, color: _switchValue ? white : black))
+          ],
         ),
         body: _profileScreenController.isLoading.value
             ? Obx(() => Column(
@@ -89,7 +97,7 @@ class _ProFileState extends State<ProFile> {
               child: Center(
                 child: InkWell(
                   onTap: () {
-                    print("Edit Profile");
+                    _profileScreenController.pickImageAndUploads();
                   },
                   child: Icon(
                     Icons.edit,

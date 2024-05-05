@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
-
-import 'package:hotel/view/splashScreen/splashScreen1.dart';
+import 'package:hotel/view/Onborading/onboarding_view.dart';
 
 class Loading1 extends StatefulWidget {
   const Loading1({super.key});
@@ -23,7 +21,7 @@ class _Loading1State extends State<Loading1> {
   void initloading() {
     Timer(
       const Duration(seconds: 1),
-      () => Get.toNamed(AppRoute.splash1),
+      () => Get.off(() => const OnboardingScreen()),
     );
   }
 

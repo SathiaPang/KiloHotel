@@ -30,8 +30,7 @@ class _EditPFState extends State<EditPF> {
         centerTitle: false,
         title: const Text(
           'Edit Profile',
-          style: TextStyle(
-              fontWeight: FontWeight.bold, color: black, fontSize: 25),
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
@@ -40,7 +39,6 @@ class _EditPFState extends State<EditPF> {
           },
         ),
       ),
-      floatingActionButton: _signButton(),
       body: Padding(
         padding: EdgeInsets.all(15.0),
         child: SingleChildScrollView(
@@ -58,6 +56,7 @@ class _EditPFState extends State<EditPF> {
               _PhoneNumber(),
               SizedBox(height: 10),
               // _Gender(),
+              _signButton(),
             ],
           ),
         ),
@@ -136,18 +135,25 @@ class _EditPFState extends State<EditPF> {
         },
       );
 
-  Widget _signButton() => ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          fixedSize: Size(395, 65),
-          backgroundColor: green,
-        ),
-        onPressed: () {
-          _updateProfileController.updateProfile();
-        },
-        child: Center(
+  Widget _signButton() => Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: ElevatedButton(
+          onPressed: () {
+            _updateProfileController.updateProfile();
+          },
+          style: ElevatedButton.styleFrom(
+            elevation: 5,
+            backgroundColor: green,
+            foregroundColor: white,
+            shadowColor: black,
+            minimumSize: Size(410, 65),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+          ),
           child: Text(
             'Update',
-            style: TextStyle(color: white, fontSize: 17),
+            style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),
           ),
         ),
       );
