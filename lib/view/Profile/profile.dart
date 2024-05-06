@@ -56,7 +56,26 @@ class _ProFileState extends State<ProFile> {
                     _buildLogout()
                   ],
                 ))
-            : CircleAvatar());
+
+            : CircleAvatar()
+        // body: Column(
+        //   children: [
+        //     //
+        //     // _buildPicture(),
+        //     // _builNameAndGmail(),
+        //     SizedBox(
+        //       height: 20,
+        //     ),
+
+        //     _notification(),
+        //     _security(),
+
+        //     _builDarkTheme(),
+        //     _buildLogout()
+        //   ],
+        // )
+        //
+        );
   }
 
   Widget _buildPicture() => Center(

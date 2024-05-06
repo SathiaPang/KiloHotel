@@ -66,7 +66,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
       ),
       body: PageView.builder(
-          physics: NeverScrollableScrollPhysics(),
           onPageChanged: (index) =>
               setState(() => lastPage = index == controller.items.length - 1),
           controller: pagecontroller,
@@ -85,7 +84,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: Column(
                     children: [
                       Text(
