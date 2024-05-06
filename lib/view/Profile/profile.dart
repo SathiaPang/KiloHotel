@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,7 +35,7 @@ class _ProFileState extends State<ProFile> {
           actions: [
             IconButton(
                 onPressed: () {
-                  _profileScreenController.pickImageAndUploads();
+                  _profileScreenController.pickImageAndUploadsGallery();
                 },
                 icon: Icon(Icons.pending_outlined,
                     size: 25, color: _switchValue ? white : black))
@@ -42,20 +44,19 @@ class _ProFileState extends State<ProFile> {
         body: _profileScreenController.isLoading.value
             ? Obx(() => Column(
                   children: [
-                    //
                     _buildPicture(),
                     _builNameAndGmail(),
                     SizedBox(
                       height: 20,
                     ),
                     _setting(),
-
                     _notification(),
                     _security(),
                     _builDarkTheme(),
                     _buildLogout()
                   ],
                 ))
+
             : CircleAvatar()
         // body: Column(
         //   children: [
@@ -98,7 +99,7 @@ class _ProFileState extends State<ProFile> {
               child: Center(
                 child: InkWell(
                   onTap: () {
-                    _profileScreenController.pickImageAndUploads();
+                    _profileScreenController.pickImageAndUploadsCamera();
                   },
                   child: Icon(
                     Icons.edit,
@@ -110,6 +111,8 @@ class _ProFileState extends State<ProFile> {
           ),
         ),
       );
+
+  Future showOption() async {}
 
   Widget _builNameAndGmail() => ListView(
         shrinkWrap: true,
