@@ -4,7 +4,6 @@ import 'package:hotel/component/splashScreen/botton.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/view/Onborading/onboarding_list.dart';
-import 'package:hotel/view/splashScreen/loading2.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -23,19 +22,25 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: white,
       bottomSheet: Container(
         color: white,
-        height: Get.height / 5,
-        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+        height: Get.height / 3.5,
         child: lastPage
-            ? _buildGetStart(context)
+            ? Column(
+                children: [
+                  _buildGetStart(context),
+                ],
+              )
             : Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SmoothPageIndicator(
                     controller: pagecontroller,
                     count: controller.items.length,
                     effect: WormEffect(activeDotColor: green),
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                   SplashScreenBotton(
                     text: "Next",
@@ -45,6 +50,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     onPressed: () => pagecontroller.nextPage(
                         duration: Duration(milliseconds: 500),
                         curve: Curves.easeIn),
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                   SplashScreenBotton(
                       text: "Skip",
@@ -58,6 +66,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
       ),
       body: PageView.builder(
+          physics: NeverScrollableScrollPhysics(),
           onPageChanged: (index) =>
               setState(() => lastPage = index == controller.items.length - 1),
           controller: pagecontroller,
@@ -67,8 +76,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height / 1.7,
-                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height / 2,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(controller.items[index].image),
@@ -76,25 +84,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                   ),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Column(
                     children: [
                       Text(
                         controller.items[index].title,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 35, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 15,
+                            fontSize: 30, fontWeight: FontWeight.bold),
                       ),
                       Text(
                         controller.items[index].description,
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 17, color: textColor),
+                        style: TextStyle(fontSize: 15, color: textColor),
                       ),
                     ],
                   ),
@@ -106,33 +109,24 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   Widget _buildGetStart(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(50.0),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.green,
-        ),
-        width: MediaQuery.of(context).size.width * .9,
-        child: TextButton(
-          onPressed: () async {
-            final prefs = await SharedPreferences.getInstance();
-            await prefs.setBool("onboarding", true);
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        color: green,
+      ),
+      height: Get.height / 10,
+      width: Get.width / 1.5,
+      child: TextButton(
+        onPressed: () async {
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setBool("onboarding", true);
 
-            if (!mounted) return;
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => Loading2(),
-              ),
-            );
-          },
-          child: const Text(
-            "Get started",
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 18),
-          ),
+          if (!mounted) return;
+          Get.toNamed(AppRoute.load2);
+        },
+        child: const Text(
+          "Get started",
+          style: TextStyle(color: Colors.white, fontSize: 18),
         ),
       ),
     );
