@@ -293,14 +293,12 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                                               "Keat Panha",
                                               style: TextStyle(
                                                   fontSize: 18,
-                                                  fontWeight:
-                                                      FontWeight.w600),
+                                                  fontWeight: FontWeight.w600),
                                             ),
                                             Text(
                                               "Jan 20, 2025",
                                               style: TextStyle(
-                                                  fontWeight:
-                                                      FontWeight.w300),
+                                                  fontWeight: FontWeight.w300),
                                             )
                                           ],
                                         ),

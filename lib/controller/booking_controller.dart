@@ -13,7 +13,7 @@ class BookingController extends GetxController {
   List<String?> maptab = [
     "CONFIRMED",
     "CANCELLED",
-    "CHECKED_IN",
+    "CHECKED IN",
   ];
 
   get filterByTab => null;
