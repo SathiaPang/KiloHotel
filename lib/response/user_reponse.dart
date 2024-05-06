@@ -29,7 +29,7 @@ class UserRespoitory {
     return res;
   }
 
-  Future<LoginResponse> login(
+  Future<LoginModel> login(
     String username,
     String password,
   ) async {
@@ -37,7 +37,7 @@ class UserRespoitory {
       "username": username,
       "password": password,
     });
-    return LoginResponse.fromJson(res);
+    return LoginModel.fromJson(res);
   }
 
   Future<ResetResponse> resetPassword(

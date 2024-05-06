@@ -41,10 +41,27 @@ class ProfileScreenController extends GetxController {
     Get.offNamed(AppRoute.login);
   }
 
-  void pickImageAndUploads() async {
+  void pickImageAndUploadsGallery() async {
     final picker = ImagePicker();
     final XFile? image = await picker.pickImage(
       source: ImageSource.gallery,
+    );
+    File file = File(image!.path);
+    try {
+      final res = await userRepo.uploadProfileImage(file);
+      if (res['status'] == 200) {
+        getPrfileData();
+      }
+      print("Image uploaded successfully");
+    } on DioException catch (e) {
+      print("Failed to upload image: ${e.response?.data.toString()}");
+    }
+  }
+
+  void pickImageAndUploadsCamera() async {
+    final picker = ImagePicker();
+    final XFile? image = await picker.pickImage(
+      source: ImageSource.camera,
     );
     File file = File(image!.path);
     try {

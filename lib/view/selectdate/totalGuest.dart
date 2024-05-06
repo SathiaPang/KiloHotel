@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
 
+// ignore: must_be_immutable
 class TotalGuest extends StatelessWidget {
   TotalGuest({
     super.key,
