@@ -1,18 +1,18 @@
 import 'dart:convert';
 
-LoginResponse loginResponseFromJson(String str) =>
-    LoginResponse.fromJson(json.decode(str));
+LoginModel loginModelFromJson(String str) =>
+    LoginModel.fromJson(json.decode(str));
 
-String loginResponseToJson(LoginResponse data) => json.encode(data.toJson());
+String loginModelToJson(LoginModel data) => json.encode(data.toJson());
 
-class LoginResponse {
+class LoginModel {
   int status;
   String message;
   String messageKey;
   Data data;
   dynamic paging;
 
-  LoginResponse({
+  LoginModel({
     required this.status,
     required this.message,
     required this.messageKey,
@@ -20,7 +20,7 @@ class LoginResponse {
     required this.paging,
   });
 
-  factory LoginResponse.fromJson(Map<String, dynamic> json) => LoginResponse(
+  factory LoginModel.fromJson(Map<String, dynamic> json) => LoginModel(
         status: json["status"],
         message: json["message"],
         messageKey: json["messageKey"],
@@ -65,7 +65,7 @@ class User {
   String phone;
   String bio;
   String address;
-  String roleName;
+  dynamic roleName;
   int roleId;
   bool status;
 
