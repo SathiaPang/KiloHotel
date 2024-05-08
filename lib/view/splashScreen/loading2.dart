@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/constant/server_rout.dart';
+import 'package:hotel/controller/homeScreenController.dart';
 import 'package:hotel/controller/login_controller.dart';
 import 'package:hotel/local/local.dart';
 
@@ -19,6 +20,7 @@ class _Loading2State extends State<Loading2> {
   void initState() {
     Future.microtask(() => initLoading());
     super.initState();
+    Get.find<ProfileScreenController>().getPrfileData();
   }
 
   void initLoading() async {

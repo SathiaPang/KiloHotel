@@ -9,7 +9,8 @@ import 'package:http_parser/http_parser.dart';
 class UserRepo {
   Future<ProfileModel> getProfileData() async {
     final res = await GetXAPI.instance.get(path: ServerRout.getProfile);
-    return ProfileModel.fromJson(res);
+    final userprofile = ProfileModel.fromJson(res);
+    return userprofile;
   }
 
   uploadProfileImage(File image) async {

@@ -80,7 +80,7 @@ class _ProFileState extends State<ProFile> {
               child: Center(
                 child: InkWell(
                   onTap: () {
-                    _profileScreenController.pickImageAndUploadsCamera();
+                    _profileScreenController.pickImageAndUploadsGallery();
                   },
                   child: Icon(
                     Icons.edit,
