@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/appRoute.dart';
+import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/selectDateController.dart';
 import 'package:hotel/data/roomRepo.dart';
 import 'package:hotel/model/booking_model.dart';
@@ -18,10 +19,10 @@ class NameOfReservationController extends GetxController {
   final SelectDateController _selectDateController = Get.find();
   final Datum datum = Get.arguments;
 
-  void saveNameReservation(Datum datum) async {
+  void saveBooking(Datum datum) async {
     final list = covert(datum);
     print("=========== aldut ${_selectDateController.personQtyAdult}");
-    print("===========  child ${_selectDateController}");
+    print("===========  child ${_selectDateController.personQtyChild}");
     print("===========  room id ${list.roomTypeId}");
 
     BookingModel bookingModel = BookingModel(
@@ -39,6 +40,17 @@ class NameOfReservationController extends GetxController {
       print("====> Save Booking --- ${res}");
     } on DioException catch (e) {
       print(e.response?.data);
+      Get.snackbar("", "",
+          duration: Duration(seconds: 2),
+          backgroundColor: green,
+          titleText: Text(
+            "Bolu",
+            style: TextStyle(color: white, fontSize: 20),
+          ),
+          messageText: Text(
+            "Room is not available!",
+            style: TextStyle(color: white, fontSize: 15),
+          ));
     }
   }
 

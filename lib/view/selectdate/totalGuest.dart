@@ -16,7 +16,7 @@ class TotalGuest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        height: Get.height / 13,
+        height: Get.height / 15,
         width: Get.width / 1.1,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
@@ -25,7 +25,7 @@ class TotalGuest extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              height: 50,
+              height: 40,
               width: Get.width / 7.5,
               decoration: BoxDecoration(
                   color: greenAccent, borderRadius: BorderRadius.circular(13)),
@@ -43,7 +43,7 @@ class TotalGuest extends StatelessWidget {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             Container(
-              height: 50,
+              height: 40,
               width: Get.width / 7.5,
               decoration: BoxDecoration(
                   color: greenAccent, borderRadius: BorderRadius.circular(13)),

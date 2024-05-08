@@ -19,11 +19,11 @@ class RoomRepo {
     return RoomDetailModel.fromJson(res);
   }
 
-  Future<BookingModel> postBookingData(BookingModel bookingModel) async {
+  Future<dynamic> postBookingData(BookingModel bookingModel) async {
     print(bookingModel);
     final res = await GetXAPI.instance
         .post(path: ServerRout.bookingAPI, data: bookingModel.toJson());
-    return BookingModel.fromJson(res);
+    return res;
   }
 
   Future<GetCurrentUserBookingModel> getCurrentUserBooking() async {
@@ -33,9 +33,9 @@ class RoomRepo {
     return GetCurrentUserBookingModel.fromJson(res);
   }
 
-  Future<CancelBookingModel> postCancelBooking(String bookindId) async {
+  Future<dynamic> postCancelBooking(String bookindId) async {
     final res = await GetXAPI.instance
         .post(path: ServerRout.cancelBooking + "/${bookindId}/cancel");
-    return CancelBookingModel.fromJson(res);
+    return res;
   }
 }

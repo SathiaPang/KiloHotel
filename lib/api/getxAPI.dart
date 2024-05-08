@@ -60,7 +60,7 @@ class GetXAPI {
           'Content-Type': contentType,
         }),
       );
-      if (res.statusCode == 200) {
+      if (res.statusCode == 200 || res.statusCode == 201) {
         return res.data;
       }
       throw ("Something wrong");

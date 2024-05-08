@@ -48,6 +48,8 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   image_picker: ^1.0.7
   http_parser: ^4.0.2
+  liquid_pull_to_refresh: ^3.0.1
+  internet_connection_checker: ^1.0.0+1
 
 
 dev_dependencies:

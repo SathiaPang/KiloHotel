@@ -104,16 +104,15 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              Text(
+                                '${dataApi.title}',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: green),
+                              ),
                               Row(
                                 children: [
-                                  Text(
-                                    '${dataApi.title}',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20,
-                                        color: green),
-                                  ),
-                                  Spacer(),
                                   Text(
                                     "\$ ${dataApi.price}",
                                     style: TextStyle(
@@ -122,7 +121,8 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  Text("/night")
+                                  Spacer(),
+                                  Text("/night"),
                                 ],
                               ),
                               Row(
@@ -135,20 +135,6 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                                     dataApi.bed.toString(),
                                     style: TextStyle(fontSize: 15),
                                   ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.star,
-                                    color: Colors.amber,
-                                  ),
-                                  Text(
-                                    '5.0',
-                                    style: TextStyle(
-                                        fontSize: 17, color: Colors.green),
-                                  ),
-                                  Text("(4,345 reviews)"),
                                 ],
                               ),
                             ],
@@ -170,7 +156,7 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 220,
               crossAxisSpacing: 5,
-              childAspectRatio: 1 / 1.2,
+              childAspectRatio: 1 / 1.3,
               mainAxisSpacing: 13),
           itemCount: _homeController.listDatum.length,
           itemBuilder: (context, index) {
@@ -206,16 +192,15 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                             ),
                           ),
                         ),
-                        Row(
-                          children: [
-                            Text(
-                              '${dataApi.title}',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  color: green),
-                            ),
-                          ],
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          '${dataApi.title}',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: green),
                         ),
                         Row(
                           children: [
@@ -234,7 +219,7 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                               "\$ ${dataApi.price}",
                               style: TextStyle(
                                 color: Colors.green,
-                                fontSize: 20,
+                                fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
