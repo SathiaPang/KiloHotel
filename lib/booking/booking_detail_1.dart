@@ -17,7 +17,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
   final Datum datum = Get.arguments;
   @override
   void initState() {
-    bookingDetailController.getDetailData(datum.id!);
+    bookingDetailController.getDetailData(datum.id);
     super.initState();
   }
 

@@ -43,8 +43,8 @@ class LoginController extends GetxController {
       );
       if (res.status == 200) {
         LocalStorageManager.instance
-            .saveToCache(ServerRout.keyToken, res!.data!.token!);
-        print("------------------${res.data?.token}-------------------------");
+            .saveToCache(ServerRout.keyToken, res.data.token);
+        print("------------------${res.data.token}-------------------------");
         Get.showSnackbar(const GetSnackBar(
           backgroundColor: green,
           messageText: Text(

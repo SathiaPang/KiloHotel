@@ -64,6 +64,6 @@ class NameOfReservationController extends GetxController {
 
   BookingDetail covert(Datum datum) {
     return BookingDetail(
-        adult: datum.adult!, roomTypeId: datum.id!, child: datum.children!);
+        adult: datum.adult, roomTypeId: datum.id, child: datum.children);
   }
 }

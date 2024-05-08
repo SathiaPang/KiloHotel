@@ -53,7 +53,7 @@ class _SignupScreenState extends State<CreateAcc> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Checkbox(
-                    value: _isChecked ?? false,
+                    value: _isChecked == false,
                     onChanged: (value) {
                       setState(() {
                         _isChecked = value ?? false;
