@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:intl/intl.dart';
 
 class BookingModel {
@@ -57,43 +55,4 @@ class BookingDetail {
     data['child'] = this.child;
     return data;
   }
-}
-
-// Response
-BookingResponse bookingResponseFromJson(String str) =>
-    BookingResponse.fromJson(json.decode(str));
-String bookingResponseToJson(BookingResponse data) =>
-    json.encode(data.toJson());
-
-class BookingResponse {
-  int status;
-  String message;
-  String messageKey;
-  dynamic data;
-  dynamic paging;
-
-  BookingResponse({
-    required this.status,
-    required this.message,
-    required this.messageKey,
-    required this.data,
-    required this.paging,
-  });
-
-  factory BookingResponse.fromJson(Map<String, dynamic> json) =>
-      BookingResponse(
-        status: json["status"],
-        message: json["message"],
-        messageKey: json["messageKey"],
-        data: json["data"],
-        paging: json["paging"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "status": status,
-        "message": message,
-        "messageKey": messageKey,
-        "data": data,
-        "paging": paging,
-      };
 }

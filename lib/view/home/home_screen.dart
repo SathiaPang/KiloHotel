@@ -4,8 +4,10 @@ import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/login_controller.dart';
 import 'package:hotel/controller/homeScreenController.dart';
+import 'package:hotel/controller/refresh_controller.dart';
 import 'package:hotel/view/home/demoData.dart';
 import 'package:hotel/view/search/searchList.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   final LoginController _loginController = Get.find();
   final ProfileScreenController _profileScreenController = Get.find();
+  final RefreshController _refreshController = Get.find();
 
   @override
   void initState() {
@@ -78,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen>
                 size: 30,
               )),
           SizedBox(
-            width: 4,
+            width: 5,
           )
         ],
       ),
@@ -86,7 +89,13 @@ class _HomeScreenState extends State<HomeScreen>
         children: [
           //
           _builNickName(),
-          _buildData(),
+          LiquidPullToRefresh(
+              onRefresh: _refreshController.refresh,
+              color: Colors.transparent,
+              height: 100,
+              backgroundColor: green,
+              animSpeedFactor: 2,
+              child: _buildData()),
           _builSeeAll()
         ],
       ),

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/booking_controller.dart';
+import 'package:hotel/controller/refresh_controller.dart';
 import 'package:hotel/view/booking/listStatus.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 class BookingScreen extends StatefulWidget {
   const BookingScreen({Key? key}) : super(key: key);
@@ -15,6 +17,7 @@ class _BookingScreenState extends State<BookingScreen>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   final BookingController _bookingController = Get.find();
   late TabController _tabController;
+  final RefreshController _refreshController = Get.find();
   bool isSelected = true;
 
   @override
@@ -101,15 +104,22 @@ class _BookingScreenState extends State<BookingScreen>
                   .toList(),
               labelPadding: EdgeInsets.symmetric(horizontal: 5),
             ),
-            GetBuilder<BookingController>(
-              builder: (_) {
-                return Expanded(
-                    child: ListStatus(
-                  listData: _bookingController.lstBookingShowUI,
-                  onPressed: (item) =>
-                      _bookingController.cancelBookink(item.id.toString()),
-                ));
-              },
+            LiquidPullToRefresh(
+              onRefresh: _refreshController.refresh,
+              color: Colors.transparent,
+              height: 100,
+              backgroundColor: green,
+              animSpeedFactor: 2,
+              child: GetBuilder<BookingController>(
+                builder: (_) {
+                  return Expanded(
+                      child: ListStatus(
+                    listData: _bookingController.lstBookingShowUI,
+                    onPressed: (item) =>
+                        _bookingController.cancelBookink(item.id.toString()),
+                  ));
+                },
+              ),
             )
           ],
         ),

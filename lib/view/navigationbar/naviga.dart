@@ -22,7 +22,7 @@ class MyNavigationBar extends StatelessWidget {
           decoration: BoxDecoration(
             boxShadow: <BoxShadow>[
               BoxShadow(
-                color: Colors.grey,
+                color: greenAccent,
                 blurRadius: 2,
               ),
             ],

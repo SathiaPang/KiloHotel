@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/controller/name_of_reservation_controller.dart';
 import 'package:intl/intl.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -36,7 +37,7 @@ class _NameOfReserverState extends State<NameOfReserver> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      bottomNavigationBar: _buildBottonContinue(),
+      bottomNavigationBar: _buildStartBooking(),
       body: Column(
         children: [
           //
@@ -52,10 +53,8 @@ class _NameOfReserverState extends State<NameOfReserver> {
     );
   }
 
-  Widget _buildBottonContinue() => InkWell(
-        onTap: () {
-          _nameOfReservationController.saveNameReservation(list);
-        },
+  Widget _buildStartBooking() => InkWell(
+        onTap: () => Get.toNamed(AppRoute.dialogPay),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
           child: Container(

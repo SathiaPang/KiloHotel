@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
+import 'package:hotel/controller/name_of_reservation_controller.dart';
 import 'package:hotel/controller/selectDateController.dart';
 import 'package:hotel/view/selectdate/totalGuest.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
@@ -15,6 +15,7 @@ class SelectDate extends StatefulWidget {
 
 class _SelectDateState extends State<SelectDate> {
   final SelectDateController _selectDateController = Get.find();
+  final NameOfReservationController _nameOfReservationController = Get.find();
   final list = Get.arguments;
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class _SelectDateState extends State<SelectDate> {
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
         ),
       ),
-      bottomNavigationBar: _buildBottonContinue(),
+      bottomNavigationBar: _buildContinue(),
       body: Obx(
         () => Column(
           children: [
@@ -36,7 +37,7 @@ class _SelectDateState extends State<SelectDate> {
             _buildChek(),
             _buildChekDetail(),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             _buildGuest("Adult"),
             TotalGuest(
@@ -73,7 +74,7 @@ class _SelectDateState extends State<SelectDate> {
   }
 
   Widget _buildSelectDate() => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 11),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20), color: greenAccent),
@@ -91,7 +92,7 @@ class _SelectDateState extends State<SelectDate> {
       );
 
   Widget _buildChek() => Padding(
-        padding: const EdgeInsets.only(top: 20),
+        padding: const EdgeInsets.only(top: 5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -107,58 +108,55 @@ class _SelectDateState extends State<SelectDate> {
         ),
       );
 
-  Widget _buildChekDetail() => Padding(
-        padding: const EdgeInsets.only(top: 5),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Chcek In box
-            Container(
-              height: Get.height / 17,
-              width: Get.width / 2.3,
-              decoration: BoxDecoration(
-                  color: boxcolor, borderRadius: BorderRadius.circular(10)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "${_selectDateController.selectedDate}",
-                    style: TextStyle(fontSize: 19),
-                  ),
-                  Icon(
-                    Icons.calendar_month_outlined,
-                  )
-                ],
-              ),
+  Widget _buildChekDetail() => Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // Chcek In box
+          Container(
+            height: Get.height / 20,
+            width: Get.width / 2.3,
+            decoration: BoxDecoration(
+                color: boxcolor, borderRadius: BorderRadius.circular(10)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  "${_selectDateController.selectedDate}",
+                  style: TextStyle(fontSize: 19),
+                ),
+                Icon(
+                  Icons.calendar_month_outlined,
+                )
+              ],
             ),
+          ),
 
-            // Icon
-            Icon(
-              Icons.play_arrow,
-              size: 30,
-            ),
+          // Icon
+          Icon(
+            Icons.play_arrow,
+            size: 30,
+          ),
 
-            // Check out box
-            Container(
-              height: Get.height / 17,
-              width: Get.width / 2.3,
-              decoration: BoxDecoration(
-                  color: boxcolor, borderRadius: BorderRadius.circular(10)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "${_selectDateController.nDate}",
-                    style: TextStyle(fontSize: 19),
-                  ),
-                  Icon(
-                    Icons.calendar_month_outlined,
-                  )
-                ],
-              ),
+          // Check out box
+          Container(
+            height: Get.height / 20,
+            width: Get.width / 2.3,
+            decoration: BoxDecoration(
+                color: boxcolor, borderRadius: BorderRadius.circular(10)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  "${_selectDateController.nDate}",
+                  style: TextStyle(fontSize: 19),
+                ),
+                Icon(
+                  Icons.calendar_month_outlined,
+                )
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       );
 
   Widget _buildGuest(String text) => Padding(
@@ -171,15 +169,12 @@ class _SelectDateState extends State<SelectDate> {
               "${text}",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(
-              width: 50,
-            ),
           ],
         ),
       );
 
   Widget _buildTotalPayment() => Padding(
-        padding: const EdgeInsets.symmetric(vertical: 30),
+        padding: const EdgeInsets.only(top: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -191,10 +186,8 @@ class _SelectDateState extends State<SelectDate> {
         ),
       );
 
-  Widget _buildBottonContinue() => InkWell(
-        onTap: () {
-          Get.toNamed(AppRoute.nameReseve, arguments: list);
-        },
+  Widget _buildContinue() => InkWell(
+        onTap: () => _nameOfReservationController.saveBooking(list),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
           child: Container(

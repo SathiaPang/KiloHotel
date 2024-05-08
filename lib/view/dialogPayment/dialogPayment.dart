@@ -20,7 +20,7 @@ class _DialogPayMentState extends State<DialogPayMent> {
   }
 
   void initLoading() async {
-    Timer(const Duration(seconds: 1), () {
+    Timer(const Duration(seconds: 2), () {
       Get.offAllNamed(AppRoute.bottomNavigation);
     });
   }
@@ -32,36 +32,31 @@ class _DialogPayMentState extends State<DialogPayMent> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Container(
-          height: double.infinity,
           width: double.infinity,
           decoration: BoxDecoration(
-              color: white, borderRadius: BorderRadius.circular(25)),
+              color: greenAccent, borderRadius: BorderRadius.circular(25)),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                height: 20,
-              ),
               Icon(
                 Icons.check_circle,
                 size: 190,
                 color: green,
               ),
               Text(
-                "Booking Successfull!",
+                "Welcome To \n BOLU Hotel",
                 style: TextStyle(
-                    color: green, fontWeight: FontWeight.w700, fontSize: 20),
-              ),
-              SizedBox(
-                height: 5,
+                    color: green, fontWeight: FontWeight.w700, fontSize: 25),
               ),
               Text(
-                "Successfull made hotel booking",
-                textAlign: TextAlign.center,
+                "Booking Successfull!",
                 style: TextStyle(
-                    color: black, fontWeight: FontWeight.w400, fontSize: 15),
+                    color: black.withOpacity(0.6),
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15),
               ),
               SizedBox(
-                height: 10,
+                height: 20,
               ),
               CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(Colors.green),

@@ -4,6 +4,7 @@ import 'package:hotel/controller/homeScreenController.dart';
 import 'package:hotel/controller/home_controller.dart';
 import 'package:hotel/controller/navigatiopn_Controller.dart';
 import 'package:hotel/controller/recentlycontroller.dart';
+import 'package:hotel/controller/refresh_controller.dart';
 import 'package:hotel/controller/search_controller.dart';
 import 'package:hotel/controller/selectDateController.dart';
 import 'package:hotel/data/roomRepo.dart';
@@ -26,5 +27,6 @@ class NavigationBiding extends Bindings {
     Get.put(SelectDateController());
     Get.put(ProfileScreenController(userRepo: Get.find()));
     Get.put(BookingController(roomrepo: Get.find()));
+    Get.put(RefreshController());
   }
 }

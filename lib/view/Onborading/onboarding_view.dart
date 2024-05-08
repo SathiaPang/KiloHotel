@@ -77,6 +77,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 Container(
                   height: MediaQuery.of(context).size.height / 2,
                   decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
                     image: DecorationImage(
                       image: AssetImage(controller.items[index].image),
                       fit: BoxFit.cover,
