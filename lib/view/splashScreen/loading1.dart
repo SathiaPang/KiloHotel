@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/view/Onborading/onboarding_view.dart';
 
@@ -21,7 +22,7 @@ class _Loading1State extends State<Loading1> {
   void initloading() {
     Timer(
       const Duration(seconds: 1),
-      () => Get.off(() => const OnboardingScreen()),
+      () => Get.toNamed(AppRoute.splashScreen),
     );
   }
 
@@ -64,7 +65,7 @@ class _Loading1State extends State<Loading1> {
                 "The best hotel booking in the century to accompany your vocation",
                 style: TextStyle(
                     color: white, fontSize: 17, fontWeight: FontWeight.bold),
-              )
+              ),
             ],
           ),
         ),

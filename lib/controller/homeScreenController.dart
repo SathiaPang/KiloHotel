@@ -24,15 +24,12 @@ class ProfileScreenController extends GetxController {
   void getPrfileData() async {
     try {
       final res = await userRepo.getProfileData();
-      print("===========>>>>>>> ${res.status}");
       if (res.status == 200) {
-        print("=================================> $res.data");
         profileModel.value = res;
-        update();
         isLoading.value = true;
       }
     } on DioException catch (e) {
-      print(e.message);
+      print("=================================>>>>>>> ${e.message}");
     }
   }
 

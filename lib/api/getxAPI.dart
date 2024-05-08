@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:hotel/constant/server_rout.dart';
 import 'package:hotel/local/local.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class GetXAPI {
   late Dio _dio;
@@ -17,6 +18,7 @@ class GetXAPI {
   }
 
   static final instance = GetXAPI._();
+  final sharedPreferences = SharedPreferences.getInstance();
 
   Future<dynamic> get({
     required String path,
@@ -29,7 +31,11 @@ class GetXAPI {
         path,
         queryParameters: queryParameters,
         options: Options(
-          headers: {'Authorization': "Bearer $token"},
+          headers: {
+            'Authorization': token == null || token.isEmpty
+                ? ServerRout.basicToken
+                : "Bearer $token",
+          },
         ),
       );
       if (res.statusCode == 200) {

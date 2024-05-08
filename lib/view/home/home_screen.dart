@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen>
   void initState() {
     _loginController.getToken();
     super.initState();
+    Get.find<ProfileScreenController>().getPrfileData();
   }
 
   @override
@@ -129,19 +130,23 @@ class _HomeScreenState extends State<HomeScreen>
         ),
       );
 
-  Widget _builNickName() => _profileScreenController.isLoading.value
-      ? Obx(() => Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Row(
-              children: [
-                Text(
-                  "Hello, ${_profileScreenController.profileModel.value!.data!.name.toString()}",
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                )
-              ],
-            ),
-          ))
-      : Text("Error data");
+  Widget _builNickName() => Obx(
+        () => _profileScreenController.isLoading.value
+            ? Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Row(
+                  children: [
+                    Text(
+                      "Hello, ${_profileScreenController.profileModel.value!.data!.name.toString()}",
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
+              )
+            : CircularProgressIndicator(),
+      );
+
   @override
   bool get wantKeepAlive => true;
 }

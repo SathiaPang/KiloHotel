@@ -11,6 +11,7 @@ import 'package:hotel/constant/binding/selectDateBinding.dart';
 import 'package:hotel/constant/binding/update_binding.dart';
 import 'package:hotel/payment/cancelHotel.dart';
 import 'package:hotel/payment/nameOfReserver.dart';
+import 'package:hotel/view/Onborading/onboarding_view.dart';
 import 'package:hotel/view/Profile/setting.dart';
 import 'package:hotel/view/Profile/editprofile.dart';
 import 'package:hotel/view/Profile/notificationScreen.dart';
@@ -54,11 +55,13 @@ class AppRoute {
   static String bookingScreen = "/bookingScreen";
   static String setting = "/setting";
   static String notification = "/notification";
+  static String splashScreen = "/splashScreen";
 
   static List<GetPage> appPage = [
     //
     GetPage(name: load1, page: () => Loading1()),
     GetPage(name: load2, page: () => Loading2(), binding: LoginBiding()),
+    GetPage(name: splashScreen, page: () => OnboardingScreen()),
     GetPage(name: signin, page: () => SigninScreen()),
     GetPage(name: homescreen, page: () => HomeScreen()),
     GetPage(name: login, page: () => Login(), binding: LoginBiding()),

@@ -42,6 +42,7 @@ class LoginController extends GetxController {
         passwordSignInController.text,
       );
       if (res.status == 200) {
+        ServerRout.basicToken = res.data.token;
         LocalStorageManager.instance
             .saveToCache(ServerRout.keyToken, res.data.token);
         print("------------------${res.data.token}-------------------------");
