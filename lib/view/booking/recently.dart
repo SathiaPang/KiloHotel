@@ -224,7 +224,7 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                               ),
                             ),
                             Spacer(),
-                            Text("/night")
+                            Text("/Night")
                           ],
                         ),
                       ],
