@@ -18,7 +18,7 @@ class _ChangePasswordState extends State<ChangePassword> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: Text("Change Password",
+        title: Text("changePass".tr,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
       ),
       body: Padding(
@@ -34,7 +34,7 @@ class _ChangePasswordState extends State<ChangePassword> {
               onSaved: (password) {},
               decoration: InputDecoration(
                 labelStyle: TextStyle(fontWeight: FontWeight.w500),
-                labelText: 'Old Password',
+                labelText: 'oldPass'.tr,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
@@ -51,7 +51,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 onSaved: (password) {},
                 decoration: InputDecoration(
                   labelStyle: TextStyle(fontWeight: FontWeight.w500),
-                  labelText: 'New Password',
+                  labelText: 'newPass'.tr,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
@@ -67,7 +67,7 @@ class _ChangePasswordState extends State<ChangePassword> {
               onSaved: (password) {},
               decoration: InputDecoration(
                 labelStyle: TextStyle(fontWeight: FontWeight.w500),
-                labelText: 'Confirm Password',
+                labelText: 'comfirmPass'.tr,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
@@ -91,7 +91,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 ),
               ),
               child: Text(
-                'Update',
+                'update'.tr,
                 style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),
               ),
             ),

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -25,7 +23,7 @@ class _ProFileState extends State<ProFile> {
         appBar: AppBar(
           centerTitle: false,
           title: Text(
-            "Profile",
+            "profile".tr,
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           actions: [
@@ -127,7 +125,7 @@ class _ProFileState extends State<ProFile> {
                       width: 20,
                     ),
                     Text(
-                      "Setting",
+                      "setting".tr,
                       style: TextStyle(
                         fontSize: 19,
                         fontWeight: FontWeight.w500,
@@ -146,7 +144,7 @@ class _ProFileState extends State<ProFile> {
           OptionSelect(
               ontap: () => Get.toNamed(AppRoute.notification),
               icon: Icons.notifications_none_rounded,
-              text: "Notification",
+              text: "notification".tr,
               size: 19)
         ],
       );
@@ -156,7 +154,7 @@ class _ProFileState extends State<ProFile> {
           OptionSelect(
               ontap: () => Get.toNamed(AppRoute.security),
               icon: Icons.verified_user_outlined,
-              text: "Security",
+              text: "security".tr,
               size: 19)
         ],
       );
@@ -182,7 +180,7 @@ class _ProFileState extends State<ProFile> {
                     width: 13,
                   ),
                   Text(
-                    "Dark Theme",
+                    "theme".tr,
                     style: TextStyle(
                       fontSize: 19,
                       fontWeight: FontWeight.w500,
@@ -224,7 +222,7 @@ class _ProFileState extends State<ProFile> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Logout',
+                        'logout'.tr,
                         style: TextStyle(
                             color: Colors.red,
                             fontWeight: FontWeight.w500,

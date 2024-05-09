@@ -110,8 +110,8 @@ class _HomeScreenState extends State<HomeScreen>
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Text(
-                "Recently Booked",
-                style: TextStyle(fontSize: 20),
+                "other".tr,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
             TextButton(
@@ -119,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen>
                   Get.toNamed(AppRoute.recenly);
                 },
                 child: Text(
-                  "See All",
+                  "seeall".tr,
                   style: TextStyle(
                       color: green, fontSize: 20, fontWeight: FontWeight.w500),
                 ))
@@ -134,7 +134,12 @@ class _HomeScreenState extends State<HomeScreen>
                 child: Row(
                   children: [
                     Text(
-                      "Hello, ${_profileScreenController.profileModel.value!.data!.name.toString()}",
+                      'hello'.tr,
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "${_profileScreenController.profileModel.value!.data!.name.toString()}",
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     )

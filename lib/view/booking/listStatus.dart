@@ -24,7 +24,7 @@ class ListStatus extends StatelessWidget {
               size: 100,
             ),
             Text(
-              "No data",
+              "noData".tr,
               style: TextStyle(
                 fontSize: 25,
               ),
@@ -83,13 +83,13 @@ class ListStatus extends StatelessWidget {
                                   Row(
                                     children: [
                                       Text(
-                                        'In :',
+                                        'in'.tr,
                                         style: TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Text(
-                                        "${bookingDATA.checkInAt}",
+                                        ": ${bookingDATA.checkInAt}",
                                         style: TextStyle(fontSize: 14),
                                       ),
                                     ],
@@ -97,13 +97,13 @@ class ListStatus extends StatelessWidget {
                                   Row(
                                     children: [
                                       Text(
-                                        'Out :',
+                                        'out'.tr,
                                         style: TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Text(
-                                        "\t${bookingDATA.checkOutAt}",
+                                        ": \t${bookingDATA.checkOutAt}",
                                         style: TextStyle(fontSize: 14),
                                       ),
                                     ],
