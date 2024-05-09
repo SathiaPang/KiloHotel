@@ -71,7 +71,7 @@ class _EditPFState extends State<EditPF> {
       cursorColor: Colors.black,
       decoration: InputDecoration(
         labelText: 'Name',
-        labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
+        labelStyle: TextStyle(fontWeight: FontWeight.w500),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
@@ -84,7 +84,7 @@ class _EditPFState extends State<EditPF> {
       cursorColor: Colors.grey,
       decoration: InputDecoration(
         labelText: 'Username',
-        labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
+        labelStyle: TextStyle(fontWeight: FontWeight.w500),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
@@ -96,7 +96,7 @@ class _EditPFState extends State<EditPF> {
       cursorColor: Colors.grey,
       decoration: InputDecoration(
         labelText: 'Address',
-        labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
+        labelStyle: TextStyle(fontWeight: FontWeight.w500),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
@@ -110,7 +110,7 @@ class _EditPFState extends State<EditPF> {
       onSaved: (email) {},
       decoration: InputDecoration(
         labelText: 'Email',
-        labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
+        labelStyle: TextStyle(fontWeight: FontWeight.w500),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
@@ -121,7 +121,7 @@ class _EditPFState extends State<EditPF> {
         focusNode: _phoneNumberFocusNode,
         decoration: InputDecoration(
           labelText: 'Phone number',
-          labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
+          labelStyle: TextStyle(fontWeight: FontWeight.w500),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(20)),
           ),

@@ -14,8 +14,7 @@ class Setting extends StatelessWidget {
           children: [
             Text(
               "Settings & privacy",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold, fontSize: 25, color: black),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
             ),
           ],
         ),
@@ -47,9 +46,9 @@ class Setting extends StatelessWidget {
                     Text(
                       "Edit Profile",
                       style: TextStyle(
-                          fontSize: 19,
-                          fontWeight: FontWeight.w500,
-                          color: black),
+                        fontSize: 19,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ],
                 ),
@@ -79,9 +78,9 @@ class Setting extends StatelessWidget {
                     Text(
                       "Password",
                       style: TextStyle(
-                          fontSize: 19,
-                          fontWeight: FontWeight.w500,
-                          color: black),
+                        fontSize: 19,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ],
                 ),

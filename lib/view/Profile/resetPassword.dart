@@ -19,8 +19,7 @@ class _ChangePasswordState extends State<ChangePassword> {
       appBar: AppBar(
         centerTitle: false,
         title: Text("Change Password",
-            style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 25, color: black)),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -34,8 +33,7 @@ class _ChangePasswordState extends State<ChangePassword> {
               cursorColor: Colors.grey,
               onSaved: (password) {},
               decoration: InputDecoration(
-                labelStyle:
-                    TextStyle(color: black, fontWeight: FontWeight.w500),
+                labelStyle: TextStyle(fontWeight: FontWeight.w500),
                 labelText: 'Old Password',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -52,8 +50,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 cursorColor: Colors.grey,
                 onSaved: (password) {},
                 decoration: InputDecoration(
-                  labelStyle:
-                      TextStyle(color: black, fontWeight: FontWeight.w500),
+                  labelStyle: TextStyle(fontWeight: FontWeight.w500),
                   labelText: 'New Password',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -69,8 +66,7 @@ class _ChangePasswordState extends State<ChangePassword> {
               cursorColor: Colors.grey,
               onSaved: (password) {},
               decoration: InputDecoration(
-                labelStyle:
-                    TextStyle(color: black, fontWeight: FontWeight.w500),
+                labelStyle: TextStyle(fontWeight: FontWeight.w500),
                 labelText: 'Confirm Password',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20)),

@@ -16,8 +16,7 @@ class NotiScreen extends StatelessWidget {
         centerTitle: false,
         title: const Text(
           'Notification',
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 25, color: black),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),

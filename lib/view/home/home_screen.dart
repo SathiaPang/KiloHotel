@@ -38,11 +38,9 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
-      backgroundColor: white,
       appBar: AppBar(
         scrolledUnderElevation: 0,
         centerTitle: false,
-        backgroundColor: white,
         title: Row(
           children: [
             Container(
@@ -59,8 +57,7 @@ class _HomeScreenState extends State<HomeScreen>
             ),
             Text(
               "Bolu",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold, fontSize: 25, color: black),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
             )
           ],
         ),

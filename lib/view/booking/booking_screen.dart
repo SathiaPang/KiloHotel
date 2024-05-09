@@ -36,10 +36,8 @@ class _BookingScreenState extends State<BookingScreen>
     return DefaultTabController(
       length: _bookingController.maptab.length,
       child: Scaffold(
-        backgroundColor: white,
         appBar: AppBar(
           scrolledUnderElevation: 0,
-          backgroundColor: white,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -61,9 +59,9 @@ class _BookingScreenState extends State<BookingScreen>
                   Text(
                     "My Booking",
                     style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                        color: black),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                    ),
                   ),
                 ],
               ),

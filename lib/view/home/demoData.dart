@@ -69,7 +69,7 @@ class DemoData extends StatelessWidget {
                                         children: [
                                           Icon(
                                             Icons.star,
-                                            color: white,
+                                            color: Colors.yellow,
                                           ),
                                           Text(
                                             "5.0",

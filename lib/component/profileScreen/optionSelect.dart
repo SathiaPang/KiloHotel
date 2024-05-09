@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hotel/constant/constant.dart';
 
 class OptionSelect extends StatelessWidget {
   const OptionSelect(
       {super.key,
       required this.icon,
       required this.text,
-      required this.color,
       required this.size,
       required this.ontap
       // required this.onTap
@@ -15,8 +13,7 @@ class OptionSelect extends StatelessWidget {
 
   final String text;
   final IconData? icon;
-  final Color color;
-  final int size;
+  final double size;
   final VoidCallback ontap;
 
   @override
@@ -37,7 +34,9 @@ class OptionSelect extends StatelessWidget {
               Text(
                 text,
                 style: TextStyle(
-                    fontSize: 19, fontWeight: FontWeight.w500, color: black),
+                  fontSize: size,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ],
           ),

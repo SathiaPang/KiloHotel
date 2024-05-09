@@ -27,7 +27,6 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
       floatingActionButton: _buildBookingNow(),
       appBar: AppBar(
         scrolledUnderElevation: 0,
-        backgroundColor: white,
         title: Row(
           children: [
             Container(
@@ -83,7 +82,6 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                     text: TextSpan(
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.black,
                       ),
                       children: <InlineSpan>[
                         WidgetSpan(
@@ -213,7 +211,6 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                         text: TextSpan(
                           style: TextStyle(
                             fontSize: 16,
-                            color: Colors.black,
                           ),
                           children: <InlineSpan>[
                             TextSpan(
@@ -315,21 +312,20 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                                               text: TextSpan(
                                                 style: TextStyle(
                                                   fontSize: 20.0,
-                                                  color: Colors.black,
                                                 ),
                                                 children: <InlineSpan>[
                                                   WidgetSpan(
                                                     child: Icon(
                                                       Icons.star,
-                                                      color: white,
+                                                      color: Colors.yellow,
                                                       size: 21,
                                                     ),
                                                   ),
                                                   TextSpan(
                                                     text: '5.0',
                                                     style: TextStyle(
-                                                        color: white,
-                                                        fontSize: 18),
+                                                        fontSize: 18,
+                                                        color: white),
                                                   ),
                                                 ],
                                               ),
@@ -358,7 +354,6 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                                 ],
                               ),
                               decoration: BoxDecoration(
-                                color: white,
                                 borderRadius: BorderRadius.circular(20),
                                 boxShadow: [
                                   BoxShadow(
