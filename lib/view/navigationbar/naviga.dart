@@ -28,11 +28,8 @@ class MyNavigationBar extends StatelessWidget {
             ],
           ),
           child: BottomNavigationBar(
-              // selectedFontSize: 0,
               currentIndex: _navigacontroller.curentindex.value,
               selectedItemColor: green,
-              unselectedItemColor: black,
-              backgroundColor: white,
               onTap: (value) {
                 _navigacontroller.page(value);
               },

@@ -21,14 +21,12 @@ class ListStatus extends StatelessWidget {
           children: [
             Icon(
               Icons.article_outlined,
-              color: black.withOpacity(0.3),
               size: 100,
             ),
             Text(
               "No data",
               style: TextStyle(
                 fontSize: 25,
-                color: black.withOpacity(0.3),
               ),
             )
           ],
@@ -43,7 +41,6 @@ class ListStatus extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
-                      color: white,
                       border: Border.all(
                           width: 2,
                           color:
@@ -63,7 +60,7 @@ class ListStatus extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(15),
                                 // image: DecorationImage(
                                 //     image: NetworkImage(
-                                //       "${bookingDATA.bookingDetail..isEmpty ? "https://media.designcafe.com/wp-content/uploads/2023/07/05141750/aesthetic-room-decor.jpg" : bookingDATA.image.first.url}",
+                                //       "${bookingDATA.bookingDetail. ? "https://media.designcafe.com/wp-content/uploads/2023/07/05141750/aesthetic-room-decor.jpg" : bookingDATA.bookingDetail.first}",
                                 //     ),
                                 //     fit: BoxFit.fitHeight),
                                 image: DecorationImage(
@@ -151,7 +148,8 @@ class ListStatus extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("If you want to cancel please tap"),
+                                  Text(
+                                      "If you want to cancel please double click on"),
                                   TextButton(
                                       onPressed: () =>
                                           onPressed(listData[index]),

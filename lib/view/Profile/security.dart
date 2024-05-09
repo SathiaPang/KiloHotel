@@ -16,8 +16,7 @@ class SecurityScreen extends StatelessWidget {
         centerTitle: false,
         title: const Text(
           'Security',
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 25, color: black),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
@@ -33,7 +32,7 @@ class SecurityScreen extends StatelessWidget {
             _buildFaceID(),
             _buildRememberme(),
             _buildTouchID(),
-            _buildGoogleAuth(),
+            // _buildGoogleAuth(),
           ],
         ),
       ),

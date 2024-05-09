@@ -77,10 +77,11 @@ class _SelectDateState extends State<SelectDate> {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20), color: greenAccent),
+            borderRadius: BorderRadius.circular(20),
+          ),
           child: SfDateRangePicker(
-            startRangeSelectionColor: black,
-            endRangeSelectionColor: black,
+            startRangeSelectionColor: green,
+            endRangeSelectionColor: green,
             rangeSelectionColor: Color.fromARGB(255, 166, 220, 168),
             onSelectionChanged: _onSelectionChanged,
             selectionMode: DateRangePickerSelectionMode.range,
@@ -116,7 +117,8 @@ class _SelectDateState extends State<SelectDate> {
             height: Get.height / 20,
             width: Get.width / 2.3,
             decoration: BoxDecoration(
-                color: boxcolor, borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(width: 2, color: greenAccent)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -142,7 +144,8 @@ class _SelectDateState extends State<SelectDate> {
             height: Get.height / 20,
             width: Get.width / 2.3,
             decoration: BoxDecoration(
-                color: boxcolor, borderRadius: BorderRadius.circular(10)),
+                border: Border.all(width: 2, color: greenAccent),
+                borderRadius: BorderRadius.circular(10)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
