@@ -57,7 +57,7 @@ class _BookingScreenState extends State<BookingScreen>
                     width: 25,
                   ),
                   Text(
-                    "My Booking",
+                    "myBooking".tr,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 25,

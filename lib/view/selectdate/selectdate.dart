@@ -24,7 +24,7 @@ class _SelectDateState extends State<SelectDate> {
         elevation: 0,
         centerTitle: false,
         title: Text(
-          "Select Date",
+          "select".tr,
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
         ),
       ),
@@ -39,7 +39,7 @@ class _SelectDateState extends State<SelectDate> {
             SizedBox(
               height: 10,
             ),
-            _buildGuest("Adult"),
+            _buildGuest("adult".tr),
             TotalGuest(
                 text: _selectDateController.personQtyAdult.toString(),
                 onpressAdd: () => _selectDateController.increasment(),
@@ -47,7 +47,7 @@ class _SelectDateState extends State<SelectDate> {
             SizedBox(
               height: 5,
             ),
-            _buildGuest("Child"),
+            _buildGuest("child".tr),
             TotalGuest(
                 text: _selectDateController.personQtyChild.toString(),
                 onpressAdd: () => _selectDateController.increasmentChld(),
@@ -98,11 +98,11 @@ class _SelectDateState extends State<SelectDate> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text(
-              "Check in",
+              "in".tr,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
             ),
             Text(
-              "Check out",
+              "out".tr,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
             ),
           ],
@@ -181,10 +181,12 @@ class _SelectDateState extends State<SelectDate> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text("total".tr,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             Text(
-              "Total : \$ ${_selectDateController.totalPayment()}",
+              ": \$ ${_selectDateController.totalPayment()}",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            )
+            ),
           ],
         ),
       );
@@ -208,7 +210,7 @@ class _SelectDateState extends State<SelectDate> {
                 ]),
             child: Center(
               child: Text(
-                "Continue",
+                "continue".tr,
                 style: TextStyle(
                     color: white, fontSize: 20, fontWeight: FontWeight.bold),
               ),

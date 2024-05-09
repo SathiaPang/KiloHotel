@@ -24,7 +24,7 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
       appBar: AppBar(
         centerTitle: false,
         title: Text(
-          "Recently Booked",
+          "seeall".tr,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         actions: [
@@ -122,12 +122,12 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                                     ),
                                   ),
                                   Spacer(),
-                                  Text("/night"),
+                                  Text("night".tr),
                                 ],
                               ),
                               Row(
                                 children: [
-                                  Text("Bed :",
+                                  Text("bed".tr,
                                       style: TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.bold)),
@@ -204,7 +204,7 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                         ),
                         Row(
                           children: [
-                            Text("Bed :",
+                            Text("bed".tr,
                                 style: TextStyle(
                                     fontSize: 15, fontWeight: FontWeight.bold)),
                             Text(
@@ -224,7 +224,7 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                               ),
                             ),
                             Spacer(),
-                            Text("/night")
+                            Text("night".tr)
                           ],
                         ),
                       ],
