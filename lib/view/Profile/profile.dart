@@ -59,9 +59,17 @@ class _ProFileState extends State<ProFile> {
           },
           child: CircleAvatar(
             radius: 70,
-            backgroundImage: NetworkImage(_profileScreenController
-                .profileModel.value!.data!.avatar
-                .toString()),
+            backgroundImage: NetworkImage(
+              _profileScreenController
+                          .profileModel.value?.data?.avatar?.isEmpty ??
+                      true
+                  ? "https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg"
+                  : _profileScreenController.profileModel.value!.data!.avatar
+                      .toString(),
+            ),
+            // _profileScreenController
+            //     .profileModel.value!.data!.avatar
+            //     .toString()
             child: Padding(
               padding: const EdgeInsets.only(top: 100, left: 110),
               child: Container(

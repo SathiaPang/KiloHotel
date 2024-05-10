@@ -69,7 +69,7 @@ class ProfileScreenController extends GetxController {
     final picker = ImagePicker();
     final XFile? image = await picker.pickImage(
       source: ImageSource.camera,
-      imageQuality: 50,
+      imageQuality: 20,
     );
     File file = File(image!.path);
     try {
