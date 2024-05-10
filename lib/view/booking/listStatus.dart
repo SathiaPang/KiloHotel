@@ -63,10 +63,6 @@ class ListStatus extends StatelessWidget {
                                       "${bookingDATA.bookingDetail.firstOrNull?.roomType.image.firstOrNull?.url ?? "https://media.designcafe.com/wp-content/uploads/2023/07/05141750/aesthetic-room-decor.jpg"}",
                                     ),
                                     fit: BoxFit.fitHeight),
-                                // image: DecorationImage(
-                                //     image: NetworkImage(
-                                //         "https://media.designcafe.com/wp-content/uploads/2023/07/05141750/aesthetic-room-decor.jpg"),
-                                //     fit: BoxFit.fitHeight),
                               ),
                             ),
                             Padding(
