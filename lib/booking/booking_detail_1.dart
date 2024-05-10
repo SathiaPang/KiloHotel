@@ -27,7 +27,6 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
       floatingActionButton: _buildBookingNow(),
       appBar: AppBar(
         scrolledUnderElevation: 0,
-        backgroundColor: white,
         title: Row(
           children: [
             Container(
@@ -43,7 +42,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
               width: 20,
             ),
             Text(
-              "Room Detail",
+              "roomDetail".tr,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             )
           ],
@@ -83,7 +82,6 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                     text: TextSpan(
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.black,
                       ),
                       children: <InlineSpan>[
                         WidgetSpan(
@@ -104,7 +102,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                   line(),
                   SizedBox(height: 10),
                   Text(
-                    "Gallery Photos",
+                    "gallery".tr,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
@@ -136,7 +134,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    "Description",
+                    "description".tr,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
@@ -145,7 +143,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                   Text("${datum.description}"),
                   SizedBox(height: 5),
                   Text(
-                    "Amentity",
+                    "amentity".tr,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
@@ -153,7 +151,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                   ),
                   Text("${datum.amenity}"),
                   Text(
-                    "Facilities",
+                    "facilities".tr,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
@@ -164,19 +162,19 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       FacilitiesIcon(
-                        text: 'Swimming Pool',
+                        text: 'swimming'.tr,
                         icon: Icons.pool,
                       ),
                       FacilitiesIcon(
-                        text: 'WiFi',
+                        text: 'wifi'.tr,
                         icon: Icons.wifi,
                       ),
                       FacilitiesIcon(
-                        text: 'Restaurant',
+                        text: 'resta'.tr,
                         icon: Icons.local_dining,
                       ),
                       FacilitiesIcon(
-                        text: 'Parking',
+                        text: 'parking'.tr,
                         icon: Icons.local_parking,
                       ),
                     ],
@@ -186,19 +184,19 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       FacilitiesIcon(
-                        text: 'Meeting Room',
+                        text: 'meeting'.tr,
                         icon: Icons.meeting_room,
                       ),
                       FacilitiesIcon(
-                        text: 'Fitness Center',
+                        text: 'fitness'.tr,
                         icon: Icons.fitness_center,
                       ),
                       FacilitiesIcon(
-                        text: 'Elevator',
+                        text: 'elevator'.tr,
                         icon: Icons.elevator,
                       ),
                       FacilitiesIcon(
-                        text: '24-hours Open',
+                        text: 'open'.tr,
                         icon: Icons.schedule,
                       )
                     ],
@@ -207,27 +205,29 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                     height: 10,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       RichText(
                         text: TextSpan(
                           style: TextStyle(
                             fontSize: 16,
-                            color: Colors.black,
                           ),
                           children: <InlineSpan>[
                             TextSpan(
-                              text: 'Review ',
+                              text: 'revieww'.tr,
                               style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600,
-                              ),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
+                                  color: green),
                             ),
                             WidgetSpan(
-                              child: Icon(
-                                Icons.star,
-                                color: Colors.yellow,
-                                size: 20,
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                  size: 20,
+                                ),
                               ),
                             ),
                             TextSpan(
@@ -241,21 +241,21 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                             TextSpan(
                               text: '(4,345 Reviews)',
                               style: TextStyle(
-                                fontWeight: FontWeight.w300,
-                                fontSize: 14,
-                              ),
+                                  fontWeight: FontWeight.w300,
+                                  fontSize: 14,
+                                  color: red),
                             ),
                           ],
                         ),
                       ),
-                      Text(
-                        "See All",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                          color: green,
-                        ),
-                      ),
+                      // Text(
+                      //   "seeall".tr,
+                      //   style: TextStyle(
+                      //     fontSize: 20,
+                      //     fontWeight: FontWeight.w600,
+                      //     color: green,
+                      //   ),
+                      // ),
                     ],
                   ),
                   Container(
@@ -315,21 +315,20 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                                               text: TextSpan(
                                                 style: TextStyle(
                                                   fontSize: 20.0,
-                                                  color: Colors.black,
                                                 ),
                                                 children: <InlineSpan>[
                                                   WidgetSpan(
                                                     child: Icon(
                                                       Icons.star,
-                                                      color: white,
+                                                      color: Colors.yellow,
                                                       size: 21,
                                                     ),
                                                   ),
                                                   TextSpan(
                                                     text: '5.0',
                                                     style: TextStyle(
-                                                        color: white,
-                                                        fontSize: 18),
+                                                        fontSize: 18,
+                                                        color: white),
                                                   ),
                                                 ],
                                               ),
@@ -358,7 +357,6 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                                 ],
                               ),
                               decoration: BoxDecoration(
-                                color: white,
                                 borderRadius: BorderRadius.circular(20),
                                 boxShadow: [
                                   BoxShadow(
@@ -438,7 +436,7 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
         Get.toNamed(AppRoute.selectDate, arguments: datum);
       },
       child: Text(
-        "Booking Now!",
+        "bookingNow".tr,
         style:
             TextStyle(color: white, fontWeight: FontWeight.w700, fontSize: 18),
       ));

@@ -70,8 +70,8 @@ class _EditPFState extends State<EditPF> {
       textInputAction: TextInputAction.next,
       cursorColor: Colors.black,
       decoration: InputDecoration(
-        labelText: 'Name',
-        labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
+        labelText: 'name'.tr,
+        labelStyle: TextStyle(fontWeight: FontWeight.w500),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
@@ -83,8 +83,8 @@ class _EditPFState extends State<EditPF> {
       textInputAction: TextInputAction.next,
       cursorColor: Colors.grey,
       decoration: InputDecoration(
-        labelText: 'Username',
-        labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
+        labelText: 'userName'.tr,
+        labelStyle: TextStyle(fontWeight: FontWeight.w500),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
@@ -95,8 +95,8 @@ class _EditPFState extends State<EditPF> {
       textInputAction: TextInputAction.next,
       cursorColor: Colors.grey,
       decoration: InputDecoration(
-        labelText: 'Address',
-        labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
+        labelText: 'address'.tr,
+        labelStyle: TextStyle(fontWeight: FontWeight.w500),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
@@ -109,8 +109,8 @@ class _EditPFState extends State<EditPF> {
       cursorColor: Colors.grey,
       onSaved: (email) {},
       decoration: InputDecoration(
-        labelText: 'Email',
-        labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
+        labelText: 'email'.tr,
+        labelStyle: TextStyle(fontWeight: FontWeight.w500),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
@@ -120,8 +120,8 @@ class _EditPFState extends State<EditPF> {
         controller: _updateProfileController.phoneController,
         focusNode: _phoneNumberFocusNode,
         decoration: InputDecoration(
-          labelText: 'Phone number',
-          labelStyle: TextStyle(color: black, fontWeight: FontWeight.w500),
+          labelText: 'phone'.tr,
+          labelStyle: TextStyle(fontWeight: FontWeight.w500),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
@@ -152,7 +152,7 @@ class _EditPFState extends State<EditPF> {
             ),
           ),
           child: Text(
-            'Update',
+            'update'.tr,
             style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),
           ),
         ),

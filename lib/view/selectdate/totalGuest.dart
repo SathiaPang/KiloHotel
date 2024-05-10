@@ -29,7 +29,8 @@ class TotalGuest extends StatelessWidget {
               height: 40,
               width: Get.width / 7.5,
               decoration: BoxDecoration(
-                  color: greenAccent, borderRadius: BorderRadius.circular(13)),
+                  border: Border.all(width: 2, color: greenAccent),
+                  borderRadius: BorderRadius.circular(13)),
               child: Center(
                 child: IconButton(
                     onPressed: onpressREmove,
@@ -47,7 +48,8 @@ class TotalGuest extends StatelessWidget {
               height: 40,
               width: Get.width / 7.5,
               decoration: BoxDecoration(
-                  color: greenAccent, borderRadius: BorderRadius.circular(13)),
+                  border: Border.all(width: 2, color: greenAccent),
+                  borderRadius: BorderRadius.circular(13)),
               child: Center(
                 child: IconButton(
                     onPressed: onpressAdd,

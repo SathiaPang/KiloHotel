@@ -43,7 +43,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     height: 20,
                   ),
                   SplashScreenBotton(
-                    text: "Next",
+                    text: "next".tr,
                     textcolor: white,
                     fontSize: 25,
                     backgroundColor: green,
@@ -55,7 +55,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     height: 20,
                   ),
                   SplashScreenBotton(
-                      text: "Skip",
+                      text: "skip".tr,
                       onPressed: () {
                         Get.offAndToNamed(AppRoute.load2);
                       },
@@ -124,8 +124,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           if (!mounted) return;
           Get.toNamed(AppRoute.load2);
         },
-        child: const Text(
-          "Get started",
+        child: Text(
+          "getStart".tr,
           style: TextStyle(color: Colors.white, fontSize: 18),
         ),
       ),

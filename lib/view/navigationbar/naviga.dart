@@ -28,11 +28,8 @@ class MyNavigationBar extends StatelessWidget {
             ],
           ),
           child: BottomNavigationBar(
-              // selectedFontSize: 0,
               currentIndex: _navigacontroller.curentindex.value,
               selectedItemColor: green,
-              unselectedItemColor: black,
-              backgroundColor: white,
               onTap: (value) {
                 _navigacontroller.page(value);
               },
@@ -40,24 +37,25 @@ class MyNavigationBar extends StatelessWidget {
               items: [
                 // Home
                 BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.home_outlined,
-                      size: 30,
-                    ),
-                    label: "Home"),
+                  icon: Icon(
+                    Icons.home_outlined,
+                    size: 30,
+                  ),
+                  label: "home".tr,
+                ),
                 BottomNavigationBarItem(
                     icon: Icon(
                       Icons.article_outlined,
                       size: 30,
                     ),
-                    label: "Booking"),
+                    label: "booking".tr),
                 // Profile
                 BottomNavigationBarItem(
                     icon: Icon(
                       Icons.person_2_outlined,
                       size: 30,
                     ),
-                    label: "Profile")
+                    label: "profile".tr)
               ]),
         ),
       ),

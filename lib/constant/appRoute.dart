@@ -12,10 +12,11 @@ import 'package:hotel/constant/binding/update_binding.dart';
 import 'package:hotel/payment/cancelHotel.dart';
 import 'package:hotel/payment/nameOfReserver.dart';
 import 'package:hotel/view/Onborading/onboarding_view.dart';
+import 'package:hotel/view/Profile/languaeScreen.dart';
 import 'package:hotel/view/Profile/setting.dart';
 import 'package:hotel/view/Profile/editprofile.dart';
 import 'package:hotel/view/Profile/notificationScreen.dart';
-import 'package:hotel/view/Profile/resetPassword.dart';
+import 'package:hotel/view/Profile/ChangePassword.dart';
 import 'package:hotel/view/Profile/security.dart';
 import 'package:hotel/view/auth/signIn/login.dart';
 import 'package:hotel/view/auth/signIn/signInScreen.dart';
@@ -56,6 +57,7 @@ class AppRoute {
   static String setting = "/setting";
   static String notification = "/notification";
   static String splashScreen = "/splashScreen";
+  static String language = "/language";
 
   static List<GetPage> appPage = [
     //
@@ -108,5 +110,6 @@ class AppRoute {
         name: notification,
         page: () => NotiScreen(),
         binding: NotificationBinding()),
+    GetPage(name: language, page: () => Language())
   ];
 }

@@ -16,7 +16,6 @@ class SearchItem extends SearchDelegate {
           },
           icon: Icon(
             Icons.close,
-            color: black,
           ))
     ];
   }
@@ -29,7 +28,6 @@ class SearchItem extends SearchDelegate {
         },
         icon: Icon(
           Icons.arrow_back_ios,
-          color: black,
         ));
   }
 
@@ -138,7 +136,7 @@ class SearchItem extends SearchDelegate {
     return FutureBuilder<List<Datum>>(
         future: _findController.getRoomData(query: query),
         builder: (context, snapshot) {
-          var data = snapshot.data;
+          final data = snapshot.data;
           if (!snapshot.hasData) {
             return Center(
               child: CircularProgressIndicator(),
@@ -159,7 +157,7 @@ class SearchItem extends SearchDelegate {
                       height: 120,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        color: greenAccent,
+                        // color: greenAccent,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 7),

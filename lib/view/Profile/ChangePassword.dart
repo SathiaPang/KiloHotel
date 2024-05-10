@@ -18,9 +18,8 @@ class _ChangePasswordState extends State<ChangePassword> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: Text("Change Password",
-            style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 25, color: black)),
+        title: Text("changePass".tr,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -34,9 +33,8 @@ class _ChangePasswordState extends State<ChangePassword> {
               cursorColor: Colors.grey,
               onSaved: (password) {},
               decoration: InputDecoration(
-                labelStyle:
-                    TextStyle(color: black, fontWeight: FontWeight.w500),
-                labelText: 'Old Password',
+                labelStyle: TextStyle(fontWeight: FontWeight.w500),
+                labelText: 'oldPass'.tr,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
@@ -52,9 +50,8 @@ class _ChangePasswordState extends State<ChangePassword> {
                 cursorColor: Colors.grey,
                 onSaved: (password) {},
                 decoration: InputDecoration(
-                  labelStyle:
-                      TextStyle(color: black, fontWeight: FontWeight.w500),
-                  labelText: 'New Password',
+                  labelStyle: TextStyle(fontWeight: FontWeight.w500),
+                  labelText: 'newPass'.tr,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
@@ -69,9 +66,8 @@ class _ChangePasswordState extends State<ChangePassword> {
               cursorColor: Colors.grey,
               onSaved: (password) {},
               decoration: InputDecoration(
-                labelStyle:
-                    TextStyle(color: black, fontWeight: FontWeight.w500),
-                labelText: 'Confirm Password',
+                labelStyle: TextStyle(fontWeight: FontWeight.w500),
+                labelText: 'comfirmPass'.tr,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
@@ -95,7 +91,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 ),
               ),
               child: Text(
-                'Update',
+                'update'.tr,
                 style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),
               ),
             ),

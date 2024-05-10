@@ -24,7 +24,7 @@ class _SelectDateState extends State<SelectDate> {
         elevation: 0,
         centerTitle: false,
         title: Text(
-          "Select Date",
+          "select".tr,
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
         ),
       ),
@@ -39,7 +39,7 @@ class _SelectDateState extends State<SelectDate> {
             SizedBox(
               height: 10,
             ),
-            _buildGuest("Adult"),
+            _buildGuest("adult".tr),
             TotalGuest(
                 text: _selectDateController.personQtyAdult.toString(),
                 onpressAdd: () => _selectDateController.increasment(),
@@ -47,7 +47,7 @@ class _SelectDateState extends State<SelectDate> {
             SizedBox(
               height: 5,
             ),
-            _buildGuest("Child"),
+            _buildGuest("child".tr),
             TotalGuest(
                 text: _selectDateController.personQtyChild.toString(),
                 onpressAdd: () => _selectDateController.increasmentChld(),
@@ -77,10 +77,11 @@ class _SelectDateState extends State<SelectDate> {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20), color: greenAccent),
+            borderRadius: BorderRadius.circular(20),
+          ),
           child: SfDateRangePicker(
-            startRangeSelectionColor: black,
-            endRangeSelectionColor: black,
+            startRangeSelectionColor: green,
+            endRangeSelectionColor: green,
             rangeSelectionColor: Color.fromARGB(255, 166, 220, 168),
             onSelectionChanged: _onSelectionChanged,
             selectionMode: DateRangePickerSelectionMode.range,
@@ -97,11 +98,11 @@ class _SelectDateState extends State<SelectDate> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text(
-              "Check in",
+              "in".tr,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
             ),
             Text(
-              "Check out",
+              "out".tr,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
             ),
           ],
@@ -116,7 +117,8 @@ class _SelectDateState extends State<SelectDate> {
             height: Get.height / 20,
             width: Get.width / 2.3,
             decoration: BoxDecoration(
-                color: boxcolor, borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(width: 2, color: greenAccent)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -142,7 +144,8 @@ class _SelectDateState extends State<SelectDate> {
             height: Get.height / 20,
             width: Get.width / 2.3,
             decoration: BoxDecoration(
-                color: boxcolor, borderRadius: BorderRadius.circular(10)),
+                border: Border.all(width: 2, color: greenAccent),
+                borderRadius: BorderRadius.circular(10)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -178,10 +181,12 @@ class _SelectDateState extends State<SelectDate> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text("total".tr,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             Text(
-              "Total : \$ ${_selectDateController.totalPayment()}",
+              ": \$ ${_selectDateController.totalPayment()}",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            )
+            ),
           ],
         ),
       );
@@ -205,7 +210,7 @@ class _SelectDateState extends State<SelectDate> {
                 ]),
             child: Center(
               child: Text(
-                "Continue",
+                "continue".tr,
                 style: TextStyle(
                     color: white, fontSize: 20, fontWeight: FontWeight.bold),
               ),

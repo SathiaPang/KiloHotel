@@ -14,10 +14,9 @@ class SecurityScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: const Text(
-          'Security',
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 25, color: black),
+        title: Text(
+          'security'.tr,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
@@ -33,7 +32,7 @@ class SecurityScreen extends StatelessWidget {
             _buildFaceID(),
             _buildRememberme(),
             _buildTouchID(),
-            _buildGoogleAuth(),
+            // _buildGoogleAuth(),
           ],
         ),
       ),
@@ -44,7 +43,7 @@ class SecurityScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "Face ID",
+            "face".tr,
             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
           ),
           CupertinoSwitch(
@@ -58,7 +57,7 @@ class SecurityScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "Touch ID",
+            "touch".tr,
             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
           ),
           CupertinoSwitch(
@@ -72,7 +71,7 @@ class SecurityScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "Remember me",
+            "remember".tr,
             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
           ),
           CupertinoSwitch(
@@ -82,18 +81,4 @@ class SecurityScreen extends StatelessWidget {
               })
         ],
       ));
-
-  Widget _buildGoogleAuth() => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "Remember me",
-            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
-          ),
-          Icon(
-            Icons.arrow_forward_ios,
-            color: green,
-          )
-        ],
-      );
 }

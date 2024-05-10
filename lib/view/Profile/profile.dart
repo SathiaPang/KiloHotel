@@ -1,11 +1,10 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/component/profileScreen/optionSelect.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
+import 'package:hotel/controller/theme_controller.dart';
 import '../../controller/homeScreenController.dart';
 
 class ProFile extends StatefulWidget {
@@ -16,33 +15,28 @@ class ProFile extends StatefulWidget {
 }
 
 class _ProFileState extends State<ProFile> {
-  bool _switchValue = false;
-
   final ProfileScreenController _profileScreenController = Get.find();
+  final ThemeController _themeController = Get.find();
 
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: _switchValue ? black : white,
         appBar: AppBar(
-          backgroundColor: _switchValue ? black : white,
           centerTitle: false,
           title: Text(
-            "Profile",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: _switchValue ? white : black),
+            "profile".tr,
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
           actions: [
             IconButton(
                 onPressed: () {
                   _profileScreenController.pickImageAndUploadsGallery();
                 },
-                icon: Icon(Icons.pending_outlined,
-                    size: 25, color: _switchValue ? white : black))
+                icon: Icon(Icons.pending_outlined, size: 25))
           ],
         ),
-        body: _profileScreenController.isLoading.value
-            ? Obx(() => Column(
+        body: Obx(
+          () => _profileScreenController.isLoading.value
+              ? Column(
                   children: [
                     _buildPicture(),
                     _builNameAndGmail(),
@@ -55,27 +49,9 @@ class _ProFileState extends State<ProFile> {
                     _builDarkTheme(),
                     _buildLogout()
                   ],
-                ))
-
-            : CircleAvatar()
-        // body: Column(
-        //   children: [
-        //     //
-        //     // _buildPicture(),
-        //     // _builNameAndGmail(),
-        //     SizedBox(
-        //       height: 20,
-        //     ),
-
-        //     _notification(),
-        //     _security(),
-
-        //     _builDarkTheme(),
-        //     _buildLogout()
-        //   ],
-        // )
-        //
-        );
+                )
+              : CircleAvatar(),
+        ));
   }
 
   Widget _buildPicture() => Center(
@@ -112,8 +88,6 @@ class _ProFileState extends State<ProFile> {
         ),
       );
 
-  Future showOption() async {}
-
   Widget _builNameAndGmail() => ListView(
         shrinkWrap: true,
         children: [
@@ -123,18 +97,12 @@ class _ProFileState extends State<ProFile> {
           Center(
               child: Text(
             _profileScreenController.profileModel.value!.data!.name.toString(),
-            style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: _switchValue ? white : black),
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
           )),
           Center(
               child: Text(
             _profileScreenController.profileModel.value!.data!.email.toString(),
-            style: TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.w400,
-                color: _switchValue ? white : black),
+            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400),
           )),
         ],
       );
@@ -157,11 +125,11 @@ class _ProFileState extends State<ProFile> {
                       width: 20,
                     ),
                     Text(
-                      "Setting",
+                      "setting".tr,
                       style: TextStyle(
-                          fontSize: 19,
-                          fontWeight: FontWeight.w500,
-                          color: black),
+                        fontSize: 19,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ],
                 ),
@@ -176,9 +144,8 @@ class _ProFileState extends State<ProFile> {
           OptionSelect(
               ontap: () => Get.toNamed(AppRoute.notification),
               icon: Icons.notifications_none_rounded,
-              text: "Notification",
-              color: _switchValue ? white : black,
-              size: 30)
+              text: "notification".tr,
+              size: 19)
         ],
       );
 
@@ -187,9 +154,8 @@ class _ProFileState extends State<ProFile> {
           OptionSelect(
               ontap: () => Get.toNamed(AppRoute.security),
               icon: Icons.verified_user_outlined,
-              text: "Security",
-              color: _switchValue ? white : black,
-              size: 30)
+              text: "security".tr,
+              size: 19)
         ],
       );
 
@@ -208,31 +174,31 @@ class _ProFileState extends State<ProFile> {
                   SizedBox(
                     width: 13,
                   ),
-                  Icon(Icons.visibility_outlined,
-                      size: 30, color: _switchValue ? white : black),
+                  Icon(Icons.visibility_outlined, size: 30),
 
                   SizedBox(
                     width: 13,
                   ),
                   Text(
-                    "Dark Theme",
+                    "theme".tr,
                     style: TextStyle(
-                        fontSize: 19,
-                        fontWeight: FontWeight.w500,
-                        color: _switchValue ? white : black),
+                      fontSize: 19,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
 
                   Spacer(),
-                  CupertinoSwitch(
-                      activeColor: _switchValue ? white : black,
-                      trackColor: _switchValue ? white : black,
-                      thumbColor: _switchValue ? black : white,
-                      value: _switchValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _switchValue = value;
-                        });
-                      })
+                  GetBuilder<ThemeController>(
+                      builder: (_) => CupertinoSwitch(
+                          activeColor: white,
+                          trackColor: black,
+                          thumbColor: green,
+                          value: _themeController.isdark,
+                          onChanged: (value) {
+                            setState(() {
+                              _themeController.changeTheme(value);
+                            });
+                          }))
                 ],
               ),
             ),
@@ -256,7 +222,7 @@ class _ProFileState extends State<ProFile> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Logout',
+                        'logout'.tr,
                         style: TextStyle(
                             color: Colors.red,
                             fontWeight: FontWeight.w500,

@@ -20,11 +20,11 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: greenAccent,
+      // backgroundColor: greenAccent,
       appBar: AppBar(
         centerTitle: false,
         title: Text(
-          "Recently Booked",
+          "seeall".tr,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         actions: [
@@ -75,7 +75,7 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
               child: Container(
                 height: 120,
                 decoration: BoxDecoration(
-                  color: white,
+                  // color: white,
                   borderRadius: BorderRadius.circular(15),
                   border: Border.all(width: 2, color: green),
                 ),
@@ -122,12 +122,12 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                                     ),
                                   ),
                                   Spacer(),
-                                  Text("/night"),
+                                  Text("night".tr),
                                 ],
                               ),
                               Row(
                                 children: [
-                                  Text("Bed :",
+                                  Text("bed".tr,
                                       style: TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.bold)),
@@ -170,7 +170,7 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     border: Border.all(width: 2, color: green),
-                    color: white,
+                    // color: white,
                   ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 7, vertical: 5),
@@ -204,7 +204,7 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                         ),
                         Row(
                           children: [
-                            Text("Bed :",
+                            Text("bed".tr,
                                 style: TextStyle(
                                     fontSize: 15, fontWeight: FontWeight.bold)),
                             Text(
@@ -224,7 +224,7 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                               ),
                             ),
                             Spacer(),
-                            Text("/Night")
+                            Text("night".tr)
                           ],
                         ),
                       ],

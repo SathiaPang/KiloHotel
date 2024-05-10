@@ -16,8 +16,7 @@ class NotiScreen extends StatelessWidget {
         centerTitle: false,
         title: const Text(
           'Notification',
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 25, color: black),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
@@ -37,11 +36,6 @@ class NotiScreen extends StatelessWidget {
             SizedBox(height: 10),
             _buildVibrate(),
             SizedBox(height: 10),
-            _builAppUpdate(),
-            SizedBox(height: 10),
-            _builNewServiceAvailable(),
-            SizedBox(height: 10),
-            _builNewTipAvalible()
           ],
         ),
       ),
@@ -52,7 +46,7 @@ class NotiScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "General Notification",
+            "gerneral".tr,
             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
           ),
           CupertinoSwitch(
@@ -69,7 +63,7 @@ class NotiScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "Sound",
+            "sound".tr,
             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
           ),
           CupertinoSwitch(
@@ -86,7 +80,7 @@ class NotiScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "Vibrate",
+            "vibrate".tr,
             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
           ),
           CupertinoSwitch(
@@ -94,57 +88,6 @@ class NotiScreen extends StatelessWidget {
             value: _notificationController.vibrate.value,
             onChanged: (value) {
               _notificationController.vibrate.value = value;
-            },
-          )
-        ],
-      ));
-
-  Widget _builAppUpdate() => Obx(() => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "App Update",
-            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
-          ),
-          CupertinoSwitch(
-            activeColor: green,
-            value: _notificationController.appUpdate.value,
-            onChanged: (value) {
-              _notificationController.appUpdate.value = value;
-            },
-          )
-        ],
-      ));
-
-  Widget _builNewServiceAvailable() => Obx(() => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "New Service Available",
-            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
-          ),
-          CupertinoSwitch(
-            activeColor: green,
-            value: _notificationController.newServiceAvailable.value,
-            onChanged: (value) {
-              _notificationController.newServiceAvailable.value = value;
-            },
-          )
-        ],
-      ));
-
-  Widget _builNewTipAvalible() => Obx(() => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "New Tips Available ",
-            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
-          ),
-          CupertinoSwitch(
-            activeColor: green,
-            value: _notificationController.newTipAvailable.value,
-            onChanged: (value) {
-              _notificationController.newTipAvailable.value = value;
             },
           )
         ],
@@ -160,7 +103,7 @@ class NotiScreen extends StatelessWidget {
         },
         child: Center(
           child: Text(
-            'Update',
+            'update'.tr,
             style: TextStyle(color: white, fontSize: 17),
           ),
         ),
