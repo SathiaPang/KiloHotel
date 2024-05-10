@@ -1,7 +1,12 @@
+import 'dart:ffi';
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/appRoute.dart';
+import 'package:hotel/constant/constant.dart';
 import 'package:hotel/constant/server_rout.dart';
 import 'package:hotel/local/local.dart';
 import 'package:hotel/model/getprofile_model.dart';
@@ -42,6 +47,7 @@ class ProfileScreenController extends GetxController {
     final picker = ImagePicker();
     final XFile? image = await picker.pickImage(
       source: ImageSource.gallery,
+      imageQuality: 50,
     );
     File file = File(image!.path);
     try {
@@ -59,6 +65,7 @@ class ProfileScreenController extends GetxController {
     final picker = ImagePicker();
     final XFile? image = await picker.pickImage(
       source: ImageSource.camera,
+      imageQuality: 50,
     );
     File file = File(image!.path);
     try {
@@ -70,5 +77,58 @@ class ProfileScreenController extends GetxController {
     } on DioException catch (e) {
       print("Failed to upload image: ${e.response?.data.toString()}");
     }
+  }
+
+  void showImagePickerOption(BuildContext context) {
+    showModalBottomSheet(
+      // backgroundColor: greenAccent,
+      context: context,
+      builder: (builder) {
+        return SizedBox(
+          width: Get.width / 0.5,
+          height: Get.height / 6,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              InkWell(
+                onTap: () {
+                  pickImageAndUploadsCamera();
+                },
+                child: SizedBox(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.camera_enhance_outlined,
+                        size: 35,
+                      ),
+                      Text("Camera"),
+                    ],
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  pickImageAndUploadsGallery();
+                },
+                child: SizedBox(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.image_outlined,
+                        size: 35,
+                        // color: black,
+                      ),
+                      Text("Gallery"),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }
