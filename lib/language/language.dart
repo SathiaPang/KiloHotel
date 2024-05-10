@@ -55,6 +55,8 @@ class LanguageChange extends Translations {
           // Booking
           'myBooking': 'My Booking',
           'noData': "No Data",
+          'title': 'If you want to cancel please double click on',
+          'cancel': 'Cancel',
           // Profile
           'setting': 'Setting',
           'notification': 'Notification',
@@ -107,7 +109,7 @@ class LanguageChange extends Translations {
           'bookingNow': 'កក់ទុកឥឡូវ!',
           'roomDetail': 'ព័ត៏មានបន្ទប់',
           'gallery': 'កម្រងរូបភាព',
-          'description': 'Description',
+          'description': 'ពិពណ៌នា',
           'facilities': 'គ្រឿងបរិក្ខារ',
           'amentity': 'Amentity',
           'swimming': 'អាងហែលទឹក',
@@ -130,9 +132,11 @@ class LanguageChange extends Translations {
           // Booking
           'myBooking': 'ការកក់ទុករបស់ខ្ញុំ',
           'noData': "គ្មានទិន្ន័យ",
+          'title': 'បើអ្នកចង់បោះបង់សូមចុចពីរដង',
+          'cancel': 'បោះបង់',
           // Profile
           'setting': 'ការកំណត់',
-          'notification': 'Notification',
+          'notification': 'ការជូនដំណឹង',
           'security': 'សុវត្ថិភាព',
           'theme': 'ប្តូរពណ៏',
           'logout': 'ចាកចេញ',

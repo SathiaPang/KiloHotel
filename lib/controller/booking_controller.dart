@@ -32,7 +32,8 @@ class BookingController extends GetxController {
         filterbyTab(0);
       }
     } on DioException catch (e) {
-      Get.snackbar("", "${e.message}");
+      Get.snackbar(
+          "", "${e.response?.data['message'] ?? "Something went wrong"}");
     }
   }
 
@@ -46,9 +47,10 @@ class BookingController extends GetxController {
 
   void cancelBookink(String bookindId) async {
     try {
-      final res = roomrepo.postCancelBooking(bookindId);
-      print("=====> cancel res ${res}");
-      getBookingData();
+      final res = await roomrepo.postCancelBooking(bookindId);
+      if (res["status"] == 200) {
+        getBookingData();
+      }
     } on DioException catch (e) {
       print(e.response?.data ?? "");
     }

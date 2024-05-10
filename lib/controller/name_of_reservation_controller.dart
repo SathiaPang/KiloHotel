@@ -39,7 +39,7 @@ class NameOfReservationController extends GetxController {
       print("=== Datum ===${datum}");
       print("====> Save Booking --- ${res}");
     } on DioException catch (e) {
-      print(e.response?.data);
+      print("Booking ${e.response?.data}");
       Get.snackbar("", "",
           duration: Duration(seconds: 2),
           backgroundColor: green,
