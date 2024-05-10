@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/security_controller.dart';
 
 class SecurityScreen extends StatelessWidget {
