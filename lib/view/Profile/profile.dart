@@ -5,6 +5,7 @@ import 'package:hotel/component/profileScreen/optionSelect.dart';
 import 'package:hotel/constant/appRoute.dart';
 import 'package:hotel/constant/constant.dart';
 import 'package:hotel/controller/theme_controller.dart';
+import 'package:hotel/view/Profile/viewImageDetail.dart';
 import '../../controller/homeScreenController.dart';
 
 class ProFile extends StatefulWidget {
@@ -28,10 +29,7 @@ class _ProFileState extends State<ProFile> {
           ),
           actions: [
             IconButton(
-                onPressed: () {
-                  _profileScreenController.pickImageAndUploadsGallery();
-                },
-                icon: Icon(Icons.pending_outlined, size: 25))
+                onPressed: () {}, icon: Icon(Icons.pending_outlined, size: 25))
           ],
         ),
         body: Obx(
@@ -55,31 +53,35 @@ class _ProFileState extends State<ProFile> {
   }
 
   Widget _buildPicture() => Center(
-        child: CircleAvatar(
-          radius: 70,
-          backgroundColor: green,
-          backgroundImage: NetworkImage(_profileScreenController
-              .profileModel.value!.data!.avatar
-              .toString()),
-          child: Padding(
-            padding: const EdgeInsets.only(top: 100, left: 110),
-            child: Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                  color: green,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(9),
-                      topRight: Radius.circular(10),
-                      bottomRight: Radius.circular(10))),
-              child: Center(
-                child: InkWell(
-                  onTap: () {
-                    _profileScreenController.pickImageAndUploadsGallery();
-                  },
-                  child: Icon(
-                    Icons.edit,
-                    color: white,
+        child: InkWell(
+          onDoubleTap: () {
+            Get.to(DetailProfileImageScreen());
+          },
+          child: CircleAvatar(
+            radius: 70,
+            backgroundImage: NetworkImage(_profileScreenController
+                .profileModel.value!.data!.avatar
+                .toString()),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 100, left: 110),
+              child: Container(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                    color: green,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(9),
+                        topRight: Radius.circular(10),
+                        bottomRight: Radius.circular(10))),
+                child: Center(
+                  child: InkWell(
+                    onTap: () {
+                      _profileScreenController.showImagePickerOption(context);
+                    },
+                    child: Icon(
+                      Icons.edit,
+                      color: white,
+                    ),
                   ),
                 ),
               ),

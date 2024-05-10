@@ -105,36 +105,44 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                '${dataApi.title}',
+                                '${dataApi.title}'.tr,
                                 style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                    color: green),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                                overflow: TextOverflow.ellipsis,
                               ),
                               Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Text(
-                                    "\$ ${dataApi.price}",
-                                    style: TextStyle(
-                                      color: Colors.green,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
+                                  Expanded(
+                                    child: Row(
+                                      children: [
+                                        Text("bed".tr,
+                                            style: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold)),
+                                        Text(
+                                          dataApi.bed.toString(),
+                                          style: TextStyle(fontSize: 15),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  Spacer(),
-                                  Text("night".tr),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text("bed".tr,
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold)),
-                                  Text(
-                                    dataApi.bed.toString(),
-                                    style: TextStyle(fontSize: 15),
-                                  ),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Text(
+                                        "\$ ${dataApi.price}",
+                                        style: TextStyle(
+                                          color: Colors.green,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Text("night".tr),
+                                    ],
+                                  )
                                 ],
                               ),
                             ],
@@ -170,12 +178,11 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     border: Border.all(width: 2, color: green),
-                    // color: white,
                   ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 7, vertical: 5),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(
                           height: 5,
@@ -199,10 +206,12 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                           '${dataApi.title}',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 18,
                               color: green),
+                          overflow: TextOverflow.ellipsis,
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("bed".tr,
                                 style: TextStyle(
@@ -213,17 +222,18 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                             ),
                           ],
                         ),
+                        Spacer(),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
                               "\$ ${dataApi.price}",
                               style: TextStyle(
                                 color: Colors.green,
-                                fontSize: 15,
+                                fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            Spacer(),
                             Text("night".tr)
                           ],
                         ),
