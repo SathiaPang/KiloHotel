@@ -140,7 +140,10 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Text("${datum.description}"),
+                  Text(
+                    "${datum.description}",
+                    style: TextStyle(fontSize: 18),
+                  ),
                   SizedBox(height: 5),
                   Text(
                     "amentity".tr,
@@ -149,7 +152,10 @@ class _BookDetailScreenOneState extends State<BookDetailScreenOne> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Text("${datum.amenity}"),
+                  Text("${datum.amenity}", style: TextStyle(fontSize: 18)),
+                  SizedBox(
+                    height: 5,
+                  ),
                   Text(
                     "facilities".tr,
                     style: TextStyle(

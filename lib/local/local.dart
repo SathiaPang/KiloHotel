@@ -18,8 +18,8 @@ class LocalStorageManager {
     return pref.getString(key);
   }
 
-  void clearToken(String key) async {
+  Future<bool> clearToken(String key) async {
     final pref = await _getSharePreference();
-    pref.remove(key);
+    return pref.clear();
   }
 }

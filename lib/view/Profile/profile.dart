@@ -226,7 +226,7 @@ class _ProFileState extends State<ProFile> {
                       Text(
                         'logout'.tr,
                         style: TextStyle(
-                            color: Colors.red,
+                            color: red,
                             fontWeight: FontWeight.w500,
                             fontSize: 22),
                       ),
@@ -277,7 +277,7 @@ class _ProFileState extends State<ProFile> {
                       width: 13,
                     ),
                     Text(
-                      "Logout",
+                      "logout".tr,
                       style: TextStyle(
                           fontSize: 19,
                           fontWeight: FontWeight.w500,

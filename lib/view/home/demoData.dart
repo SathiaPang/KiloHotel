@@ -7,6 +7,7 @@ import 'package:hotel/controller/home_controller.dart';
 
 class DemoData extends StatelessWidget {
   DemoData({super.key});
+
   final HomeController homeController = Get.find();
   @override
   Widget build(BuildContext context) {

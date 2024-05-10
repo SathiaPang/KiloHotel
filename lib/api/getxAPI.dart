@@ -18,7 +18,6 @@ class GetXAPI {
   }
 
   static final instance = GetXAPI._();
-  final sharedPreferences = SharedPreferences.getInstance();
 
   Future<dynamic> get({
     required String path,
@@ -56,6 +55,7 @@ class GetXAPI {
     try {
       final token =
           await LocalStorageManager.instance.getFromCache(ServerRout.keyToken);
+      print("token == $token");
       final res = await _dio.post(
         path,
         data: data,

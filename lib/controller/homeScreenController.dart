@@ -38,9 +38,13 @@ class ProfileScreenController extends GetxController {
     }
   }
 
-  void clearToken() {
-    LocalStorageManager.instance.clearToken(ServerRout.keyToken);
-    Get.offNamed(AppRoute.login);
+  void clearToken() async {
+    final isClear =
+        await LocalStorageManager.instance.clearToken(ServerRout.keyToken);
+
+    if (isClear) {
+      Get.offAllNamed(AppRoute.login);
+    }
   }
 
   void pickImageAndUploadsGallery() async {

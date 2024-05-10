@@ -87,13 +87,13 @@ class _HomeScreenState extends State<HomeScreen>
         children: [
           //
           _builNickName(),
-          LiquidPullToRefresh(
-              onRefresh: _refreshController.refresh,
-              color: Colors.transparent,
-              height: 100,
-              backgroundColor: green,
-              animSpeedFactor: 2,
-              child: _buildData()),
+          // LiquidPullToRefresh(
+          //     onRefresh: _refreshController.refresh,
+          //     height: 100,
+          //     backgroundColor: green,
+          //     animSpeedFactor: 2,
+          //     child: _buildData()),,
+          _buildData(),
           _builSeeAll()
         ],
       ),

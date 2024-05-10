@@ -58,15 +58,15 @@ class ListStatus extends StatelessWidget {
                               width: 100,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                // image: DecorationImage(
-                                //     image: NetworkImage(
-                                //       "${bookingDATA.bookingDetail. ? "https://media.designcafe.com/wp-content/uploads/2023/07/05141750/aesthetic-room-decor.jpg" : bookingDATA.bookingDetail.first}",
-                                //     ),
-                                //     fit: BoxFit.fitHeight),
                                 image: DecorationImage(
                                     image: NetworkImage(
-                                        "https://media.designcafe.com/wp-content/uploads/2023/07/05141750/aesthetic-room-decor.jpg"),
+                                      "${bookingDATA.bookingDetail.firstOrNull?.roomType.image.firstOrNull?.url ?? "https://media.designcafe.com/wp-content/uploads/2023/07/05141750/aesthetic-room-decor.jpg"}",
+                                    ),
                                     fit: BoxFit.fitHeight),
+                                // image: DecorationImage(
+                                //     image: NetworkImage(
+                                //         "https://media.designcafe.com/wp-content/uploads/2023/07/05141750/aesthetic-room-decor.jpg"),
+                                //     fit: BoxFit.fitHeight),
                               ),
                             ),
                             Padding(
@@ -148,13 +148,12 @@ class ListStatus extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                      "If you want to cancel please double click on"),
+                                  Text("title".tr),
                                   TextButton(
                                       onPressed: () =>
                                           onPressed(listData[index]),
                                       child: Text(
-                                        "Cancel",
+                                        "cancel".tr,
                                         style: TextStyle(
                                             color: green,
                                             fontSize: 18,
