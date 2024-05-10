@@ -99,7 +99,7 @@ class Setting extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               child: Container(
                 height: Get.height / 25,
-                width: Get.width / 2,
+                // width: Get.width / 0.5,
                 child: Row(
                   children: [
                     Icon(Icons.language),

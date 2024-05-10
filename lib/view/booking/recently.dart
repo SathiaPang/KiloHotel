@@ -199,9 +199,6 @@ class _RecentlyScreenState extends State<RecentlyScreen> {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
                         Text(
                           '${dataApi.title}',
                           style: TextStyle(
