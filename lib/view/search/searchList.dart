@@ -69,7 +69,7 @@ class SearchItem extends SearchDelegate {
                                         borderRadius: BorderRadius.circular(15),
                                         image: DecorationImage(
                                           image: NetworkImage(
-                                              "${data![index].image.isEmpty ? "https://media.designcafe.com/wp-content/uploads/2023/07/05141750/aesthetic-room-decor.jpg" : data?[index].image.first['url']}"),
+                                              "${data[index].image.isEmpty ? "https://media.designcafe.com/wp-content/uploads/2023/07/05141750/aesthetic-room-decor.jpg" : data?[index].image.first['url']}"),
                                           fit: BoxFit.cover,
                                         ),
                                       ),
