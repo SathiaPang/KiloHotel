@@ -5,7 +5,7 @@ import 'package:hotel/local/languageCatch/local_catch.dart';
 class LanguageChange extends Translations {
   final List language = [
     {'name': 'ENGLISH', 'locale': Locale('en', 'US')},
-    {'name': 'KHMER', 'locale': Locale('kh', 'KH')},
+    {'name': 'khmer'.tr, 'locale': Locale('kh', 'KH')},
   ];
 
   updateLanguage(Locale locale) async {
@@ -55,7 +55,7 @@ class LanguageChange extends Translations {
           // Booking
           'myBooking': 'My Booking',
           'noData': "No Data",
-          'title': 'If you want to cancel please double click on',
+          'title': 'If you want to cancel please click on',
           'cancel': 'Cancel',
           // Profile
           'setting': 'Setting',
@@ -79,6 +79,7 @@ class LanguageChange extends Translations {
           'oldPass': 'Old Password',
           'newPass': 'New Password',
           'comfirmPass': "Confirm Password",
+          'khmer': 'KHMER',
           // Notification
           'gerneral': 'General Notification',
           'sound': 'Sound',
@@ -132,7 +133,7 @@ class LanguageChange extends Translations {
           // Booking
           'myBooking': 'ការកក់ទុករបស់ខ្ញុំ',
           'noData': "គ្មានទិន្ន័យ",
-          'title': 'បើអ្នកចង់បោះបង់សូមចុចពីរដង',
+          'title': 'បើអ្នកចង់បោះបង់សូមចុច',
           'cancel': 'បោះបង់',
           // Profile
           'setting': 'ការកំណត់',
@@ -156,6 +157,8 @@ class LanguageChange extends Translations {
           'oldPass': 'លេខសម្ងាត់ចាស់',
           'newPass': 'លេខសម្ងាត់ថ្មី',
           'comfirmPass': 'ផ្ទៀងផ្ទាត់លេខសម្ងាត់',
+          'khmer': 'ភាសាខ្មែរ',
+
           // Notification
           'gerneral': 'General Notification',
           'sound': 'សម្លេង',

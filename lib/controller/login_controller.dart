@@ -12,7 +12,7 @@ class LoginController extends GetxController {
   final formkeySignUp = GlobalKey<FormState>();
 
   // SignIn
-  final userSignInController = TextEditingController(text: "layzzl");
+  final userSignInController = TextEditingController(text: "helloo");
   final passwordSignInController = TextEditingController(text: "1234");
 
   final UserRespoitory userRespoitory;
@@ -56,7 +56,10 @@ class LoginController extends GetxController {
           maxWidth: 400,
         ));
         Get.offAllNamed(AppRoute.bottomNavigation);
+      } else if (res.data == 401) {
+        Get.offAllNamed(AppRoute.login);
       }
+      ;
     } on DioException catch (e) {
       print("-------------------------------------------> $e");
       Get.showSnackbar(const GetSnackBar(

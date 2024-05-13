@@ -22,9 +22,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: white,
       bottomSheet: Container(
-        color: white,
+        // color: Colors.amber,
         height: Get.height / 3.5,
         child: lastPage
             ? Column(
@@ -97,7 +96,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       Text(
                         controller.items[index].description,
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 15, color: textColor),
+                        style: TextStyle(fontSize: 15),
                       ),
                     ],
                   ),

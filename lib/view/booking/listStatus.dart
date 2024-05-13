@@ -71,7 +71,7 @@ class ListStatus extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "${bookingDATA.id}",
+                                    "${bookingDATA.bookingDetail.firstOrNull?.roomType.title}",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 17),
