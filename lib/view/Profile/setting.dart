@@ -1,10 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hotel/constant/appRoute.dart';
-import 'package:hotel/constant/constant.dart';
+import 'package:hotel/language/language.dart';
 
 class Setting extends StatelessWidget {
-  const Setting({super.key});
+  Setting({super.key});
+  final LanguageChange _languageChange = Get.find();
+
+  buildDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (builder) {
+          return AlertDialog(
+            title: Text("choose".tr),
+            content: Container(
+              width: double.maxFinite,
+              child: ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                        onTap: () {
+                          print(_languageChange.language[index]['name']);
+                          _languageChange.updateLanguage(
+                              _languageChange.language[index]['locale']);
+                        },
+                        child: Text(_languageChange.language[index]['name']));
+                  },
+                  separatorBuilder: (context, index) {
+                    return Divider(
+                      color: Colors.amber,
+                    );
+                  },
+                  itemCount: _languageChange.language.length),
+            ),
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +52,7 @@ class Setting extends StatelessWidget {
         centerTitle: true,
       ),
       body: Column(
-        children: [_editPF(), _password(), _language()],
+        children: [_editPF(), _password(), _language(context)],
       ),
     );
   }
@@ -90,35 +121,35 @@ class Setting extends StatelessWidget {
         ],
       );
 
-  Widget _language() => Row(
+  Widget _language(BuildContext context) => Row(
         children: [
-          GestureDetector(
-            onTap: () {
-              Get.toNamed(AppRoute.language);
-            },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              child: Container(
-                height: Get.height / 25,
-
-                child: Row(
-                  children: [
-                    Icon(Icons.language),
-                    SizedBox(
-                      width: 20,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            child: Container(
+              height: Get.height / 25,
+              child: Row(
+                children: [
+                  Icon(Icons.language),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    "change".tr,
+                    style: TextStyle(
+                      fontSize: 19,
+                      fontWeight: FontWeight.w500,
                     ),
-                    Text(
-                      "change".tr,
-                      style: TextStyle(
-                        fontSize: 19,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
+          Spacer(),
+          TextButton(
+              onPressed: () {
+                buildDialog(context);
+              },
+              child: Text("Language"))
         ],
       );
 }
